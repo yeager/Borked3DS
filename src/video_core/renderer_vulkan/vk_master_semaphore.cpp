@@ -98,8 +98,7 @@ void MasterSemaphoreTimeline::SubmitWork(vk::CommandBuffer cmdbuf, vk::Semaphore
     try {
         instance.GetGraphicsQueue().submit(submit_info);
     } catch (vk::DeviceLostError& err) {
-        LOG_CRITICAL(Render_Vulkan, "Device lost during submit: {}", err.what());
-        UNREACHABLE();
+        UNREACHABLE_MSG("Device lost during submit: {}", err.what());
     }
 }
 
@@ -151,8 +150,7 @@ void MasterSemaphoreFence::SubmitWork(vk::CommandBuffer cmdbuf, vk::Semaphore wa
     try {
         instance.GetGraphicsQueue().submit(submit_info, fence);
     } catch (vk::DeviceLostError& err) {
-        LOG_CRITICAL(Render_Vulkan, "Device lost during submit: {}", err.what());
-        UNREACHABLE();
+        UNREACHABLE_MSG("Device lost during submit: {}", err.what());
     }
 
     std::scoped_lock lock{wait_mutex};
@@ -177,8 +175,7 @@ void MasterSemaphoreFence::WaitThread(std::stop_token token) {
 
         const vk::Result result = device.waitForFences(fence, true, WAIT_TIMEOUT);
         if (result != vk::Result::eSuccess) {
-            LOG_CRITICAL(Render_Vulkan, "Fence wait failed with error {}", vk::to_string(result));
-            UNREACHABLE();
+            UNREACHABLE_MSG("Fence wait failed with error {}", vk::to_string(result));
         }
 
         device.resetFences(fence);
