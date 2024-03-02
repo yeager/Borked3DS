@@ -89,8 +89,7 @@ PipelineCache::PipelineCache(const Instance& instance_, Scheduler& scheduler_,
           DescriptorHeap{instance, scheduler.GetMasterSemaphore(), TEXTURE_BINDINGS<1>},
           DescriptorHeap{instance, scheduler.GetMasterSemaphore(), UTILITY_BINDINGS, 32}},
       trivial_vertex_shader{
-          instance, vk::ShaderStageFlagBits::eVertex,
-          GLSL::GenerateTrivialVertexShader(instance.IsShaderClipDistanceSupported(), true)} {
+          instance, SPIRV::GenerateTrivialVertexShader(instance.IsShaderClipDistanceSupported())} {
     scheduler.RegisterOnDispatch([this] { update_queue.Flush(); });
     profile = Pica::Shader::Profile{
         .has_separable_shaders = true,
