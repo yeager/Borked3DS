@@ -21,6 +21,7 @@ cmake .. -G Ninja \
     -DCMAKE_C_FLAGS="-O2" \
     -DUSE_DISCORD_PRESENCE=ON
 ninja
+strip -s bin/Release/*
 
 if [ "$TARGET" = "appimage" ]; then
     ninja bundle

@@ -17,6 +17,7 @@ cmake .. -G Ninja \
     -DUSE_DISCORD_PRESENCE=ON
 ninja
 ninja bundle
+strip -s bundle/*.exe
 
 ccache -s -v
 
