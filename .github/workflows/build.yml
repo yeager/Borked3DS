@@ -174,8 +174,12 @@ jobs:
             qt6-base:p qt6-multimedia:p qt6-multimedia-wmf:p qt6-tools:p qt6-translations:p
       - name: Disable line ending translation
         run: git config --global core.autocrlf input
-      - name: Build
-        run: ./.ci/windows.sh
+      - name: Build msys2
+        run: ./.ci/windows-msys2.sh
+        if: ${{ matrix.target == 'msys2' }}
+      - name: Build msvc
+        run: ./.ci/windows-msvc.sh
+        if: ${{ matrix.target == 'msvc' }}
       - name: Pack
         run: ./.ci/pack.sh
       - name: Upload
