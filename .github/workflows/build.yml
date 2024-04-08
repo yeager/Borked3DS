@@ -82,8 +82,8 @@ jobs:
             ${{ runner.os }}-${{ matrix.target }}-
       - name: Setup XCode
         uses: maxim-lobanov/setup-xcode@v1
-          with:
-            xcode-version: latest-stable
+        with:
+          xcode-version: latest-stable
       - name: Install tools
         run: brew install ccache ninja spirv-tools
       - name: Build
@@ -254,8 +254,8 @@ jobs:
             ${{ runner.os }}-ios-
       - name: Setup XCode
         uses: maxim-lobanov/setup-xcode@v1
-          with:
-            xcode-version: latest-stable
+        with:
+          xcode-version: latest-stable
       - name: Install tools
         run: brew install ccache ninja
       - name: Build
