@@ -527,6 +527,9 @@ void Y2R_U::StartConversion(Kernel::HLERequestContext& ctx) {
         system.CoreTiming().RemoveEvent(completion_signal_event);
     }
 
+    // This value has been estimated as the minimum amount of cycles to resolve a race condition
+    // in the intro cutscene of the FIFA series of games.
+    // TODO: Measure the cycle count more accurately based on hardware.
     static constexpr s64 MinY2RDelay = 50000;
     system.CoreTiming().ScheduleEvent(MinY2RDelay, completion_signal_event);
     is_busy_conversion = true;
