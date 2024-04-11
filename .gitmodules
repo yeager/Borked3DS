@@ -52,7 +52,7 @@
     url = https://github.com/facebook/zstd.git
 [submodule "libyuv"]
     path = externals/libyuv
-    url = https://github.com/lemenkov/libyuv.git
+    url = https://chromium.googlesource.com/libyuv/libyuv.git 
 [submodule "sdl2"]
     path = externals/sdl2/SDL
     url = https://github.com/libsdl-org/SDL
