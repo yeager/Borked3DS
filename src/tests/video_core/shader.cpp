@@ -170,7 +170,7 @@ private:
 #define SHADER_TEST_CASE(NAME, TAG)                                                                \
     TEMPLATE_TEST_CASE(NAME, TAG, ShaderInterpreterTest, ShaderJitTest)
 
-SHADER_TEST_CASE("ADD", "[video_core][shader][shader_jit]") {
+SHADER_TEST_CASE("ADD", "[video_core][shader]") {
     const auto sh_input1 = SourceRegister::MakeInput(0);
     const auto sh_input2 = SourceRegister::MakeInput(1);
     const auto sh_output = DestRegister::MakeOutput(0);
@@ -187,7 +187,7 @@ SHADER_TEST_CASE("ADD", "[video_core][shader][shader_jit]") {
     REQUIRE(std::isinf(shader.Run({INFINITY, -1.0f}).x));
 }
 
-SHADER_TEST_CASE("CALL", "[video_core][shader][shader_jit]") {
+SHADER_TEST_CASE("CALL", "[video_core][shader]") {
     const auto sh_input = SourceRegister::MakeInput(0);
     const auto sh_output = DestRegister::MakeOutput(0);
 
@@ -222,7 +222,7 @@ SHADER_TEST_CASE("CALL", "[video_core][shader][shader_jit]") {
     REQUIRE(shader.Run(0.f).x == Catch::Approx(1.f));
 }
 
-SHADER_TEST_CASE("DP3", "[video_core][shader][shader_jit]") {
+SHADER_TEST_CASE("DP3", "[video_core][shader]") {
     const auto sh_input1 = SourceRegister::MakeInput(0);
     const auto sh_input2 = SourceRegister::MakeInput(1);
     const auto sh_output = DestRegister::MakeOutput(0);
@@ -238,7 +238,7 @@ SHADER_TEST_CASE("DP3", "[video_core][shader][shader_jit]") {
     REQUIRE(shader.Run({vec4_one, vec4_one}).x == 3.0f);
 }
 
-SHADER_TEST_CASE("DP4", "[video_core][shader][shader_jit]") {
+SHADER_TEST_CASE("DP4", "[video_core][shader]") {
     const auto sh_input1 = SourceRegister::MakeInput(0);
     const auto sh_input2 = SourceRegister::MakeInput(1);
     const auto sh_output = DestRegister::MakeOutput(0);
@@ -254,7 +254,7 @@ SHADER_TEST_CASE("DP4", "[video_core][shader][shader_jit]") {
     REQUIRE(shader.Run({vec4_one, vec4_one}).x == 4.0f);
 }
 
-SHADER_TEST_CASE("DPH", "[video_core][shader][shader_jit]") {
+SHADER_TEST_CASE("DPH", "[video_core][shader]") {
     const auto sh_input1 = SourceRegister::MakeInput(0);
     const auto sh_input2 = SourceRegister::MakeInput(1);
     const auto sh_output = DestRegister::MakeOutput(0);
@@ -271,7 +271,7 @@ SHADER_TEST_CASE("DPH", "[video_core][shader][shader_jit]") {
     REQUIRE(shader.Run({vec4_zero, vec4_one}).x == 1.0f);
 }
 
-SHADER_TEST_CASE("LG2", "[video_core][shader][shader_jit]") {
+SHADER_TEST_CASE("LG2", "[video_core][shader]") {
     const auto sh_input = SourceRegister::MakeInput(0);
     const auto sh_output = DestRegister::MakeOutput(0);
 
@@ -288,7 +288,7 @@ SHADER_TEST_CASE("LG2", "[video_core][shader][shader_jit]") {
     // REQUIRE(std::isinf(shader.Run(INFINITY).x));
 }
 
-SHADER_TEST_CASE("EX2", "[video_core][shader][shader_jit]") {
+SHADER_TEST_CASE("EX2", "[video_core][shader]") {
     const auto sh_input = SourceRegister::MakeInput(0);
     const auto sh_output = DestRegister::MakeOutput(0);
 
@@ -307,7 +307,7 @@ SHADER_TEST_CASE("EX2", "[video_core][shader][shader_jit]") {
     // REQUIRE(std::isinf(shader.Run(79.7262742773f).x));
 }
 
-SHADER_TEST_CASE("MUL", "[video_core][shader][shader_jit]") {
+SHADER_TEST_CASE("MUL", "[video_core][shader]") {
     const auto sh_input1 = SourceRegister::MakeInput(0);
     const auto sh_input2 = SourceRegister::MakeInput(1);
     const auto sh_output = DestRegister::MakeOutput(0);
@@ -326,7 +326,7 @@ SHADER_TEST_CASE("MUL", "[video_core][shader][shader_jit]") {
     REQUIRE(shader.Run({+INFINITY, -INFINITY}).x == -INFINITY);
 }
 
-SHADER_TEST_CASE("SGE", "[video_core][shader][shader_jit]") {
+SHADER_TEST_CASE("SGE", "[video_core][shader]") {
     const auto sh_input1 = SourceRegister::MakeInput(0);
     const auto sh_input2 = SourceRegister::MakeInput(1);
     const auto sh_output = DestRegister::MakeOutput(0);
@@ -347,7 +347,7 @@ SHADER_TEST_CASE("SGE", "[video_core][shader][shader_jit]") {
     REQUIRE(shader.Run({-1.0f, +1.0f}).x == 0.0f);
 }
 
-SHADER_TEST_CASE("SLT", "[video_core][shader][shader_jit]") {
+SHADER_TEST_CASE("SLT", "[video_core][shader]") {
     const auto sh_input1 = SourceRegister::MakeInput(0);
     const auto sh_input2 = SourceRegister::MakeInput(1);
     const auto sh_output = DestRegister::MakeOutput(0);
@@ -368,7 +368,7 @@ SHADER_TEST_CASE("SLT", "[video_core][shader][shader_jit]") {
     REQUIRE(shader.Run({-1.0f, +1.0f}).x == 1.0f);
 }
 
-SHADER_TEST_CASE("FLR", "[video_core][shader][shader_jit]") {
+SHADER_TEST_CASE("FLR", "[video_core][shader]") {
     const auto sh_input1 = SourceRegister::MakeInput(0);
     const auto sh_output = DestRegister::MakeOutput(0);
 
@@ -385,7 +385,7 @@ SHADER_TEST_CASE("FLR", "[video_core][shader][shader_jit]") {
     REQUIRE(std::isinf(shader.Run({INFINITY}).x));
 }
 
-SHADER_TEST_CASE("MAX", "[video_core][shader][shader_jit]") {
+SHADER_TEST_CASE("MAX", "[video_core][shader]") {
     const auto sh_input1 = SourceRegister::MakeInput(0);
     const auto sh_input2 = SourceRegister::MakeInput(1);
     const auto sh_output = DestRegister::MakeOutput(0);
@@ -404,7 +404,7 @@ SHADER_TEST_CASE("MAX", "[video_core][shader][shader_jit]") {
     REQUIRE(shader.Run({-INFINITY, +INFINITY}).x == +INFINITY);
 }
 
-SHADER_TEST_CASE("MIN", "[video_core][shader][shader_jit]") {
+SHADER_TEST_CASE("MIN", "[video_core][shader]") {
     const auto sh_input1 = SourceRegister::MakeInput(0);
     const auto sh_input2 = SourceRegister::MakeInput(1);
     const auto sh_output = DestRegister::MakeOutput(0);
@@ -423,7 +423,7 @@ SHADER_TEST_CASE("MIN", "[video_core][shader][shader_jit]") {
     REQUIRE(shader.Run({-INFINITY, +INFINITY}).x == -INFINITY);
 }
 
-SHADER_TEST_CASE("RCP", "[video_core][shader][shader_jit]") {
+SHADER_TEST_CASE("RCP", "[video_core][shader]") {
     const auto sh_input = SourceRegister::MakeInput(0);
     const auto sh_output = DestRegister::MakeOutput(0);
 
@@ -448,7 +448,7 @@ SHADER_TEST_CASE("RCP", "[video_core][shader][shader_jit]") {
     REQUIRE(shader.Run({0.0625f}).x == Catch::Approx(16.0f).margin(0.004f));
 }
 
-SHADER_TEST_CASE("RSQ", "[video_core][shader][shader_jit]") {
+SHADER_TEST_CASE("RSQ", "[video_core][shader]") {
     const auto sh_input = SourceRegister::MakeInput(0);
     const auto sh_output = DestRegister::MakeOutput(0);
 
@@ -474,7 +474,7 @@ SHADER_TEST_CASE("RSQ", "[video_core][shader][shader_jit]") {
     REQUIRE(shader.Run({0.0625f}).x == Catch::Approx(4.0f).margin(0.004f));
 }
 
-SHADER_TEST_CASE("Uniform Read", "[video_core][shader][shader_jit]") {
+SHADER_TEST_CASE("Uniform Read", "[video_core][shader]") {
     const auto sh_input = SourceRegister::MakeInput(0);
     const auto sh_c0 = SourceRegister::MakeFloat(0);
     const auto sh_output = DestRegister::MakeOutput(0);
@@ -507,7 +507,7 @@ SHADER_TEST_CASE("Uniform Read", "[video_core][shader][shader_jit]") {
     }
 }
 
-SHADER_TEST_CASE("Address Register Offset", "[video_core][shader][shader_jit]") {
+SHADER_TEST_CASE("Address Register Offset", "[video_core][shader]") {
     const auto sh_input = SourceRegister::MakeInput(0);
     const auto sh_c40 = SourceRegister::MakeFloat(40);
     const auto sh_output = DestRegister::MakeOutput(0);
@@ -558,7 +558,7 @@ SHADER_TEST_CASE("Address Register Offset", "[video_core][shader][shader_jit]") 
     REQUIRE(shader.Run(-129.f) == f_uniforms[40]);
 }
 
-SHADER_TEST_CASE("Dest Mask", "[video_core][shader][shader_jit]") {
+SHADER_TEST_CASE("Dest Mask", "[video_core][shader]") {
     const auto sh_input = SourceRegister::MakeInput(0);
     const auto sh_output = DestRegister::MakeOutput(0);
 
@@ -588,7 +588,7 @@ SHADER_TEST_CASE("Dest Mask", "[video_core][shader][shader_jit]") {
     REQUIRE(shader("xyzw")->Run({iota_vec}) == iota_vec);
 }
 
-SHADER_TEST_CASE("MAD", "[video_core][shader][shader_jit]") {
+SHADER_TEST_CASE("MAD", "[video_core][shader]") {
     const auto sh_input1 = SourceRegister::MakeInput(0);
     const auto sh_input2 = SourceRegister::MakeInput(1);
     const auto sh_input3 = SourceRegister::MakeInput(2);
@@ -636,7 +636,7 @@ SHADER_TEST_CASE("MAD", "[video_core][shader][shader_jit]") {
     REQUIRE(shader.Run({vec4_nan, vec4_zero, vec4_zero}) == vec4_nan);
 }
 
-SHADER_TEST_CASE("Nested Loop", "[video_core][shader][shader_jit]") {
+SHADER_TEST_CASE("Nested Loop", "[video_core][shader]") {
     const auto sh_input = SourceRegister::MakeInput(0);
     const auto sh_temp = SourceRegister::MakeTemporary(0);
     const auto sh_output = DestRegister::MakeOutput(0);
@@ -674,7 +674,7 @@ SHADER_TEST_CASE("Nested Loop", "[video_core][shader][shader_jit]") {
     }
 }
 
-SHADER_TEST_CASE("Source Swizzle", "[video_core][shader][shader_jit]") {
+SHADER_TEST_CASE("Source Swizzle", "[video_core][shader]") {
     const auto sh_input = SourceRegister::MakeInput(0);
     const auto sh_output = DestRegister::MakeOutput(0);
 
