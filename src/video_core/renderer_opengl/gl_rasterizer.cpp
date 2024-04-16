@@ -73,6 +73,11 @@ GLenum MakeAttributeType(Pica::PipelineRegs::VertexAttributeFormat format) {
 
 } // Anonymous namespace
 
+static bool IsVendorMali() {
+    std::string gpu_vendor{reinterpret_cast<char const*>(glGetString(GL_VENDOR))};
+    return gpu_vendor.find("ARM") != std::string::npos;
+}
+
 RasterizerOpenGL::RasterizerOpenGL(Memory::MemorySystem& memory, Pica::PicaCore& pica,
                                    VideoCore::CustomTexManager& custom_tex_manager,
                                    VideoCore::RendererBase& renderer, Driver& driver_)
@@ -83,9 +88,14 @@ RasterizerOpenGL::RasterizerOpenGL(Memory::MemorySystem& memory, Pica::PicaCore&
                                                               VERTEX_BUFFER_SIZE},
       uniform_buffer{driver, GL_UNIFORM_BUFFER, UNIFORM_BUFFER_SIZE},
       index_buffer{driver, GL_ELEMENT_ARRAY_BUFFER, INDEX_BUFFER_SIZE},
-      texture_buffer{driver, GL_TEXTURE_BUFFER, texture_buffer_size}, texture_lf_buffer{
-                                                                          driver, GL_TEXTURE_BUFFER,
-                                                                          texture_buffer_size} {
+      texture_buffer{driver, GL_TEXTURE_BUFFER,
+                     IsVendorMali()
+                         ? (GL_MAX_TEXTURE_BUFFER_SIZE == 65536 ? 11264 : texture_buffer_size)
+                         : texture_buffer_size},
+      texture_lf_buffer{driver, GL_TEXTURE_BUFFER,
+                        IsVendorMali()
+                            ? (GL_MAX_TEXTURE_BUFFER_SIZE == 65536 ? 525312 : texture_buffer_size)
+                            : texture_buffer_size} {
 
     // Clipping plane 0 is always enabled for PICA fixed clip plane z <= 0
     state.clip_distance[0] = true;
@@ -364,8 +374,6 @@ void RasterizerOpenGL::DrawTriangles() {
 }
 
 bool RasterizerOpenGL::Draw(bool accelerate, bool is_indexed) {
-    MICROPROFILE_SCOPE(OpenGL_Drawing);
-
     const bool shadow_rendering = regs.framebuffer.IsShadowRendering();
     const bool has_stencil = regs.framebuffer.HasStencil();
 
@@ -373,7 +381,6 @@ bool RasterizerOpenGL::Draw(bool accelerate, bool is_indexed) {
                                 state.color_mask.green_enabled == GL_TRUE ||
                                 state.color_mask.blue_enabled == GL_TRUE ||
                                 state.color_mask.alpha_enabled == GL_TRUE;
-
     const bool write_depth_fb =
         (state.depth.test_enabled && state.depth.write_mask == GL_TRUE) ||
         (has_stencil && state.stencil.test_enabled && state.stencil.write_mask != 0);
