@@ -121,6 +121,7 @@
     <string name="button_select" translatable="false">SELECT</string>
     <string name="button_start" translatable="false">START</string>
     <string name="button_home">HOME</string>
+    <string name="button_swap">Swap Screens</string>
     <string name="button_x" translatable="false">X</string>
     <string name="button_y" translatable="false">Y</string>
     <string name="button_l" translatable="false">L</string>
@@ -323,12 +324,17 @@
     <string name="emulation_empty_state_slot">Slot %1$d</string>
     <string name="emulation_occupied_state_slot">Slot %1$d - %2$tF %2$tR</string>
     <string name="emulation_show_fps">Show FPS</string>
+    <string name="emulation_haptic_feedback">Haptic Feedback</string>
     <string name="emulation_overlay_options">Overlay Options</string>
     <string name="emulation_configure_controls">Configure Controls</string>
     <string name="emulation_edit_layout">Edit Layout</string>
     <string name="emulation_done">Done</string>
     <string name="emulation_toggle_controls">Toggle Controls</string>
     <string name="emulation_control_scale">Adjust Scale</string>
+    <string name="emulation_control_scale_global">Global Scale</string>
+    <string name="emulation_rotate_screen">Rotate Screen</string>
+    <string name="emulation_control_scale_reset_all">Reset All</string>
+    <string name="emulation_control_opacity">Adjust Opacity</string>
     <string name="emulation_control_joystick_rel_center">Relative Stick Center</string>
     <string name="emulation_control_dpad_slide_enable">D-Pad Sliding</string>
     <string name="emulation_open_settings">Open Settings</string>
