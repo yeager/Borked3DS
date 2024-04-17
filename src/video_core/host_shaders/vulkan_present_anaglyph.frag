@@ -52,8 +52,6 @@ vec3 correct_color(vec3 col) {
     result.g = pow(col.g, 1.0 / g.g);
     result.b = pow(col.b, 1.0 / g.b);
     return result;
-    == == == =
->>>>>>> 20ef8e47e (host_shaders: Remove dependency on shaderSampledImageArrayDynamicIndexing)
 }
 
 void main() {
