@@ -323,7 +323,7 @@ static void LoadOverrides(u64 title_id) {
         }
     }
 
-    const std::array<u64, 46> accurate_mul_ids = {
+    const std::array<u64, 50> accurate_mul_ids = {
         0x0004000000134500, // Attack on Titan
         0x00040000000DF800, // Attack on Titan
         0x0004000000152000, // Attack on Titan
