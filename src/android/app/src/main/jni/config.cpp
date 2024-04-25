@@ -149,6 +149,10 @@ void Config::ReadValues() {
     ReadSetting("Renderer", Settings::values.texture_filter);
     ReadSetting("Renderer", Settings::values.texture_sampling);
 
+    // Hacks
+    ReadSetting("Renderer", Settings::values.skip_slow_draw);
+    ReadSetting("Renderer", Settings::values.skip_texture_copy);
+
     // Work around to map Android setting for enabling the frame limiter to the format Citra expects
     if (sdl2_config->GetBoolean("Renderer", "use_frame_limit", true)) {
         ReadSetting("Renderer", Settings::values.frame_limit);

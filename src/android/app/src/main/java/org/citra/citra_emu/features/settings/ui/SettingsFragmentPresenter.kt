@@ -711,6 +711,24 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
             )
             add(
                 SwitchSetting(
+                    IntSetting.SKIP_SLOW_DRAW,
+                    R.string.skip_slow_draw,
+                    R.string.skip_slow_draw_description,
+                    IntSetting.SKIP_SLOW_DRAW.key,
+                    IntSetting.SKIP_SLOW_DRAW.defaultValue
+                )
+            )
+            add(
+                SwitchSetting(
+                    IntSetting.SKIP_TEXTURE_COPY,
+                    R.string.skip_texture_copy,
+                    R.string.skip_texture_copy_description,
+                    IntSetting.SKIP_TEXTURE_COPY.key,
+                    IntSetting.SKIP_TEXTURE_COPY.defaultValue
+                )
+            )
+            add(
+                SwitchSetting(
                     IntSetting.DISK_SHADER_CACHE,
                     R.string.use_disk_shader_cache,
                     R.string.use_disk_shader_cache_description,

@@ -110,6 +110,9 @@ void ConfigureGraphics::SetConfiguration() {
             static_cast<int>(Settings::values.texture_sampling.GetValue()));
     }
 
+    ui->toggle_skip_slow_draw->setChecked(Settings::values.skip_slow_draw.GetValue());
+    ui->toggle_skip_texture_copy->setChecked(Settings::values.skip_texture_copy.GetValue());
+
     ui->toggle_hw_shader->setChecked(Settings::values.use_hw_shader.GetValue());
     ui->toggle_accurate_mul->setChecked(Settings::values.shaders_accurate_mul.GetValue());
     ui->toggle_disk_shader_cache->setChecked(Settings::values.use_disk_shader_cache.GetValue());
@@ -143,6 +146,10 @@ void ConfigureGraphics::ApplyConfiguration() {
                                              ui->toggle_accurate_mul, shaders_accurate_mul);
     ConfigurationShared::ApplyPerGameSetting(&Settings::values.texture_sampling,
                                              ui->texture_sampling_combobox);
+    ConfigurationShared::ApplyPerGameSetting(&Settings::values.skip_slow_draw,
+                                             ui->toggle_skip_slow_draw, skip_slow_draw);
+    ConfigurationShared::ApplyPerGameSetting(&Settings::values.skip_texture_copy,
+                                             ui->toggle_skip_texture_copy, skip_texture_copy);
     ConfigurationShared::ApplyPerGameSetting(&Settings::values.use_disk_shader_cache,
                                              ui->toggle_disk_shader_cache, use_disk_shader_cache);
     ConfigurationShared::ApplyPerGameSetting(&Settings::values.use_vsync_new, ui->toggle_vsync_new,
@@ -191,6 +198,12 @@ void ConfigureGraphics::SetupPerGameUI() {
     ConfigurationShared::SetColoredComboBox(
         ui->texture_sampling_combobox, ui->widget_texture_sampling,
         static_cast<int>(Settings::values.texture_sampling.GetValue(true)));
+
+    ConfigurationShared::SetColoredTristate(
+        ui->toggle_skip_slow_draw, Settings::values.skip_slow_draw, skip_slow_draw);
+
+    ConfigurationShared::SetColoredTristate(
+        ui->toggle_skip_texture_copy, Settings::values.skip_texture_copy, skip_texture_copy);
 
     ConfigurationShared::SetColoredTristate(ui->toggle_hw_shader, Settings::values.use_hw_shader,
                                             use_hw_shader);

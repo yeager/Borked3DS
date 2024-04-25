@@ -241,6 +241,26 @@
         </property>
        </widget>
       </item>
+      <item>
+       <widget class="QCheckBox" name="toggle_skip_slow_draw">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Skips the slow drawing event from rendering. Can improve performance or rarely fix issues, but may cause graphical bugs.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string>Skip Slow Draw</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="toggle_skip_texture_copy">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Skips the texture copy event from rendering. Can improve performance or rarely fix issues, but may cause graphical bugs.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string>Skip Texture Copy</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>

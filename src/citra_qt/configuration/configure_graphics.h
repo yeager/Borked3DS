@@ -37,6 +37,8 @@ private:
 
     ConfigurationShared::CheckState use_hw_shader;
     ConfigurationShared::CheckState shaders_accurate_mul;
+    ConfigurationShared::CheckState skip_slow_draw;
+    ConfigurationShared::CheckState skip_texture_copy;
     ConfigurationShared::CheckState use_disk_shader_cache;
     ConfigurationShared::CheckState use_vsync_new;
     ConfigurationShared::CheckState async_shader_compilation;

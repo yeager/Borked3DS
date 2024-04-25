@@ -149,6 +149,10 @@ void Config::ReadValues() {
     ReadSetting("Renderer", Settings::values.texture_filter);
     ReadSetting("Renderer", Settings::values.texture_sampling);
 
+    // Hacks
+    ReadSetting("Renderer", Settings::values.skip_slow_draw);
+    ReadSetting("Renderer", Settings::values.skip_texture_copy);
+
     ReadSetting("Renderer", Settings::values.mono_render_option);
     ReadSetting("Renderer", Settings::values.render_3d);
     ReadSetting("Renderer", Settings::values.factor_3d);
