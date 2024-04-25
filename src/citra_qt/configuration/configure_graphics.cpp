@@ -199,11 +199,11 @@ void ConfigureGraphics::SetupPerGameUI() {
         ui->texture_sampling_combobox, ui->widget_texture_sampling,
         static_cast<int>(Settings::values.texture_sampling.GetValue(true)));
 
-    ConfigurationShared::SetColoredTristate(
-        ui->toggle_skip_slow_draw, Settings::values.skip_slow_draw, skip_slow_draw);
+    ConfigurationShared::SetColoredTristate(ui->toggle_skip_slow_draw,
+                                            Settings::values.skip_slow_draw, skip_slow_draw);
 
-    ConfigurationShared::SetColoredTristate(
-        ui->toggle_skip_texture_copy, Settings::values.skip_texture_copy, skip_texture_copy);
+    ConfigurationShared::SetColoredTristate(ui->toggle_skip_texture_copy,
+                                            Settings::values.skip_texture_copy, skip_texture_copy);
 
     ConfigurationShared::SetColoredTristate(ui->toggle_hw_shader, Settings::values.use_hw_shader,
                                             use_hw_shader);
