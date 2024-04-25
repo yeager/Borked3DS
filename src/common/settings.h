@@ -554,8 +554,6 @@ struct Values {
     SwitchableSetting<bool> core_downcount_hack{false, "core_downcount_hack"};
     // TODO: These hacks needs to get adapted to new config system.
     u32 core_ticks_hack;
-    bool skip_slow_draw;
-    bool skip_texture_copy;
     bool stream_buffer_hack;
 
     // Video Dumping
