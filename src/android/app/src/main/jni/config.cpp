@@ -140,6 +140,8 @@ void Config::ReadValues() {
         sdl2_config->GetBoolean("Renderer", "shaders_accurate_mul", false);
     ReadSetting("Renderer", Settings::values.graphics_api);
     ReadSetting("Renderer", Settings::values.async_presentation);
+    ReadSetting("Renderer", Settings::values.skip_slow_draw);
+    ReadSetting("Renderer", Settings::values.skip_texture_copy);
     ReadSetting("Renderer", Settings::values.async_shader_compilation);
     ReadSetting("Renderer", Settings::values.spirv_shader_gen);
     ReadSetting("Renderer", Settings::values.use_hw_shader);
@@ -149,10 +151,6 @@ void Config::ReadValues() {
     ReadSetting("Renderer", Settings::values.use_vsync_new);
     ReadSetting("Renderer", Settings::values.texture_filter);
     ReadSetting("Renderer", Settings::values.texture_sampling);
-
-    // Hacks
-    ReadSetting("Renderer", Settings::values.skip_slow_draw);
-    ReadSetting("Renderer", Settings::values.skip_texture_copy);
 
     // Work around to map Android setting for enabling the frame limiter to the format Citra expects
     if (sdl2_config->GetBoolean("Renderer", "use_frame_limit", true)) {

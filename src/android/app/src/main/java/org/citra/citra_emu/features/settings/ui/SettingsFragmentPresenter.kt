@@ -702,15 +702,6 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
             )
             add(
                 SwitchSetting(
-                    IntSetting.SHADERS_ACCURATE_MUL,
-                    R.string.shaders_accurate_mul,
-                    R.string.shaders_accurate_mul_description,
-                    IntSetting.SHADERS_ACCURATE_MUL.key,
-                    IntSetting.SHADERS_ACCURATE_MUL.defaultValue
-                )
-            )
-            add(
-                SwitchSetting(
                     IntSetting.SKIP_SLOW_DRAW,
                     R.string.skip_slow_draw,
                     R.string.skip_slow_draw_description,
@@ -725,6 +716,15 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
                     R.string.skip_texture_copy_description,
                     IntSetting.SKIP_TEXTURE_COPY.key,
                     IntSetting.SKIP_TEXTURE_COPY.defaultValue
+                )
+            )
+            add(
+                SwitchSetting(
+                    IntSetting.SHADERS_ACCURATE_MUL,
+                    R.string.shaders_accurate_mul,
+                    R.string.shaders_accurate_mul_description,
+                    IntSetting.SHADERS_ACCURATE_MUL.key,
+                    IntSetting.SHADERS_ACCURATE_MUL.defaultValue
                 )
             )
             add(
