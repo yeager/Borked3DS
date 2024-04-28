@@ -343,8 +343,8 @@ public:
         return false;
     }
 
-    /// Core downcount hack
-    void SetCoreDowncountHack(bool enabled, u32 num_cores);
+    /// Downcount will be limited to a smaller time slice.
+    void SetDowncountHack(bool enabled, u32 num_cores);
 
     /// Applies any changes to settings to this core instance.
     void ApplySettings();

@@ -254,19 +254,17 @@ System::ResultStatus System::SingleStep() {
 }
 
 static void LoadOverrides(u64 title_id) {
-    if (title_id == 0x000400000008B400 || title_id == 0x0004000000030600 ||
-        title_id == 0x0004000000030800 || title_id == 0x0004000000030700) {
-        // Mario Kart 7
-        Settings::values.skip_texture_copy = true;
-    } else if (title_id == 0x00040000000D0000 || title_id == 0x0004000000076400 ||
-               title_id == 0x0004000000055F00 || title_id == 0x0004000000076500) {
-        // Luigi's Mansion: Dark Moon
-        Settings::values.shaders_accurate_mul = true;
-        Settings::SetFMVHack(!Settings::values.core_downcount_hack);
-    } else if (title_id == 0x0004000000068B00 || title_id == 0x0004000000061300 ||
-               title_id == 0x000400000004A700 || title_id == 0x000400000005D700) {
+    // This gamelist may improve performance or fix issues using the hacks
+    if (title_id == 0x0004000000068B00 || title_id == 0x0004000000061300 ||
+        title_id == 0x000400000004A700 || title_id == 0x000400000005D700) {
         // Tales of the Abyss / Pac Man Party 3D
         Settings::values.skip_slow_draw = true;
+    } else if (title_id == 0x00040000001CCD00 || title_id == 0x00040000001B4500) {
+        // The Alliance Alive
+        Settings::values.core_downcount_hack = true;
+    } else if (title_id == 0x0004000000120900 || title_id == 0x0004000000164300) {
+        // Lord of Magna: Maiden Heaven
+        Settings::values.core_downcount_hack = true;
     } else if (title_id == 0x000400000015CB00) {
         // New Atelier Rorona
         Settings::values.skip_slow_draw = true;
@@ -295,34 +293,53 @@ static void LoadOverrides(u64 title_id) {
         Settings::values.stream_buffer_hack = false;
     } else if (title_id == 0x000400000008FE00) {
         // 1001 Spikes
-        Settings::SetFMVHack(!Settings::values.core_downcount_hack);
-        Settings::values.is_new_3ds = true;
         Settings::values.stream_buffer_hack = false;
+        Settings::values.core_downcount_hack = true;
+    } else if (title_id == 0x000400000008B400 || title_id == 0x0004000000030600 ||
+               title_id == 0x0004000000030800 || title_id == 0x0004000000030700) {
+        // Mario Kart 7
+        Settings::values.skip_texture_copy = true;
     }
 
-    const std::array<u64, 14> core_ticks_hack_ids = {
-        0x0004000000030500, // Super Street Fighter IV: 3D Edition
-        0x0004000000032D00, // Super Street Fighter IV: 3D Edition
-        0x0004000000033C00, // Super Street Fighter IV: 3D Edition
-        0x0004000000060200, // Resident Evil: Revelations
-        0x000400000005EE00, // Resident Evil: Revelations
-        0x0004000000035900, // Resident Evil: The Mercenaries 3D
-        0x0004000000038B00, // Resident Evil: The Mercenaries 3D
-        0x00040000000C8100, // Paper Mario: Sticker Star
-        0x00040000000A5E00, // Paper Mario: Sticker Star
-        0x00040000000A5F00, // Paper Mario: Sticker Star
-        0x00040000001CCD00, // The Alliance Alive
-        0x00040000001B4500, // The Alliance Alive
-        0x0004000000120900, // Lord of Magna: Maiden Heaven
-        0x0004000000164300, // Lord of Magna: Maiden Heaven
+    const std::array<u64, 29> new3ds_game_ids = {
+        0x000400000F700000, // Xenoblade Chronicles 3D [JPN]
+        0x000400000F700100, // Xenoblade Chronicles 3D [USA]
+        0x000400000F700200, // Xenoblade Chronicles 3D [EUR]
+        0x000400000F70CC00, // Fire Emblem Warriors [USA]
+        0x000400000F70CD00, // Fire Emblem Warriors [EUR]
+        0x000400000F70C100, // Fire Emblem Warriors [JPN]
+        0x000400000F700800, // The Binding of Isaac: Rebirth [USA]
+        0x000400000F701700, // The Binding of Isaac: Rebirth [JPN]
+        0x000400000F700900, // The Binding of Isaac: Rebirth [EUR]
+        0x00040000000CCE00, // Donkey Kong Country Returns 3D [USA]
+        0x00040000000CC000, // Donkey Kong Country Returns 3D [JPN]
+        0x00040000000CCF00, // Donkey Kong Country Returns 3D [EUR]
+        0x0004000000127500, // Sonic Boom: Shattered Crystal [USA]
+        0x000400000014AE00, // Sonic Boom: Shattered Crystal [JPN]
+        0x000400000012C200, // Sonic Boom: Shattered Crystal [EUR]
+        0x0004000000161300, // Sonic Boom: Fire & Ice [USA]
+        0x0004000000170700, // Sonic Boom: Fire & Ice [JPN]
+        0x0004000000164700, // Sonic Boom: Fire & Ice [EUR]
+        0x00040000000B3500, // Sonic & All-Stars Racing Transformed [USA]
+        0x000400000008FC00, // Sonic & All-Stars Racing Transformed [EUR]
+        0x00040000001B8700, // Minecraft [USA]
+        0x000400000F707F00, // Hyperlight EX [USA]
+        0x000400000007C700, // Mario Tennis Open
+        0x000400000007C800, // Mario Tennis Open
+        0x0004000000064D00, // Mario Tennis Open
+        0x00040000000B9100, // Mario Tennis Open
+        0x00040000000DCD00, // Mario Golf: World Tour
+        0x00040000000A5300, // Mario Golf: World Tour
+        0x00040000000DCE00, // Mario Golf: World Tour
     };
-    for (auto id : core_ticks_hack_ids) {
+    for (auto id : new3ds_game_ids) {
         if (title_id == id) {
-            Settings::SetFMVHack(!Settings::values.core_downcount_hack);
+            Settings::values.is_new_3ds = true;
             break;
         }
     }
 
+    // This gamelist requires accurate multiplication to render properly
     const std::array<u64, 50> accurate_mul_ids = {
         0x0004000000134500, // Attack on Titan
         0x00040000000DF800, // Attack on Titan
@@ -390,44 +407,6 @@ static void LoadOverrides(u64 title_id) {
     for (auto id : cpu_limit_ids) {
         if (title_id == id) {
             Settings::values.core_downcount_hack = true;
-            break;
-        }
-    }
-
-    const std::array<u64, 29> new3ds_game_ids = {
-        0x000400000F700000, // Xenoblade Chronicles 3D [JPN]
-        0x000400000F700100, // Xenoblade Chronicles 3D [USA]
-        0x000400000F700200, // Xenoblade Chronicles 3D [EUR]
-        0x000400000F70CC00, // Fire Emblem Warriors [USA]
-        0x000400000F70CD00, // Fire Emblem Warriors [EUR]
-        0x000400000F70C100, // Fire Emblem Warriors [JPN]
-        0x000400000F700800, // The Binding of Isaac: Rebirth [USA]
-        0x000400000F701700, // The Binding of Isaac: Rebirth [JPN]
-        0x000400000F700900, // The Binding of Isaac: Rebirth [EUR]
-        0x00040000000CCE00, // Donkey Kong Country Returns 3D [USA]
-        0x00040000000CC000, // Donkey Kong Country Returns 3D [JPN]
-        0x00040000000CCF00, // Donkey Kong Country Returns 3D [EUR]
-        0x0004000000127500, // Sonic Boom: Shattered Crystal [USA]
-        0x000400000014AE00, // Sonic Boom: Shattered Crystal [JPN]
-        0x000400000012C200, // Sonic Boom: Shattered Crystal [EUR]
-        0x0004000000161300, // Sonic Boom: Fire & Ice [USA]
-        0x0004000000170700, // Sonic Boom: Fire & Ice [JPN]
-        0x0004000000164700, // Sonic Boom: Fire & Ice [EUR]
-        0x00040000000B3500, // Sonic & All-Stars Racing Transformed [USA]
-        0x000400000008FC00, // Sonic & All-Stars Racing Transformed [EUR]
-        0x00040000001B8700, // Minecraft [USA]
-        0x000400000F707F00, // Hyperlight EX [USA]
-        0x000400000007C700, // Mario Tennis Open
-        0x000400000007C800, // Mario Tennis Open
-        0x0004000000064D00, // Mario Tennis Open
-        0x00040000000B9100, // Mario Tennis Open
-        0x00040000000DCD00, // Mario Golf: World Tour
-        0x00040000000A5300, // Mario Golf: World Tour
-        0x00040000000DCE00, // Mario Golf: World Tour
-    };
-    for (auto id : new3ds_game_ids) {
-        if (title_id == id) {
-            Settings::values.is_new_3ds = true;
             break;
         }
     }
@@ -618,7 +597,7 @@ System::ResultStatus System::Init(Frontend::EmuWindow& emu_window,
     kernel->SetRunningCPU(cpu_cores[0].get());
 
     if (Settings::values.core_downcount_hack) {
-        SetCoreDowncountHack(true, num_cores);
+        SetDowncountHack(true, num_cores);
     }
 
     const auto audio_emulation = Settings::values.audio_emulation.GetValue();
@@ -758,7 +737,7 @@ void System::RegisterImageInterface(std::shared_ptr<Frontend::ImageInterface> im
     registered_image_interface = std::move(image_interface);
 }
 
-void System::SetCoreDowncountHack(bool enabled, u32 num_cores) {
+void System::SetDowncountHack(bool enabled, u32 num_cores) {
     if (enabled) {
         u32 hacks[4] = {1, 4, 2, 2};
         for (u32 i = 0; i < num_cores; ++i) {
@@ -899,8 +878,8 @@ void System::serialize(Archive& ar, const unsigned int file_version) {
     ar& num_cores;
 
     if (Archive::is_loading::value) {
-        // When loading, we want to make sure any lingering state gets cleared out before we begin.
-        // Shutdown, but persist a few things between loads...
+        // When loading, we want to make sure any lingering state gets cleared out before we
+        // begin. Shutdown, but persist a few things between loads...
         Shutdown(true);
 
         // Re-initialize everything like it was before

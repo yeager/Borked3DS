@@ -130,13 +130,14 @@ void Config::ReadValues() {
     // Core
     ReadSetting("Core", Settings::values.use_cpu_jit);
     ReadSetting("Core", Settings::values.cpu_clock_percentage);
+    ReadSetting("Core", Settings::values.core_downcount_hack);
+    ReadSetting("Core", Settings::values.priority_boost);
 
     // Renderer
     ReadSetting("Renderer", Settings::values.graphics_api);
     ReadSetting("Renderer", Settings::values.physical_device);
     ReadSetting("Renderer", Settings::values.spirv_shader_gen);
     ReadSetting("Renderer", Settings::values.async_shader_compilation);
-    ReadSetting("Renderer", Settings::values.core_downcount_hack);
     ReadSetting("Renderer", Settings::values.async_presentation);
     ReadSetting("Renderer", Settings::values.use_gles);
     ReadSetting("Renderer", Settings::values.use_hw_shader);

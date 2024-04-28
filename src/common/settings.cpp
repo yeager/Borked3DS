@@ -83,10 +83,11 @@ void LogSettings() {
     LOG_INFO(Config, "Citra Configuration:");
     log_setting("Core_UseCpuJit", values.use_cpu_jit.GetValue());
     log_setting("Core_CPUClockPercentage", values.cpu_clock_percentage.GetValue());
+    log_setting("Core_DowncountHack", values.core_downcount_hack.GetValue());
+    log_setting("Core_PriorityBoost", values.priority_boost.GetValue());
     log_setting("Renderer_UseGLES", values.use_gles.GetValue());
     log_setting("Renderer_GraphicsAPI", GetGraphicsAPIName(values.graphics_api.GetValue()));
     log_setting("Renderer_AsyncShaders", values.async_shader_compilation.GetValue());
-    log_setting("Renderer_CoreDowncountHack", values.core_downcount_hack.GetValue());
     log_setting("Renderer_AsyncPresentation", values.async_presentation.GetValue());
     log_setting("Renderer_SpirvShaderGen", values.spirv_shader_gen.GetValue());
     log_setting("Renderer_Debug", values.renderer_debug.GetValue());
@@ -150,15 +151,17 @@ void LogSettings() {
     log_setting("Debugging_GdbstubPort", values.gdbstub_port.GetValue());
 }
 
-void SetFMVHack(bool enable) {
+void RaiseTicks(bool enable) {
     if (enable) {
         if (values.use_cpu_jit) {
-            values.core_ticks_hack = 16000;
+            // add 16000 ticks
+            values.raise_ticks = 16000;
         } else {
-            values.core_ticks_hack = 0xFFFF;
+            values.raise_ticks = 0xFFFF;
         }
     } else {
-        values.core_ticks_hack = 0;
+        // default ticks
+        values.raise_ticks = 0;
     }
 }
 
@@ -190,6 +193,8 @@ void RestoreGlobalState(bool is_powered_on) {
 
     // Core
     values.cpu_clock_percentage.SetGlobal(true);
+    values.core_downcount_hack.SetGlobal(true);
+    values.priority_boost.SetGlobal(true);
     values.is_new_3ds.SetGlobal(true);
     values.lle_applets.SetGlobal(true);
 
@@ -198,7 +203,6 @@ void RestoreGlobalState(bool is_powered_on) {
     values.physical_device.SetGlobal(true);
     values.spirv_shader_gen.SetGlobal(true);
     values.async_shader_compilation.SetGlobal(true);
-    values.core_downcount_hack.SetGlobal(true);
     values.async_presentation.SetGlobal(true);
     values.use_hw_shader.SetGlobal(true);
     values.use_disk_shader_cache.SetGlobal(true);

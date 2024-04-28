@@ -23,6 +23,11 @@ ConfigureGraphics::ConfigureGraphics(QString gl_renderer, std::span<const QStrin
     ui->physical_device_combo->setEnabled(!is_powered_on);
     ui->toggle_async_shaders->setEnabled(!is_powered_on);
     ui->toggle_async_present->setEnabled(!is_powered_on);
+
+    // only show hacks when a game is running
+    ui->toggle_skip_slow_draw->setEnabled(is_powered_on);
+    ui->toggle_skip_texture_copy->setEnabled(is_powered_on);
+
     // Set the index to -1 to ensure the below lambda is called with setCurrentIndex
     ui->graphics_api_combo->setCurrentIndex(-1);
 
@@ -121,6 +126,8 @@ void ConfigureGraphics::SetConfiguration() {
     ui->toggle_async_shaders->setChecked(Settings::values.async_shader_compilation.GetValue());
     ui->toggle_core_downcount_hack->setChecked(Settings::values.core_downcount_hack.GetValue());
     ui->toggle_async_present->setChecked(Settings::values.async_presentation.GetValue());
+    ui->toggle_skip_slow_draw->setChecked(Settings::values.skip_slow_draw.GetValue());
+    ui->toggle_skip_texture_copy->setChecked(Settings::values.skip_texture_copy.GetValue());
 
     if (Settings::IsConfiguringGlobal()) {
         ui->toggle_shader_jit->setChecked(Settings::values.use_shader_jit.GetValue());
@@ -138,6 +145,10 @@ void ConfigureGraphics::ApplyConfiguration() {
                                              ui->toggle_core_downcount_hack, core_downcount_hack);
     ConfigurationShared::ApplyPerGameSetting(&Settings::values.async_presentation,
                                              ui->toggle_async_present, async_presentation);
+    ConfigurationShared::ApplyPerGameSetting(&Settings::values.skip_slow_draw,
+                                             ui->toggle_skip_slow_draw, skip_slow_draw);
+    ConfigurationShared::ApplyPerGameSetting(&Settings::values.skip_texture_copy,
+                                             ui->toggle_skip_texture_copy, skip_texture_copy);
     ConfigurationShared::ApplyPerGameSetting(&Settings::values.spirv_shader_gen,
                                              ui->spirv_shader_gen, spirv_shader_gen);
     ConfigurationShared::ApplyPerGameSetting(&Settings::values.use_hw_shader, ui->toggle_hw_shader,
@@ -221,6 +232,10 @@ void ConfigureGraphics::SetupPerGameUI() {
         ui->toggle_core_downcount_hack, Settings::values.core_downcount_hack, core_downcount_hack);
     ConfigurationShared::SetColoredTristate(
         ui->toggle_async_present, Settings::values.async_presentation, async_presentation);
+    ConfigurationShared::SetColoredTristate(ui->toggle_skip_slow_draw,
+                                            Settings::values.skip_slow_draw, skip_slow_draw);
+    ConfigurationShared::SetColoredTristate(ui->toggle_skip_texture_copy,
+                                            Settings::values.skip_texture_copy, skip_texture_copy);
     ConfigurationShared::SetColoredTristate(ui->spirv_shader_gen, Settings::values.spirv_shader_gen,
                                             spirv_shader_gen);
 }

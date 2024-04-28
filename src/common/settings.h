@@ -471,7 +471,7 @@ struct Values {
     SwitchableSetting<bool> async_presentation{true, "async_presentation"};
     SwitchableSetting<bool> use_hw_shader{true, "use_hw_shader"};
     SwitchableSetting<bool> use_disk_shader_cache{true, "use_disk_shader_cache"};
-    SwitchableSetting<bool> shaders_accurate_mul{true, "shaders_accurate_mul"};
+    SwitchableSetting<bool> shaders_accurate_mul{false, "shaders_accurate_mul"};
     SwitchableSetting<bool> use_vsync_new{true, "use_vsync_new"};
     Setting<bool> use_shader_jit{true, "use_shader_jit"};
     SwitchableSetting<u32, true> resolution_factor{1, 0, 10, "resolution_factor"};
@@ -542,18 +542,17 @@ struct Values {
     Setting<u16> gdbstub_port{24689, "gdbstub_port"};
 
     // Hacks
-    SwitchableSetting<u32, true> core_ticks{77, 1, 999999999, "core_ticks"};
+    SwitchableSetting<u32> raise_ticks{0, "raise_ticks"};
     SwitchableSetting<bool> skip_slow_draw{false, "skip_slow_draw"};
     SwitchableSetting<bool> skip_texture_copy{false, "skip_texture_copy"};
+    SwitchableSetting<bool> core_downcount_hack{false, "core_downcount_hack"};
+    SwitchableSetting<bool> priority_boost{false, "priority_boost"};
 
     // Miscellaneous
     Setting<std::string> log_filter{"*:Info", "log_filter"};
     Setting<std::string> log_regex_filter{"", "log_regex_filter"};
 
     // Hacks
-    SwitchableSetting<bool> core_downcount_hack{false, "core_downcount_hack"};
-    // TODO: These hacks needs to get adapted to new config system.
-    u32 core_ticks_hack;
     bool stream_buffer_hack;
 
     // Video Dumping
@@ -571,6 +570,7 @@ struct Values {
 
 extern Values values;
 
+void RaiseTicks(bool enable);
 bool IsConfiguringGlobal();
 void SetConfiguringGlobal(bool is_global);
 
