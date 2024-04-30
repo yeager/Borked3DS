@@ -275,7 +275,7 @@
     <item>
       <widget class="QGroupBox" name="groupBox_6">
         <property name="title">
-          <string>Miscellaneus</string>
+          <string>Miscellaneous</string>
         </property>
         <layout class="QGridLayout" name="gridLayout_4">
           <item row="1" column="0">
