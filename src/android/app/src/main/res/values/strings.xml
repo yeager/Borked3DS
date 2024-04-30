@@ -216,11 +216,11 @@
     <string name="vsync">Enable V-Sync</string>
     <string name="vsync_description">Synchronizes the game frame rate to the refresh rate of your device.</string>
     <string name="raise_cpu_ticks">Raise CPU Ticks</string>
-    <string name="raise_cpu_ticks_description">Adds 16000 CPU ticks. Can improve the performance or decrease, depending of the game or if it is a low-end device</string>
+    <string name="raise_cpu_ticks_description">Adds 16,000 CPU ticks. May improve performance, depending on the game or if it is running on a low-end device.</string>
     <string name="core_downcount_hack">Enable Core Downcount Hack</string>
-    <string name="core_downcount_hack_description">When enabled, core downcount will be limited to a smaller time slice, reducing CPU usage. It usually reduce the performance, but improves for low-end devices or GPU hungry games</string>
+    <string name="core_downcount_hack_description">When enabled, core downcount will be limited to a smaller time slice, reducing CPU usage. It may improve performance for low-end devices or GPU hungry games.</string>
     <string name="priority_boost">Enable Priority Boost</string>
-    <string name="priority_boost_description">Boost low priority starved threads during kernel rescheduling. It can improve the performance, at the cost of get freezes during cutsences for some games</string>
+    <string name="priority_boost_description">Boost low priority starved threads during kernel rescheduling. It may improve performance, at the cost of freezing during cutsences for some games.</string>
     <string name="linear_filtering">Linear Filtering</string>
     <string name="linear_filtering_description">Enables linear filtering, which causes game visuals to appear smoother.</string>
     <string name="texture_filter_name">Texture Filter</string>
@@ -228,9 +228,9 @@
     <string name="hw_shaders">Enable Hardware Shader</string>
     <string name="hw_shaders_description">Uses hardware to emulate 3DS shaders. When enabled, game performance will be significantly improved.</string>
     <string name="skip_slow_draw">Skip Slow Draw</string>
-    <string name="skip_slow_draw_description">Skips the slow drawing event from PICA core. Can improve performance or rarely fix issues, but may cause graphical bugs.</string>
+    <string name="skip_slow_draw_description">Skips the slow drawing event from the PICA core. May improve performance, but can cause visual artifacts.</string>
     <string name="skip_texture_copy">Skip Texture Copy</string>
-    <string name="skip_texture_copy_description">Skips the texture copy event from rasterizer cache. Can improve performance or rarely fix issues, but may cause graphical bugs.</string>
+    <string name="skip_texture_copy_description">Skips the texture copy event from the rasterizer cache. May improve performance, but can cause visual artifacts.</string>
     <string name="shaders_accurate_mul">Accurate Multiplication</string>
     <string name="shaders_accurate_mul_description">Uses more accurate multiplication in hardware shaders, which may fix some graphical bugs. When enabled, performance will be reduced.</string>
     <string name="asynchronous_gpu">Enable asynchronous GPU emulation</string>
