@@ -237,7 +237,7 @@
    <item>
     <widget class="QGroupBox" name="tweaksBox">
      <property name="title">
-      <string>Tweaks</string>
+      <string>Graphics Hacks</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_8">
       <item>
