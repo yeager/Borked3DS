@@ -56,7 +56,7 @@
 [submodule "sdl2"]
     path = externals/sdl2/SDL
     url = https://github.com/libsdl-org/SDL
-    branch = SDL2
+    branch = release-2.30.x 
 [submodule "cryptopp-cmake"]
     path = externals/cryptopp-cmake
     url = https://github.com/abdes/cryptopp-cmake.git
