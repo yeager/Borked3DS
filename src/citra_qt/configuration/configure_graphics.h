@@ -45,6 +45,7 @@ private:
     ConfigurationShared::CheckState core_downcount_hack;
     ConfigurationShared::CheckState async_presentation;
     ConfigurationShared::CheckState spirv_shader_gen;
+    ConfigurationShared::CheckState optimize_spirv_output;
     std::unique_ptr<Ui::ConfigureGraphics> ui;
     QColor bg_color;
 };
