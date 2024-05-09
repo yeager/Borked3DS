@@ -121,6 +121,7 @@ void ConfigureGraphics::SetConfiguration() {
     ui->toggle_async_present->setChecked(Settings::values.async_presentation.GetValue());
     ui->toggle_skip_slow_draw->setChecked(Settings::values.skip_slow_draw.GetValue());
     ui->toggle_skip_texture_copy->setChecked(Settings::values.skip_texture_copy.GetValue());
+    ui->toggle_gl_stream_buffer_hack->setChecked(Settings::values.gl_stream_buffer_hack.GetValue());
 
     if (Settings::IsConfiguringGlobal()) {
         ui->toggle_shader_jit->setChecked(Settings::values.use_shader_jit.GetValue());
@@ -140,6 +141,9 @@ void ConfigureGraphics::ApplyConfiguration() {
                                              ui->toggle_skip_slow_draw, skip_slow_draw);
     ConfigurationShared::ApplyPerGameSetting(&Settings::values.skip_texture_copy,
                                              ui->toggle_skip_texture_copy, skip_texture_copy);
+    ConfigurationShared::ApplyPerGameSetting(&Settings::values.gl_stream_buffer_hack,
+                                             ui->toggle_gl_stream_buffer_hack,
+                                             gl_stream_buffer_hack);
     ConfigurationShared::ApplyPerGameSetting(&Settings::values.spirv_shader_gen,
                                              ui->spirv_shader_gen, spirv_shader_gen);
     ConfigurationShared::ApplyPerGameSetting(&Settings::values.optimize_spirv_output,
@@ -215,6 +219,9 @@ void ConfigureGraphics::SetupPerGameUI() {
                                             Settings::values.skip_slow_draw, skip_slow_draw);
     ConfigurationShared::SetColoredTristate(ui->toggle_skip_texture_copy,
                                             Settings::values.skip_texture_copy, skip_texture_copy);
+    ConfigurationShared::SetColoredTristate(ui->toggle_gl_stream_buffer_hack,
+                                            Settings::values.gl_stream_buffer_hack,
+                                            gl_stream_buffer_hack);
     ConfigurationShared::SetColoredTristate(ui->spirv_shader_gen, Settings::values.spirv_shader_gen,
                                             spirv_shader_gen);
     ConfigurationShared::SetColoredTristate(

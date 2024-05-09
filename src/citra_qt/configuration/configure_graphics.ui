@@ -288,6 +288,16 @@
         </property>
        </widget>
       </item>
+      <item>
+       <widget class="QCheckBox" name="toggle_gl_stream_buffer_hack">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;OpenGL hack that attempts to manipulate only the buffer area that has changed without clearing the entire buffer. May cause visual artifacts.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string>OpenGL Stream Buffer Hack</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>
