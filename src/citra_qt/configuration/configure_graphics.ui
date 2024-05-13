@@ -289,6 +289,16 @@
        </widget>
       </item>
       <item>
+       <widget class="QCheckBox" name="toggle_upscaling_hack">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Overrides upscaling for dst_params. May fix texture ghosting for some games, but may crash other games as well.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string>Enable Upscaling Hack</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QCheckBox" name="toggle_gl_stream_buffer_hack">
         <property name="toolTip">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;OpenGL hack that attempts to manipulate only the buffer area that has changed without clearing the entire buffer. May cause visual artifacts.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>

@@ -122,6 +122,10 @@ skip_slow_draw =
 # 0 (default): Off, 1: On
 skip_texture_copy =
 
+# Overrides upscaling for dst_params
+# 0 (default): Off, 1: On
+upscaling_hack =
+
 # OpenGL hack that attempts to manipulate only the buffer that has changed
 # 0 (default): Off, 1: On
 gl_stream_buffer_hack =
