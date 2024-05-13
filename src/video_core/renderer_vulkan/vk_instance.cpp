@@ -461,6 +461,12 @@ bool Instance::CreateDevice() {
     const bool has_extended_dynamic_state =
         add_extension(VK_EXT_EXTENDED_DYNAMIC_STATE_EXTENSION_NAME, is_arm || is_qualcomm,
                       "it is broken on Qualcomm and ARM drivers");
+    const bool has_extended_dynamic_state_2 =
+        add_extension(VK_EXT_EXTENDED_DYNAMIC_STATE_2_EXTENSION_NAME, is_arm || is_qualcomm,
+                      "it is broken on Qualcomm and ARM drivers");
+    const bool has_extended_dynamic_state_3 =
+        add_extension(VK_EXT_EXTENDED_DYNAMIC_STATE_3_EXTENSION_NAME, is_arm || is_qualcomm,
+                      "it is broken on Qualcomm and ARM drivers");
     const bool has_custom_border_color =
         add_extension(VK_EXT_CUSTOM_BORDER_COLOR_EXTENSION_NAME, is_qualcomm,
                       "it is broken on most Qualcomm driver versions");
@@ -579,6 +585,20 @@ bool Instance::CreateDevice() {
                  extended_dynamic_state)
     } else {
         device_chain.unlink<vk::PhysicalDeviceExtendedDynamicStateFeaturesEXT>();
+    }
+
+    if (has_extended_dynamic_state_2) {
+        FEAT_SET(vk::PhysicalDeviceExtendedDynamicState2FeaturesEXT, extendedDynamicState2,
+                 extended_dynamic_state2)
+    } else {
+        device_chain.unlink<vk::PhysicalDeviceExtendedDynamicState2FeaturesEXT>();
+    }
+
+    if (has_extended_dynamic_state_3) {
+        FEAT_SET(vk::PhysicalDeviceExtendedDynamicState3FeaturesEXT,
+                 extendedDynamicState3DepthClipEnable, extended_dynamic_state3)
+    } else {
+        device_chain.unlink<vk::PhysicalDeviceExtendedDynamicState3FeaturesEXT>();
     }
 
     if (has_custom_border_color) {

@@ -133,6 +133,16 @@ public:
         return extended_dynamic_state;
     }
 
+    /// Returns true when VK_EXT_extended_dynamic_state2 is supported
+    bool IsExtendedDynamicState2Supported() const {
+        return extended_dynamic_state2;
+    }
+
+    /// Returns true when VK_EXT_extended_dynamic_state3 is supported
+    bool IsExtendedDynamicState3Supported() const {
+        return extended_dynamic_state3;
+    }
+
     /// Returns true when VK_EXT_custom_border_color is supported
     bool IsCustomBorderColorSupported() const {
         return custom_border_color;
@@ -313,6 +323,8 @@ private:
     u32 min_vertex_stride_alignment{1};
     bool timeline_semaphores{};
     bool extended_dynamic_state{};
+    bool extended_dynamic_state2{};
+    bool extended_dynamic_state3{};
     bool custom_border_color{};
     bool index_type_uint8{};
     bool fragment_shader_interlock{};
