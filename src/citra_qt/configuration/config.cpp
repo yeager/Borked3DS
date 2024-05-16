@@ -660,6 +660,7 @@ void Config::ReadRendererValues() {
     ReadGlobalSetting(Settings::values.async_presentation);
     ReadGlobalSetting(Settings::values.skip_slow_draw);
     ReadGlobalSetting(Settings::values.skip_texture_copy);
+    ReadGlobalSetting(Settings::values.skip_cpu_write);
     ReadGlobalSetting(Settings::values.upscaling_hack);
     ReadGlobalSetting(Settings::values.gl_stream_buffer_hack);
     ReadGlobalSetting(Settings::values.use_hw_shader);
@@ -1176,6 +1177,7 @@ void Config::SaveRendererValues() {
     WriteGlobalSetting(Settings::values.async_presentation);
     WriteGlobalSetting(Settings::values.skip_slow_draw);
     WriteGlobalSetting(Settings::values.skip_texture_copy);
+    WriteGlobalSetting(Settings::values.skip_cpu_write);
     WriteGlobalSetting(Settings::values.upscaling_hack);
     WriteGlobalSetting(Settings::values.gl_stream_buffer_hack);
     WriteGlobalSetting(Settings::values.use_hw_shader);

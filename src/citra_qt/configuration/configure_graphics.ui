@@ -289,6 +289,16 @@
        </widget>
       </item>
       <item>
+       <widget class="QCheckBox" name="toggle_skip_cpu_write">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Skips the CPU write event from rasterizer cache invalidation. May improve performance but may cause graphical bugs.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string>Skip CPU Write</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QCheckBox" name="toggle_upscaling_hack">
         <property name="toolTip">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Overrides upscaling for dst_params. May fix texture ghosting for some games, but may crash other games as well.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
