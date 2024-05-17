@@ -221,6 +221,9 @@
         <property name="text">
          <string>Enable debug renderer</string>
         </property>
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Note: Vulkan debug renderer requires the Vulkan SDK to be installed.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
        </widget>
       </item>
       <item row="4" column="0">

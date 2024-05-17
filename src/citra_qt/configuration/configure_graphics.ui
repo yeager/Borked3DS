@@ -153,10 +153,10 @@
            <item>
             <widget class="QLabel" name="label_optimize_spirv">
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Performs various optimizations on SPIR-V modules to improve performance and reduce size.&lt;/p&gt;&lt;p&gt;Make sure to empty the shader cache in the Citra folder before changing optimization level. The Citra folder can be accessed through the File menu.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Performs various optimizations on SPIR-V modules to improve performance and reduce size.&lt;/p&gt;&lt;p&gt;NOTE: Make sure to empty the shader cache in the Citra folder before changing optimization level. The Citra folder can be accessed through the File menu.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="text">
-               <string>Choose an Optimization Level</string>
+               <string>Optimization Level</string>
              </property>
             </widget>
            </item>
@@ -189,7 +189,7 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Activate SPIR-V output validation. The validator checks validation rules described by the SPIR-V specification.&lt;/p&gt;&lt;p&gt;Ensures that outputs are valid and protects from bad inputs. Useful for debugging.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="text">
-              <string>Enable SPIR-V Validation</string>
+              <string>Enable Validation</string>
              </property>
             </widget>
            </item>
@@ -199,7 +199,7 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Activate SPIR-V output legalization. Legalizes the SPIR-V code for Vulkan. Primarily used for HLSL shaders.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="text">
-              <string>Enable SPIR-V Legalization</string>
+              <string>Enable Legalization</string>
              </property>
             </widget>
            </item>
@@ -286,7 +286,7 @@
       <item>
        <widget class="QCheckBox" name="toggle_async_shaders">
         <property name="toolTip">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Compile shaders using background threads to avoid shader compilation stutter. Expect temporary graphical glitches&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Compile shaders using background threads to avoid shader compilation stutter. Expect temporary graphical glitches.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="text">
          <string>Enable Async Shader Compilation</string>
@@ -335,7 +335,7 @@
       <item>
        <widget class="QCheckBox" name="toggle_skip_cpu_write">
         <property name="toolTip">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Skips the CPU write event from rasterizer cache invalidation. May improve performance but may cause graphical bugs.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Skips the CPU write event from rasterizer cache invalidation. May improve performance but may cause visual artifacts.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="text">
          <string>Skip CPU Write</string>
@@ -348,7 +348,7 @@
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Overrides upscaling for dst_params. May fix texture ghosting for some games, but may crash other games as well.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="text">
-         <string>Enable Upscaling Hack</string>
+         <string>Upscaling Hack</string>
         </property>
        </widget>
       </item>

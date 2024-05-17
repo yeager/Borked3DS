@@ -71,7 +71,7 @@
              <item>
               <widget class="QLabel" name="layout_label">
                <property name="text">
-                <string>Screen Layout:</string>
+                <string>Screen Layout</string>
                </property>
               </widget>
              </item>
@@ -144,7 +144,7 @@
              <item>
               <widget class="QLabel" name="label_3">
                <property name="text">
-                <string>Large Screen Proportion:</string>
+                <string>Large Screen Proportion</string>
                </property>
               </widget>
              </item>
@@ -182,7 +182,7 @@
              <item>
               <widget class="QLabel" name="bg_label">
                <property name="text">
-                <string>Background Color:</string>
+                <string>Background Color</string>
                </property>
               </widget>
              </item>
@@ -391,7 +391,7 @@
                <item>
                 <widget class="QLabel" name="lb_opacity_second_layer">
                  <property name="text">
-                  <string>Bottom Screen Opacity (OpenGL Only):</string>
+                  <string>Bottom Screen Opacity (OpenGL Only)</string>
                  </property>
                 </widget>
                </item>
