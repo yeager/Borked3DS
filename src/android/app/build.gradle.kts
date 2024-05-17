@@ -174,10 +174,10 @@ android {
 dependencies {
     implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation("androidx.activity:activity-ktx:1.8.2")
-    implementation("androidx.fragment:fragment-ktx:1.7.0")
+    implementation("androidx.fragment:fragment-ktx:1.7.1")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("androidx.documentfile:documentfile:1.0.1")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.0")
     implementation("androidx.slidingpanelayout:slidingpanelayout:1.2.0")
     implementation("com.google.android.material:material:1.12.0")
     implementation("androidx.core:core-splashscreen:1.0.1")
@@ -194,7 +194,7 @@ dependencies {
 
 // Download Vulkan Validation Layers from the KhronosGroup GitHub.
 val downloadVulkanValidationLayers = tasks.register<Download>("downloadVulkanValidationLayers") {
-    src("https://github.com/KhronosGroup/Vulkan-ValidationLayers/releases/download/vulkan-sdk-1.3.280.0/android-binaries-1.3.280.0.zip")
+    src("https://github.com/KhronosGroup/Vulkan-ValidationLayers/releases/download/vulkan-sdk-1.3.283.0/android-binaries-1.3.283.0.zip")
     dest(file("${buildDir}/tmp/Vulkan-ValidationLayers.zip"))
     onlyIfModified(true)
 }
