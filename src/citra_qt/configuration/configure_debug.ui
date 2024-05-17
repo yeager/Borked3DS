@@ -70,7 +70,7 @@
      <property name="title">
       <string>Logging</string>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout">
+     <layout class="QVBoxLayout" name="verticalLayout_4">
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
@@ -125,8 +125,8 @@
      <property name="title">
       <string>CPU</string>
      </property>
-     <layout class="QGridLayout" name="gridLayout_2">
-      <item row="1" column="0">
+     <layout class="QVBoxLayout" name="verticalLayout_5">
+      <item>
        <widget class="QWidget" name="clock_speed_widget" native="true">
         <layout class="QHBoxLayout" name="clock_speed_layout">
          <property name="spacing">
@@ -206,7 +206,7 @@
         </layout>
        </widget>
       </item>
-      <item row="2" column="0">
+      <item>
        <widget class="QCheckBox" name="toggle_cpu_jit">
         <property name="toolTip">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Enables the use of the ARM JIT compiler for emulating the 3DS CPUs. Don't disable unless for debugging purposes&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -216,20 +216,20 @@
         </property>
        </widget>
       </item>
-      <item row="3" column="0">
+      <item>
        <widget class="QCheckBox" name="toggle_renderer_debug">
         <property name="text">
-         <string>Enable debug renderer</string>
+         <string>Enable Debug Renderer</string>
         </property>
         <property name="toolTip">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Note: Vulkan debug renderer requires the Vulkan SDK to be installed.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
       </item>
-      <item row="4" column="0">
+      <item>
        <widget class="QCheckBox" name="toggle_dump_command_buffers">
         <property name="text">
-         <string>Dump command buffers</string>
+         <string>Dump Command Buffers</string>
         </property>
        </widget>
       </item>
@@ -252,17 +252,17 @@
         </property>
        </widget>
       </item>
-      <item row="2" column="0">
+      <item row="1" column="1">
        <widget class="QCheckBox" name="toggle_core_downcount_hack">
         <property name="toolTip">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;When enabled, core downcount will be limited to a smaller time slice, reducing CPU usage. It may improve performance for low-end devices or GPU hungry games.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="text">
-         <string>Enable Core Downcount Hack</string>
+         <string>Core Downcount</string>
         </property>
        </widget>
       </item>
-      <item row="3" column="0">
+      <item row="1" column="2">
        <widget class="QCheckBox" name="toggle_priority_boost">
         <property name="toolTip">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Boost low priority starved threads during kernel rescheduling. It may improve performance, at the cost of freezing during cutsences for some games&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -287,7 +287,7 @@
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Introduces a delay to the first ever launched app thread if LLE modules are enabled, to allow them to initialize.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="text">
-                <string>Delay app start for LLE module initialization</string>
+                <string>Delay App Start for LLE Module Initialization</string>
               </property>
             </widget>
           </item>
@@ -297,7 +297,7 @@
    <item>
     <widget class="QLabel" name="label_cpu_clock_info">
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;CPU Clock Speed Information&lt;br/&gt;Underclocking can increase performance but may cause the game to freeze.&lt;br/&gt;Overclocking may reduce in game lag but also might cause freezes&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;CPU Clock Speed Information&lt;/p&gt;&lt;p&gt;Underclocking can increase performance but may cause the game to freeze.&lt;/p&gt;&lt;p&gt;Overclocking may reduce in game lag but also might cause freezes&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="textFormat">
       <enum>Qt::RichText</enum>

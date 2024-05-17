@@ -19,7 +19,7 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
+  <layout class="QVBoxLayout" name="verticalLayout_1">
    <item>
     <widget class="QScrollArea" name="scrollArea">
      <property name="minimumSize">
@@ -43,7 +43,7 @@
         <x>0</x>
         <y>0</y>
         <width>422</width>
-        <height>932</height>
+        <height>500</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -52,10 +52,10 @@
          <property name="title">
           <string>Renderer</string>
          </property>
-         <layout class="QVBoxLayout" name="verticalLayout_6">
+         <layout class="QVBoxLayout" name="verticalLayout_3">
           <item>
            <widget class="QWidget" name="widget_resolution" native="true">
-            <layout class="QHBoxLayout" name="horizontalLayout">
+            <layout class="QHBoxLayout" name="horizontalLayout_1">
              <property name="leftMargin">
               <number>0</number>
              </property>
@@ -146,7 +146,7 @@
           </item>
           <item>
            <widget class="QWidget" name="widget_shader" native="true">
-            <layout class="QHBoxLayout" name="horizontalLayout_11">
+            <layout class="QHBoxLayout" name="horizontalLayout_2">
              <property name="leftMargin">
               <number>0</number>
              </property>
@@ -241,7 +241,7 @@
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_4">
           <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_5">
+           <layout class="QHBoxLayout" name="horizontalLayout_4">
             <item>
              <widget class="QLabel" name="label_4">
               <property name="text">
@@ -281,7 +281,7 @@
            </layout>
           </item>
           <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_7">
+           <layout class="QHBoxLayout" name="horizontalLayout_5">
             <item>
              <widget class="QLabel" name="label_3">
               <property name="text">
@@ -308,7 +308,7 @@
            </layout>
           </item>
           <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_9">
+           <layout class="QHBoxLayout" name="horizontalLayout_6">
             <item>
              <widget class="QLabel" name="label_6">
               <property name="text">
@@ -340,8 +340,8 @@
          <property name="title">
           <string>Utility</string>
          </property>
-         <layout class="QVBoxLayout" name="verticalLayout_8">
-          <item>
+         <layout class="QGridLayout" name="gridLayout_1">
+          <item row="1" column="0">
            <widget class="QCheckBox" name="toggle_custom_textures">
             <property name="toolTip">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Replace textures with PNG files.&lt;/p&gt;&lt;p&gt;Textures are loaded from load/textures/[Title ID]/.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -351,7 +351,7 @@
             </property>
            </widget>
           </item>
-          <item>
+          <item row="2" column="0">
            <widget class="QCheckBox" name="toggle_dump_textures">
             <property name="toolTip">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dump textures to PNG files.&lt;/p&gt;&lt;p&gt;Textures are dumped to dump/textures/[Title ID]/.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -361,7 +361,7 @@
             </property>
            </widget>
           </item>
-          <item>
+          <item row="1" column="1">
            <widget class="QCheckBox" name="toggle_preload_textures">
             <property name="toolTip">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Load all custom textures into memory on boot, instead of loading them when the game requires them.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -371,7 +371,7 @@
             </property>
            </widget>
           </item>
-          <item>
+          <item row="2" column="1">
            <widget class="QCheckBox" name="toggle_async_custom_loading">
             <property name="toolTip">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Load custom textures asynchronously with background threads to reduce loading stutter&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
