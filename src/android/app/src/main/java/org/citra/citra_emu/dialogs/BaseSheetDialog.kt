@@ -1,4 +1,4 @@
-package org.citra.citra_emu.ui
+package org.citra.citra_emu.dialogs
 
 import android.content.Context
 import android.view.LayoutInflater

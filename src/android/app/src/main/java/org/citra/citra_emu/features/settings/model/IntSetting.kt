@@ -9,6 +9,7 @@ enum class IntSetting(
     override val section: String,
     override val defaultValue: Int
 ) : AbstractIntSetting {
+    SUSTAINED_PERFORMANCE("sustained_performance", Settings.SECTION_CORE, 0),
     FRAME_LIMIT("frame_limit", Settings.SECTION_RENDERER, 100),
     EMULATED_REGION("region_value", Settings.SECTION_SYSTEM, -1),
     INIT_CLOCK("init_clock", Settings.SECTION_SYSTEM, 0),
@@ -67,6 +68,7 @@ enum class IntSetting(
 
     companion object {
         private val NOT_RUNTIME_EDITABLE = listOf(
+            SUSTAINED_PERFORMANCE,
             EMULATED_REGION,
             INIT_CLOCK,
             NEW_3DS,

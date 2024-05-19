@@ -31,17 +31,18 @@ import org.citra.citra_emu.R
 import org.citra.citra_emu.camera.StillImageCameraHelper.OnFilePickerResult
 import org.citra.citra_emu.contracts.OpenFileResultContract
 import org.citra.citra_emu.databinding.ActivityEmulationBinding
+import org.citra.citra_emu.dialogs.TweaksDialog
 import org.citra.citra_emu.display.ScreenAdjustmentUtil
 import org.citra.citra_emu.features.hotkeys.HotkeyUtility
+import org.citra.citra_emu.features.settings.model.IntSetting
 import org.citra.citra_emu.features.settings.model.SettingsViewModel
 import org.citra.citra_emu.features.settings.model.view.InputBindingSetting
 import org.citra.citra_emu.fragments.MessageDialogFragment
-import org.citra.citra_emu.ui.TweaksDialog
 import org.citra.citra_emu.utils.ControllerMappingHelper
-import org.citra.citra_emu.utils.FileBrowserHelper
-import org.citra.citra_emu.utils.ForegroundService
 import org.citra.citra_emu.utils.EmulationLifecycleUtil
 import org.citra.citra_emu.utils.EmulationMenuSettings
+import org.citra.citra_emu.utils.FileBrowserHelper
+import org.citra.citra_emu.utils.ForegroundService
 import org.citra.citra_emu.utils.ThemeUtil
 import org.citra.citra_emu.viewmodel.EmulationViewModel
 
@@ -64,6 +65,12 @@ class EmulationActivity : AppCompatActivity() {
         settingsViewModel.settings.loadSettings()
 
         super.onCreate(savedInstanceState)
+
+        // reduce mhz, helps for throttling reduction
+        // at the cost of performance
+        if (IntSetting.SUSTAINED_PERFORMANCE.int == 1) {
+            window.setSustainedPerformanceMode(true)
+        }
 
         binding = ActivityEmulationBinding.inflate(layoutInflater)
         screenAdjustmentUtil = ScreenAdjustmentUtil(windowManager, settingsViewModel.settings)
