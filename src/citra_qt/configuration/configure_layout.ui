@@ -353,7 +353,7 @@
            <item>
             <widget class="QLabel" name="label_2">
              <property name="text">
-              <string>NOTE: Values are in pixels starting from the top left corner of the computer screen. Positive numbers only.</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;NOTE: Values are in pixels starting from the top left corner of the display. Positive numbers only.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
             </widget>
            </item>
