@@ -130,10 +130,6 @@ skip_cpu_write =
 # 0 (default): Off, 1: On
 upscaling_hack =
 
-# OpenGL hack that attempts to manipulate only the buffer that has changed
-# 0 (default): Off, 1: On
-gl_stream_buffer_hack =
-
 # Whether to render using GLES or OpenGL
 # 0 (default): OpenGL, 1: GLES
 use_gles =

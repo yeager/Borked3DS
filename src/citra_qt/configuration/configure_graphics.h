@@ -41,7 +41,6 @@ private:
     ConfigurationShared::CheckState skip_texture_copy;
     ConfigurationShared::CheckState skip_cpu_write;
     ConfigurationShared::CheckState upscaling_hack;
-    ConfigurationShared::CheckState gl_stream_buffer_hack;
     ConfigurationShared::CheckState use_disk_shader_cache;
     ConfigurationShared::CheckState use_vsync_new;
     ConfigurationShared::CheckState async_shader_compilation;

@@ -664,7 +664,6 @@ void Config::ReadRendererValues() {
     ReadGlobalSetting(Settings::values.skip_texture_copy);
     ReadGlobalSetting(Settings::values.skip_cpu_write);
     ReadGlobalSetting(Settings::values.upscaling_hack);
-    ReadGlobalSetting(Settings::values.gl_stream_buffer_hack);
     ReadGlobalSetting(Settings::values.use_hw_shader);
     ReadGlobalSetting(Settings::values.shaders_accurate_mul);
     ReadGlobalSetting(Settings::values.use_disk_shader_cache);
@@ -1183,7 +1182,6 @@ void Config::SaveRendererValues() {
     WriteGlobalSetting(Settings::values.skip_texture_copy);
     WriteGlobalSetting(Settings::values.skip_cpu_write);
     WriteGlobalSetting(Settings::values.upscaling_hack);
-    WriteGlobalSetting(Settings::values.gl_stream_buffer_hack);
     WriteGlobalSetting(Settings::values.use_hw_shader);
     WriteGlobalSetting(Settings::values.shaders_accurate_mul);
     WriteGlobalSetting(Settings::values.use_disk_shader_cache);

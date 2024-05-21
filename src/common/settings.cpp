@@ -107,7 +107,6 @@ void LogSettings() {
     log_setting("Renderer_SkipTextureCopy", values.skip_texture_copy.GetValue());
     log_setting("Renderer_SkipCPUWrite", values.skip_cpu_write.GetValue());
     log_setting("Renderer_UpscalingHack", values.upscaling_hack.GetValue());
-    log_setting("Renderer_GlStreamBufferHack", values.gl_stream_buffer_hack.GetValue());
     log_setting("Renderer_SpirvShaderGen", values.spirv_shader_gen.GetValue());
     log_setting("Renderer_OptimizeSpirv",
                 GetOptimizeSpirvMode(values.optimize_spirv_output.GetValue()));
@@ -221,7 +220,6 @@ void RestoreGlobalState(bool is_powered_on) {
     values.skip_texture_copy.SetGlobal(true);
     values.skip_cpu_write.SetGlobal(true);
     values.upscaling_hack.SetGlobal(true);
-    values.gl_stream_buffer_hack.SetGlobal(true);
     values.use_hw_shader.SetGlobal(true);
     values.use_disk_shader_cache.SetGlobal(true);
     values.shaders_accurate_mul.SetGlobal(true);

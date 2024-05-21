@@ -560,7 +560,6 @@ struct Values {
     SwitchableSetting<bool> core_downcount_hack{false, "core_downcount_hack"};
     SwitchableSetting<bool> priority_boost{false, "priority_boost"};
     SwitchableSetting<bool> upscaling_hack{false, "upscaling_hack"};
-    SwitchableSetting<bool> gl_stream_buffer_hack{false, "gl_stream_buffer_hack"};
 
     // Miscellaneous
     Setting<std::string> log_filter{"*:Info", "log_filter"};

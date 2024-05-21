@@ -154,7 +154,6 @@ void ConfigureGraphics::SetConfiguration() {
     ui->toggle_skip_texture_copy->setChecked(Settings::values.skip_texture_copy.GetValue());
     ui->toggle_skip_cpu_write->setChecked(Settings::values.skip_cpu_write.GetValue());
     ui->toggle_upscaling_hack->setChecked(Settings::values.upscaling_hack.GetValue());
-    ui->toggle_gl_stream_buffer_hack->setChecked(Settings::values.gl_stream_buffer_hack.GetValue());
 
     ui->toggle_spirv_validation->setEnabled(Settings::values.optimize_spirv_output.GetValue() !=
                                             Settings::OptimizeSpirv::Disabled);
@@ -183,9 +182,6 @@ void ConfigureGraphics::ApplyConfiguration() {
                                              ui->toggle_skip_cpu_write, skip_cpu_write);
     ConfigurationShared::ApplyPerGameSetting(&Settings::values.upscaling_hack,
                                              ui->toggle_upscaling_hack, upscaling_hack);
-    ConfigurationShared::ApplyPerGameSetting(&Settings::values.gl_stream_buffer_hack,
-                                             ui->toggle_gl_stream_buffer_hack,
-                                             gl_stream_buffer_hack);
     ConfigurationShared::ApplyPerGameSetting(&Settings::values.spirv_shader_gen,
                                              ui->spirv_shader_gen, spirv_shader_gen);
     ConfigurationShared::ApplyPerGameSetting(&Settings::values.optimize_spirv_output,
@@ -275,9 +271,6 @@ void ConfigureGraphics::SetupPerGameUI() {
                                             Settings::values.skip_cpu_write, skip_cpu_write);
     ConfigurationShared::SetColoredTristate(ui->toggle_upscaling_hack,
                                             Settings::values.upscaling_hack, upscaling_hack);
-    ConfigurationShared::SetColoredTristate(ui->toggle_gl_stream_buffer_hack,
-                                            Settings::values.gl_stream_buffer_hack,
-                                            gl_stream_buffer_hack);
     ConfigurationShared::SetColoredTristate(ui->spirv_shader_gen, Settings::values.spirv_shader_gen,
                                             spirv_shader_gen);
     ConfigurationShared::SetColoredTristate(ui->toggle_spirv_validation,
