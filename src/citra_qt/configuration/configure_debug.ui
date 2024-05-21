@@ -245,7 +245,7 @@
      <item row="1" column="0">
        <widget class="QCheckBox" name="toggle_raise_cpu_ticks">
         <property name="toolTip">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Adds 16,000 CPU ticks. May improve performance or may not, depending on the game or if it is running on a low-end device.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Sets CPU ticks to 16,000. May improve performance, depending on the game or if it is running on a low-end device.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="text">
          <string>Raise CPU Ticks</string>

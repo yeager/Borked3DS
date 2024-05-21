@@ -216,7 +216,7 @@
     <string name="vsync">Enable V-Sync</string>
     <string name="vsync_description">Synchronizes the game frame rate to the refresh rate of your device.</string>
     <string name="raise_cpu_ticks">Raise CPU Ticks</string>
-    <string name="raise_cpu_ticks_description">Adds 16,000 CPU ticks. May improve performance, depending on the game or if it is running on a low-end device.</string>
+    <string name="raise_cpu_ticks_description">Sets CPU ticks to 16,000. May improve performance, depending on the game or if it is running on a low-end device.</string>
     <string name="core_downcount_hack">Enable Core Downcount Hack</string>
     <string name="core_downcount_hack_description">When enabled, core downcount will be limited to a smaller time slice, reducing CPU usage. It may improve performance for low-end devices or GPU hungry games.</string>
     <string name="priority_boost">Enable Priority Boost</string>
