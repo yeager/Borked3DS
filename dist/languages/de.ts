@@ -1358,7 +1358,7 @@ Möchten Sie den Fehler ignorieren und fortfahren?</translation>
     </message>
     <message>
         <location filename="../../src/citra_qt/configuration/configure_general.ui" line="185"/>
-        <source>Set emulation speed:</source>
+        <source>Set emulation speed</source>
         <translation>Emulationsgeschwindigkeit festlegen:</translation>
     </message>
     <message>

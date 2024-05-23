@@ -1356,7 +1356,7 @@ Szeretnéd figyelmen kívül hagyni a hibát, és folytatod?</translation>
     </message>
     <message>
         <location filename="../../src/citra_qt/configuration/configure_general.ui" line="185"/>
-        <source>Set emulation speed:</source>
+        <source>Set emulation speed</source>
         <translation>Emuláció sebességének beállítása:</translation>
     </message>
     <message>

@@ -425,7 +425,7 @@
             <item row="15" column="0">
              <widget class="QLabel" name="label_plugin_loader">
               <property name="text">
-               <string>3GX Plugin Loader:</string>
+               <string>3GX Plugin Loader</string>
               </property>
              </widget>
             </item>

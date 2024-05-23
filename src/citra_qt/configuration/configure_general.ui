@@ -182,7 +182,7 @@
              </item>
              <item>
               <property name="text">
-               <string>Set emulation speed:</string>
+               <string>Set emulation speed</string>
               </property>
              </item>
             </widget>

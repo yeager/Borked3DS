@@ -153,7 +153,7 @@
            <item>
             <widget class="QLabel" name="label_optimize_spirv">
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Performs various optimizations on SPIR-V modules to improve performance and reduce size.&lt;/p&gt;&lt;p&gt;NOTE: Make sure to empty the shader cache in the Citra folder before changing optimization level. The Citra folder can be accessed through the File menu.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Performs various optimizations on SPIR-V modules to improve performance and reduce size. Equivalent to passing -O or -Os to spirv-opt.&lt;/p&gt;&lt;p&gt;NOTE: To prevent visual artifacts, make sure to empty the shader cache in the Citra user folder before changing optimization level. The Citra user folder can be accessed through the File menu.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="text">
                <string>Optimization Level</string>
