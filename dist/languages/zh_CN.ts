@@ -710,7 +710,7 @@ This would ban both their forum username and their IP address.</source>
     </message>
     <message>
         <location filename="../../src/citra_qt/configuration/configure_cheats.ui" line="57"/>
-        <source>Available Cheats:</source>
+        <source>Available Cheats</source>
         <translation>可用金手指：</translation>
     </message>
     <message>
@@ -735,17 +735,17 @@ This would ban both their forum username and their IP address.</source>
     </message>
     <message>
         <location filename="../../src/citra_qt/configuration/configure_cheats.ui" line="149"/>
-        <source>Name:</source>
+        <source>Name</source>
         <translation>名称：</translation>
     </message>
     <message>
         <location filename="../../src/citra_qt/configuration/configure_cheats.ui" line="161"/>
-        <source>Notes:</source>
+        <source>Notes</source>
         <translation>注释：</translation>
     </message>
     <message>
         <location filename="../../src/citra_qt/configuration/configure_cheats.ui" line="171"/>
-        <source>Code:</source>
+        <source>Code</source>
         <translation>代码：</translation>
     </message>
     <message>

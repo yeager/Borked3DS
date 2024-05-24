@@ -710,7 +710,7 @@ Questo bannerà sia il suo nome utente del forum che il suo indirizzo IP.</trans
     </message>
     <message>
         <location filename="../../src/citra_qt/configuration/configure_cheats.ui" line="57"/>
-        <source>Available Cheats:</source>
+        <source>Available Cheats</source>
         <translation>Trucchi disponibili:</translation>
     </message>
     <message>
@@ -735,17 +735,17 @@ Questo bannerà sia il suo nome utente del forum che il suo indirizzo IP.</trans
     </message>
     <message>
         <location filename="../../src/citra_qt/configuration/configure_cheats.ui" line="149"/>
-        <source>Name:</source>
+        <source>Name</source>
         <translation>Nome:</translation>
     </message>
     <message>
         <location filename="../../src/citra_qt/configuration/configure_cheats.ui" line="161"/>
-        <source>Notes:</source>
+        <source>Notes</source>
         <translation>Note:</translation>
     </message>
     <message>
         <location filename="../../src/citra_qt/configuration/configure_cheats.ui" line="171"/>
-        <source>Code:</source>
+        <source>Code</source>
         <translation>Codice:</translation>
     </message>
     <message>

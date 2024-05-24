@@ -710,7 +710,7 @@ Dies bannt sowohl den Forum-Nutzernamen, als auch die IP-Adresse.</translation>
     </message>
     <message>
         <location filename="../../src/citra_qt/configuration/configure_cheats.ui" line="57"/>
-        <source>Available Cheats:</source>
+        <source>Available Cheats</source>
         <translation>Verfügbare Cheats:</translation>
     </message>
     <message>
@@ -735,18 +735,18 @@ Dies bannt sowohl den Forum-Nutzernamen, als auch die IP-Adresse.</translation>
     </message>
     <message>
         <location filename="../../src/citra_qt/configuration/configure_cheats.ui" line="149"/>
-        <source>Name:</source>
-        <translation>Name:</translation>
+        <source>Name</source>
+        <translation>Name</translation>
     </message>
     <message>
         <location filename="../../src/citra_qt/configuration/configure_cheats.ui" line="161"/>
-        <source>Notes:</source>
+        <source>Notes</source>
         <translation>Notizen:</translation>
     </message>
     <message>
         <location filename="../../src/citra_qt/configuration/configure_cheats.ui" line="171"/>
-        <source>Code:</source>
-        <translation>Code:</translation>
+        <source>Code</source>
+        <translation>Code</translation>
     </message>
     <message>
         <location filename="../../src/citra_qt/configuration/configure_cheats.cpp" line="69"/>
@@ -1938,7 +1938,7 @@ Möchten Sie den Fehler ignorieren und fortfahren?</translation>
     <message>
         <location filename="../../src/citra_qt/configuration/configure_input.cpp" line="685"/>
         <source>New name:</source>
-        <translation>Neuer Name:</translation>
+        <translation>Neuer Name</translation>
     </message>
     <message>
         <location filename="../../src/citra_qt/configuration/configure_input.cpp" line="704"/>
@@ -3463,7 +3463,7 @@ Ziehe Punkte, um ihre Position zu verändern, oder doppelklicke auf Zellen in de
     <message>
         <location filename="../../src/citra_qt/configuration/configure_touch_from_button.cpp" line="223"/>
         <source>New name:</source>
-        <translation>Neuer Name:</translation>
+        <translation>Neuer Name</translation>
     </message>
     <message>
         <location filename="../../src/citra_qt/configuration/configure_touch_from_button.cpp" line="232"/>

@@ -710,7 +710,7 @@ Dit zal hun Forum gebruikersnaam en IP adres verbannen.</translation>
     </message>
     <message>
         <location filename="../../src/citra_qt/configuration/configure_cheats.ui" line="57"/>
-        <source>Available Cheats:</source>
+        <source>Available Cheats</source>
         <translation>Beschikbare cheats:</translation>
     </message>
     <message>
@@ -735,18 +735,18 @@ Dit zal hun Forum gebruikersnaam en IP adres verbannen.</translation>
     </message>
     <message>
         <location filename="../../src/citra_qt/configuration/configure_cheats.ui" line="149"/>
-        <source>Name:</source>
+        <source>Name</source>
         <translation>Naam:</translation>
     </message>
     <message>
         <location filename="../../src/citra_qt/configuration/configure_cheats.ui" line="161"/>
-        <source>Notes:</source>
+        <source>Notes</source>
         <translation>Opmerkingen:</translation>
     </message>
     <message>
         <location filename="../../src/citra_qt/configuration/configure_cheats.ui" line="171"/>
-        <source>Code:</source>
-        <translation>Code:</translation>
+        <source>Code</source>
+        <translation>Code</translation>
     </message>
     <message>
         <location filename="../../src/citra_qt/configuration/configure_cheats.cpp" line="69"/>

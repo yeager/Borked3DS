@@ -710,7 +710,7 @@ Dette ville forby både deres brukernavn og IP-adressen.</translation>
     </message>
     <message>
         <location filename="../../src/citra_qt/configuration/configure_cheats.ui" line="57"/>
-        <source>Available Cheats:</source>
+        <source>Available Cheats</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -735,17 +735,17 @@ Dette ville forby både deres brukernavn og IP-adressen.</translation>
     </message>
     <message>
         <location filename="../../src/citra_qt/configuration/configure_cheats.ui" line="149"/>
-        <source>Name:</source>
+        <source>Name</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../../src/citra_qt/configuration/configure_cheats.ui" line="161"/>
-        <source>Notes:</source>
+        <source>Notes</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../../src/citra_qt/configuration/configure_cheats.ui" line="171"/>
-        <source>Code:</source>
+        <source>Code</source>
         <translation type="unfinished"/>
     </message>
     <message>
