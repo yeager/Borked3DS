@@ -461,6 +461,7 @@ void Config::ReadCoreValues() {
 
     if (global) {
         ReadBasicSetting(Settings::values.use_cpu_jit);
+        ReadBasicSetting(Settings::values.frame_skip);
         ReadBasicSetting(Settings::values.delay_start_for_lle_modules);
     }
 
@@ -670,6 +671,7 @@ void Config::ReadRendererValues() {
     ReadGlobalSetting(Settings::values.use_vsync_new);
     ReadGlobalSetting(Settings::values.resolution_factor);
     ReadGlobalSetting(Settings::values.frame_limit);
+    ReadGlobalSetting(Settings::values.frame_skip);
 
     ReadGlobalSetting(Settings::values.bg_red);
     ReadGlobalSetting(Settings::values.bg_green);
@@ -1017,6 +1019,7 @@ void Config::SaveCoreValues() {
 
     if (global) {
         WriteBasicSetting(Settings::values.use_cpu_jit);
+        WriteBasicSetting(Settings::values.frame_skip);
         WriteBasicSetting(Settings::values.delay_start_for_lle_modules);
     }
 
@@ -1188,6 +1191,7 @@ void Config::SaveRendererValues() {
     WriteGlobalSetting(Settings::values.use_vsync_new);
     WriteGlobalSetting(Settings::values.resolution_factor);
     WriteGlobalSetting(Settings::values.frame_limit);
+    WriteGlobalSetting(Settings::values.frame_skip);
 
     WriteGlobalSetting(Settings::values.bg_red);
     WriteGlobalSetting(Settings::values.bg_green);
