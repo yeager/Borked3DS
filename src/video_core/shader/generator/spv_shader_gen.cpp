@@ -7,6 +7,7 @@
 #include "video_core/renderer_vulkan/vk_shader_util.h"
 #include "video_core/shader/generator/shader_gen.h"
 #include "video_core/shader/generator/spv_shader_gen.h"
+#include "common/settings.h"
 
 using VSOutputAttributes = Pica::RasterizerRegs::VSOutputAttributes;
 
@@ -29,15 +30,20 @@ void VertexModule::DefineArithmeticTypes() {
     ids.f32 = Name(TypeFloat(32), "f32_id");
     ids.i32 = Name(TypeSInt(32), "i32_id");
     ids.u32 = Name(TypeUInt(32), "u32_id");
-    Decorate(ids.f32, spv::Decoration::RelaxedPrecision);
 
+    if (Settings::values.relaxed_precision_decorators) {
+        Decorate(ids.f32, spv::Decoration::RelaxedPrecision);
+    } 
     for (u32 size = 2; size <= 4; size++) {
         const u32 i = size - 2;
         ids.bvec.ids[i] = Name(TypeVector(ids.bool_, size), fmt::format("bvec{}_id", size));
         ids.vec.ids[i] = Name(TypeVector(ids.f32, size), fmt::format("vec{}_id", size));
         ids.ivec.ids[i] = Name(TypeVector(ids.i32, size), fmt::format("ivec{}_id", size));
         ids.uvec.ids[i] = Name(TypeVector(ids.u32, size), fmt::format("uvec{}_id", size));
-        Decorate(ids.vec.ids[i], spv::Decoration::RelaxedPrecision);
+
+        if (Settings::values.relaxed_precision_decorators) {
+            Decorate(ids.vec.ids[i], spv::Decoration::RelaxedPrecision);
+        }
     }
 }
 

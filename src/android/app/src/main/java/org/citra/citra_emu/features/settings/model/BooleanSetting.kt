@@ -14,7 +14,8 @@ enum class BooleanSetting(
     CORE_DOWNCOUNT_HACK("core_downcount_hack", Settings.SECTION_RENDERER, false),
     PLUGIN_LOADER("plugin_loader", Settings.SECTION_SYSTEM, false),
     ALLOW_PLUGIN_LOADER("allow_plugin_loader", Settings.SECTION_SYSTEM, true),
-    SWAP_SCREEN("swap_screen", Settings.SECTION_LAYOUT, false);
+    SWAP_SCREEN("swap_screen", Settings.SECTION_LAYOUT, false),
+    RELAXED_PRECISION_DECORATORS("relaxed_precision_decorators", Settings.SECTION_RENDERER, false);
 
     override var boolean: Boolean = defaultValue
 
@@ -34,7 +35,8 @@ enum class BooleanSetting(
     companion object {
         private val NOT_RUNTIME_EDITABLE = listOf(
             PLUGIN_LOADER,
-            ALLOW_PLUGIN_LOADER
+            ALLOW_PLUGIN_LOADER,
+            RELAXED_PRECISION_DECORATORS
         )
 
         fun from(key: String): BooleanSetting? =
