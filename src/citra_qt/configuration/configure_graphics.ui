@@ -137,6 +137,16 @@
        </widget>
       </item>
       <item>
+       <widget class="QCheckBox" name="toggle_relaxed_precision">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Optimizes shader code by allowing certain floating-point operations to use reduced precision. Can improve performance by reducing memory bandwidth and computational requirements. May cause issues on certain GPUs.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string>Enable Relaxed Precision</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QGroupBox" name="widget_optimize_spirv">
         <property name="minimumSize">
          <size>

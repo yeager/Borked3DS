@@ -7,7 +7,6 @@
 #include "video_core/renderer_vulkan/vk_shader_util.h"
 #include "video_core/shader/generator/shader_gen.h"
 #include "video_core/shader/generator/spv_shader_gen.h"
-#include "common/settings.h"
 
 using VSOutputAttributes = Pica::RasterizerRegs::VSOutputAttributes;
 
@@ -33,7 +32,7 @@ void VertexModule::DefineArithmeticTypes() {
 
     if (Settings::values.relaxed_precision_decorators) {
         Decorate(ids.f32, spv::Decoration::RelaxedPrecision);
-    } 
+    }
     for (u32 size = 2; size <= 4; size++) {
         const u32 i = size - 2;
         ids.bvec.ids[i] = Name(TypeVector(ids.bool_, size), fmt::format("bvec{}_id", size));
