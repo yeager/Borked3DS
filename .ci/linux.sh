@@ -2,7 +2,7 @@
 
 if [ "$TARGET" = "appimage" ]; then
     # Compile the AppImage we distribute with Clang.
-    export EXTRA_CMAKE_FLAGS=(-DCMAKE_LINKER=/etc/bin/ld.lld)
+    export EXTRA_CMAKE_FLAGS=(-DCMAKE_LINKER=/usr/bin/lld-18)
 else
     # For the linux-fresh verification target, verify compilation without PCH as well.
     export EXTRA_CMAKE_FLAGS=(-DCITRA_USE_PRECOMPILED_HEADERS=OFF)
