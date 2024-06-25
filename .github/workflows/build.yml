@@ -64,7 +64,7 @@ jobs:
           host: 'linux'
           target: 'desktop'
           arch: 'linux_gcc_64'
-          modules: 'qtmultimedia'
+          modules: 'qtmultimedia qtwaylandcompositor'
       - name: Set up Vulkan SDK
         uses: humbletim/setup-vulkan-sdk@v1.2.0
         with:
