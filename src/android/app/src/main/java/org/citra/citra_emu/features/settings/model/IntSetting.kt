@@ -50,7 +50,7 @@ enum class IntSetting(
     DEBUG_RENDERER("renderer_debug", Settings.SECTION_DEBUG, 0),
     TEXTURE_FILTER("texture_filter", Settings.SECTION_RENDERER, 0),
     FRAME_SKIP("frame_skip", Settings.SECTION_RENDERER, 0),
-    USE_FRAME_LIMIT("use_frame_limit", Settings.SECTION_RENDERER, 1);
+    USE_FRAME_LIMIT("use_frame_limit", Settings.SECTION_RENDERER, 1),
     DELAY_RENDER_THREAD_US("delay_game_render_thread_us", Settings.SECTION_RENDERER, 0);
 
     override var int: Int = defaultValue
