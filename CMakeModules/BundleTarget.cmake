@@ -143,7 +143,7 @@ if (BUNDLE_TARGET_EXECUTE)
             # Wayland backend crashes due to changed schemas in Gnome 40.
             string(REPLACE
                 "export QT_QPA_PLATFORMTHEME=gtk3"
-                "export QT_QPA_PLATFORMTHEME=gtk3; export GDK_BACKEND=x11; export EXTRA_QT_PLUGINS=waylandcompositor; export EXTRA_PLATFORM_PLUGINS=libqwayland-egl.so;libqwayland-generic.so"
+                "export QT_QPA_PLATFORMTHEME=gtk3; export GDK_BACKEND=x11"
                 qt_hook_contents "${qt_hook_contents}")
             file(WRITE "${qt_hook_file}" "${qt_hook_contents}")
         endif()
