@@ -434,6 +434,7 @@ struct Values {
     int current_input_profile_index;          ///< The current input profile index
     std::vector<InputProfile> input_profiles; ///< The list of input profiles
     std::vector<TouchFromButtonMap> touch_from_button_maps;
+    Setting<bool> use_artic_base_controller{false, "use_artic_base_controller"};
 
     SwitchableSetting<bool> enable_gamemode{true, "enable_gamemode"};
 
@@ -576,6 +577,7 @@ struct Values {
     Setting<bool> delay_start_for_lle_modules{true, "delay_start_for_lle_modules"};
     Setting<bool> use_gdbstub{false, "use_gdbstub"};
     Setting<u16> gdbstub_port{24689, "gdbstub_port"};
+    Setting<bool> instant_debug_log{false, "instant_debug_log"};
 
     // Hacks
     SwitchableSetting<bool> raise_cpu_ticks{false, "raise_cpu_ticks"};

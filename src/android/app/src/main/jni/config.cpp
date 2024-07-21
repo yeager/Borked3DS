@@ -128,6 +128,8 @@ void Config::ReadValues() {
         static_cast<u16>(sdl2_config->GetInteger("Controls", "udp_input_port",
                                                  InputCommon::CemuhookUDP::DEFAULT_PORT));
 
+    ReadSetting("Controls", Settings::values.use_artic_base_controller);
+
     // Core
     ReadSetting("Core", Settings::values.use_cpu_jit);
     ReadSetting("Core", Settings::values.cpu_clock_percentage);
@@ -282,6 +284,7 @@ void Config::ReadValues() {
     ReadSetting("Debugging", Settings::values.renderer_debug);
     ReadSetting("Debugging", Settings::values.use_gdbstub);
     ReadSetting("Debugging", Settings::values.gdbstub_port);
+    ReadSetting("Debugging", Settings::values.instant_debug_log);
 
     for (const auto& service_module : Service::service_module_map) {
         bool use_lle = sdl2_config->GetBoolean("Debugging", "LLE\\" + service_module.name, false);

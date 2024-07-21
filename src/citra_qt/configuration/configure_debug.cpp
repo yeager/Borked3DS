@@ -127,6 +127,7 @@ void ConfigureDebug::SetConfiguration() {
         SettingsToSlider(Settings::values.cpu_clock_percentage.GetValue()));
     ui->clock_display_label->setText(
         QStringLiteral("%1%").arg(Settings::values.cpu_clock_percentage.GetValue()));
+    ui->instant_debug_log->setChecked(Settings::values.instant_debug_log.GetValue());
 }
 
 void ConfigureDebug::ApplyConfiguration() {
@@ -147,6 +148,7 @@ void ConfigureDebug::ApplyConfiguration() {
     Settings::values.raise_cpu_ticks = ui->toggle_raise_cpu_ticks->isChecked();
     Settings::values.core_downcount_hack = ui->toggle_core_downcount_hack->isChecked();
     Settings::values.priority_boost = ui->toggle_priority_boost->isChecked();
+    Settings::values.instant_debug_log = ui->instant_debug_log->isChecked();
 
     ConfigurationShared::ApplyPerGameSetting(
         &Settings::values.cpu_clock_percentage, ui->clock_speed_combo,

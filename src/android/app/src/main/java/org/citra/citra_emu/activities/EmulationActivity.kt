@@ -52,7 +52,6 @@ import org.citra.citra_emu.viewmodel.EmulationViewModel
 class EmulationActivity : AppCompatActivity() {
     private val preferences: SharedPreferences
         get() = PreferenceManager.getDefaultSharedPreferences(CitraApplication.appContext)
-    private var foregroundService: Intent? = null
     var isActivityRecreated = false
     private val emulationViewModel: EmulationViewModel by viewModels()
     private val settingsViewModel: SettingsViewModel by viewModels()
@@ -73,10 +72,7 @@ class EmulationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         ThemeUtil.setTheme(this)
 
-        isActivityRecreated = savedInstanceState != null
-        if (!isActivityRecreated) {
-            settingsViewModel.settings.loadSettings()
-        }
+        settingsViewModel.settings.loadSettings()
 
         super.onCreate(savedInstanceState)
 
@@ -98,6 +94,8 @@ class EmulationActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
         navController.setGraph(R.navigation.emulation_navigation, intent.extras)
 
+        isActivityRecreated = savedInstanceState != null
+
         // Set these options now so that the SurfaceView the game renders into is the right size.
         enableFullscreenImmersive()
 
@@ -106,10 +104,6 @@ class EmulationActivity : AppCompatActivity() {
             EmulationMenuSettings.swapScreens,
             windowManager.defaultDisplay.rotation
         )
-
-        // Start a foreground service to prevent the app from getting killed in the background
-        //foregroundService = Intent(this, ForegroundService::class.java)
-        //startForegroundService(foregroundService)
 
         EmulationLifecycleUtil.addShutdownHook(hook = { this.finish() })
 
@@ -148,7 +142,6 @@ class EmulationActivity : AppCompatActivity() {
     override fun onDestroy() {
         NativeLibrary.enableAdrenoTurboMode(false)
         EmulationLifecycleUtil.clear()
-        stopForegroundService(this)
         isEmulationRunning = false
         instance = null
         super.onDestroy()
@@ -218,11 +211,6 @@ class EmulationActivity : AppCompatActivity() {
             controller.systemBarsBehavior =
                 WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
         }
-
-
-        val orientation = settingsViewModel.settings.getSection(Settings.SECTION_RENDERER)
-            ?.getSetting(IntSetting.DEVICE_ORIENTATION.key) as IntSetting
-        this.requestedOrientation = orientation.int
     }
 
     // Gets button presses
@@ -238,8 +226,7 @@ class EmulationActivity : AppCompatActivity() {
             return super.dispatchKeyEvent(event)
         }
 
-        val button =
-            preferences.getInt(InputBindingSetting.getInputButtonKey(event.keyCode), event.keyCode)
+        val button = preferences.getInt(InputBindingSetting.getInputButtonKey(event), event.scanCode)
         val action: Int = when (event.action) {
             KeyEvent.ACTION_DOWN -> {
                 // On some devices, the back gesture / button press is not intercepted by androidx
@@ -509,12 +496,6 @@ class EmulationActivity : AppCompatActivity() {
 
         fun isRunning(): Boolean {
             return instance?.isEmulationRunning ?: false
-        }
-
-        fun stopForegroundService(activity: Activity) {
-            val startIntent = Intent(activity, ForegroundService::class.java)
-            startIntent.action = ForegroundService.ACTION_STOP
-            activity.startForegroundService(startIntent)
         }
     }
 }

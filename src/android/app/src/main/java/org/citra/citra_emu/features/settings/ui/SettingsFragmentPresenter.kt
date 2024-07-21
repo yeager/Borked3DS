@@ -182,20 +182,6 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
     private fun addGeneralSettings(sl: ArrayList<SettingsItem>) {
         settingsActivity.setToolbarTitle(settingsActivity.getString(R.string.preferences_general))
         sl.apply {
-            add(HeaderSetting(R.string.graphics_ui))
-            add(
-                SingleChoiceSetting(
-                    IntSetting.DEVICE_ORIENTATION,
-                    R.string.device_orientation_title,
-                    R.string.device_orientation_description,
-                    R.array.deviceOrientationEntries,
-                    R.array.deviceOrientationValues,
-                    IntSetting.DEVICE_ORIENTATION.key,
-                    IntSetting.DEVICE_ORIENTATION.defaultValue,
-                )
-            )
-
-            add(HeaderSetting(R.string.emulator_speed))
             add(
                 SwitchSetting(
                     IntSetting.SUSTAINED_PERFORMANCE,
@@ -666,6 +652,16 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
                 val button = getInputObject(key)
                 add(InputBindingSetting(button, Settings.hotkeyTitles[i]))
             }
+            add(HeaderSetting(R.string.miscellaneous))
+            add(
+                SwitchSetting(
+                    IntSetting.USE_ARTIC_BASE_CONTROLLER,
+                    R.string.use_artic_base_controller,
+                    R.string.use_artic_base_controller_desc,
+                    IntSetting.USE_ARTIC_BASE_CONTROLLER.key,
+                    IntSetting.USE_ARTIC_BASE_CONTROLLER.defaultValue
+                )
+            )
         }
     }
 
@@ -1117,6 +1113,15 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
                     R.string.renderer_debug_description,
                     IntSetting.DEBUG_RENDERER.key,
                     IntSetting.DEBUG_RENDERER.defaultValue
+                )
+            )
+            add(
+                SwitchSetting(
+                    BooleanSetting.INSTANT_DEBUG_LOG,
+                    R.string.instant_debug_log,
+                    R.string.instant_debug_log_desc,
+                    BooleanSetting.INSTANT_DEBUG_LOG.key,
+                    BooleanSetting.INSTANT_DEBUG_LOG.defaultValue
                 )
             )
         }

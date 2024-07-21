@@ -86,6 +86,9 @@ udp_input_port=
 # The pad to request data on. Should be between 0 (Pad 1) and 3 (Pad 4). (Default 0)
 udp_pad_index=
 
+# Use Artic Controller when connected to Artic Base Server. (Default 0)
+use_artic_base_controller=
+
 [Core]
 # May reduce thermal throttling by reducing clock speed slightly.
 # 0 (default): Off, 1: On
@@ -404,6 +407,10 @@ renderer_debug =
 # Port for listening to GDB connections.
 use_gdbstub=false
 gdbstub_port=24689
+
+# Flush log output on every message
+# Immediately commits the debug log to file. Use this if citra crashes and the log output is being cut.
+instant_debug_log =
 
 # To LLE a service module add "LLE\<module name>=true"
 

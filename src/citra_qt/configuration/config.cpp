@@ -328,6 +328,8 @@ void Config::ReadCameraValues() {
 void Config::ReadControlValues() {
     qt_config->beginGroup(QStringLiteral("Controls"));
 
+    ReadBasicSetting(Settings::values.use_artic_base_controller);
+
     int num_touch_from_button_maps =
         qt_config->beginReadArray(QStringLiteral("touch_from_button_maps"));
 
@@ -497,6 +499,7 @@ void Config::ReadDebuggingValues() {
     ReadBasicSetting(Settings::values.gdbstub_port);
     ReadBasicSetting(Settings::values.renderer_debug);
     ReadBasicSetting(Settings::values.dump_command_buffers);
+    ReadBasicSetting(Settings::values.instant_debug_log);
 
     qt_config->beginGroup(QStringLiteral("LLE"));
     for (const auto& service_module : Service::service_module_map) {
@@ -965,6 +968,8 @@ void Config::SaveCameraValues() {
 void Config::SaveControlValues() {
     qt_config->beginGroup(QStringLiteral("Controls"));
 
+    WriteBasicSetting(Settings::values.use_artic_base_controller);
+
     WriteSetting(QStringLiteral("profile"), Settings::values.current_input_profile_index, 0);
     qt_config->beginWriteArray(QStringLiteral("profiles"));
     for (std::size_t p = 0; p < Settings::values.input_profiles.size(); ++p) {
@@ -1072,6 +1077,7 @@ void Config::SaveDebuggingValues() {
     WriteBasicSetting(Settings::values.use_gdbstub);
     WriteBasicSetting(Settings::values.gdbstub_port);
     WriteBasicSetting(Settings::values.renderer_debug);
+    WriteBasicSetting(Settings::values.instant_debug_log);
 
     qt_config->beginGroup(QStringLiteral("LLE"));
     for (const auto& service_module : Settings::values.lle_modules) {

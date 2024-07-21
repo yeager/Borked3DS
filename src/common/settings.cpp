@@ -99,6 +99,7 @@ void LogSettings() {
     log_setting("Core_RaiseTicks", values.raise_cpu_ticks.GetValue());
     log_setting("Core_DowncountHack", values.core_downcount_hack.GetValue());
     log_setting("Core_PriorityBoost", values.priority_boost.GetValue());
+    log_setting("Controller_UseArticController", values.use_artic_base_controller.GetValue());
     log_setting("Renderer_UseGLES", values.use_gles.GetValue());
     log_setting("Renderer_GraphicsAPI", GetGraphicsAPIName(values.graphics_api.GetValue()));
     log_setting("Renderer_AsyncShaders", values.async_shader_compilation.GetValue());
@@ -173,6 +174,7 @@ void LogSettings() {
     log_setting("Debugging_DelayStartForLLEModules", values.delay_start_for_lle_modules.GetValue());
     log_setting("Debugging_UseGdbstub", values.use_gdbstub.GetValue());
     log_setting("Debugging_GdbstubPort", values.gdbstub_port.GetValue());
+    log_setting("Debugging_InstantDebugLog", values.instant_debug_log.GetValue());
 }
 
 bool IsConfiguringGlobal() {
