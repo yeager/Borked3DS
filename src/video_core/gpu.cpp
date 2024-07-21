@@ -29,7 +29,8 @@ constexpr VAddr VADDR_GPU = 0x1EF00000;
 bool g_skip_frame;
 /// True if the last frame was skipped
 static bool last_skip_frame;
-static u8 frame_count;
+/// Total number of frames drawn
+static u64 frame_count;
 
 struct GPU::Impl {
     Core::Timing& timing;
@@ -57,9 +58,9 @@ struct GPU::Impl {
 GPU::GPU(Core::System& system, Frontend::EmuWindow& emu_window,
          Frontend::EmuWindow* secondary_window)
     : impl{std::make_unique<Impl>(system, emu_window, secondary_window)} {
+    frame_count = 0;
     last_skip_frame = false;
     g_skip_frame = false;
-    frame_count = 0;
     impl->vblank_event = impl->timing.RegisterEvent(
         "GPU::VBlankCallback",
         [this](uintptr_t user_data, s64 cycles_late) { VBlankCallback(user_data, cycles_late); });
@@ -432,7 +433,6 @@ void GPU::VBlankCallback(std::uintptr_t user_data, s64 cycles_late) {
 
         // Present renderered frame.
         impl->renderer->SwapBuffers();
-        frame_count = 0;
     }
 
     // Signal to GSP that GPU interrupt has occurred

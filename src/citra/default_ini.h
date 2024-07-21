@@ -91,8 +91,8 @@ udp_pad_index=
 # 0: Interpreter (slow), 1 (default): JIT (fast)
 use_cpu_jit =
 
-# The amount of frames to skip.
-# 0 (default): No frameskip, 1:  skip 1 frame, 2: skip 2 frames, etc.
+# The amount of frames to skip (power of two)
+# 0 (default): No frameskip, 1: x2 frameskip, 2: x4 frameskip, 3: x8 frameskip, 4: x16 frameskip.
 frame_skip =
 
 # Change the Clock Frequency of the emulated 3DS CPU.
