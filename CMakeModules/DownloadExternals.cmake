@@ -185,7 +185,7 @@ function(download_moltenvk)
                 file(DOWNLOAD https://github.com/KhronosGroup/MoltenVK/releases/download/v1.2.7/MoltenVK-all.tar
                 ${MOLTENVK_TAR} SHOW_PROGRESS)
             else()
-                file(DOWNLOAD https://github.com/KhronosGroup/MoltenVK/releases/download/v1.2.9/MoltenVK-all.tar
+                file(DOWNLOAD https://github.com/KhronosGroup/MoltenVK/releases/download/v1.2.10-rc2/MoltenVK-all.tar 
                 ${MOLTENVK_TAR} SHOW_PROGRESS)
             endif()
         endif()
