@@ -109,8 +109,11 @@ CMAKE_DEPENDENT_OPTION(ENABLE_SOFTWARE_RENDERER "Enables the software renderer" 
 CMAKE_DEPENDENT_OPTION(ENABLE_OPENGL "Enables the OpenGL renderer" ON "NOT APPLE" OFF)
 option(ENABLE_VULKAN "Enables the Vulkan renderer" ON)
 
+option(CITRA_USE_EXTERNAL_VULKAN_SPIRV_TOOLS "Use SPIRV-Tools from externals" OFF)
+
 option(ENABLE_PROFILING "Enables integration with the Tracy profiler" ON)
 option(USE_DISCORD_PRESENCE "Enables Discord Rich Presence" OFF)
+
 
 # Compile options
 CMAKE_DEPENDENT_OPTION(COMPILE_WITH_DWARF "Add DWARF debugging information" ${IS_DEBUG_BUILD} "MINGW" OFF)
@@ -318,6 +321,10 @@ if (APPLE)
         find_library(MOLTENVK_LIBRARY MoltenVK REQUIRED)
         message(STATUS "Using MoltenVK at ${MOLTENVK_LIBRARY}.")
         set(PLATFORM_LIBRARIES ${PLATFORM_LIBRARIES} ${MOLTENVK_LIBRARY})
+        if (NOT CITRA_USE_EXTERNAL_VULKAN_SPIRV_TOOLS AND NOT IOS)
+            find_package(PkgConfig REQUIRED)
+            pkg_check_modules(SPIRV-Tools REQUIRED SPIRV-Tools)
+        endif()
     endif()
 elseif (WIN32)
     set(PLATFORM_LIBRARIES winmm ws2_32)

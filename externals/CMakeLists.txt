@@ -435,7 +435,7 @@ if (ENABLE_VULKAN)
     # SPIRV-Tools
     add_library(spirv-tools INTERFACE)
     target_include_directories(spirv-tools SYSTEM INTERFACE ./SPIRV-Tools/include)
-    if (ANDROID)
+    if (CITRA_USE_EXTERNAL_VULKAN_SPIRV_TOOLS)
         add_subdirectory(SPIRV-Tools)
     endif()
 

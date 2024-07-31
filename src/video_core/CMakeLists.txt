@@ -198,7 +198,7 @@ if (ENABLE_VULKAN)
         shader/generator/spv_shader_gen.h
         shader/generator/spv_shader_gen.cpp
     )
-    target_link_libraries(video_core PRIVATE vulkan-headers vma sirit SPIRV glslang)
+    target_link_libraries(video_core PRIVATE vulkan-headers vma sirit SPIRV glslang spirv-tools)
 endif()
 
 add_dependencies(video_core host_shaders)
