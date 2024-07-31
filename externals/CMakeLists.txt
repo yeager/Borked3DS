@@ -433,8 +433,11 @@ if (ENABLE_VULKAN)
     endif()
 
     # SPIRV-Tools
-    add_library(SPIRV-Tools INTERFACE)
-    target_include_directories(SPIRV-Tools SYSTEM INTERFACE ./SPIRV-Tools/include)
+    add_library(spirv-tools INTERFACE)
+    target_include_directories(spirv-tools SYSTEM INTERFACE ./SPIRV-Tools/include)
+    if (ANDROID)
+        add_subdirectory(SPIRV-Tools)
+    endif()
 
     # adrenotools
     if (ANDROID AND "arm64" IN_LIST ARCHITECTURE)
