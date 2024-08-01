@@ -251,63 +251,104 @@
      <property name="title">
       <string>CPU Hacks</string>
      </property>
-     <layout class="QGridLayout" name="gridLayout_3">
-     <item row="1" column="0">
-       <widget class="QCheckBox" name="toggle_raise_cpu_ticks">
-        <property name="toolTip">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Sets CPU ticks to 16,000. May improve performance, depending on the game or if it is running on a low-end device.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-        <property name="text">
-         <string>Raise CPU Ticks</string>
-        </property>
-       </widget>
+     <layout class="QVBoxLayout" name="verticalLayout_6">
+      <item>
+       <layout class="QGridLayout" name="gridLayout_3">
+        <item row="1" column="0">
+         <widget class="QCheckBox" name="toggle_core_downcount_hack">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;When enabled, core downcount will be limited to a smaller time slice, reducing CPU usage. It may improve performance for low-end devices or GPU hungry games.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="text">
+           <string>Core Downcount</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QCheckBox" name="toggle_priority_boost">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Boost low priority starved threads during kernel rescheduling. It may improve performance, at the cost of freezing during cutsences for some games&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="text">
+           <string>Priority Boost</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
-      <item row="1" column="1">
-       <widget class="QCheckBox" name="toggle_core_downcount_hack">
-        <property name="toolTip">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;When enabled, core downcount will be limited to a smaller time slice, reducing CPU usage. It may improve performance for low-end devices or GPU hungry games.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-        <property name="text">
-         <string>Core Downcount</string>
-        </property>
-       </widget>
+      <item>
+       <layout class="QHBoxLayout" name="custom_cpu_ticks_layout">
+        <item>
+         <widget class="QCheckBox" name="toggle_custom_cpu_ticks">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;body&gt;Set a custom value of CPU ticks. Higher values can increase performance but if they're too high, it may cause the game to freeze. A range of 77-21000 is recommended.&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="text">
+           <string>Enable Custom CPU Ticks</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_custom_cpu_ticks">
+          <property name="text">
+           <string>Ticks:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSpinBox" name="custom_cpu_ticks_spinbox">
+          <property name="minimum">
+           <number>77</number>
+          </property>
+          <property name="maximum">
+           <number>65535</number>
+          </property>
+          <property name="value">
+           <number>16000</number>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
-      <item row="1" column="2">
-       <widget class="QCheckBox" name="toggle_priority_boost">
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox_6">
+     <property name="title">
+      <string>Miscellaneous</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_4">
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="delay_start_for_lle_modules">
         <property name="toolTip">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Boost low priority starved threads during kernel rescheduling. It may improve performance, at the cost of freezing during cutsences for some games&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Introduces a delay to the first ever launched app thread if LLE modules are enabled, to allow them to initialize.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="text">
-         <string>Priority Boost</string>
+         <string>Delay App Start for LLE Module Initialization</string>
         </property>
        </widget>
       </item>
      </layout>
     </widget>
    </item>
-    <item>
-      <widget class="QGroupBox" name="groupBox_6">
-        <property name="title">
-          <string>Miscellaneous</string>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_4">
-          <item row="1" column="0">
-            <widget class="QCheckBox" name="delay_start_for_lle_modules">
-              <property name="toolTip">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Introduces a delay to the first ever launched app thread if LLE modules are enabled, to allow them to initialize.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-              </property>
-              <property name="text">
-                <string>Delay App Start for LLE Module Initialization</string>
-              </property>
-            </widget>
-          </item>
-        </layout>
-      </widget>
-    </item>
    <item>
     <widget class="QLabel" name="label_cpu_clock_info">
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;CPU Clock Speed Information&lt;/p&gt;&lt;p&gt;Underclocking can increase performance but may cause the game to freeze.&lt;/p&gt;&lt;p&gt;Overclocking may reduce in game lag but also might cause freezes&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;CPU Clock Speed Information&lt;/p&gt;&lt;p&gt;Underclocking can increase performance but may cause the game to freeze.&lt;br /&gt;Overclocking may reduce in game lag but also might cause freezes&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="textFormat">
       <enum>Qt::RichText</enum>

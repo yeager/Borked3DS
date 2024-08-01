@@ -580,7 +580,8 @@ struct Values {
     Setting<bool> instant_debug_log{false, "instant_debug_log"};
 
     // Hacks
-    SwitchableSetting<bool> raise_cpu_ticks{false, "raise_cpu_ticks"};
+    SwitchableSetting<bool> enable_custom_cpu_ticks{false, "enable_custom_cpu_ticks"};
+    SwitchableSetting<u32, true> custom_cpu_ticks{16000, 77, 65535, "custom_cpu_ticks"};
     SwitchableSetting<bool> skip_slow_draw{false, "skip_slow_draw"};
     SwitchableSetting<bool> skip_texture_copy{false, "skip_texture_copy"};
     SwitchableSetting<bool> skip_cpu_write{false, "skip_cpu_write"};

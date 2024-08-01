@@ -96,7 +96,8 @@ void LogSettings() {
     LOG_INFO(Config, "Citra Configuration:");
     log_setting("Core_UseCpuJit", values.use_cpu_jit.GetValue());
     log_setting("Core_CPUClockPercentage", values.cpu_clock_percentage.GetValue());
-    log_setting("Core_RaiseTicks", values.raise_cpu_ticks.GetValue());
+    log_setting("Core_EnableCustomCPUTicks", values.enable_custom_cpu_ticks.GetValue());
+    log_setting("Core_CustomCPUTicks", values.custom_cpu_ticks.GetValue());
     log_setting("Core_DowncountHack", values.core_downcount_hack.GetValue());
     log_setting("Core_PriorityBoost", values.priority_boost.GetValue());
     log_setting("Controller_UseArticController", values.use_artic_base_controller.GetValue());
@@ -206,7 +207,8 @@ void RestoreGlobalState(bool is_powered_on) {
 
     // Core
     values.cpu_clock_percentage.SetGlobal(true);
-    values.raise_cpu_ticks.SetGlobal(true);
+    values.enable_custom_cpu_ticks.SetGlobal(true);
+    values.custom_cpu_ticks.SetGlobal(true);
     values.core_downcount_hack.SetGlobal(true);
     values.priority_boost.SetGlobal(true);
     values.is_new_3ds.SetGlobal(true);
