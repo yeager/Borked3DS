@@ -707,6 +707,35 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
                 )
             )
             add(
+                SingleChoiceSetting(
+                    IntSetting.OPTIMIZE_SPIRV,
+                    R.string.optimize_spirv,
+                    R.string.optimize_spirv_description,
+                    R.array.optimizeSpirvNames,
+                    R.array.optimizeSpirvValues,
+                    IntSetting.OPTIMIZE_SPIRV.key,
+                    IntSetting.OPTIMIZE_SPIRV.defaultValue
+                )
+            )
+            add(
+                SwitchSetting(
+                    BooleanSetting.SPIRV_OUTPUT_VALIDATION,
+                    R.string.spirv_output_validation,
+                    R.string.spirv_output_validation_description,
+                    BooleanSetting.SPIRV_OUTPUT_VALIDATION.key,
+                    BooleanSetting.SPIRV_OUTPUT_VALIDATION.defaultValue,
+                )
+            )
+            add(
+                SwitchSetting(
+                    BooleanSetting.SPIRV_OUTPUT_LEGALIZATION,
+                    R.string.spirv_output_legalization,
+                    R.string.spirv_output_legalization_description,
+                    BooleanSetting.SPIRV_OUTPUT_LEGALIZATION.key,
+                    BooleanSetting.SPIRV_OUTPUT_LEGALIZATION.defaultValue,
+                )
+            )
+            add(
                 SwitchSetting(
                     BooleanSetting.RELAXED_PRECISION_DECORATORS,
                     R.string.relaxed_precision_decorators,

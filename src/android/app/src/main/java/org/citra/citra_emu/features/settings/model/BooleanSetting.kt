@@ -10,6 +10,8 @@ enum class BooleanSetting(
     override val defaultValue: Boolean
 ) : AbstractBooleanSetting {
     SPIRV_SHADER_GEN("spirv_shader_gen", Settings.SECTION_RENDERER, true),
+    SPIRV_OUTPUT_VALIDATION("spirv_output_validation", Settings.SECTION_RENDERER, false),
+    SPIRV_OUTPUT_LEGALIZATION("spirv_output_legalization", Settings.SECTION_RENDERER, false),
     ASYNC_SHADERS("async_shader_compilation", Settings.SECTION_RENDERER, false),
     CORE_DOWNCOUNT_HACK("core_downcount_hack", Settings.SECTION_RENDERER, false),
     PLUGIN_LOADER("plugin_loader", Settings.SECTION_SYSTEM, false),

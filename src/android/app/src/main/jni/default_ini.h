@@ -175,6 +175,26 @@ use_disk_shader_cache =
 # factor for the 3DS resolution
 resolution_factor =
 
+# Texture filter
+# 0: None, 1: Anime4K, 2: Bicubic, 3: Nearest Neighbor, 4: ScaleForce, 5: xBRZ
+texture_filter =
+
+# SPIR-V Shader Generation
+# 0: Disabled, 1: Enabled
+spirv_shader_gen =
+
+# SPIR-V Optimization
+# 0: Disabled, 2: Performance, 3: Size
+optimize_spirv_output =
+
+# SPIR-V Validation
+# 0: Disabled, 1: Enabled
+spirv_output_validation =
+
+# SPIR-V Legalization
+# 0: Disabled, 1: Enabled
+spirv_output_legalization =
+
 # Whether to enable V-Sync (caps the framerate at 60FPS) or not.
 # 0 (default): Off, 1: On
 vsync_enabled =

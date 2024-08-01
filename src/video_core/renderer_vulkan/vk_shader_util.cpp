@@ -8,20 +8,7 @@
 #include <SPIRV/GlslangToSpv.h>
 #include <glslang/Include/ResourceLimits.h>
 #include <glslang/Public/ShaderLang.h>
-
-// The optimizer included in SPIRV-Tools only works on Desktop OSes
-#if defined(_WIN32) || (defined(__linux__) && !defined(__ANDROID__))
-#define OPTIMIZE_SPIRV
-#elif defined(__APPLE__)
-#include <TargetConditionals.h>
-#if TARGET_OS_OSX
-#define OPTIMIZE_SPIRV
-#endif
-#endif
-
-#ifdef OPTIMIZE_SPIRV
 #include <spirv-tools/optimizer.hpp>
-#endif
 
 #include "common/assert.h"
 #include "common/literals.h"
@@ -178,15 +165,13 @@ bool InitializeCompiler() {
 } // Anonymous namespace
 
 /**
- * NOTE: The libraries included in SPIRV-Tools only work on Windows, Linux and MacOS.
- * @brief Optimizes SPIR-V code (but only on Desktop)
+ * @brief Optimizes SPIR-V code using spirv-opt from SPIRV-Tools
  * @param code The string containing SPIR-V code
  */
 std::vector<u32> OptimizeSPIRV(std::vector<u32> code) {
 
     std::vector<u32> result = code;
 
-#ifdef OPTIMIZE_SPIRV
     std::vector<u32> spirv = code;
     spvtools::Optimizer spv_opt(SPV_ENV_VULKAN_1_3);
     spv_opt.SetMessageConsumer([](spv_message_level_t, const char*, const spv_position_t&,
@@ -220,7 +205,6 @@ std::vector<u32> OptimizeSPIRV(std::vector<u32> code) {
                   "Failed to optimize SPIRV shader output, continuing without optimization");
         result = std::move(spirv);
     }
-#endif
 
     return result;
 }
@@ -276,12 +260,12 @@ std::vector<u32> CompileGLSLtoSPIRV(std::string_view code, vk::ShaderStageFlagBi
     glslang::SpvOptions options;
 
     if (Settings::values.optimize_spirv_output.GetValue() == Settings::OptimizeSpirv::Disabled) {
-        // Use built-in glslang to enable optimizations on the generated SPIR-V code on mobile
+        // Use built-in glslang to enable default optimizations on the generated SPIR-V code
         options.disableOptimizer = false;
         options.validate = false;
         options.optimizeSize = true;
     } else {
-        // On desktop, use external SPIRV-Tools to perform optimizations
+        // Use external SPIRV-Tools to perform optimizations
         options.disableOptimizer = true;
         options.validate = false;
         options.optimizeSize = false;

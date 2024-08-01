@@ -49,6 +49,7 @@ enum class IntSetting(
     PRIORITY_BOOST("priority_boost", Settings.SECTION_CORE, 0),
     DEBUG_RENDERER("renderer_debug", Settings.SECTION_DEBUG, 0),
     TEXTURE_FILTER("texture_filter", Settings.SECTION_RENDERER, 0),
+    OPTIMIZE_SPIRV("optimize_spirv_output", Settings.SECTION_RENDERER, 0),
     FRAME_SKIP("frame_skip", Settings.SECTION_RENDERER, 0),
     USE_FRAME_LIMIT("use_frame_limit", Settings.SECTION_RENDERER, 1),
     DELAY_RENDER_THREAD_US("delay_game_render_thread_us", Settings.SECTION_RENDERER, 0),
