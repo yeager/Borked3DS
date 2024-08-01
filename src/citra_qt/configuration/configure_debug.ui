@@ -217,31 +217,35 @@
        </widget>
       </item>
       <item>
-       <widget class="QCheckBox" name="toggle_cpu_jit">
-        <property name="toolTip">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Enables the use of the ARM JIT compiler for emulating the 3DS CPUs. Don't disable unless for debugging purposes&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-        <property name="text">
-         <string>Enable CPU JIT</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QCheckBox" name="toggle_renderer_debug">
-        <property name="text">
-         <string>Enable Debug Renderer</string>
-        </property>
-        <property name="toolTip">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Note: Vulkan debug renderer requires the Vulkan SDK to be installed.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QCheckBox" name="toggle_dump_command_buffers">
-        <property name="text">
-         <string>Dump Command Buffers</string>
-        </property>
-       </widget>
+       <layout class="QGridLayout" name="gridLayout_1">
+        <item row="0" column="0">
+         <widget class="QCheckBox" name="toggle_cpu_jit">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Enables the use of the ARM JIT compiler for emulating the 3DS CPUs. Don't disable unless for debugging purposes&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="text">
+           <string>Enable CPU JIT</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QCheckBox" name="toggle_renderer_debug">
+          <property name="text">
+           <string>Enable Debug Renderer</string>
+          </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Note: Vulkan debug renderer requires the Vulkan SDK to be installed.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="2">
+         <widget class="QCheckBox" name="toggle_dump_command_buffers">
+          <property name="text">
+           <string>Dump Command Buffers</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
      </layout>
     </widget>
@@ -253,8 +257,8 @@
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_6">
       <item>
-       <layout class="QGridLayout" name="gridLayout_3">
-        <item row="1" column="0">
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="0" column="0">
          <widget class="QCheckBox" name="toggle_core_downcount_hack">
           <property name="toolTip">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;When enabled, core downcount will be limited to a smaller time slice, reducing CPU usage. It may improve performance for low-end devices or GPU hungry games.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -264,7 +268,7 @@
           </property>
          </widget>
         </item>
-        <item row="1" column="1">
+        <item row="0" column="1">
          <widget class="QCheckBox" name="toggle_priority_boost">
           <property name="toolTip">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Boost low priority starved threads during kernel rescheduling. It may improve performance, at the cost of freezing during cutsences for some games&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -304,7 +308,7 @@
         <item>
          <widget class="QLabel" name="label_custom_cpu_ticks">
           <property name="text">
-           <string>Ticks:</string>
+           <string>Ticks</string>
           </property>
          </widget>
         </item>
@@ -331,7 +335,7 @@
      <property name="title">
       <string>Miscellaneous</string>
      </property>
-     <layout class="QGridLayout" name="gridLayout_4">
+     <layout class="QGridLayout" name="gridLayout_3">
       <item row="1" column="0">
        <widget class="QCheckBox" name="delay_start_for_lle_modules">
         <property name="toolTip">
