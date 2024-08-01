@@ -14,6 +14,8 @@ set(CMAKE_POLICY_DEFAULT_CMP0077 NEW)
 # Needed for GPUCode's teakra
 cmake_policy(SET CMP0079 NEW)
 set(CMAKE_POLICY_DEFAULT_CMP0079 NEW)
+# Allow conditions to be used in cmake_dependent_option
+cmake_policy(SET CMP0127 NEW)
 # FindBoost module no longer provided in cmake 3.30 and above
 if(CMAKE_VERSION VERSION_GREATER "3.29")
     set(CMAKE_POLICY_DEFAULT_CMP0167 OLD)
