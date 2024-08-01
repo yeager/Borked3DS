@@ -215,6 +215,8 @@
     <string name="graphics_api">Graphics API</string>
     <string name="spirv_shader_gen">Enable SPIR-V shader generation</string>
     <string name="spirv_shader_gen_description">Emits the fragment shader used to emulate PICA using SPIR-V instead of GLSL.</string>
+    <string name="use_sample_shading">Enable Sample Shading</string>
+    <string name="use_sample_shading_description">Enables a vulkan extension that may improve the rendering quality, at the cost of some performance.</string>
     <string name="optimize_spirv">SPIR-V Shader Optimization Level</string>
     <string name="optimize_spirv_description">Performs various optimizations on SPIR-V modules to improve performance and reduce size. Equivalent to passing -O or -Os to spirv-opt.</string>
     <string name="spirv_output_validation">SPIR-V Shader Validation</string>

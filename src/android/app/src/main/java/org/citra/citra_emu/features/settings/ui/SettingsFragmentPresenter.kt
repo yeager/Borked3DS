@@ -727,6 +727,15 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
                 )
             )
             add(
+                SwitchSetting(
+                    BooleanSetting.USE_SAMPLE_SHADING,
+                    R.string.use_sample_shading,
+                    R.string.use_sample_shading_description,
+                    BooleanSetting.USE_SAMPLE_SHADING.key,
+                    BooleanSetting.USE_SAMPLE_SHADING.defaultValue,
+                )
+            )
+            add(
                 SingleChoiceSetting(
                     IntSetting.OPTIMIZE_SPIRV,
                     R.string.optimize_spirv,

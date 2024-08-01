@@ -47,6 +47,7 @@ private:
     ConfigurationShared::CheckState core_downcount_hack;
     ConfigurationShared::CheckState async_presentation;
     ConfigurationShared::CheckState spirv_shader_gen;
+    ConfigurationShared::CheckState sample_shading;
     ConfigurationShared::CheckState relaxed_precision_decorators;
     ConfigurationShared::CheckState optimize_spirv_output;
     ConfigurationShared::CheckState spirv_output_validation;

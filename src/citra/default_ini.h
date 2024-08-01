@@ -177,6 +177,10 @@ texture_filter =
 # 0: Disabled, 1: Enabled
 spirv_shader_gen =
 
+# Enables a Vulkan extension that may improve the rendering quality. (Vulkan only)
+# 0 (default): Off, 1: On
+use_sample_shading =
+
 # SPIR-V Optimization
 # 0: Disabled, 2: Performance, 3: Size
 optimize_spirv_output =

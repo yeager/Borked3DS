@@ -134,6 +134,10 @@ async_shader_compilation =
 # 0: GLSL, 1: SPIR-V (default)
 spirv_shader_gen =
 
+# Enables a Vulkan extension that may improve the rendering quality. (Vulkan only)
+# 0 (default): Off, 1: On
+use_sample_shading =
+
 # The applied frameskip amount (power of two).
 # 0 (default): No frameskip, 1: x2 frameskip, 2: x4 frameskip, 3: x8 frameskip, x16 frameskip.
 frame_skip =
