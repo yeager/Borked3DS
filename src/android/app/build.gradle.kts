@@ -78,7 +78,6 @@ android {
                 arguments(
                     "-DENABLE_QT=0", // Don't use QT
                     "-DENABLE_SDL2=0", // Don't use SDL
-                    "-DCITRA_USE_EXTERNAL_VULKAN_SPIRV_TOOLS=1", // Use external SPIRV-Tools
                     "-DANDROID_ARM_NEON=true" // cryptopp requires Neon to work
                 )
             }

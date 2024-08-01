@@ -415,6 +415,7 @@ if (ENABLE_VULKAN)
     add_library(spirv-tools INTERFACE)
     target_include_directories(spirv-tools SYSTEM INTERFACE ./SPIRV-Tools/include)
     if (CITRA_USE_EXTERNAL_VULKAN_SPIRV_TOOLS)
+        set(SPIRV_SKIP_EXECUTABLES ON)
         add_subdirectory(SPIRV-Tools)
     endif()
 
