@@ -1,19 +1,20 @@
 # CMake 3.12 required for 20 to be a valid value for CXX_STANDARD
 cmake_minimum_required(VERSION 3.15)
 
-# Don't override the warning flags in MSVC:
-cmake_policy(SET CMP0092 NEW)
-# Enforce new LTO setting
-cmake_policy(SET CMP0069 NEW)
 # Honor visibility properties for all targets
 # Set the default so subdirectory cmake_minimum_required calls won't unset the policy.
 cmake_policy(SET CMP0063 NEW)
 set(CMAKE_POLICY_DEFAULT_CMP0063 NEW)
+# Enforce new LTO setting
+cmake_policy(SET CMP0069 NEW)
 # Needed to compile sdl2 2.30.5+ on MSVC
 set(CMAKE_POLICY_DEFAULT_CMP0077 NEW)
 # Needed for GPUCode's teakra
+# Allow use with targets in other directories
 cmake_policy(SET CMP0079 NEW)
 set(CMAKE_POLICY_DEFAULT_CMP0079 NEW)
+# Don't override the warning flags in MSVC:
+cmake_policy(SET CMP0092 NEW)
 # Allow conditions to be used in cmake_dependent_option
 cmake_policy(SET CMP0127 NEW)
 # FindBoost module no longer provided in cmake 3.30 and above
