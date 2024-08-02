@@ -19,7 +19,7 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_2">
+  <layout class="QVBoxLayout" name="verticalLayout_1">
    <item>
     <widget class="QGroupBox" name="layout_group">
      <property name="enabled">
@@ -28,7 +28,7 @@
      <property name="title">
       <string>Screens</string>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout_3">
+     <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
        <widget class="QWidget" name="widget_layout" native="true">
         <layout class="QHBoxLayout" name="screen_layout_group">
@@ -194,15 +194,15 @@
      <property name="title">
       <string>Custom Layout</string>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout_5">
+     <layout class="QVBoxLayout" name="verticalLayout_3">
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_4">
+       <layout class="QHBoxLayout" name="horizontalLayout_1">
         <item>
          <widget class="QGroupBox" name="gb_top_screen">
           <property name="title">
            <string>Top Screen</string>
           </property>
-          <layout class="QGridLayout" name="gridLayout_2">
+          <layout class="QGridLayout" name="gridLayout_1">
            <item row="0" column="0">
             <widget class="QLabel" name="lb_top_x">
              <property name="text">
@@ -287,7 +287,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QGroupBox" name="gb_bottom_screen">
+         <widget class="QGroupBox" name="gb_bottom_screen_1">
           <property name="minimumSize">
            <size>
             <width>0</width>
@@ -297,7 +297,7 @@
           <property name="title">
            <string>Bottom Screen</string>
           </property>
-          <layout class="QGridLayout" name="gridLayout">
+          <layout class="QGridLayout" name="gridLayout_2">
            <item row="0" column="0">
             <widget class="QLabel" name="lb_bottom_x">
              <property name="text">
@@ -384,7 +384,7 @@
        </layout>
       </item>
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
          <widget class="QLabel" name="lb_opacity_second_layer">
           <property name="text">
@@ -421,15 +421,15 @@
      <property name="title">
       <string>Single Screen Layout</string>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout_5">
+     <layout class="QVBoxLayout" name="verticalLayout_4">
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_4">
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
         <item>
          <widget class="QGroupBox" name="gb_top_screen_2">
           <property name="title">
            <string>Top Screen</string>
           </property>
-          <layout class="QGridLayout" name="gridLayout_2">
+          <layout class="QGridLayout" name="gridLayout_3">
            <item row="0" column="0">
             <widget class="QLabel" name="lb_top_stretch">
              <property name="text">
@@ -488,7 +488,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QGroupBox" name="gb_bottom_screen">
+         <widget class="QGroupBox" name="gb_bottom_screen_2">
           <property name="minimumSize">
            <size>
             <width>0</width>
@@ -498,7 +498,7 @@
           <property name="title">
            <string>Bottom Screen</string>
           </property>
-          <layout class="QGridLayout" name="gridLayout">
+          <layout class="QGridLayout" name="gridLayout_4">
            <item row="1" column="0">
             <widget class="QLabel" name="lb_bottom_leftright_padding">
              <property name="text">
@@ -559,7 +559,7 @@
        </layout>
       </item>
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <layout class="QHBoxLayout" name="horizontalLayout_4">
         <item>
          <widget class="QLabel" name="label">
           <property name="text">
