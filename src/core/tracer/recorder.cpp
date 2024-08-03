@@ -22,6 +22,7 @@ void Recorder::Finish(const std::string& filename) {
     // Calculate file offsets
     auto& initial = header.initial_state_offsets;
 
+    initial.gpu_registers_size = 0;
     initial.pica_registers_size = static_cast<u32>(initial_state.pica_registers.size());
     initial.lcd_registers_size = static_cast<u32>(initial_state.lcd_registers.size());
     initial.default_attributes_size = static_cast<u32>(initial_state.default_attributes.size());
