@@ -639,8 +639,6 @@ void GMainWindow::InitializeHotkeys() {
     link_action_shortcut(ui->action_Screen_Layout_Swap_Screens, QStringLiteral("Swap Screens"));
     link_action_shortcut(ui->action_Screen_Layout_Upright_Screens,
                          QStringLiteral("Rotate Screens Upright"));
-    link_action_shortcut(ui->action_Enable_Frame_Advancing,
-                         QStringLiteral("Toggle Frame Advancing"));
     link_action_shortcut(ui->action_Advance_Frame, QStringLiteral("Advance Frame"));
     link_action_shortcut(ui->action_Load_from_Newest_Slot,
                          QStringLiteral("Load from Newest Non-Quick Slot"));
@@ -937,16 +935,8 @@ void GMainWindow::ConnectMenuEvents() {
     connect_menu(ui->action_Save_Movie, &GMainWindow::OnSaveMovie);
     connect_menu(ui->action_Movie_Read_Only_Mode,
                  [this](bool checked) { movie.SetReadOnly(checked); });
-    connect_menu(ui->action_Enable_Frame_Advancing, [this] {
-        if (emulation_running) {
-            system.frame_limiter.SetFrameAdvancing(ui->action_Enable_Frame_Advancing->isChecked());
-            ui->action_Advance_Frame->setEnabled(ui->action_Enable_Frame_Advancing->isChecked());
-        }
-    });
     connect_menu(ui->action_Advance_Frame, [this] {
         if (emulation_running && system.frame_limiter.IsFrameAdvancing()) {
-            ui->action_Enable_Frame_Advancing->setChecked(true);
-            ui->action_Advance_Frame->setEnabled(true);
             system.frame_limiter.AdvanceFrame();
         }
     });
@@ -972,7 +962,8 @@ void GMainWindow::ConnectMenuEvents() {
 }
 
 void GMainWindow::UpdateMenuState() {
-    const bool is_paused = !emu_thread || !emu_thread->IsRunning();
+    const bool is_paused =
+        !emu_thread || !emu_thread->IsRunning() || system.frame_limiter.IsFrameAdvancing();
 
     const std::array running_actions{
         ui->action_Stop,
@@ -989,7 +980,8 @@ void GMainWindow::UpdateMenuState() {
         action->setEnabled(emulation_running);
     }
 
-    ui->action_Capture_Screenshot->setEnabled(emulation_running);
+    ui->action_Capture_Screenshot->setEnabled(emulation_running && !is_paused);
+    ui->action_Advance_Frame->setEnabled(emulation_running && is_paused);
 
     if (emulation_running && is_paused) {
         ui->action_Pause->setText(tr("&Continue"));
@@ -1360,12 +1352,7 @@ void GMainWindow::BootGame(const QString& filename) {
         movie_playback_path.clear();
     }
 
-    if (ui->action_Enable_Frame_Advancing->isChecked()) {
-        ui->action_Advance_Frame->setEnabled(true);
-        system.frame_limiter.SetFrameAdvancing(true);
-    } else {
-        ui->action_Advance_Frame->setEnabled(false);
-    }
+    ui->action_Advance_Frame->setEnabled(false);
 
     if (video_dumping_on_start) {
         StartVideoDumping(video_dumping_path);
@@ -1907,7 +1894,7 @@ void GMainWindow::OnGameListCreateShortcut(u64 program_id, const std::string& ga
         citra_command = fmt::format("flatpak run {}", env_flatpak_id);
         skip_tryexec = true;
     } else {
-        // Get path to Lime3DS executable
+        // Get path to Citra executable
         const QStringList args = QApplication::arguments();
         citra_command = args[0].toStdString();
         // If relative path, make it an absolute path
@@ -2269,6 +2256,7 @@ void GMainWindow::OnStartGame() {
     PreventOSSleep();
 
     emu_thread->SetRunning(true);
+    system.frame_limiter.SetFrameAdvancing(false);
     graphics_api_button->setEnabled(false);
     qRegisterMetaType<Core::System::ResultStatus>("Core::System::ResultStatus");
     qRegisterMetaType<std::string>("std::string");
@@ -2298,7 +2286,7 @@ void GMainWindow::OnRestartGame() {
 }
 
 void GMainWindow::OnPauseGame() {
-    emu_thread->SetRunning(false);
+    system.frame_limiter.SetFrameAdvancing(true);
     qt_cameras->PauseCameras();
 
     play_time_manager->Stop();
@@ -2313,7 +2301,7 @@ void GMainWindow::OnPauseGame() {
 
 void GMainWindow::OnPauseContinueGame() {
     if (emulation_running) {
-        if (emu_thread->IsRunning()) {
+        if (emu_thread->IsRunning() && !system.frame_limiter.IsFrameAdvancing()) {
             OnPauseGame();
         } else {
             OnStartGame();
