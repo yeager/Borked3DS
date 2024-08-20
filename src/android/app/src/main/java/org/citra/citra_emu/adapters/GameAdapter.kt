@@ -159,11 +159,17 @@ class GameAdapter(private val activity: AppCompatActivity, private val inflater:
             } else {
                 View.VISIBLE
             }
+            binding.textGameId.visibility = if (game.titleId == 0L) {
+                View.GONE
+            } else {
+                View.VISIBLE
+            }
 
             binding.textGameTitle.text = game.title
             binding.textCompany.text = game.company
             binding.textGameRegion.text = game.regions
-
+            binding.textGameId.text = String.format("ID: %016X", game.titleId)
+            binding.textFilename.text = game.filename
 
             val backgroundColorId =
                 if (
@@ -190,6 +196,11 @@ class GameAdapter(private val activity: AppCompatActivity, private val inflater:
 
                     binding.textGameRegion.ellipsize = TextUtils.TruncateAt.MARQUEE
                     binding.textGameRegion.isSelected = true
+                    binding.textGameId.ellipsize = TextUtils.TruncateAt.MARQUEE
+                    binding.textGameId.isSelected = true
+
+                    binding.textFilename.ellipsize = TextUtils.TruncateAt.MARQUEE
+                    binding.textFilename.isSelected = true
                 },
                 3000
             )
