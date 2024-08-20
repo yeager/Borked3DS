@@ -33,6 +33,7 @@ enum class InitTicks : u32 {
     Fixed = 1,
 };
 
+/** Defines the layout option for desktop and mobile landscape */
 enum class LayoutOption : u32 {
     Default,
     SingleScreen,
@@ -42,16 +43,18 @@ enum class LayoutOption : u32 {
     SeparateWindows,
 #endif
     HybridScreen,
-#ifndef ANDROID // TODO: Implement custom layouts on Android
     CustomLayout,
-#endif
-    // Similiar to default, but better for mobile devices in portrait mode. Top screen in clamped to
-    // the top of the frame, and the bottom screen is enlarged to match the top screen.
-    MobilePortrait,
 
     // Similiar to LargeScreen, but better for mobile devices in landscape mode. The screens are
     // clamped to the top of the frame, and the bottom screen is a bit bigger.
     MobileLandscape,
+};
+
+/** Defines the layout option for mobile portrait */
+enum class PortraitLayoutOption : u32 {
+    // formerly mobile portrait
+    PortraitTopFullWidth,
+    PortraitCustomLayout,
 };
 
 enum class StereoRenderOption : u32 {
@@ -505,27 +508,15 @@ struct Values {
     SwitchableSetting<bool> upright_screen{false, "upright_screen"};
     SwitchableSetting<float, true> large_screen_proportion{4.f, 1.f, 16.f,
                                                            "large_screen_proportion"};
-    Setting<bool> custom_layout{false, "custom_layout"};
-    Setting<u16> custom_top_left{0, "custom_top_left"};
-    Setting<u16> custom_top_top{0, "custom_top_top"};
-    Setting<u16> custom_top_right{400, "custom_top_right"};
-    Setting<u16> custom_top_bottom{240, "custom_top_bottom"};
-    Setting<u16> custom_bottom_left{40, "custom_bottom_left"};
-    Setting<u16> custom_bottom_top{240, "custom_bottom_top"};
-    Setting<u16> custom_bottom_right{360, "custom_bottom_right"};
-    Setting<u16> custom_bottom_bottom{480, "custom_bottom_bottom"};
-    Setting<u16> custom_second_layer_opacity{100, "custom_second_layer_opacity"};
-
-    Setting<bool> new_custom_layout{false, "new_custom_layout"};
     Setting<u16> custom_top_x{0, "custom_top_x"};
     Setting<u16> custom_top_y{0, "custom_top_y"};
-    Setting<u16> custom_top_width{400, "custom_top_width"};
-    Setting<u16> custom_top_height{240, "custom_top_height"};
-    Setting<u16> custom_bottom_x{40, "custom_bottom_x"};
-    Setting<u16> custom_bottom_y{240, "custom_bottom_y"};
-    Setting<u16> custom_bottom_width{320, "custom_bottom_width"};
-    Setting<u16> custom_bottom_height{240, "custom_bottom_height"};
-    Setting<u16> new_custom_second_layer_opacity{100, "new_custom_second_layer_opacity"};
+    Setting<u16> custom_top_width{800, "custom_top_width"};
+    Setting<u16> custom_top_height{480, "custom_top_height"};
+    Setting<u16> custom_bottom_x{80, "custom_bottom_x"};
+    Setting<u16> custom_bottom_y{500, "custom_bottom_y"};
+    Setting<u16> custom_bottom_width{640, "custom_bottom_width"};
+    Setting<u16> custom_bottom_height{480, "custom_bottom_height"};
+    Setting<u16> custom_second_layer_opacity{100, "custom_second_layer_opacity"};
 
     SwitchableSetting<bool> screen_top_stretch{false, "screen_top_stretch"};
     Setting<u16> screen_top_leftright_padding{0, "screen_top_leftright_padding"};
@@ -533,6 +524,17 @@ struct Values {
     SwitchableSetting<bool> screen_bottom_stretch{false, "screen_bottom_stretch"};
     Setting<u16> screen_bottom_leftright_padding{0, "screen_bottom_leftright_padding"};
     Setting<u16> screen_bottom_topbottom_padding{0, "screen_bottom_topbottom_padding"};
+
+    SwitchableSetting<PortraitLayoutOption> portrait_layout_option{
+        PortraitLayoutOption::PortraitTopFullWidth, "portrait_layout_option"};
+    Setting<u16> custom_portrait_top_x{0, "custom_portrait_top_x"};
+    Setting<u16> custom_portrait_top_y{0, "custom_portrait_top_y"};
+    Setting<u16> custom_portrait_top_width{800, "custom_portrait_top_width"};
+    Setting<u16> custom_portrait_top_height{480, "custom_portrait_top_height"};
+    Setting<u16> custom_portrait_bottom_x{80, "custom_portrait_bottom_x"};
+    Setting<u16> custom_portrait_bottom_y{500, "custom_portrait_bottom_y"};
+    Setting<u16> custom_portrait_bottom_width{640, "custom_portrait_bottom_width"};
+    Setting<u16> custom_portrait_bottom_height{480, "custom_portrait_bottom_height"};
 
     SwitchableSetting<float> bg_red{0.f, "bg_red"};
     SwitchableSetting<float> bg_green{0.f, "bg_green"};

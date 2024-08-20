@@ -18,8 +18,6 @@ ConfigureLayout::ConfigureLayout(QWidget* parent)
     SetupPerGameUI();
     SetConfiguration();
 
-    ui->layout_group->setEnabled(!Settings::values.custom_layout);
-    ui->layout_group->setEnabled(!Settings::values.new_custom_layout);
     ui->large_screen_proportion->setEnabled(
         (Settings::values.layout_option.GetValue() == Settings::LayoutOption::LargeScreen));
     connect(ui->layout_combobox,
@@ -107,18 +105,8 @@ void ConfigureLayout::SetConfiguration() {
     ui->custom_bottom_y->setValue(Settings::values.custom_bottom_y.GetValue());
     ui->custom_bottom_width->setValue(Settings::values.custom_bottom_width.GetValue());
     ui->custom_bottom_height->setValue(Settings::values.custom_bottom_height.GetValue());
-    ui->new_custom_second_layer_opacity->setValue(
-        Settings::values.new_custom_second_layer_opacity.GetValue());
-    ui->screen_top_stretch->setChecked(Settings::values.screen_top_stretch.GetValue());
-    ui->screen_top_leftright_padding->setValue(
-        Settings::values.screen_top_leftright_padding.GetValue());
-    ui->screen_top_topbottom_padding->setValue(
-        Settings::values.screen_top_topbottom_padding.GetValue());
-    ui->screen_bottom_stretch->setChecked(Settings::values.screen_bottom_stretch.GetValue());
-    ui->screen_bottom_leftright_padding->setValue(
-        Settings::values.screen_bottom_leftright_padding.GetValue());
-    ui->screen_bottom_topbottom_padding->setValue(
-        Settings::values.screen_bottom_topbottom_padding.GetValue());
+    ui->custom_second_layer_opacity->setValue(
+        Settings::values.custom_second_layer_opacity.GetValue());
     bg_color =
         QColor::fromRgbF(Settings::values.bg_red.GetValue(), Settings::values.bg_green.GetValue(),
                          Settings::values.bg_blue.GetValue());
@@ -143,7 +131,7 @@ void ConfigureLayout::ApplyConfiguration() {
     Settings::values.custom_bottom_y = ui->custom_bottom_y->value();
     Settings::values.custom_bottom_width = ui->custom_bottom_width->value();
     Settings::values.custom_bottom_height = ui->custom_bottom_height->value();
-    Settings::values.new_custom_second_layer_opacity = ui->new_custom_second_layer_opacity->value();
+    Settings::values.custom_second_layer_opacity = ui->custom_second_layer_opacity->value();
 
     Settings::values.screen_top_stretch = ui->screen_top_stretch->checkState();
     Settings::values.screen_top_leftright_padding = ui->screen_top_leftright_padding->value();

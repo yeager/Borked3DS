@@ -7,7 +7,6 @@ package org.citra.citra_emu.utils
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.preference.PreferenceManager
 import org.citra.citra_emu.CitraApplication
-import org.citra.citra_emu.display.ScreenLayout
 
 object EmulationMenuSettings {
     private val preferences =
@@ -27,16 +26,7 @@ object EmulationMenuSettings {
                 .putBoolean("EmulationMenuSettings_DpadSlideEnable", value)
                 .apply()
         }
-    var landscapeScreenLayout: Int
-        get() = preferences.getInt(
-            "EmulationMenuSettings_LandscapeScreenLayout",
-            ScreenLayout.MOBILE_LANDSCAPE.int
-        )
-        set(value) {
-            preferences.edit()
-                .putInt("EmulationMenuSettings_LandscapeScreenLayout", value)
-                .apply()
-        }
+
     var showFps: Boolean
         get() = preferences.getBoolean("EmulationMenuSettings_ShowFps", false)
         set(value) {

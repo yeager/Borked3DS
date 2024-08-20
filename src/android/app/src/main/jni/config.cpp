@@ -188,19 +188,7 @@ void Config::ReadValues() {
 
     // Layout
     Settings::values.layout_option = static_cast<Settings::LayoutOption>(sdl2_config->GetInteger(
-        "Layout", "layout_option", static_cast<int>(Settings::LayoutOption::MobileLandscape)));
-
-    ReadSetting("Layout", Settings::values.custom_layout);
-    ReadSetting("Layout", Settings::values.custom_top_left);
-    ReadSetting("Layout", Settings::values.custom_top_top);
-    ReadSetting("Layout", Settings::values.custom_top_right);
-    ReadSetting("Layout", Settings::values.custom_top_bottom);
-    ReadSetting("Layout", Settings::values.custom_bottom_left);
-    ReadSetting("Layout", Settings::values.custom_bottom_top);
-    ReadSetting("Layout", Settings::values.custom_bottom_right);
-    ReadSetting("Layout", Settings::values.custom_bottom_bottom);
-
-    ReadSetting("Layout", Settings::values.new_custom_layout);
+        "Layout", "layout_option", static_cast<int>(Settings::LayoutOption::LargeScreen)));
     ReadSetting("Layout", Settings::values.custom_top_x);
     ReadSetting("Layout", Settings::values.custom_top_y);
     ReadSetting("Layout", Settings::values.custom_top_width);
@@ -209,10 +197,22 @@ void Config::ReadValues() {
     ReadSetting("Layout", Settings::values.custom_bottom_y);
     ReadSetting("Layout", Settings::values.custom_bottom_width);
     ReadSetting("Layout", Settings::values.custom_bottom_height);
-
     ReadSetting("Layout", Settings::values.cardboard_screen_size);
     ReadSetting("Layout", Settings::values.cardboard_x_shift);
     ReadSetting("Layout", Settings::values.cardboard_y_shift);
+
+    Settings::values.portrait_layout_option =
+        static_cast<Settings::PortraitLayoutOption>(sdl2_config->GetInteger(
+            "Layout", "portrait_layout_option",
+            static_cast<int>(Settings::PortraitLayoutOption::PortraitTopFullWidth)));
+    ReadSetting("Layout", Settings::values.custom_portrait_top_x);
+    ReadSetting("Layout", Settings::values.custom_portrait_top_y);
+    ReadSetting("Layout", Settings::values.custom_portrait_top_width);
+    ReadSetting("Layout", Settings::values.custom_portrait_top_height);
+    ReadSetting("Layout", Settings::values.custom_portrait_bottom_x);
+    ReadSetting("Layout", Settings::values.custom_portrait_bottom_y);
+    ReadSetting("Layout", Settings::values.custom_portrait_bottom_width);
+    ReadSetting("Layout", Settings::values.custom_portrait_bottom_height);
 
     // Utility
     ReadSetting("Utility", Settings::values.dump_textures);
