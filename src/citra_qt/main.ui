@@ -456,6 +456,11 @@
     <string>Manage Skylanders</string>
    </property>
   </action>
+  <action name="action_Manage_Skylanders">
+   <property name="text">
+    <string>Manage Skylanders</string>
+   </property>
+  </action>
   <action name="action_View_Lobby">
    <property name="enabled">
     <bool>true</bool>

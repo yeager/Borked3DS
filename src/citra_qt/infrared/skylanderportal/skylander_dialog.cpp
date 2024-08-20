@@ -1,3 +1,7 @@
+// Copyright 2024 Citra Emulator Project
+// Licensed under GPLv2 or any later version
+// Refer to the license.txt file included.
+
 #include "skylander_dialog.h"
 
 #include "common/file_util.h"

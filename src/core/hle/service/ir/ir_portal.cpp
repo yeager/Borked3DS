@@ -32,6 +32,7 @@ void IRPortal::HandlePortalCommand(std::span<const u8> data) {
     std::array<u8, 64> response = {};
 
     // The first byte of the Control Request is always a char for Skylanders
+    // (offset by 3 for infrared commands)
     switch (data[3]) {
     case 'A': {
         response = {0x41, data[4], 0xFF, 0x77, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,

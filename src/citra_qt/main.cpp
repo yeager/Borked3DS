@@ -665,7 +665,7 @@ void GMainWindow::InitializeHotkeys() {
         connect(secondary_hotkey, &QShortcut::activated, this, function);
     };
 
-connect_shortcut(QStringLiteral("Toggle Screen Layout"), &GMainWindow::ToggleScreenLayout);
+    connect_shortcut(QStringLiteral("Toggle Screen Layout"), &GMainWindow::ToggleScreenLayout);
 
     connect_shortcut(QStringLiteral("Exit Fullscreen"), [&] {
         if (emulation_running) {
@@ -738,20 +738,20 @@ connect_shortcut(QStringLiteral("Toggle Screen Layout"), &GMainWindow::ToggleScr
         }
     });
 
-// Secondary Window QAction Hotkeys
-const auto add_secondary_window_hotkey = [this](QAction* action, QKeySequence hotkey,
-                                                const char* slot) {
-    // This action will fire specifically when secondary_window is in focus
-    action->setShortcut(hotkey);
-    disconnect(action, SIGNAL(triggered()), this, slot);
-    connect(action, SIGNAL(triggered()), this, slot);
-    secondary_window->addAction(action);
-};
+    // Secondary Window QAction Hotkeys
+    const auto add_secondary_window_hotkey = [this](QAction* action, QKeySequence hotkey,
+                                                    const char* slot) {
+        // This action will fire specifically when secondary_window is in focus
+        action->setShortcut(hotkey);
+        disconnect(action, SIGNAL(triggered()), this, slot);
+        connect(action, SIGNAL(triggered()), this, slot);
+        secondary_window->addAction(action);
+    };
 
-// Use the same fullscreen hotkey as the main window
-const auto fullscreen_hotkey = hotkey_registry.GetKeySequence(main_window, fullscreen);
-add_secondary_window_hotkey(action_secondary_fullscreen, fullscreen_hotkey,
-                            SLOT(ToggleSecondaryFullscreen()));
+    // Use the same fullscreen hotkey as the main window
+    const auto fullscreen_hotkey = hotkey_registry.GetKeySequence(main_window, fullscreen);
+    add_secondary_window_hotkey(action_secondary_fullscreen, fullscreen_hotkey,
+                                SLOT(ToggleSecondaryFullscreen()));
 }
 
 void GMainWindow::SetDefaultUIGeometry() {
