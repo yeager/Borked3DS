@@ -95,7 +95,7 @@ OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
     <string name="license_oboe_description" translatable="false">Oboe is a C++ library which makes it easy to build high-performance audio apps on Android</string>
     <string name="license_oboe_link" translatable="false">https://github.com/google/oboe/</string>
     <string name="license_oboe_copyright" translatable="false">Copyright©️ Google</string>
-    <string name="license_oboe_text" tools:ignore="TypographyOther" translatable="false">
+    <string name="license_apache2_text" tools:ignore="TypographyOther" translatable="false">
     \n
    TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION\n
 \n
@@ -599,4 +599,8 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     </string>
+    <string name="license_spirvtools" translatable="false">SPIR-V Tools</string>
+    <string name="license_spirvtools_description" translatable="false">The SPIR-V Tools project provides an API and commands for processing SPIR-V modules</string>
+    <string name="license_spirvtools_link" translatable="false">https://github.com/KhronosGroup/SPIRV-Tools</string>
+    <string name="license_spirvtools_copyright" translatable="false">Copyright©️ Khronos Group Inc.</string>
 </resources>

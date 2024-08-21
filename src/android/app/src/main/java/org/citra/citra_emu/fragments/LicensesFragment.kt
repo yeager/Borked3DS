@@ -66,7 +66,7 @@ class LicensesFragment : Fragment() {
                 R.string.license_oboe_description,
                 R.string.license_oboe_link,
                 R.string.license_oboe_copyright,
-                R.string.license_oboe_text
+                R.string.license_apache2_text
             ),
             License(
                 R.string.license_cubeb,
@@ -156,6 +156,13 @@ class LicensesFragment : Fragment() {
                 R.string.license_sdl_link,
                 R.string.license_sdl_copyright,
                 R.string.license_sdl_text
+            ),
+            License(
+                R.string.license_spirvtools,
+                R.string.license_spirvtools_description,
+                R.string.license_spirvtools_link,
+                R.string.license_spirvtools_copyright,
+                R.string.license_apache2_text
             ),
             License(
                 R.string.license_vma,
