@@ -215,7 +215,10 @@
 
     <!-- Graphics settings strings -->
     <string name="renderer">Renderer</string>
+    <string name="vulkan_options">Vulkan Options</string>
     <string name="graphics_api">Graphics API</string>
+    <string name="graphics_hacks">Graphics Hacks</string>
+    <string name="advanced">Advanced</string>
     <string name="spirv_shader_gen">Enable SPIR-V shader generation</string>
     <string name="spirv_shader_gen_description">Emits the fragment shader used to emulate PICA using SPIR-V instead of GLSL.</string>
     <string name="use_sample_shading">Enable Sample Shading</string>
@@ -349,11 +352,12 @@
     <string name="setting_not_editable_description">This option can\'t be changed while a game is running.</string>
     <string name="auto_select">Auto-Select</string>
 
-    <!-- Tweaks Dialog -->
+    <!-- Hacks Dialog -->
     <string name="tweaks_title">Hacks</string>
     <string name="priority_boost_tweaks">Priority Boost</string>
     <string name="realtime_audio_tweaks">Real-time Audio</string>
     <string name="upscaling_hack_tweaks">Upscaling Hack</string>
+    <string name="cpu_hacks">CPU Hacks</string>
 
     <!-- Add Directory Screen-->
     <string name="select_game_folder">Select Game Folder</string>
@@ -375,11 +379,12 @@
     <string name="preferences_graphics">Graphics</string>
     <string name="preferences_graphics_description">Accuracy level, resolution, graphics API</string>
     <string name="preferences_audio">Audio</string>
-    <string name="preferences_audio_description">Input device, volume</string>
+    <string name="preferences_audio_description">Input device, volume, output mode</string>
     <string name="preferences_debug">Debug</string>
     <string name="preferences_debug_description">CPU JIT, CPU clock speed, vsync</string>
     <string name="preferences_theme">Theme and Color</string>
     <string name="preferences_layout">Layout</string>
+    <string name="preferences_layout_description">Portrait, Landscape, Custom</string>
     <!-- ROM loading errors -->
     <string name="loader_error_encrypted">Your ROM is Encrypted</string>
     <string name="loader_error_invalid_format">Invalid ROM format</string>

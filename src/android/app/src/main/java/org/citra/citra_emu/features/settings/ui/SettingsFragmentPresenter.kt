@@ -171,7 +171,7 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
             add(
                 SubmenuSetting(
                     R.string.preferences_layout,
-                    0,
+                    R.string.preferences_layout_description,
                     R.drawable.ic_fit_screen,
                     Settings.SECTION_LAYOUT
                 )
@@ -738,6 +738,58 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
                 )
             )
             add(
+                SingleChoiceSetting(
+                    IntSetting.RESOLUTION_FACTOR,
+                    R.string.internal_resolution,
+                    R.string.internal_resolution_description,
+                    R.array.resolutionFactorNames,
+                    R.array.resolutionFactorValues,
+                    IntSetting.RESOLUTION_FACTOR.key,
+                    IntSetting.RESOLUTION_FACTOR.defaultValue
+                )
+            )
+            add(
+                SwitchSetting(
+                    IntSetting.LINEAR_FILTERING,
+                    R.string.linear_filtering,
+                    R.string.linear_filtering_description,
+                    IntSetting.LINEAR_FILTERING.key,
+                    IntSetting.LINEAR_FILTERING.defaultValue
+                )
+            )
+            add(
+                SingleChoiceSetting(
+                    IntSetting.TEXTURE_FILTER,
+                    R.string.texture_filter_name,
+                    R.string.texture_filter_description,
+                    R.array.textureFilterNames,
+                    R.array.textureFilterValues,
+                    IntSetting.TEXTURE_FILTER.key,
+                    IntSetting.TEXTURE_FILTER.defaultValue
+                )
+            )
+            add(
+                SwitchSetting(
+                    IntSetting.SHADERS_ACCURATE_MUL,
+                    R.string.shaders_accurate_mul,
+                    R.string.shaders_accurate_mul_description,
+                    IntSetting.SHADERS_ACCURATE_MUL.key,
+                    IntSetting.SHADERS_ACCURATE_MUL.defaultValue
+                )
+            )
+            add(
+                SingleChoiceSetting(
+                    IntSetting.FRAME_SKIP,
+                    R.string.frame_skip_name,
+                    R.string.frame_skip_description,
+                    R.array.frameSkipNames,
+                    R.array.frameSkipValues,
+                    IntSetting.FRAME_SKIP.key,
+                    IntSetting.FRAME_SKIP.defaultValue
+                )
+            )
+            add(HeaderSetting(R.string.vulkan_options))
+            add(
                 SwitchSetting(
                     BooleanSetting.SPIRV_SHADER_GEN,
                     R.string.spirv_shader_gen,
@@ -802,26 +854,7 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
                     BooleanSetting.ASYNC_SHADERS.defaultValue
                 )
             )
-            add(
-                SingleChoiceSetting(
-                    IntSetting.RESOLUTION_FACTOR,
-                    R.string.internal_resolution,
-                    R.string.internal_resolution_description,
-                    R.array.resolutionFactorNames,
-                    R.array.resolutionFactorValues,
-                    IntSetting.RESOLUTION_FACTOR.key,
-                    IntSetting.RESOLUTION_FACTOR.defaultValue
-                )
-            )
-            add(
-                SwitchSetting(
-                    IntSetting.LINEAR_FILTERING,
-                    R.string.linear_filtering,
-                    R.string.linear_filtering_description,
-                    IntSetting.LINEAR_FILTERING.key,
-                    IntSetting.LINEAR_FILTERING.defaultValue
-                )
-            )
+            add(HeaderSetting(R.string.graphics_hacks))
             add(
                 SwitchSetting(
                     IntSetting.SKIP_SLOW_DRAW,
@@ -858,71 +891,6 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
                     IntSetting.UPSCALING_HACK.defaultValue
                 )
             )
-            add(
-                SwitchSetting(
-                    IntSetting.SHADERS_ACCURATE_MUL,
-                    R.string.shaders_accurate_mul,
-                    R.string.shaders_accurate_mul_description,
-                    IntSetting.SHADERS_ACCURATE_MUL.key,
-                    IntSetting.SHADERS_ACCURATE_MUL.defaultValue
-                )
-            )
-            if (GpuDriverHelper.supportsCustomDriverLoading()) {
-                add(
-                    SwitchSetting(
-                        BooleanSetting.ADRENO_GPU_BOOST,
-                        R.string.adreno_gpu_boost,
-                        R.string.adreno_gpu_boost_description,
-                        BooleanSetting.ADRENO_GPU_BOOST.key,
-                        BooleanSetting.ADRENO_GPU_BOOST.defaultValue
-                    )
-                )
-            }
-            add(
-                SwitchSetting(
-                    IntSetting.DISK_SHADER_CACHE,
-                    R.string.use_disk_shader_cache,
-                    R.string.use_disk_shader_cache_description,
-                    IntSetting.DISK_SHADER_CACHE.key,
-                    IntSetting.DISK_SHADER_CACHE.defaultValue
-                )
-            )
-            add(
-                SingleChoiceSetting(
-                    IntSetting.TEXTURE_FILTER,
-                    R.string.texture_filter_name,
-                    R.string.texture_filter_description,
-                    R.array.textureFilterNames,
-                    R.array.textureFilterValues,
-                    IntSetting.TEXTURE_FILTER.key,
-                    IntSetting.TEXTURE_FILTER.defaultValue
-                )
-            )
-            add(
-                SliderSetting(
-                    IntSetting.DELAY_RENDER_THREAD_US,
-                    R.string.delay_render_thread,
-                    R.string.delay_render_thread_description,
-                    0,
-                    16000,
-                    " μs",
-                    IntSetting.DELAY_RENDER_THREAD_US.key,
-                    IntSetting.DELAY_RENDER_THREAD_US.defaultValue.toFloat()
-                )
-            )
-
-            add(
-                SingleChoiceSetting(
-                    IntSetting.FRAME_SKIP,
-                    R.string.frame_skip_name,
-                    R.string.frame_skip_description,
-                    R.array.frameSkipNames,
-                    R.array.frameSkipValues,
-                    IntSetting.FRAME_SKIP.key,
-                    IntSetting.FRAME_SKIP.defaultValue
-                )
-            )
-
             add(HeaderSetting(R.string.stereoscopy))
             add(
                 SingleChoiceSetting(
@@ -1012,6 +980,39 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
                     R.string.async_custom_loading_description,
                     IntSetting.ASYNC_CUSTOM_LOADING.key,
                     IntSetting.ASYNC_CUSTOM_LOADING.defaultValue
+                )
+            )
+            add(HeaderSetting(R.string.advanced))
+            if (GpuDriverHelper.supportsCustomDriverLoading()) {
+                add(
+                    SwitchSetting(
+                        BooleanSetting.ADRENO_GPU_BOOST,
+                        R.string.adreno_gpu_boost,
+                        R.string.adreno_gpu_boost_description,
+                        BooleanSetting.ADRENO_GPU_BOOST.key,
+                        BooleanSetting.ADRENO_GPU_BOOST.defaultValue
+                    )
+                )
+            }
+            add(
+                SwitchSetting(
+                    IntSetting.DISK_SHADER_CACHE,
+                    R.string.use_disk_shader_cache,
+                    R.string.use_disk_shader_cache_description,
+                    IntSetting.DISK_SHADER_CACHE.key,
+                    IntSetting.DISK_SHADER_CACHE.defaultValue
+                )
+            )
+            add(
+                SliderSetting(
+                    IntSetting.DELAY_RENDER_THREAD_US,
+                    R.string.delay_render_thread,
+                    R.string.delay_render_thread_description,
+                    0,
+                    16000,
+                    " μs",
+                    IntSetting.DELAY_RENDER_THREAD_US.key,
+                    IntSetting.DELAY_RENDER_THREAD_US.defaultValue.toFloat()
                 )
             )
 
@@ -1415,6 +1416,25 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
             )
             add(
                 SwitchSetting(
+                    IntSetting.DEBUG_RENDERER,
+                    R.string.renderer_debug,
+                    R.string.renderer_debug_description,
+                    IntSetting.DEBUG_RENDERER.key,
+                    IntSetting.DEBUG_RENDERER.defaultValue
+                )
+            )
+            add(
+                SwitchSetting(
+                    BooleanSetting.INSTANT_DEBUG_LOG,
+                    R.string.instant_debug_log,
+                    R.string.instant_debug_log_desc,
+                    BooleanSetting.INSTANT_DEBUG_LOG.key,
+                    BooleanSetting.INSTANT_DEBUG_LOG.defaultValue
+                )
+            )
+            add(HeaderSetting(R.string.cpu_hacks))
+            add(
+                SwitchSetting(
                     IntSetting.ENABLE_CUSTOM_CPU_TICKS,
                     R.string.enable_custom_cpu_ticks,
                     R.string.enable_custom_cpu_ticks_description,
@@ -1450,24 +1470,6 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
                     R.string.priority_boost_description,
                     IntSetting.PRIORITY_BOOST.key,
                     IntSetting.PRIORITY_BOOST.defaultValue
-                )
-            )
-            add(
-                SwitchSetting(
-                    IntSetting.DEBUG_RENDERER,
-                    R.string.renderer_debug,
-                    R.string.renderer_debug_description,
-                    IntSetting.DEBUG_RENDERER.key,
-                    IntSetting.DEBUG_RENDERER.defaultValue
-                )
-            )
-            add(
-                SwitchSetting(
-                    BooleanSetting.INSTANT_DEBUG_LOG,
-                    R.string.instant_debug_log,
-                    R.string.instant_debug_log_desc,
-                    BooleanSetting.INSTANT_DEBUG_LOG.key,
-                    BooleanSetting.INSTANT_DEBUG_LOG.defaultValue
                 )
             )
         }
