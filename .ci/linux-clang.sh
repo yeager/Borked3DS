@@ -1,6 +1,6 @@
 #!/bin/bash -ex
 
-if [ "$TARGET" = "appimage" ]; then
+if [ "$TARGET" = "appimage-clang" ]; then
     # Compile the AppImage we distribute with Clang.
     export EXTRA_CMAKE_FLAGS=(-DCMAKE_LINKER=/usr/bin/lld-18)
     # Bundle required QT wayland libraries
@@ -27,7 +27,7 @@ cmake .. -G Ninja \
 ninja
 strip -s bin/Release/*
 
-if [ "$TARGET" = "appimage" ]; then
+if [ "$TARGET" = "appimage-clang" ]; then
     ninja bundle
     # TODO: Our AppImage environment currently uses an older ccache version without the verbose flag.
     ccache -s
