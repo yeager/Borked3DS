@@ -78,7 +78,30 @@ android {
                 arguments(
                     "-DENABLE_QT=0", // Don't use QT
                     "-DENABLE_SDL2=0", // Don't use SDL
-                    "-DANDROID_ARM_NEON=true" // cryptopp requires Neon to work
+                    "-DANDROID_ARM_NEON=true", // cryptopp requires Neon to work
+                    "-DUSE_SYSTEM_BOOST=OFF",
+                    "-DUSE_SYSTEM_CATCH2=OFF",
+                    "-DUSE_SYSTEM_CRYPTOPP=OFF",
+                    "-DUSE_SYSTEM_FMT=OFF",
+                    "-DUSE_SYSTEM_XBYAK=OFF",
+                    "-DUSE_SYSTEM_DYNARMIC=OFF",
+                    "-DUSE_SYSTEM_INIH=OFF",
+                    "-DUSE_SYSTEM_FFMPEG_HEADERS=OFF",
+                    "-DUSE_SYSTEM_SOUNDTOUCH=OFF",
+                    "-DUSE_SYSTEM_LIBUSB=OFF",
+                    "-DUSE_SYSTEM_ZSTD=OFF",
+                    "-DUSE_SYSTEM_ENET=OFF",
+                    "-DUSE_SYSTEM_CUBEB=OFF",
+                    "-DUSE_SYSTEM_JSON=OFF",
+                    "-DUSE_SYSTEM_OPENSSL=OFF",
+                    "-DUSE_SYSTEM_CPP_HTTPLIB=OFF",
+                    "-DUSE_SYSTEM_CPP_JWT=OFF",
+                    "-DUSE_SYSTEM_LODEPNG=OFF",
+                    "-DUSE_SYSTEM_OPENAL=OFF",
+                    "-DUSE_SYSTEM_GLSLANG=OFF",
+                    "-DUSE_SYSTEM_VULKAN_HEADERS=OFF",
+                    "-DUSE_SYSTEM_VMA=OFF",
+                    "-DCITRA_USE_EXTERNAL_VULKAN_SPIRV_TOOLS=ON"
                 )
             }
         }
