@@ -16,9 +16,11 @@ cmake .. -G Ninja \
     -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
     -DCMAKE_CXX_COMPILER=gcc-14 \
     -DCMAKE_C_COMPILER=gcc-14 \
-    -DCMAKE_LINKER=/usr/bin/gold \
-    -DCMAKE_CXX_FLAGS="-O2 -lstdc++ -fuse-ld=gold" \
-    -DCMAKE_C_FLAGS="-O2 -lstdc++ -fuse-ld=gold" \
+    -DCMAKE_CXX_FLAGS="-O2 -lstdc++" \
+    -DCMAKE_C_FLAGS="-O2 -lstdc++" \
+    -DCMAKE_LINKER_TYPE="MOLD" \
+    -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=mold -lstdc++" \
+    -DCMAKE_SHARED_LINKER_FLAGS="-fuse-ld=mold -lstdc++" \
     "${EXTRA_CMAKE_FLAGS[@]}" \
     -DENABLE_LTO=OFF \
     -DENABLE_TESTS=OFF \

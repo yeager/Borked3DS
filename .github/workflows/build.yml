@@ -65,6 +65,10 @@ jobs:
           target: 'desktop'
           arch: 'linux_gcc_64'
           modules: 'qtmultimedia qtwaylandcompositor'
+      - name: Install mold linker
+        uses: rui314/setup-mold@v1
+        with:
+          make-default: false
       - name: Build
         run: ./.ci/linux-clang.sh
       - name: Pack
@@ -113,6 +117,10 @@ jobs:
           target: 'desktop'
           arch: 'linux_gcc_64'
           modules: 'qtmultimedia qtwaylandcompositor'
+      - name: Install mold linker
+        uses: rui314/setup-mold@v1
+        with:
+          make-default: false
       - name: Build
         run: ./.ci/linux-gcc.sh
       - name: Pack
