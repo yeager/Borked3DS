@@ -123,6 +123,10 @@ priority_boost =
 # 0: Software, 1: OpenGL (default), 2: Vulkan
 graphics_api =
 
+# Whether to compile shaders on multiple worker threads (Vulkan only)
+# 0: Off, 1: On (default)
+async_shader_compilation =
+
 # Skips the slow drawing event from PICA core.
 # 0 (default): Off, 1: On
 skip_slow_draw =
