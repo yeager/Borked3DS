@@ -822,6 +822,15 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
                 )
             )
             add(
+                SwitchSetting(
+                    BooleanSetting.ASYNC_PRESENTATION,
+                    R.string.async_presentation,
+                    R.string.async_presentation_description,
+                    BooleanSetting.ASYNC_PRESENTATION.key,
+                    BooleanSetting.ASYNC_PRESENTATION.defaultValue
+                )
+            )
+            add(
                 SingleChoiceSetting(
                     IntSetting.FRAME_SKIP,
                     R.string.frame_skip_name,

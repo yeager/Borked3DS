@@ -16,6 +16,7 @@ enum class BooleanSetting(
     SPIRV_OUTPUT_LEGALIZATION("spirv_output_legalization", Settings.SECTION_RENDERER, false),
     ASYNC_SHADERS("async_shader_compilation", Settings.SECTION_RENDERER, false),
     PRELOAD_TEXTURES("preload_textures", Settings.SECTION_RENDERER, false),
+    ASYNC_PRESENTATION("async_presentation", Settings.SECTION_RENDERER, true),
     SHADER_JIT("use_shader_jit", Settings.SECTION_RENDERER, true),
     CORE_DOWNCOUNT_HACK("core_downcount_hack", Settings.SECTION_RENDERER, false),
     PLUGIN_LOADER("plugin_loader", Settings.SECTION_SYSTEM, false),

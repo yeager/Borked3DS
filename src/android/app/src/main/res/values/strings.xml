@@ -234,6 +234,8 @@
     <string name="relaxed_precision_decorators_desc">Optimizes shader code by allowing certain floating-point operations to use reduced precision. Can improve performance by reducing memory bandwidth and computational requirements. May cause issues on certain GPUs, particularly on Mali GPUs.</string>
     <string name="async_shaders">Enable Asynchronous Shader Compilation</string>
     <string name="async_shaders_description">Compiles shaders in the background to reduce stuttering during gameplay. When enabled expect temporary graphical glitches.</string>
+    <string name="async_presentation">Enable Async Presentation</string>
+    <string name="async_presentation_description">Perform presentation on seperate threads. Improves performance on Vulkan in most games.</string>
     <string name="renderer_debug">Debug Renderer</string>
     <string name="renderer_debug_description">Log additional graphics related debug information. When enabled, game performance will be significantly reduced.</string>
     <string name="vsync">Enable V-Sync</string>

@@ -155,6 +155,10 @@ shaders_accurate_mul =
 # 0: Interpreter (slow), 1 (default): JIT (fast)
 use_shader_jit =
 
+# Perform presentation on seperate threads. Improves performance on Vulkan in most games.
+# 0: Off, 1 (default): On
+async_presentation =
+
 # Forces VSync on the display thread. Usually doesn't impact performance, but on some drivers it can
 # so only turn this off if you notice a speed difference.
 # 0: Off, 1 (default): On
