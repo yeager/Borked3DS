@@ -983,6 +983,15 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
             add(HeaderSetting(R.string.utility))
             add(
                 SwitchSetting(
+                    IntSetting.CUSTOM_TEXTURES,
+                    R.string.custom_textures,
+                    R.string.custom_textures_description,
+                    IntSetting.CUSTOM_TEXTURES.key,
+                    IntSetting.CUSTOM_TEXTURES.defaultValue
+                )
+            )
+            add(
+                SwitchSetting(
                     IntSetting.DUMP_TEXTURES,
                     R.string.dump_textures,
                     R.string.dump_textures_description,
@@ -992,11 +1001,11 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
             )
             add(
                 SwitchSetting(
-                    IntSetting.CUSTOM_TEXTURES,
-                    R.string.custom_textures,
-                    R.string.custom_textures_description,
-                    IntSetting.CUSTOM_TEXTURES.key,
-                    IntSetting.CUSTOM_TEXTURES.defaultValue
+                    BooleanSetting.PRELOAD_TEXTURES,
+                    R.string.preload_textures,
+                    R.string.preload_textures_description,
+                    BooleanSetting.PRELOAD_TEXTURES.key,
+                    BooleanSetting.PRELOAD_TEXTURES.defaultValue
                 )
             )
             add(
@@ -1050,18 +1059,6 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
                     IntSetting.DELAY_RENDER_THREAD_US.defaultValue.toFloat()
                 )
             )
-
-            // Disabled until custom texture implementation gets rewrite, current one overloads RAM
-            // and crashes Citra.
-            // add(
-            //     SwitchSetting(
-            //         BooleanSetting.PRELOAD_TEXTURES,
-            //         R.string.preload_textures,
-            //         R.string.preload_textures_description,
-            //         BooleanSetting.PRELOAD_TEXTURES.key,
-            //         BooleanSetting.PRELOAD_TEXTURES.defaultValue
-            //     )
-            // )
         }
     }
 
