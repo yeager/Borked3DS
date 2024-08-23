@@ -168,6 +168,11 @@ async_presentation =
 # 0: Off, 1 (default): On
 use_vsync_new =
 
+# Overrides the sampling filter used by games. This can be useful in certain cases with poorly behaved
+# games when upscaling.
+# 0 (default): Game Controlled, 2: Nearest Neighbor, 3: Linear
+texture_sampling =
+
 # Reduce stuttering by storing and loading generated shaders to disk
 # 0: Off, 1 (default. On)
 use_disk_shader_cache =

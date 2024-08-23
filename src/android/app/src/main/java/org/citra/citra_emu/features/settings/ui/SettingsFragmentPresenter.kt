@@ -1048,6 +1048,17 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
                 )
             }
             add(
+                SingleChoiceSetting(
+                    IntSetting.TEXTURE_SAMPLING,
+                    R.string.texture_sampling_name,
+                    R.string.texture_sampling_description,
+                    R.array.textureSamplingNames,
+                    R.array.textureSamplingValues,
+                    IntSetting.TEXTURE_SAMPLING.key,
+                    IntSetting.TEXTURE_SAMPLING.defaultValue
+                )
+            )
+            add(
                 SwitchSetting(
                     IntSetting.DISK_SHADER_CACHE,
                     R.string.use_disk_shader_cache,

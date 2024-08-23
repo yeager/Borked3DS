@@ -275,6 +275,8 @@
     <string name="frame_limit_slider_description">Specifies the percentage to limit emulation speed. With the default of 100% emulation will be limited to normal speed. Values higher or lower will increase or decrease the speed limit.</string>
     <string name="frame_skip_name">Frame Skip</string>
     <string name="frame_skip_description">The amount of frames to skip. May not work well with Realtime Audio enabled. Experimental.</string>
+    <string name="texture_sampling_name">Texture Sampling</string>
+    <string name="texture_sampling_description">Overrides the sampling filter used by games. This can be useful in certain cases with poorly behaved games when upscaling.</string>
     <string name="internal_resolution">Internal Resolution</string>
     <string name="internal_resolution_description">Specifies the resolution used to render at. A high resolution will improve visual quality a lot but is also quite heavy on performance and might cause glitches in certain games.</string>
     <string name="internal_resolution_setting_auto">Auto (Screen Size)</string>
@@ -645,6 +647,11 @@
     <string name="x4">x4</string>
     <string name="x8">x8</string>
     <string name="x16">x16</string>
+
+   <!-- Texture Sampling names -->
+    <string name="game_controlled">Game Controlled</string>
+    <string name="linear">Linear</string>
+
 
     <!-- SPIRV Optimization modes -->
     <string name="performance">Performance</string>
