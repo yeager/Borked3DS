@@ -259,6 +259,24 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
     private fun addSystemSettings(sl: ArrayList<SettingsItem>) {
         settingsActivity.setToolbarTitle(settingsActivity.getString(R.string.preferences_system))
         sl.apply {
+            add(
+                SwitchSetting(
+                    IntSetting.NEW_3DS,
+                    R.string.new_3ds,
+                    0,
+                    IntSetting.NEW_3DS.key,
+                    IntSetting.NEW_3DS.defaultValue
+                )
+            )
+            add(
+                SwitchSetting(
+                    IntSetting.LLE_APPLETS,
+                    R.string.lle_applets,
+                    0,
+                    IntSetting.LLE_APPLETS.key,
+                    IntSetting.LLE_APPLETS.defaultValue
+                )
+            )
             val usernameSetting = object : AbstractStringSetting {
                 override var string: String
                     get() = SystemSaveGame.getUsername()
@@ -366,7 +384,6 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
                     { "0x${SystemSaveGame.getConsoleId().toHexString().uppercase()}" }
                 )
             )
-
             add(HeaderSetting(R.string.birthday))
             val systemBirthdayMonthSetting = object : AbstractShortSetting {
                 override var short: Short
@@ -725,7 +742,6 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
     private fun addGraphicsSettings(sl: ArrayList<SettingsItem>) {
         settingsActivity.setToolbarTitle(settingsActivity.getString(R.string.preferences_graphics))
         sl.apply {
-            add(HeaderSetting(R.string.renderer))
             add(
                 SingleChoiceSetting(
                     IntSetting.GRAPHICS_API,
@@ -737,6 +753,7 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
                     IntSetting.GRAPHICS_API.defaultValue
                 )
             )
+            add(HeaderSetting(R.string.renderer))
             add(
                 SingleChoiceSetting(
                     IntSetting.RESOLUTION_FACTOR,
@@ -770,11 +787,29 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
             )
             add(
                 SwitchSetting(
+                    IntSetting.HW_SHADER,
+                    R.string.hw_shaders,
+                    R.string.hw_shaders_description,
+                    IntSetting.HW_SHADER.key,
+                    IntSetting.HW_SHADER.defaultValue
+                )
+            )
+            add(
+                SwitchSetting(
                     IntSetting.SHADERS_ACCURATE_MUL,
                     R.string.shaders_accurate_mul,
                     R.string.shaders_accurate_mul_description,
                     IntSetting.SHADERS_ACCURATE_MUL.key,
                     IntSetting.SHADERS_ACCURATE_MUL.defaultValue
+                )
+            )
+            add(
+                SwitchSetting(
+                    BooleanSetting.ASYNC_SHADERS,
+                    R.string.async_shaders,
+                    R.string.async_shaders_description,
+                    BooleanSetting.ASYNC_SHADERS.key,
+                    BooleanSetting.ASYNC_SHADERS.defaultValue
                 )
             )
             add(
@@ -844,15 +879,6 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
                     BooleanSetting.RELAXED_PRECISION_DECORATORS.key,
                     BooleanSetting.RELAXED_PRECISION_DECORATORS.defaultValue,
                 )    
-            )
-            add(
-                SwitchSetting(
-                    BooleanSetting.ASYNC_SHADERS,
-                    R.string.async_shaders,
-                    R.string.async_shaders_description,
-                    BooleanSetting.ASYNC_SHADERS.key,
-                    BooleanSetting.ASYNC_SHADERS.defaultValue
-                )
             )
             add(HeaderSetting(R.string.graphics_hacks))
             add(
@@ -1001,6 +1027,15 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
                     R.string.use_disk_shader_cache_description,
                     IntSetting.DISK_SHADER_CACHE.key,
                     IntSetting.DISK_SHADER_CACHE.defaultValue
+                )
+            )
+            add(
+                SwitchSetting(
+                    IntSetting.VSYNC,
+                    R.string.vsync,
+                    R.string.vsync_description,
+                    IntSetting.VSYNC.key,
+                    IntSetting.VSYNC.defaultValue
                 )
             )
             add(
@@ -1357,24 +1392,7 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
         settingsActivity.setToolbarTitle(settingsActivity.getString(R.string.preferences_debug))
         sl.apply {
             add(HeaderSetting(R.string.debug_warning))
-            add(
-                SwitchSetting(
-                    IntSetting.NEW_3DS,
-                    R.string.new_3ds,
-                    0,
-                    IntSetting.NEW_3DS.key,
-                    IntSetting.NEW_3DS.defaultValue
-                )
-            )
-            add(
-                SwitchSetting(
-                    IntSetting.LLE_APPLETS,
-                    R.string.lle_applets,
-                    0,
-                    IntSetting.LLE_APPLETS.key,
-                    IntSetting.LLE_APPLETS.defaultValue
-                )
-            )
+            add(HeaderSetting(R.string.cpu_options))
             add(
                 SliderSetting(
                     IntSetting.CPU_CLOCK_SPEED,
@@ -1394,42 +1412,6 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
                     R.string.cpu_jit_description,
                     IntSetting.CPU_JIT.key,
                     IntSetting.CPU_JIT.defaultValue
-                )
-            )
-            add(
-                SwitchSetting(
-                    IntSetting.HW_SHADER,
-                    R.string.hw_shaders,
-                    R.string.hw_shaders_description,
-                    IntSetting.HW_SHADER.key,
-                    IntSetting.HW_SHADER.defaultValue
-                )
-            )
-            add(
-                SwitchSetting(
-                    IntSetting.VSYNC,
-                    R.string.vsync,
-                    R.string.vsync_description,
-                    IntSetting.VSYNC.key,
-                    IntSetting.VSYNC.defaultValue
-                )
-            )
-            add(
-                SwitchSetting(
-                    IntSetting.DEBUG_RENDERER,
-                    R.string.renderer_debug,
-                    R.string.renderer_debug_description,
-                    IntSetting.DEBUG_RENDERER.key,
-                    IntSetting.DEBUG_RENDERER.defaultValue
-                )
-            )
-            add(
-                SwitchSetting(
-                    BooleanSetting.INSTANT_DEBUG_LOG,
-                    R.string.instant_debug_log,
-                    R.string.instant_debug_log_desc,
-                    BooleanSetting.INSTANT_DEBUG_LOG.key,
-                    BooleanSetting.INSTANT_DEBUG_LOG.defaultValue
                 )
             )
             add(HeaderSetting(R.string.cpu_hacks))
@@ -1470,6 +1452,25 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
                     R.string.priority_boost_description,
                     IntSetting.PRIORITY_BOOST.key,
                     IntSetting.PRIORITY_BOOST.defaultValue
+                )
+            )
+            add(HeaderSetting(R.string.logging))
+            add(
+                SwitchSetting(
+                    IntSetting.DEBUG_RENDERER,
+                    R.string.renderer_debug,
+                    R.string.renderer_debug_description,
+                    IntSetting.DEBUG_RENDERER.key,
+                    IntSetting.DEBUG_RENDERER.defaultValue
+                )
+            )
+            add(
+                SwitchSetting(
+                    BooleanSetting.INSTANT_DEBUG_LOG,
+                    R.string.instant_debug_log,
+                    R.string.instant_debug_log_desc,
+                    BooleanSetting.INSTANT_DEBUG_LOG.key,
+                    BooleanSetting.INSTANT_DEBUG_LOG.defaultValue
                 )
             )
         }
