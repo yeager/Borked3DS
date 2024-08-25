@@ -233,12 +233,16 @@ bg_blue =
 bg_green =
 
 # Whether and how Stereoscopic 3D should be rendered
-# 0 (default): Off, 1: Side by Side, 2: Reverse Side by Side, 3: Anaglyph, 4: Interlaced, 5: Reverse Interlaced, 6: Cardboard VR
+# 0 (default): Off (Monoscopic), 1: Side by Side, 2: Reverse Side by Side, 3: Anaglyph, 4: Interlaced, 5: Reverse Interlaced, 6: Cardboard VR
 render_3d =
 
 # Change 3D Intensity
 # 0 - 100: Intensity. 0 (default)
 factor_3d =
+
+# Change default eye to render when in Monoscopic Mode (i.e. Stereoscopic 3D Mode is set to `Off`).
+# 0 (default): Left, 1: Right
+mono_render_option =
 
 # The name of the post processing shader to apply.
 # Loaded from shaders if render_3d is off or side by side.

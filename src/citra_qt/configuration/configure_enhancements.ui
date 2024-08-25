@@ -333,7 +333,7 @@
          <widget class="QComboBox" name="render_3d_combobox">
           <item>
            <property name="text">
-            <string>Off</string>
+            <string>Off (Monoscopic)</string>
            </property>
           </item>
           <item>
@@ -396,6 +396,9 @@
        <layout class="QHBoxLayout" name="horizontalLayout_7">
         <item>
          <widget class="QLabel" name="label_6">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Change default eye to render when Stereoscopic 3D Mode is set to Off.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
           <property name="text">
            <string>Eye to Render in Monoscopic Mode</string>
           </property>

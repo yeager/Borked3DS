@@ -971,6 +971,17 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
                     IntSetting.STEREOSCOPIC_3D_DEPTH.defaultValue.toFloat()
                 )
             )
+            add(
+                SingleChoiceSetting(
+                    IntSetting.MONO_RENDER_OPTION,
+                    R.string.mono_render_option,
+                    R.string.mono_render_option_description,
+                    R.array.monoRenderOptionModes,
+                    R.array.monoRenderOptionValues,
+                    IntSetting.MONO_RENDER_OPTION.key,
+                    IntSetting.MONO_RENDER_OPTION.defaultValue
+                )
+            )
 
             add(HeaderSetting(R.string.cardboard_vr))
             add(
