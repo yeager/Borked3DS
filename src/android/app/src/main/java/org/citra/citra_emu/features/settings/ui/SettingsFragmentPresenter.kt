@@ -263,7 +263,7 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
                 SwitchSetting(
                     IntSetting.NEW_3DS,
                     R.string.new_3ds,
-                    0,
+                    R.string.new_3ds_description,
                     IntSetting.NEW_3DS.key,
                     IntSetting.NEW_3DS.defaultValue
                 )
@@ -272,7 +272,7 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
                 SwitchSetting(
                     IntSetting.LLE_APPLETS,
                     R.string.lle_applets,
-                    0,
+                    R.string.lle_applets_description,
                     IntSetting.LLE_APPLETS.key,
                     IntSetting.LLE_APPLETS.defaultValue
                 )
@@ -1463,7 +1463,7 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
                 SliderSetting(
                     IntSetting.CPU_CLOCK_SPEED,
                     R.string.cpu_clock_speed,
-                    0,
+                    R.string.cpu_clock_speed_description,
                     25,
                     400,
                     "%",

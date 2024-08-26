@@ -177,12 +177,15 @@
     <string name="init_clock">Clock</string>
     <string name="init_clock_description">Set the emulated 3DS clock to either reflect that of your device or start at a simulated date and time.</string>
     <string name="cpu_clock_speed">CPU Clock Speed</string>
+    <string name="cpu_clock_speed_description">Changes the emulated CPU clock frequency. Underclocking can increase performance but may cause the game to freeze. Overclocking may reduce in game lag but also might cause freezes.</string>
     <string name="cpu_options">CPU Options</string>
 
     <!-- System settings strings -->
     <string name="username">Username</string>
     <string name="new_3ds">New 3DS Mode</string>
+    <string name="new_3ds_description">The system model that Citra will try to emulate.</string>
     <string name="lle_applets">Use LLE Applets (if installed)</string>
+    <string name="lle_applets_description">Use the original 3DS OS software for emulation. For example, use the same keyboard screen as a 3DS when games request the software keyboard, rather than a popup.</string>
     <string name="clock">Clock</string>
     <string name="init_time">Offset Time</string>
     <string name="init_time_description">If the clock is set to \"Simulated clock\", this changes the fixed date and time to start at.</string>

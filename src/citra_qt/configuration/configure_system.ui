@@ -51,6 +51,9 @@
            <layout class="QGridLayout" name="gridLayout">
             <item row="1" column="0">
              <widget class="QCheckBox" name="toggle_new_3ds">
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The system model that Citra will try to emulate.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
               <property name="text">
                <string>Enable New 3DS Mode</string>
               </property>
@@ -58,6 +61,9 @@
             </item>
             <item row="1" column="1">
              <widget class="QCheckBox" name="toggle_lle_applets">
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use the original 3DS OS software for emulation. For example, use the same keyboard screen as a 3DS when games request the software keyboard, rather than a popup.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
               <property name="text">
                <string>Use LLE Applets (if installed)</string>
               </property>
