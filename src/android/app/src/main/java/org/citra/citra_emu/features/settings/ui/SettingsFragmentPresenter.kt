@@ -983,6 +983,23 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
                 )
             )
 
+            val anaglyphShaderModes =
+                settingsActivity.resources.getStringArray(R.array.anaglyphShaderNameModes)
+            val anaglyphShaderValues =
+                settingsActivity.resources.getStringArray(R.array.anaglyphShaderNameValues)
+
+            add(
+                StringSingleChoiceSetting(
+                    StringSetting.ANAGLYPH_SHADER_NAME,
+                    R.string.anaglyph_shader_name,
+                    R.string.anaglyph_shader_name_description,
+                    anaglyphShaderModes,
+                    anaglyphShaderValues,
+                    StringSetting.ANAGLYPH_SHADER_NAME.key,
+                    StringSetting.ANAGLYPH_SHADER_NAME.defaultValue
+                )
+            )
+
             add(HeaderSetting(R.string.cardboard_vr))
             add(
                 SliderSetting(

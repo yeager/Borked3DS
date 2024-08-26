@@ -195,6 +195,16 @@
         <item>1</item>
     </integer-array>
 
+    <string-array name="anaglyphShaderNameModes">
+        <item>@string/rendepth</item>
+        <item>@string/dubois</item>
+    </string-array>
+
+    <string-array name="anaglyphShaderNameValues">
+        <item>@string/anaglyph_setting_rendepth</item>
+        <item>@string/anaglyph_setting_dubois</item>
+    </string-array>
+
     <string-array name="graphicsApiNames">
         <item>@string/opengles</item>
         <item>@string/vulkan</item>

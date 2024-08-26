@@ -303,6 +303,12 @@
     <string name="left_eye">Left Eye (default)</string>
     <string name="right_eye">Right Eye</string>
     <string name="off_monoscopic">Off (Monoscopic)</string>
+    <string name="anaglyph_shader_name">Anaglyph Post-Processing Shader</string>
+    <string name="anaglyph_shader_name_description">Anaglyph algorithm to apply when Stereoscopic 3D Mode is set to Anaglyph.</string>
+    <string name="rendepth">Rendepth</string>
+    <string name="dubois">Dubois</string>
+    <string name="anaglyph_setting_rendepth">rendepth (builtin)</string>
+    <string name="anaglyph_setting_dubois">dubois (builtin)</string>
     <string name="cardboard_vr">Cardboard VR</string>
     <string name="cardboard_screen_size">Cardboard Screen Size</string>
     <string name="cardboard_screen_size_description">Scales the screen to a percentage of its original size.</string>

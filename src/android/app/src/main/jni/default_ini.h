@@ -249,7 +249,10 @@ mono_render_option =
 pp_shader_name =
 
 # The name of the shader to apply when render_3d is anaglyph.
-# Loaded from shaders/anaglyph
+# Loaded from shaders/anaglyph.
+# Options (enter as strings):
+# rendepth (builtin)
+# dubois (builtin)
 anaglyph_shader_name =
 
 # Whether to enable linear filtering or not
