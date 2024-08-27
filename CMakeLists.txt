@@ -7,6 +7,8 @@ cmake_policy(SET CMP0063 NEW)
 set(CMAKE_POLICY_DEFAULT_CMP0063 NEW)
 # Enforce new LTO setting
 cmake_policy(SET CMP0069 NEW)
+# Include file check macros honor CMAKE_REQUIRED_LIBRARIES
+cmake_policy(SET CMP0075 NEW)
 # Needed to compile sdl2 2.30.5+ on MSVC
 set(CMAKE_POLICY_DEFAULT_CMP0077 NEW)
 # Needed for GPUCode's teakra
