@@ -165,6 +165,13 @@ class LicensesFragment : Fragment() {
                 R.string.license_apache2_text
             ),
             License(
+                R.string.license_tracy,
+                R.string.license_tracy_description,
+                R.string.license_tracy_link,
+                R.string.license_tracy_copyright,
+                R.string.license_bsd3_text
+            ),
+            License(
                 R.string.license_vma,
                 R.string.license_vma_description,
                 R.string.license_vma_link,
