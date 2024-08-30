@@ -93,7 +93,7 @@ class LicensesFragment : Fragment() {
                 R.string.license_dynarmic_description,
                 R.string.license_dynarmic_link,
                 R.string.license_dynarmic_copyright,
-                R.string.license_dynarmic_text
+                R.string.license_0bsd_text
             ),
             License(
                 R.string.license_enet,
@@ -158,11 +158,18 @@ class LicensesFragment : Fragment() {
                 R.string.license_lgpl21_text
             ),
             License(
+                R.string.license_lodepng,
+                R.string.license_lodepng_description,
+                R.string.license_lodepng_link,
+                R.string.license_lodepng_copyright,
+                R.string.license_zlib_text
+            ),
+            License(
                 R.string.license_nihstro,
                 R.string.license_nihstro_description,
                 R.string.license_nihstro_link,
                 R.string.license_nihstro_copyright,
-                R.string.license_nihstro_text
+                R.string.license_bsd3_text
             ),
             License(
                 R.string.license_oaknut,
@@ -190,7 +197,7 @@ class LicensesFragment : Fragment() {
                 R.string.license_sdl_description,
                 R.string.license_sdl_link,
                 R.string.license_sdl_copyright,
-                R.string.license_sdl_text
+                R.string.license_zlib_text
             ),
             License(
                 R.string.license_sirit,
