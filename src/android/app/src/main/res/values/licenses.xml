@@ -91,6 +91,17 @@ WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN
 AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT
 OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 </string>
+    <string name="license_libressl" translatable="false">LibreSSL</string>
+    <string name="license_libressl_description" translatable="false">LibreSSL is a version of the TLS/crypto stack forked from OpenSSL in 2014, with goals of modernizing the codebase, improving security, and applying best practice development processes</string>
+    <string name="license_libressl_link" translatable="false">https://www.libressl.org/</string>
+    <string name="license_libressl_copyright" translatable="false">Copyright©️ 2014 OpenBSD Project</string>
+    <string name="license_libressl_license_text" translatable="false">
+Copyright 2014 OpenBSD Project\n\n
+
+Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.\n\n
+
+THE SOFTWARE IS PROVIDED “AS IS” AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+    </string>
     <string name="license_libusb" translatable="false">libusb</string>
     <string name="license_libusb_description" translatable="false">A cross-platform library to access USB devices</string>
     <string name="license_libusb_link" translatable="false">https://libusb.info/</string>

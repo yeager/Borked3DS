@@ -137,6 +137,13 @@ class LicensesFragment : Fragment() {
                 R.string.license_mit
             ),
             License(
+                R.string.license_libressl,
+                R.string.license_libressl_description,
+                R.string.license_libressl_link,
+                R.string.license_libressl_copyright,
+                R.string.license_libressl_license_text
+            ),
+            License(
                 R.string.license_libusb,
                 R.string.license_libusb_description,
                 R.string.license_libusb_link,
