@@ -75,6 +75,13 @@ class LicensesFragment : Fragment() {
                 R.string.license_boost_text
             ),
             License(
+                R.string.license_citra,
+                R.string.license_citra_description,
+                R.string.license_citra_link,
+                R.string.license_citra_copyright,
+                R.string.license_gpl2_text
+            ),
+            License(
                 R.string.license_cryptopp,
                 R.string.license_cryptopp_description,
                 R.string.license_cryptopp_link,
