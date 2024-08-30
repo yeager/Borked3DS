@@ -284,11 +284,19 @@ This project is currently licensed under the Boost Software License 1.0 (http://
     <string name="license_enet_description" translatable="false">Reliable UDP networking library</string>
     <string name="license_enet_link" translatable="false">https://github.com/lsalzman/enet</string>
     <string name="license_enet_copyright" translatable="false">Copyright © 2002-2020 Lee Salzman</string>
+    <string name="license_ffmpeg" translatable="false">FFmpeg</string>
+    <string name="license_ffmpeg_description" translatable="false">A complete, cross-platform solution to record, convert and stream audio and video</string>
+    <string name="license_ffmpeg_link" translatable="false">https://ffmpeg.org</string>
+    <string name="license_ffmpeg_copyright" translatable="false">Copyright © 2012-Present, Victor Zverovich and fmt contributors</string>
+    <string name="license_ffmpeg_text" translatable="false">
+FFmpeg is licensed under the GNU Lesser General Public License (LGPL) version 2.1 or later. However, FFmpeg incorporates several optional parts and optimizations that are covered by the GNU General Public License (GPL) version 2 or later. If those parts get used the GPL applies to all of FFmpeg.\n\n
+
+More details: https://ffmpeg.org/legal.html
+    </string>
     <string name="license_fmt" translatable="false">fmt</string>
     <string name="license_fmt_description" translatable="false">A modern formatting library providing a fast and safe alternative to C stdio and C++ iostreams</string>
     <string name="license_fmt_link" translatable="false">https://github.com/fmtlib/fmt</string>
     <string name="license_fmt_copyright" translatable="false">Copyright © 2012-Present, Victor Zverovich and fmt contributors</string>
-
     <string name="license_glad" translatable="false">glad</string>
     <string name="license_glad_description" translatable="false">Multi-Language Vulkan/GL/GLES/EGL/GLX/WGL Loader-Generator based on the official specs</string>
     <string name="license_glad_link" translatable="false">https://github.com/Dav1dde/glad</string>

@@ -110,6 +110,13 @@ class LicensesFragment : Fragment() {
                 R.string.license_gpl2_text
             ),
             License(
+                R.string.license_ffmpeg,
+                R.string.license_ffmpeg_description,
+                R.string.license_ffmpeg_link,
+                R.string.license_ffmpeg_copyright,
+                R.string.license_ffmpeg_text
+            ),
+            License(
                 R.string.license_fmt,
                 R.string.license_fmt_description,
                 R.string.license_fmt_link,
