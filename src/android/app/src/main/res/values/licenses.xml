@@ -91,6 +91,27 @@ WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN
 AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT
 OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 </string>
+    <string name="license_libusb" translatable="false">libusb</string>
+    <string name="license_libusb_description" translatable="false">A cross-platform library to access USB devices</string>
+    <string name="license_libusb_link" translatable="false">https://libusb.info/</string>
+    <string name="license_libusb_copyright" translatable="false">Copyright©️ 2012-2024 libusb</string>
+    <string name="license_lgpl21_text" translatable="false">
+    This library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 2.1 of the License, or (at your option) any later version.\n\n
+
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+    Lesser General Public License for more details.\n\n
+
+    You should have received a copy of the GNU Lesser General Public
+    License along with this library; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA\n\n
+
+    https://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt
+    </string>
     <string name="license_oboe" translatable="false">oboe</string>
     <string name="license_oboe_description" translatable="false">Oboe is a C++ library which makes it easy to build high-performance audio apps on Android</string>
     <string name="license_oboe_link" translatable="false">https://github.com/google/oboe/</string>
@@ -269,31 +290,6 @@ OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
       of your accepting any such warranty or additional liability.\n
 \n
    END OF TERMS AND CONDITIONS\n
-\n
-   APPENDIX: How to apply the Apache License to your work.\n
-\n
-      To apply the Apache License to your work, attach the following
-      boilerplate notice, with the fields enclosed by brackets "[]"
-      replaced with your own identifying information. (Don\'t include
-      the brackets!)  The text should be enclosed in the appropriate
-      comment syntax for the file format. We also recommend that a
-      file or class name and description of purpose be included on the
-      same "printed page" as the copyright notice for easier
-      identification within third-party archives.\n
-\n
-   Copyright [yyyy] [name of copyright owner]\n
-\n
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at\n
-\n
-       http://www.apache.org/licenses/LICENSE-2.0\n
-\n
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
     </string>
     <string name="license_cubeb" translatable="false">cubeb</string>
     <string name="license_cubeb_description" translatable="false">Cross platform audio library</string>

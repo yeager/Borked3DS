@@ -123,11 +123,11 @@ class LicensesFragment : Fragment() {
                 R.string.license_mit
             ),
             License(
-                R.string.license_sirit,
-                R.string.license_sirit_description,
-                R.string.license_sirit_link,
-                R.string.license_sirit_copyright,
-                R.string.license_sirit_text
+                R.string.license_libusb,
+                R.string.license_libusb_description,
+                R.string.license_libusb_link,
+                R.string.license_libusb_copyright,
+                R.string.license_lgpl21_text
             ),
             License(
                 R.string.license_nihstro,
@@ -156,6 +156,13 @@ class LicensesFragment : Fragment() {
                 R.string.license_sdl_link,
                 R.string.license_sdl_copyright,
                 R.string.license_sdl_text
+            ),
+            License(
+                R.string.license_sirit,
+                R.string.license_sirit_description,
+                R.string.license_sirit_link,
+                R.string.license_sirit_copyright,
+                R.string.license_sirit_text
             ),
             License(
                 R.string.license_spirvtools,
