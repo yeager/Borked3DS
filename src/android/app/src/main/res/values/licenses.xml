@@ -71,7 +71,7 @@ OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
     <string name="license_libressl" translatable="false">LibreSSL</string>
     <string name="license_libressl_description" translatable="false">LibreSSL is a version of the TLS/crypto stack forked from OpenSSL in 2014, with goals of modernizing the codebase, improving security, and applying best practice development processes</string>
     <string name="license_libressl_link" translatable="false">https://www.libressl.org/</string>
-    <string name="license_libressl_copyright" translatable="false">Copyright©️ 2014 OpenBSD Project</string>
+    <string name="license_libressl_copyright" translatable="false">Copyright ©️ 2014 OpenBSD Project</string>
     <string name="license_libressl_license_text" translatable="false">
 Copyright 2014 OpenBSD Project\n\n
 
@@ -82,7 +82,11 @@ THE SOFTWARE IS PROVIDED “AS IS” AND THE AUTHOR DISCLAIMS ALL WARRANTIES WIT
     <string name="license_libusb" translatable="false">libusb</string>
     <string name="license_libusb_description" translatable="false">A cross-platform library to access USB devices</string>
     <string name="license_libusb_link" translatable="false">https://libusb.info/</string>
-    <string name="license_libusb_copyright" translatable="false">Copyright©️ 2012-2024 libusb</string>
+    <string name="license_libusb_copyright" translatable="false">Copyright ©️ 2012-2024 libusb</string>
+    <string name="license_libyuv" translatable="false">libyuv</string>
+    <string name="license_libyuv_description" translatable="false">An open source project that includes YUV scaling and conversion functionality</string>
+    <string name="license_libyuv_link" translatable="false">https://chromium.googlesource.com/libyuv/libyuv/</string>
+    <string name="license_libyuv_copyright" translatable="false">Copyright ©️ 2011 The LibYuv Project Authors. All rights reserved.</string>
     <string name="license_lgpl21_text" translatable="false">
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Lesser General Public
@@ -103,7 +107,7 @@ THE SOFTWARE IS PROVIDED “AS IS” AND THE AUTHOR DISCLAIMS ALL WARRANTIES WIT
     <string name="license_lodepng" translatable="false">LodePNG</string>
     <string name="license_lodepng_description" translatable="false">PNG encoder and decoder in C and C++</string>
     <string name="license_lodepng_link" translatable="false">http://lodev.org/lodepng/</string>
-    <string name="license_lodepng_copyright" translatable="false">Copyright©️ 2005-2018 Lode Vandevenne</string>
+    <string name="license_lodepng_copyright" translatable="false">Copyright ©️ 2005-2018 Lode Vandevenne</string>
     <string name="license_zlib_text" translatable="false">
 This software is provided \'as-is\', without any express or implied
 warranty. In no event will the authors be held liable for any damages
@@ -128,7 +132,7 @@ freely, subject to the following restrictions:\n\n
     <string name="license_oaknut" translatable="false">Oaknut</string>
     <string name="license_oaknut_description" translatable="false">A header-only library that allows one to dynamically assemble code in-memory at runtime</string>
     <string name="license_oaknut_link" translatable="false">https://github.com/merryhime/oaknut</string>
-    <string name="license_oaknut_copyright" translatable="false">Copyright©️ 2022 merryhime</string>
+    <string name="license_oaknut_copyright" translatable="false">Copyright ©️ 2022 merryhime</string>
 
     <string name="license_oboe" translatable="false">oboe</string>
     <string name="license_oboe_description" translatable="false">Oboe is a C++ library which makes it easy to build high-performance audio apps on Android</string>
@@ -373,11 +377,11 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <string name="license_spirvtools" translatable="false">SPIR-V Tools</string>
     <string name="license_spirvtools_description" translatable="false">The SPIR-V Tools project provides an API and commands for processing SPIR-V modules</string>
     <string name="license_spirvtools_link" translatable="false">https://github.com/KhronosGroup/SPIRV-Tools</string>
-    <string name="license_spirvtools_copyright" translatable="false">Copyright©️ Khronos Group Inc.</string>
+    <string name="license_spirvtools_copyright" translatable="false">Copyright ©️ Khronos Group Inc.</string>
     <string name="license_tracy" translatable="false">Tracy Profiler</string>
     <string name="license_tracy_description" translatable="false">A real time, nanosecond resolution, remote telemetry, hybrid frame and sampling profiler for games and other applications</string>
     <string name="license_tracy_link" translatable="false">https://github.com/wolfpld/tracy</string>
-    <string name="license_tracy_copyright" translatable="false">Copyright©️ 2017-2024, Bartosz Taudul. All rights reserved.</string>
+    <string name="license_tracy_copyright" translatable="false">Copyright ©️ 2017-2024, Bartosz Taudul. All rights reserved.</string>
     <string name="license_bsd3_text" translatable="false">
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:\n

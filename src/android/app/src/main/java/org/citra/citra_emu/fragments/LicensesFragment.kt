@@ -158,6 +158,13 @@ class LicensesFragment : Fragment() {
                 R.string.license_lgpl21_text
             ),
             License(
+                R.string.license_libyuv,
+                R.string.license_libyuv_description,
+                R.string.license_libyuv_link,
+                R.string.license_libyuv_copyright,
+                R.string.license_bsd3_text
+            ),
+            License(
                 R.string.license_lodepng,
                 R.string.license_lodepng_description,
                 R.string.license_lodepng_link,
