@@ -207,6 +207,13 @@ class LicensesFragment : Fragment() {
                 R.string.license_bsd3_text
             ),
             License(
+                R.string.license_soundtouch,
+                R.string.license_soundtouch_description,
+                R.string.license_soundtouch_link,
+                R.string.license_soundtouch_copyright,
+                R.string.license_lgpl21_text
+            ),
+            License(
                 R.string.license_spirvtools,
                 R.string.license_spirvtools_description,
                 R.string.license_spirvtools_link,

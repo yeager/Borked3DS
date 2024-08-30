@@ -133,7 +133,7 @@ freely, subject to the following restrictions:\n\n
     <string name="license_oboe" translatable="false">oboe</string>
     <string name="license_oboe_description" translatable="false">Oboe is a C++ library which makes it easy to build high-performance audio apps on Android</string>
     <string name="license_oboe_link" translatable="false">https://github.com/google/oboe/</string>
-    <string name="license_oboe_copyright" translatable="false">Copyright©️ Google</string>
+    <string name="license_oboe_copyright" translatable="false">Copyright ©️ Google</string>
     <string name="license_apache2_text" tools:ignore="TypographyOther" translatable="false">
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -297,9 +297,9 @@ This project is currently licensed under the Boost Software License 1.0 (http://
     <string name="license_openal_description" translatable="false">Software implementation of the OpenAL 3D audio API</string>
     <string name="license_openal_link" translatable="false">https://github.com/kcat/openal-soft</string>
     <string name="license_openal_copyright" translatable="false">
-Copyright (c) 2015, Archontis Politis\n
-Copyright (c) 2019, Anis A. Hireche\n
-Copyright (c) 2019, Christopher Robinson\n
+Copyright ©️ 2015, Archontis Politis\n
+Copyright ©️ 2019, Anis A. Hireche\n
+Copyright ©️ 2019, Christopher Robinson\n
 All rights reserved
     </string>
     <string name="license_openal_text" translatable="false">
@@ -331,15 +331,19 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <string name="license_sdl" translatable="false">SDL</string>
     <string name="license_sdl_description" translatable="false">Cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware via OpenGL and Direct3D</string>
     <string name="license_sdl_link" translatable="false">https://github.com/libsdl-org/SDL</string>
-    <string name="license_sdl_copyright" translatable="false">Copyright (C) 1997-2023 Sam Lantinga slouken@libsdl.org</string>
+    <string name="license_sdl_copyright" translatable="false">Copyright ©️ 1997-2023 Sam Lantinga slouken@libsdl.org</string>
+    <string name="license_soundtouch" translatable="false">SoundTouch Audio Processing Library</string>
+    <string name="license_soundtouch_description" translatable="false">SoundTouch is an open-source audio processing library that allows changing the sound tempo, pitch and playback rate parameters independently from each other</string>
+    <string name="license_soundtouch_link" translatable="false">https://www.surina.net/soundtouch</string>
+    <string name="license_soundtouch_copyright" translatable="false">Copyright ©️ Olli Parviainen 2001-2024</string>
     <string name="license_vma" translatable="false">Vulkan Memory Allocator</string>
     <string name="license_vma_description" translatable="false">Easy to integrate Vulkan memory allocation library</string>
     <string name="license_vma_link" translatable="false">https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator</string>
-    <string name="license_vma_copyright" translatable="false">Copyright (c) 2017-2022 Advanced Micro Devices, Inc. All rights reserved.</string>
+    <string name="license_vma_copyright" translatable="false">Copyright ©️ 2017-2022 Advanced Micro Devices, Inc. All rights reserved.</string>
     <string name="license_zstd" translatable="false">Zstandard</string>
     <string name="license_zstd_description" translatable="false">Fast real-time compression algorithm</string>
     <string name="license_zstd_link" translatable="false">https://github.com/facebook/zstd</string>
-    <string name="license_zstd_copyright" translatable="false">Copyright (c) Meta Platforms, Inc. and affiliates. All rights reserved.</string>
+    <string name="license_zstd_copyright" translatable="false">Copyright ©️ Meta Platforms, Inc. and affiliates. All rights reserved.</string>
     <string name="license_zstd_text" translatable="false">
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:\n\n
