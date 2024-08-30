@@ -86,7 +86,7 @@ class LicensesFragment : Fragment() {
                 R.string.license_cubeb_description,
                 R.string.license_cubeb_link,
                 R.string.license_cubeb_copyright,
-                R.string.license_cubeb_text
+                R.string.license_isc_text
             ),
             License(
                 R.string.license_dynarmic,
@@ -135,6 +135,13 @@ class LicensesFragment : Fragment() {
                 R.string.license_httplib_link,
                 R.string.license_httplib_copyright,
                 R.string.license_mit
+            ),
+            License(
+                R.string.license_inih,
+                R.string.license_inih_description,
+                R.string.license_inih_link,
+                R.string.license_inih_copyright,
+                R.string.license_newbsd_text
             ),
             License(
                 R.string.license_libressl,
@@ -190,7 +197,7 @@ class LicensesFragment : Fragment() {
                 R.string.license_sirit_description,
                 R.string.license_sirit_link,
                 R.string.license_sirit_copyright,
-                R.string.license_sirit_text
+                R.string.license_bsd3_text
             ),
             License(
                 R.string.license_spirvtools,
