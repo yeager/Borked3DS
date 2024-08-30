@@ -158,6 +158,13 @@ class LicensesFragment : Fragment() {
                 R.string.license_nihstro_text
             ),
             License(
+                R.string.license_oaknut,
+                R.string.license_oaknut_description,
+                R.string.license_oaknut_link,
+                R.string.license_oaknut_copyright,
+                R.string.license_mit
+            ),
+            License(
                 R.string.license_oboe,
                 R.string.license_oboe_description,
                 R.string.license_oboe_link,

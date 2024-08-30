@@ -123,6 +123,11 @@ THE SOFTWARE IS PROVIDED “AS IS” AND THE AUTHOR DISCLAIMS ALL WARRANTIES WIT
 
     https://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt
     </string>
+    <string name="license_oaknut" translatable="false">Oaknut</string>
+    <string name="license_oaknut_description" translatable="false">A header-only library that allows one to dynamically assemble code in-memory at runtime</string>
+    <string name="license_oaknut_link" translatable="false">https://github.com/merryhime/oaknut</string>
+    <string name="license_oaknut_copyright" translatable="false">Copyright©️ 2022 merryhime</string>
+
     <string name="license_oboe" translatable="false">oboe</string>
     <string name="license_oboe_description" translatable="false">Oboe is a C++ library which makes it easy to build high-performance audio apps on Android</string>
     <string name="license_oboe_link" translatable="false">https://github.com/google/oboe/</string>
