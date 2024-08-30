@@ -397,37 +397,6 @@ are met:\n\n
   holder and contributors may be used to endorse or promote products
   derived from this software without specific prior written permission.
     </string>
-    <string name="license_fmt" translatable="false">fmt</string>
-    <string name="license_fmt_description" translatable="false">A modern formatting library</string>
-    <string name="license_fmt_link" translatable="false">https://github.com/fmtlib/fmt</string>
-    <string name="license_fmt_copyright" translatable="false">Copyright © 2012 - present, Victor Zverovich and {fmt} contributors</string>
-    <string name="license_fmt_text" translatable="false">
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:\n\n
-
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.\n\n
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n\n
-
---- Optional exception to the license ---\n\n
-
-As an exception, if, as a result of your compiling your source code, portions
-of this Software are embedded into a machine-executable object form of such
-source code, you may redistribute such embedded portions in such object form
-without including the above copyright and permission notices.
-    </string>
     <string name="license_boost" translatable="false">boost</string>
     <string name="license_boost_description" translatable="false">Free peer-reviewed portable C++ source libraries</string>
     <string name="license_boost_link" translatable="false">https://www.boost.org/</string>
@@ -501,6 +470,11 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <string name="license_enet_description" translatable="false">Reliable UDP networking library</string>
     <string name="license_enet_link" translatable="false">https://github.com/lsalzman/enet</string>
     <string name="license_enet_copyright" translatable="false">Copyright © 2002-2020 Lee Salzman</string>
+    <string name="license_fmt" translatable="false">fmt</string>
+    <string name="license_fmt_description" translatable="false">A modern formatting library providing a fast and safe alternative to C stdio and C++ iostreams</string>
+    <string name="license_fmt_link" translatable="false">https://github.com/fmtlib/fmt</string>
+    <string name="license_fmt_copyright" translatable="false">Copyright © 2012-Present, Victor Zverovich and fmt contributors</string>
+
     <string name="license_glad" translatable="false">glad</string>
     <string name="license_glad_description" translatable="false">Multi-Language Vulkan/GL/GLES/EGL/GLX/WGL Loader-Generator based on the official specs</string>
     <string name="license_glad_link" translatable="false">https://github.com/Dav1dde/glad</string>
