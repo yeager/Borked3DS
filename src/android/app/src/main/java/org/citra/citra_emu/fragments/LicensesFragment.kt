@@ -62,11 +62,24 @@ class LicensesFragment : Fragment() {
                 R.string.license_adreno_tools_text
             ),
             License(
-                R.string.license_oboe,
-                R.string.license_oboe_description,
-                R.string.license_oboe_link,
-                R.string.license_oboe_copyright,
-                R.string.license_apache2_text
+                titleId = R.string.license_boost,
+                descriptionId = R.string.license_boost_description,
+                linkId = R.string.license_boost_link,
+                licenseId = R.string.license_boost_text
+            ),
+            License(
+                R.string.license_catch2,
+                R.string.license_catch2_description,
+                R.string.license_catch2_link,
+                R.string.license_catch2_copyright,
+                R.string.license_boost_text
+            ),
+            License(
+                R.string.license_cryptopp,
+                R.string.license_cryptopp_description,
+                R.string.license_cryptopp_link,
+                R.string.license_cryptopp_copyright,
+                R.string.license_cryptopp_text
             ),
             License(
                 R.string.license_cubeb,
@@ -81,47 +94,6 @@ class LicensesFragment : Fragment() {
                 R.string.license_dynarmic_link,
                 R.string.license_dynarmic_copyright,
                 R.string.license_dynarmic_text
-            ),
-            License(
-                R.string.license_sirit,
-                R.string.license_sirit_description,
-                R.string.license_sirit_link,
-                R.string.license_sirit_copyright,
-                R.string.license_sirit_text
-            ),
-            License(
-                R.string.license_cryptopp,
-                R.string.license_cryptopp_description,
-                R.string.license_cryptopp_link,
-                R.string.license_cryptopp_copyright,
-                R.string.license_cryptopp_text
-            ),
-            License(
-                titleId = R.string.license_boost,
-                descriptionId = R.string.license_boost_description,
-                linkId = R.string.license_boost_link,
-                licenseId = R.string.license_boost_text
-            ),
-            License(
-                R.string.license_nihstro,
-                R.string.license_nihstro_description,
-                R.string.license_nihstro_link,
-                R.string.license_nihstro_copyright,
-                R.string.license_nihstro_text
-            ),
-            License(
-                R.string.license_httplib,
-                R.string.license_httplib_description,
-                R.string.license_httplib_link,
-                R.string.license_httplib_copyright,
-                R.string.license_mit
-            ),
-            License(
-                R.string.license_teakra,
-                R.string.license_teakra_description,
-                R.string.license_teakra_link,
-                R.string.license_teakra_copyright,
-                R.string.license_mit
             ),
             License(
                 R.string.license_enet,
@@ -144,6 +116,34 @@ class LicensesFragment : Fragment() {
                 licenseLinkId = R.string.license_glslang_link_license
             ),
             License(
+                R.string.license_httplib,
+                R.string.license_httplib_description,
+                R.string.license_httplib_link,
+                R.string.license_httplib_copyright,
+                R.string.license_mit
+            ),
+            License(
+                R.string.license_sirit,
+                R.string.license_sirit_description,
+                R.string.license_sirit_link,
+                R.string.license_sirit_copyright,
+                R.string.license_sirit_text
+            ),
+            License(
+                R.string.license_nihstro,
+                R.string.license_nihstro_description,
+                R.string.license_nihstro_link,
+                R.string.license_nihstro_copyright,
+                R.string.license_nihstro_text
+            ),
+            License(
+                R.string.license_oboe,
+                R.string.license_oboe_description,
+                R.string.license_oboe_link,
+                R.string.license_oboe_copyright,
+                R.string.license_apache2_text
+            ),
+            License(
                 R.string.license_openal,
                 R.string.license_openal_description,
                 R.string.license_openal_link,
@@ -163,6 +163,13 @@ class LicensesFragment : Fragment() {
                 R.string.license_spirvtools_link,
                 R.string.license_spirvtools_copyright,
                 R.string.license_apache2_text
+            ),
+            License(
+                R.string.license_teakra,
+                R.string.license_teakra_description,
+                R.string.license_teakra_link,
+                R.string.license_teakra_copyright,
+                R.string.license_mit
             ),
             License(
                 R.string.license_tracy,

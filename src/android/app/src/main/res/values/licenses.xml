@@ -489,6 +489,10 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     </string>
+    <string name="license_catch2" translatable="false">Catch2</string>
+    <string name="license_catch2_description" translatable="false">A unit testing framework for C++, but it also provides basic micro-benchmarking features, and simple BDD macros</string>
+    <string name="license_catch2_link" translatable="false">https://github.com/catchorg/Catch2</string>
+    <string name="license_catch2_copyright" translatable="false">Copyright © Catch Org</string>
     <string name="license_httplib" translatable="false">cpp-httplib</string>
     <string name="license_httplib_description" translatable="false">A C++ header-only HTTP/HTTPS server and client library</string>
     <string name="license_httplib_link" translatable="false">https://github.com/yhirose/cpp-httplib</string>
@@ -615,7 +619,7 @@ modification, are permitted provided that the following conditions are met:\n
     * Redistributions in binary form must reproduce the above copyright
       notice, this list of conditions and the following disclaimer in the
       documentation and/or other materials provided with the distribution.\n
-    * Neither the name of the <organization> nor the
+    * Neither the name of the ORGANIZATION nor the
       names of its contributors may be used to endorse or promote products
       derived from this software without specific prior written permission.\n\n
 
