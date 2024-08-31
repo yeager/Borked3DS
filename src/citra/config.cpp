@@ -53,20 +53,28 @@ static const std::array<int, Settings::NativeButton::NumButtons> default_buttons
     SDL_SCANCODE_O, SDL_SCANCODE_P, SDL_SCANCODE_1, SDL_SCANCODE_2, SDL_SCANCODE_B,
 };
 
-static const std::array<std::array<int, 5>, Settings::NativeAnalog::NumAnalogs> default_analogs{{
+static const std::array<std::array<int, 9>, Settings::NativeAnalog::NumAnalogs> default_analogs{{
     {
         SDL_SCANCODE_UP,
         SDL_SCANCODE_DOWN,
         SDL_SCANCODE_LEFT,
         SDL_SCANCODE_RIGHT,
+        SDL_SCANCODE_W,
+        SDL_SCANCODE_E,
+        SDL_SCANCODE_S,
         SDL_SCANCODE_D,
+        SDL_SCANCODE_Q,
     },
     {
         SDL_SCANCODE_I,
         SDL_SCANCODE_K,
         SDL_SCANCODE_J,
         SDL_SCANCODE_L,
-        SDL_SCANCODE_D,
+        SDL_SCANCODE_U,
+        SDL_SCANCODE_O,
+        SDL_SCANCODE_M,
+        SDL_SCANCODE_N,
+        SDL_SCANCODE_Y,
     },
 }};
 
@@ -107,13 +115,15 @@ void Config::ReadValues() {
     }
 
     for (int i = 0; i < Settings::NativeAnalog::NumAnalogs; ++i) {
-        std::string default_param = InputCommon::GenerateAnalogParamFromKeys(
-            default_analogs[i][0], default_analogs[i][1], default_analogs[i][2],
-            default_analogs[i][3], default_analogs[i][4], 0.5f);
-        Settings::values.current_input_profile.analogs[i] =
-            sdl2_config->GetString("Controls", Settings::NativeAnalog::mapping[i], default_param);
-        if (Settings::values.current_input_profile.analogs[i].empty())
-            Settings::values.current_input_profile.analogs[i] = default_param;
+        for (int j = 0; j < 9; ++j) {
+            std::string default_param = InputCommon::GenerateAnalogParamFromKeys(
+                default_analogs[i][0], default_analogs[i][1], default_analogs[i][2],
+                default_analogs[i][3], default_analogs[i][4], 0.5f);
+            Settings::values.current_input_profile.analogs[i] = sdl2_config->GetString(
+                "Controls", Settings::NativeAnalog::mapping[i], default_param);
+            if (Settings::values.current_input_profile.analogs[i].empty())
+                Settings::values.current_input_profile.analogs[i] = default_param;
+        }
     }
 
     Settings::values.current_input_profile.motion_device = sdl2_config->GetString(

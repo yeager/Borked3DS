@@ -170,6 +170,18 @@ constexpr std::array<const char*, NumAnalogs> mapping = {{
     "circle_pad",
     "c_stick",
 }};
+
+constexpr std::array<const char*, 9> sub_buttons = {{
+    "up",
+    "down",
+    "left",
+    "right",
+    "up_left",
+    "up_right",
+    "down_left",
+    "down_right",
+    "modifier",
+}};
 } // namespace NativeAnalog
 
 /** The Setting class is a simple resource manager. It defines a label and default value alongside
