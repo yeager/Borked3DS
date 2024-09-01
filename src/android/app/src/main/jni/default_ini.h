@@ -244,6 +244,10 @@ factor_3d =
 # 0 (default): Left, 1: Right
 mono_render_option =
 
+# Swap Eyes in 3d
+# true or false (default)
+swap_eyes_3d =
+
 # The name of the post processing shader to apply.
 # Loaded from shaders if render_3d is off or side by side.
 pp_shader_name =
