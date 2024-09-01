@@ -237,7 +237,7 @@ bg_green =
 render_3d =
 
 # Change 3D Intensity
-# 0 - 100: Intensity. 0 (default)
+# 0 - 255: Intensity. 0 (default)
 factor_3d =
 
 # Change default eye to render when in Monoscopic Mode (i.e. Stereoscopic 3D Mode is set to `Off`).
