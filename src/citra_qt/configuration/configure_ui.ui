@@ -189,18 +189,22 @@
          </layout>
         </item>
         <item>
-         <widget class="QCheckBox" name="toggle_hide_no_icon">
-          <property name="text">
-           <string>Hide Titles Without Icon</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="toggle_single_line_mode">
-          <property name="text">
-           <string>Single Line Mode</string>
-          </property>
-         </widget>
+         <layout class="QGridLayout" name="gridLayout_0"> 
+          <item row="1" column="0">
+           <widget class="QCheckBox" name="toggle_hide_no_icon">
+            <property name="text">
+             <string>Hide Titles Without Icon</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QCheckBox" name="toggle_single_line_mode">
+            <property name="text">
+             <string>Single Line Mode</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
        </layout>
       </item>
