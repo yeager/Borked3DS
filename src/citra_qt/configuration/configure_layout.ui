@@ -121,18 +121,22 @@
            </widget>
           </item>
           <item>
-           <widget class="QCheckBox" name="toggle_swap_screen">
-            <property name="text">
-             <string>Swap Screens</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QCheckBox" name="toggle_upright_screen">
-            <property name="text">
-             <string>Rotate Screens Upright</string>
-            </property>
-           </widget>
+           <layout class="QGridLayout" name="gridLayout_0">
+            <item row="1" column="0">
+             <widget class="QCheckBox" name="toggle_swap_screen">
+              <property name="text">
+               <string>Swap Screens</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QCheckBox" name="toggle_upright_screen">
+              <property name="text">
+               <string>Rotate Screens Upright</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
           <item>
            <widget class="QWidget" name="widget" native="true">
