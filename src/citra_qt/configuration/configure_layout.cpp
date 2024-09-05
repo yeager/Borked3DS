@@ -107,6 +107,18 @@ void ConfigureLayout::SetConfiguration() {
     ui->custom_bottom_height->setValue(Settings::values.custom_bottom_height.GetValue());
     ui->custom_second_layer_opacity->setValue(
         Settings::values.custom_second_layer_opacity.GetValue());
+
+    ui->screen_top_stretch->setChecked(Settings::values.screen_top_stretch.GetValue());
+    ui->screen_top_leftright_padding->setValue(
+        Settings::values.screen_top_leftright_padding.GetValue());
+    ui->screen_top_topbottom_padding->setValue(
+        Settings::values.screen_top_topbottom_padding.GetValue());
+    ui->screen_bottom_stretch->setChecked(Settings::values.screen_bottom_stretch.GetValue());
+    ui->screen_bottom_leftright_padding->setValue(
+        Settings::values.screen_bottom_leftright_padding.GetValue());
+    ui->screen_bottom_topbottom_padding->setValue(
+        Settings::values.screen_bottom_topbottom_padding.GetValue());
+
     bg_color =
         QColor::fromRgbF(Settings::values.bg_red.GetValue(), Settings::values.bg_green.GetValue(),
                          Settings::values.bg_blue.GetValue());
