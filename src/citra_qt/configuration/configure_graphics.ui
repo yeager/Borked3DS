@@ -130,7 +130,7 @@
        </widget>
       </item>
       <item>
-       <layout class="QGridLayout" name="gridLayout_3">
+       <layout class="QGridLayout" name="gridLayout_1">
         <item row="0" column="0">
          <widget class="QCheckBox" name="spirv_shader_gen">
           <property name="text">
@@ -243,7 +243,7 @@
      <layout class="QVBoxLayout" name="verticalLayout_4">
       <item>
        <widget class="QWidget" name="hw_renderer_group" native="true">
-        <layout class="QGridLayout" name="gridLayout_1">
+        <layout class="QGridLayout" name="gridLayout_2">
          <property name="leftMargin">
           <number>0</number>
          </property>
@@ -338,7 +338,7 @@
      <layout class="QVBoxLayout" name="verticalLayout_6">
       <item>
        <widget class="QWidget" name="tweaksGrid" native="true">
-        <layout class="QGridLayout" name="gridLayout_2">
+        <layout class="QGridLayout" name="gridLayout_3">
          <property name="leftMargin">
           <number>0</number>
          </property>
@@ -451,24 +451,28 @@
        </widget>
       </item>
       <item>
-       <widget class="QCheckBox" name="toggle_disk_shader_cache">
-        <property name="toolTip">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Reduce stuttering by storing and loading generated shaders to disk.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-        <property name="text">
-         <string>Use Disk Shader Cache</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QCheckBox" name="toggle_vsync_new">
-        <property name="toolTip">
-         <string>VSync prevents the screen from tearing, but some graphics cards have lower performance with VSync enabled. Keep it enabled if you don't notice a performance difference.</string>
-        </property>
-        <property name="text">
-         <string>Enable VSync</string>
-        </property>
-       </widget>
+       <layout class="QGridLayout" name="gridLayout_4">
+        <item row="1" column="0">
+         <widget class="QCheckBox" name="toggle_disk_shader_cache">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Reduce stuttering by storing and loading generated shaders to disk.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="text">
+           <string>Use Disk Shader Cache</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QCheckBox" name="toggle_vsync_new">
+          <property name="toolTip">
+           <string>VSync prevents the screen from tearing, but some graphics cards have lower performance with VSync enabled. Keep it enabled if you don't notice a performance difference.</string>
+          </property>
+          <property name="text">
+           <string>Enable VSync</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
       <item>
         <widget class="QWidget" name="delay_render_layout" native="true">
