@@ -178,6 +178,12 @@ else()
   )
 endif()
 
+if (MSVC AND ENABLE_LTO)
+  target_compile_options(citra_common PRIVATE
+    /wd5049 # 'string': Embedding a full path may result in machine-dependent output (breaks LTO on MSVC)
+  )
+endif()
+
 create_target_directory_groups(citra_common)
 
 target_link_libraries(citra_common PUBLIC fmt library-headers Boost::boost Boost::serialization Boost::iostreams)

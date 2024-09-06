@@ -486,6 +486,12 @@ add_library(citra_core STATIC
     tracer/recorder.h
  )
 
+if (MSVC AND ENABLE_LTO)
+  target_compile_options(citra_core PRIVATE
+    /wd5049 # 'string': Embedding a full path may result in machine-dependent output (breaks LTO on MSVC)
+  )
+endif()
+
 create_target_directory_groups(citra_core)
 
 target_link_libraries(citra_core PUBLIC citra_common PRIVATE audio_core network video_core)

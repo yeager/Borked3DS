@@ -302,6 +302,12 @@ if(ENABLE_SDL2)
     target_compile_definitions(citra-qt PRIVATE HAVE_SDL2)
 endif()
 
+if (MSVC AND ENABLE_LTO)
+  target_compile_options(citra-qt PRIVATE
+    /wd5049 # 'string': Embedding a full path may result in machine-dependent output (breaks LTO on MSVC)
+  )
+endif()
+
 create_target_directory_groups(citra-qt)
 
 target_link_libraries(citra-qt PRIVATE audio_core citra_common citra_core input_common network video_core)

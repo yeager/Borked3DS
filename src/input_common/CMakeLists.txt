@@ -41,6 +41,12 @@ if(ENABLE_LIBUSB)
     add_definitions(-DENABLE_GCADAPTER)
 endif()
 
+if (MSVC AND ENABLE_LTO)
+  target_compile_options(input_common PRIVATE
+    /wd5049 # 'string': Embedding a full path may result in machine-dependent output (breaks LTO on MSVC)
+  )
+endif()
+
 create_target_directory_groups(input_common)
 target_link_libraries(input_common PUBLIC citra_core PRIVATE citra_common ${Boost_LIBRARIES})
 

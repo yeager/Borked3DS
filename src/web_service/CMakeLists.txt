@@ -10,6 +10,12 @@ add_library(web_service STATIC
     web_backend.h
 )
 
+if (MSVC AND ENABLE_LTO)
+  target_compile_options(web_service PRIVATE
+    /wd5049 # 'string': Embedding a full path may result in machine-dependent output (breaks LTO on MSVC)
+  )
+endif()
+
 create_target_directory_groups(web_service)
 
 target_compile_definitions(web_service PUBLIC -DENABLE_WEB_SERVICE)

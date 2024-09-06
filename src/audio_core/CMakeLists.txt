@@ -41,6 +41,12 @@ add_library(audio_core STATIC
     $<$<BOOL:${ENABLE_OPENAL}>:openal_input.cpp openal_input.h openal_sink.cpp openal_sink.h>
 )
 
+if (MSVC AND ENABLE_LTO)
+  target_compile_options(audio_core PRIVATE
+    /wd5049 # 'string': Embedding a full path may result in machine-dependent output (breaks LTO on MSVC)
+  )
+endif()
+
 create_target_directory_groups(audio_core)
 
 target_link_libraries(audio_core PUBLIC citra_common citra_core)

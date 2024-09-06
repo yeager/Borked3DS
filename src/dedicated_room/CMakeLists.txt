@@ -6,6 +6,12 @@ add_executable(citra-room
     citra-room.rc
 )
 
+if (MSVC AND ENABLE_LTO)
+  target_compile_options(citra-room PRIVATE
+    /wd5049 # 'string': Embedding a full path may result in machine-dependent output (breaks LTO on MSVC)
+  )
+endif()
+
 create_target_directory_groups(citra-room)
 
 target_link_libraries(citra-room PRIVATE citra_common network)

@@ -22,6 +22,12 @@ add_executable(tests
     audio_core/merryhime_3ds_audio/audio_test_biquad_filter.cpp
 )
 
+if (MSVC AND ENABLE_LTO)
+  target_compile_options(tests PRIVATE
+    /wd5049 # 'string': Embedding a full path may result in machine-dependent output (breaks LTO on MSVC)
+  )
+endif()
+
 create_target_directory_groups(tests)
 
 target_link_libraries(tests PRIVATE citra_common citra_core video_core audio_core)

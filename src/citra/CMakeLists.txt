@@ -31,6 +31,12 @@ if (ENABLE_VULKAN)
     )
 endif()
 
+if (MSVC AND ENABLE_LTO)
+  target_compile_options(citra PRIVATE
+    /wd5049 # 'string': Embedding a full path may result in machine-dependent output (breaks LTO on MSVC)
+  )
+endif()
+
 create_target_directory_groups(citra)
 
 target_link_libraries(citra PRIVATE citra_common citra_core input_common network)

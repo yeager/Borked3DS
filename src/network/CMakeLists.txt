@@ -21,6 +21,12 @@ add_library(network STATIC
     verify_user.h
 )
 
+if (MSVC AND ENABLE_LTO)
+  target_compile_options(network PRIVATE
+    /wd5049 # 'string': Embedding a full path may result in machine-dependent output (breaks LTO on MSVC)
+  )
+endif()
+
 create_target_directory_groups(network)
 
 if (ENABLE_WEB_SERVICE)
