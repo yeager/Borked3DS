@@ -313,11 +313,11 @@ object NativeLibrary {
             } else {
                 alertResult = false
                 builder
-                    .setPositiveButton(android.R.string.yes) { _: DialogInterface, _: Int ->
+                    .setPositiveButton(R.string.yes) { _: DialogInterface, _: Int ->
                         alertResult = true
                         synchronized(alertLock) { alertLock.notify() }
                     }
-                    .setNegativeButton(android.R.string.no) { _: DialogInterface, _: Int ->
+                    .setNegativeButton(R.string.no) { _: DialogInterface, _: Int ->
                         alertResult = false
                         synchronized(alertLock) { alertLock.notify() }
                     }

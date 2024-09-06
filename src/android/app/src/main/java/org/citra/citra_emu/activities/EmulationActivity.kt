@@ -7,14 +7,18 @@ package org.citra.citra_emu.activities
 import android.Manifest.permission
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.view.Display
 import android.view.InputDevice
 import android.view.KeyEvent
 import android.view.MotionEvent
+import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -100,10 +104,13 @@ class EmulationActivity : AppCompatActivity() {
         enableFullscreenImmersive()
 
         // Override Citra core INI with the one set by our in game menu
-        NativeLibrary.swapScreens(
-            EmulationMenuSettings.swapScreens,
+        val rotation = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            getDisplay()!!.getRotation()
+        } else {
+            @Suppress("DEPRECATION")
             windowManager.defaultDisplay.rotation
-        )
+        }
+        NativeLibrary.swapScreens(EmulationMenuSettings.swapScreens, rotation)
 
         EmulationLifecycleUtil.addShutdownHook(hook = {
             if (intent.getBooleanExtra("launched_from_shortcut", false)) {

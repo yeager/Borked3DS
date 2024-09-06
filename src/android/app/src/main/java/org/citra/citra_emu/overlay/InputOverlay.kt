@@ -13,12 +13,16 @@ import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.graphics.Rect
 import android.graphics.drawable.VectorDrawable
+import android.os.Build
 import android.util.AttributeSet
 import android.util.DisplayMetrics
+import android.view.Display
 import android.view.MotionEvent
 import android.view.SurfaceView
 import android.view.View
 import android.view.View.OnTouchListener
+import android.view.WindowManager
+import android.view.WindowMetrics
 import androidx.core.content.ContextCompat
 import androidx.preference.PreferenceManager
 import org.citra.citra_emu.CitraApplication
@@ -79,10 +83,15 @@ class InputOverlay(context: Context?, attrs: AttributeSet?) : SurfaceView(contex
     private fun swapScreen() {
         val isEnabled = !EmulationMenuSettings.swapScreens
         EmulationMenuSettings.swapScreens = isEnabled
-        NativeLibrary.swapScreens(
-            isEnabled,
+
+        val rotation = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            context.getDisplay()!!.getRotation()
+        } else {
+            @Suppress("DEPRECATION")
             (context as Activity).windowManager.defaultDisplay.rotation
-        )
+        }
+
+        NativeLibrary.swapScreens(isEnabled, rotation)
     }
 
     fun hapticFeedback(type:Int){
@@ -538,11 +547,24 @@ class InputOverlay(context: Context?, attrs: AttributeSet?) : SurfaceView(contex
 
     private fun defaultOverlayLandscape() {
         // Get screen size
-        val display = (context as Activity).windowManager.defaultDisplay
-        val outMetrics = DisplayMetrics()
-        display.getMetrics(outMetrics)
-        var maxX = outMetrics.heightPixels.toFloat()
-        var maxY = outMetrics.widthPixels.toFloat()
+        var maxX = 0f
+        var maxY = 0f
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            // For API 30 and above
+            val windowMetrics: WindowMetrics = (context as Activity).windowManager.currentWindowMetrics
+            val bounds = windowMetrics.bounds
+            maxX = bounds.height().toFloat()
+            maxY = bounds.width().toFloat()
+        } else {
+            // For API 29 and below
+            val display = @Suppress("DEPRECATION") (context as Activity).windowManager.defaultDisplay
+            val outMetrics = DisplayMetrics()
+            @Suppress("DEPRECATION") display.getMetrics(outMetrics)
+            maxX = outMetrics.heightPixels.toFloat()
+            maxY = outMetrics.widthPixels.toFloat()
+        }
+
         // Height and width changes depending on orientation. Use the larger value for height.
         if (maxY > maxX) {
             val tmp = maxX
@@ -678,11 +700,24 @@ class InputOverlay(context: Context?, attrs: AttributeSet?) : SurfaceView(contex
 
     private fun defaultOverlayPortrait() {
         // Get screen size
-        val display = (context as Activity).windowManager.defaultDisplay
-        val outMetrics = DisplayMetrics()
-        display.getMetrics(outMetrics)
-        var maxX = outMetrics.heightPixels.toFloat()
-        var maxY = outMetrics.widthPixels.toFloat()
+        var maxX = 0f
+        var maxY = 0f
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            // For API 30 and above
+            val windowMetrics: WindowMetrics = (context as Activity).windowManager.currentWindowMetrics
+            val bounds = windowMetrics.bounds
+            maxX = bounds.height().toFloat()
+            maxY = bounds.width().toFloat()
+        } else {
+            // For API 29 and below
+            val display = @Suppress("DEPRECATION") (context as Activity).windowManager.defaultDisplay
+            val outMetrics = DisplayMetrics()
+            @Suppress("DEPRECATION") display.getMetrics(outMetrics)
+            maxX = outMetrics.heightPixels.toFloat()
+            maxY = outMetrics.widthPixels.toFloat()
+        }
+
         // Height and width changes depending on orientation. Use the larger value for height.
         if (maxY < maxX) {
             val tmp = maxX

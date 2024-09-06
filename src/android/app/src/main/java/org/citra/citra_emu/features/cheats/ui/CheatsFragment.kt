@@ -141,13 +141,13 @@ class CheatsFragment : Fragment(), SlidingPaneLayout.PanelSlideListener {
 
     override fun onPanelSlide(panel: View, slideOffset: Float) {}
     override fun onPanelOpened(panel: View) {
-        val rtl = ViewCompat.getLayoutDirection(panel) == ViewCompat.LAYOUT_DIRECTION_RTL
+        val rtl = panel.layoutDirection == View.LAYOUT_DIRECTION_RTL
         cheatDetailsLastFocus!!.requestFocus(if (rtl) View.FOCUS_LEFT else View.FOCUS_RIGHT)
     }
 
     override fun onPanelClosed(panel: View) {
-        val rtl = ViewCompat.getLayoutDirection(panel) == ViewCompat.LAYOUT_DIRECTION_RTL
-        cheatListLastFocus!!.requestFocus(if (rtl) View.FOCUS_RIGHT else View.FOCUS_LEFT)
+        val rtl = panel.layoutDirection == View.LAYOUT_DIRECTION_RTL
+        cheatDetailsLastFocus!!.requestFocus(if (rtl) View.FOCUS_RIGHT else View.FOCUS_LEFT)
     }
 
     private fun onIsEditingChanged(isEditing: Boolean) {

@@ -4,6 +4,10 @@
 
 package org.citra.citra_emu.display
 
+import android.content.Context
+import android.os.Build
+import android.view.Display
+import android.view.View
 import android.view.WindowManager
 import org.citra.citra_emu.NativeLibrary
 import org.citra.citra_emu.features.settings.model.BooleanSetting
@@ -19,10 +23,8 @@ class ScreenAdjustmentUtil(
     fun swapScreen() {
         val isEnabled = !EmulationMenuSettings.swapScreens
         EmulationMenuSettings.swapScreens = isEnabled
-        NativeLibrary.swapScreens(
-            isEnabled,
-            windowManager.defaultDisplay.rotation
-        )
+
+        NativeLibrary.swapScreens(isEnabled, windowManager.defaultDisplay.rotation)
         BooleanSetting.SWAP_SCREEN.boolean = isEnabled
         settings.saveSetting(BooleanSetting.SWAP_SCREEN, SettingsFile.FILE_NAME_CONFIG)
     }

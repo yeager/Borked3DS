@@ -227,8 +227,8 @@ class MainActivity : AppCompatActivity(), ThemeProvider {
                         binding.navigationView.height.toFloat() * 2
                     translationY(0f)
                 } else {
-                    if (ViewCompat.getLayoutDirection(binding.navigationView) ==
-                        ViewCompat.LAYOUT_DIRECTION_LTR
+                    if (binding.navigationView.layoutDirection ==
+                        View.LAYOUT_DIRECTION_LTR
                     ) {
                         binding.navigationView.translationX =
                             binding.navigationView.width.toFloat() * -2
@@ -246,8 +246,8 @@ class MainActivity : AppCompatActivity(), ThemeProvider {
                 if (smallLayout) {
                     translationY(binding.navigationView.height.toFloat() * 2)
                 } else {
-                    if (ViewCompat.getLayoutDirection(binding.navigationView) ==
-                        ViewCompat.LAYOUT_DIRECTION_LTR
+                    if (binding.navigationView.layoutDirection ==
+                        View.LAYOUT_DIRECTION_LTR
                     ) {
                         translationX(binding.navigationView.width.toFloat() * -2)
                     } else {
