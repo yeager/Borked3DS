@@ -78,6 +78,8 @@ android {
                 arguments(
                     "-DENABLE_QT=0", // Don't use QT
                     "-DENABLE_SDL2=0", // Don't use SDL
+                    "-DCMAKE_EXE_LINKER_FLAGS=-flto=thin",    // Enable Thin LTO
+                    "-DCMAKE_SHARED_LINKER_FLAGS=-flto=thin", // Enable Thin LTO
                     "-DANDROID_ARM_NEON=true", // cryptopp requires Neon to work
                     "-DANDROID_SUPPORT_FLEXIBLE_PAGE_SIZES=ON", // Support Android V 16KiB page sizes
                     "-DUSE_SYSTEM_BOOST=OFF",
