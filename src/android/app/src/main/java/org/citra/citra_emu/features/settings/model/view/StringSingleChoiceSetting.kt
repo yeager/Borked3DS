@@ -20,8 +20,7 @@ class StringSingleChoiceSetting(
     override val type = TYPE_STRING_SINGLE_CHOICE
 
     fun getValueAt(index: Int): String? {
-        if (values == null) return null
-        return if (index >= 0 && index < values.size) {
+        return if (values == null) null else if (index >= 0 && index < values.size) {
             values[index]
         } else {
             ""
@@ -31,31 +30,26 @@ class StringSingleChoiceSetting(
     val selectedValue: String
         get() {
             if (setting == null) {
-                return defaultValue!!
+                return defaultValue ?: ""
             }
 
-            try {
-                val setting = setting as AbstractStringSetting
-                return setting.string
+            return try {
+                val stringSetting = setting as? AbstractStringSetting
+                stringSetting?.string ?: defaultValue ?: ""
             } catch (_: ClassCastException) {
+                try {
+                    val shortSetting = setting as? AbstractShortSetting
+                    shortSetting?.short?.toString() ?: defaultValue ?: ""
+                } catch (_: ClassCastException) {
+                    defaultValue ?: ""
+                }
             }
-
-            try {
-                val setting = setting as AbstractShortSetting
-                return setting.short.toString()
-            } catch (_: ClassCastException) {
-            }
-            return defaultValue!!
         }
+
     val selectValueIndex: Int
         get() {
             val selectedValue = selectedValue
-            for (i in values!!.indices) {
-                if (values[i] == selectedValue) {
-                    return i
-                }
-            }
-            return -1
+            return values?.indexOf(selectedValue) ?: -1
         }
 
     /**
@@ -66,13 +60,15 @@ class StringSingleChoiceSetting(
      * @return the existing setting with the new value applied.
      */
     fun setSelectedValue(selection: String): AbstractStringSetting {
-        val stringSetting = setting as AbstractStringSetting
+        val stringSetting = setting as? AbstractStringSetting
+            ?: throw IllegalStateException("Setting is not an AbstractStringSetting")
         stringSetting.string = selection
         return stringSetting
     }
 
     fun setSelectedValue(selection: Short): AbstractShortSetting {
-        val shortSetting = setting as AbstractShortSetting
+        val shortSetting = setting as? AbstractShortSetting
+            ?: throw IllegalStateException("Setting is not an AbstractShortSetting")
         shortSetting.short = selection
         return shortSetting
     }
