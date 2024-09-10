@@ -23,9 +23,10 @@ class SliderSetting(
     val defaultValue: Float? = null
 ) : SettingsItem(setting, titleId, descriptionId) {
     override val type = TYPE_SLIDER
+
     val selectedFloat: Float
         get() {
-            val setting = setting ?: return defaultValue!!.toFloat()
+            val setting = setting ?: return defaultValue?.toFloat() ?: -1f
             return when (setting) {
                 is AbstractIntSetting -> setting.int.toFloat()
                 is FloatSetting -> setting.float
@@ -45,7 +46,8 @@ class SliderSetting(
      * @return the existing setting with the new value applied.
      */
     fun setSelectedValue(selection: Int): AbstractIntSetting {
-        val intSetting = setting as AbstractIntSetting
+        val intSetting = setting as? AbstractIntSetting
+            ?: throw IllegalStateException("Setting is not an AbstractIntSetting")
         intSetting.int = selection
         return intSetting
     }
@@ -58,12 +60,9 @@ class SliderSetting(
      * @return the existing setting with the new value applied.
      */
     fun setSelectedValue(selection: Float): AbstractFloatSetting {
-        val floatSetting = setting as AbstractFloatSetting
-        if (floatSetting is ScaledFloatSetting) {
-            floatSetting.float = selection
-        } else {
-            floatSetting.float = selection
-        }
+        val floatSetting = setting as? AbstractFloatSetting
+            ?: throw IllegalStateException("Setting is not an AbstractFloatSetting")
+        floatSetting.float = selection
         return floatSetting
     }
 }
