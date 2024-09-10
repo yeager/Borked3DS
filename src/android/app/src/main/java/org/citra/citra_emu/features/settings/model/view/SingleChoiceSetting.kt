@@ -22,22 +22,20 @@ class SingleChoiceSetting(
     val selectedValue: Int
         get() {
             if (setting == null) {
-                return defaultValue!!
+                return defaultValue ?: 0 
             }
 
-            try {
-                val setting = setting as AbstractIntSetting
-                return setting.int
+            return try {
+                val intSetting = setting as? AbstractIntSetting
+                intSetting?.int ?: defaultValue ?: 0 
             } catch (_: ClassCastException) {
+                try {
+                    val shortSetting = setting as? AbstractShortSetting
+                    shortSetting?.short?.toInt() ?: defaultValue ?: 0 
+                } catch (_: ClassCastException) {
+                    defaultValue ?: 0 
+                }
             }
-
-            try {
-                val setting = setting as AbstractShortSetting
-                return setting.short.toInt()
-            } catch (_: ClassCastException) {
-            }
-
-            return defaultValue!!
         }
 
     /**
@@ -48,13 +46,15 @@ class SingleChoiceSetting(
      * @return the existing setting with the new value applied.
      */
     fun setSelectedValue(selection: Int): AbstractIntSetting {
-        val intSetting = setting as AbstractIntSetting
+        val intSetting = setting as? AbstractIntSetting
+            ?: throw IllegalStateException("Setting is not an AbstractIntSetting")
         intSetting.int = selection
         return intSetting
     }
 
     fun setSelectedValue(selection: Short): AbstractShortSetting {
-        val shortSetting = setting as AbstractShortSetting
+        val shortSetting = setting as? AbstractShortSetting
+            ?: throw IllegalStateException("Setting is not an AbstractShortSetting")
         shortSetting.short = selection
         return shortSetting
     }
