@@ -325,7 +325,7 @@ jobs:
         run: |
           sudo apt-get update -y
           sudo apt-get dist-upgrade -y
-          sudo apt-get install kitware-archive-keyring cmake ccache apksigner clang-format-15 -y
+          sudo apt-get install kitware-archive-keyring zip unzip ninja-build python3 cmake ccache apksigner clang-format-15 -y
           sudo apt-get clean
       - name: Set up JDK 22
         uses: actions/setup-java@v4

@@ -4,6 +4,7 @@
 
 import android.databinding.tool.ext.capitalizeUS
 import de.undercouch.gradle.tasks.download.Download
+import java.io.File
 
 plugins {
     id("com.android.application")
@@ -78,6 +79,8 @@ android {
                 arguments(
                     "-DENABLE_QT=0", // Don't use QT
                     "-DENABLE_SDL2=0", // Don't use SDL
+                    "-DCMAKE_CXX_FLAGS=-O2",
+                    "-DCMAKE_C_FLAGS=-O2",
                     "-DCMAKE_EXE_LINKER_FLAGS=-flto=thin",    // Enable Thin LTO
                     "-DCMAKE_SHARED_LINKER_FLAGS=-flto=thin", // Enable Thin LTO
                     "-DANDROID_ARM_NEON=true", // cryptopp requires Neon to work
@@ -218,8 +221,12 @@ val downloadVulkanValidationLayers = tasks.register<Download>("downloadVulkanVal
 
 // Extract Vulkan Validation Layers into the downloaded native libraries directory.
 val unzipVulkanValidationLayers = tasks.register<Copy>("unzipVulkanValidationLayers") {
-    dependsOn(downloadVulkanValidationLayers)
-    from(zipTree(downloadVulkanValidationLayers.get().dest)) {
+    val filePath = "${buildDir}/tmp/Vulkan-ValidationLayers.zip"
+    val file = File(filePath)
+    if (!file.exists()) {
+        dependsOn(downloadVulkanValidationLayers)
+    }
+    from(zipTree("${buildDir}/tmp/Vulkan-ValidationLayers.zip")) {
         // Exclude the top level directory in the zip as it violates the expected jniLibs directory structure.
         eachFile {
             relativePath = RelativePath(true, *relativePath.segments.drop(1).toTypedArray())
