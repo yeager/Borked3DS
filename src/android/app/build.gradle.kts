@@ -189,6 +189,7 @@ android {
             jniLibs.srcDir(downloadedJniLibsPath)
         }
     }
+    buildToolsVersion = "35.0.0"
 }
 
 dependencies {
