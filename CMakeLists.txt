@@ -19,6 +19,10 @@ set(CMAKE_POLICY_DEFAULT_CMP0079 NEW)
 cmake_policy(SET CMP0092 NEW)
 # Allow conditions to be used in cmake_dependent_option
 cmake_policy(SET CMP0127 NEW)
+# Allow for uppercase <PACKAGENAME>_ROOT variables
+if(CMAKE_VERSION VERSION_GREATER "3.27")
+    set(CMAKE_POLICY_DEFAULT_CMP0144 NEW)
+endif()
 # FindBoost module no longer provided in cmake 3.30 and above
 if(CMAKE_VERSION VERSION_GREATER "3.29")
     set(CMAKE_POLICY_DEFAULT_CMP0167 OLD)
