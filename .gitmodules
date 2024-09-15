@@ -103,3 +103,6 @@
 [submodule "externals/SPIRV-Tools"]
     path = externals/SPIRV-Tools
     url = https://github.com/KhronosGroup/SPIRV-Tools.git
+[submodule "externals/MoltenVK"]
+    path = externals/MoltenVK
+    url = https://github.com/KhronosGroup/MoltenVK.git
