@@ -335,9 +335,10 @@ jobs:
       - name: Build
         run: ./.ci/android.sh
         env:
-          ANDROID_KEYSTORE_B64: ${{ secrets.ANDROID_KEYSTORE_B64 }}
-          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
-          ANDROID_KEYSTORE_PASS: ${{ secrets.ANDROID_KEYSTORE_PASS }}
+          ANDROID_KEYSTORE_B64: ${{ secrets.DROID_KEYSTORE_B64 }}
+          ANDROID_KEY_ALIAS: ${{ secrets.DROID_KEY_ALIAS }}
+          ANDROID_KEYSTORE_PASS: ${{ secrets.DROID_KEYSTORE_PASS }}
+          ANDROID_KEY_PASS: ${{ secrets.DROID_KEY_PASS }}
       - name: Pack
         run: ../../../.ci/pack.sh
         working-directory: src/android/app

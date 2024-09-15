@@ -113,14 +113,14 @@ android {
         buildConfigField("String", "BRANCH", "\"${getBranch()}\"")
     }
 
-    val keystoreFile = System.getenv("ANDROID_KEYSTORE_FILE")
+    val keystoreFile = System.getenv("DROID_KEYSTORE_FILE")
     if (keystoreFile != null) {
         signingConfigs {
             create("release") {
                 storeFile = file(keystoreFile)
-                storePassword = System.getenv("ANDROID_KEYSTORE_PASS")
-                keyAlias = System.getenv("ANDROID_KEY_ALIAS")
-                keyPassword = System.getenv("ANDROID_KEYSTORE_PASS")
+                storePassword = System.getenv("DROID_KEYSTORE_PASS")
+                keyAlias = System.getenv("DROID_KEY_ALIAS")
+                keyPassword = System.getenv("DROID_KEY_PASS")
             }
         }
     }
