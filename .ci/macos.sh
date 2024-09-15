@@ -1,6 +1,15 @@
 #!/bin/bash -ex
 
-mkdir build && cd build
+# Build MoltenVK
+cd externals/MoltenVK
+./fetchDependencies --macos
+xcodebuild build -quiet -project MoltenVKPackaging.xcodeproj -scheme "MoltenVK Package (macOS only)" -configuration "Release"
+cd ../..
+mkdir -p build/externals/MoltenVK/MoltenVK
+mv externals/MoltenVK/Package/Release/MoltenVK/dynamic/dylib build/externals/MoltenVK/MoltenVK/
+
+# Build Citra
+cd build
 cmake .. -GNinja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_OSX_ARCHITECTURES="$TARGET" \
@@ -11,6 +20,7 @@ cmake .. -GNinja \
     -DUSE_SYSTEM_VULKAN_HEADERS=OFF \
     -DUSE_SYSTEM_VMA=OFF \
     -DCITRA_USE_EXTERNAL_VULKAN_SPIRV_TOOLS=ON \
+    -DCITRA_USE_EXTERNAL_MOLTENVK=ON \
     -DCITRA_ENABLE_COMPATIBILITY_REPORTING=ON \
     -DUSE_DISCORD_PRESENCE=ON
 ninja

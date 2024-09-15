@@ -177,21 +177,23 @@ function(download_moltenvk)
     endif()
 
     set(MOLTENVK_DIR "${CMAKE_BINARY_DIR}/externals/MoltenVK")
-    set(MOLTENVK_TAR "${CMAKE_BINARY_DIR}/externals/MoltenVK.tar")
-    if (NOT EXISTS ${MOLTENVK_DIR})
-        if (NOT EXISTS ${MOLTENVK_TAR})
-            # Note: v1.27 is the last version that uses dylib on iOS; future versions use dynamic XCFramework
-            if (IOS)
-                file(DOWNLOAD https://github.com/KhronosGroup/MoltenVK/releases/download/v1.2.7/MoltenVK-ios.tar
-                ${MOLTENVK_TAR} SHOW_PROGRESS)
-            else()
-                file(DOWNLOAD https://github.com/KhronosGroup/MoltenVK/releases/download/v1.2.10-rc2/MoltenVK-all.tar 
-                ${MOLTENVK_TAR} SHOW_PROGRESS)
+    if (NOT CITRA_USE_EXTERNAL_MOLTENVK)
+        set(MOLTENVK_TAR "${CMAKE_BINARY_DIR}/externals/MoltenVK.tar")
+        if (NOT EXISTS ${MOLTENVK_DIR})
+            if (NOT EXISTS ${MOLTENVK_TAR})
+                # Note: v1.27 is the last version that uses dylib on iOS; future versions use dynamic XCFramework
+                if (IOS)
+                    file(DOWNLOAD https://github.com/KhronosGroup/MoltenVK/releases/download/v1.2.7/MoltenVK-ios.tar
+                    ${MOLTENVK_TAR} SHOW_PROGRESS)
+                else()
+                    file(DOWNLOAD https://github.com/KhronosGroup/MoltenVK/releases/download/v1.2.10-rc2/MoltenVK-all.tar 
+                    ${MOLTENVK_TAR} SHOW_PROGRESS)
+                endif()
             endif()
-        endif()
 
-        execute_process(COMMAND ${CMAKE_COMMAND} -E tar xf "${MOLTENVK_TAR}"
-            WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/externals")
+            execute_process(COMMAND ${CMAKE_COMMAND} -E tar xf "${MOLTENVK_TAR}"
+                WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/externals")
+        endif()
     endif()
 
     # Add the MoltenVK library path to the prefix so find_library can locate it.
