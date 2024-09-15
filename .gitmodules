@@ -93,16 +93,19 @@
 [submodule "oaknut"]
     path = externals/oaknut
     url = https://github.com/rtiangha/oaknut.git
-[submodule "externals/teakra-old"]
+[submodule "teakra-old"]
     path = externals/teakra-old
     url = https://github.com/rtiangha/teakra
     branch = teakra-old
-[submodule "externals/oboe"]
+[submodule "oboe"]
     path = externals/oboe
     url = https://github.com/google/oboe.git
-[submodule "externals/SPIRV-Tools"]
+[submodule "SPIRV-Tools"]
     path = externals/SPIRV-Tools
     url = https://github.com/KhronosGroup/SPIRV-Tools.git
-[submodule "externals/MoltenVK"]
+[submodule "MoltenVK"]
     path = externals/MoltenVK
     url = https://github.com/KhronosGroup/MoltenVK.git
+[submodule "Vulkan-ValidationLayers"]
+    path = externals/Vulkan-ValidationLayers
+    url = https://github.com/KhronosGroup/Vulkan-ValidationLayers.git
