@@ -171,9 +171,9 @@ endfunction()
 
 function(download_moltenvk)
     if (IOS)
-        set(MOLTENVK_PLATFORM "iOS")
+        set(MOLTENVK_PLATFORM "ios-arm64")
     else()
-        set(MOLTENVK_PLATFORM "macOS")
+        set(MOLTENVK_PLATFORM "macos-arm64_x86_64")
     endif()
 
     set(MOLTENVK_DIR "${CMAKE_BINARY_DIR}/externals/MoltenVK")
@@ -181,14 +181,8 @@ function(download_moltenvk)
         set(MOLTENVK_TAR "${CMAKE_BINARY_DIR}/externals/MoltenVK.tar")
         if (NOT EXISTS ${MOLTENVK_DIR})
             if (NOT EXISTS ${MOLTENVK_TAR})
-                # Note: v1.27 is the last version that uses dylib on iOS; future versions use dynamic XCFramework
-                if (IOS)
-                    file(DOWNLOAD https://github.com/KhronosGroup/MoltenVK/releases/download/v1.2.7/MoltenVK-ios.tar
-                    ${MOLTENVK_TAR} SHOW_PROGRESS)
-                else()
-                    file(DOWNLOAD https://github.com/KhronosGroup/MoltenVK/releases/download/v1.2.10-rc2/MoltenVK-all.tar 
-                    ${MOLTENVK_TAR} SHOW_PROGRESS)
-                endif()
+                file(DOWNLOAD https://github.com/KhronosGroup/MoltenVK/releases/download/v1.2.10-rc2/MoltenVK-all.tar 
+                ${MOLTENVK_TAR} SHOW_PROGRESS)
             endif()
 
             execute_process(COMMAND ${CMAKE_COMMAND} -E tar xf "${MOLTENVK_TAR}"
@@ -197,7 +191,7 @@ function(download_moltenvk)
     endif()
 
     # Add the MoltenVK library path to the prefix so find_library can locate it.
-    list(APPEND CMAKE_PREFIX_PATH "${MOLTENVK_DIR}/MoltenVK/dylib/${MOLTENVK_PLATFORM}")
+    list(APPEND CMAKE_PREFIX_PATH "${MOLTENVK_DIR}/MoltenVK/dynamic/MoltenVK.xcframework/${MOLTENVK_PLATFORM}")
     set(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} PARENT_SCOPE)
 endfunction()
 
