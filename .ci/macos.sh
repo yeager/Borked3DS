@@ -6,7 +6,7 @@ cd externals/MoltenVK
 xcodebuild build -quiet -project MoltenVKPackaging.xcodeproj -scheme "MoltenVK Package (macOS only)" -configuration "Release"
 cd ../..
 mkdir -p build/externals/MoltenVK/MoltenVK
-mv externals/MoltenVK/Package/Release/MoltenVK/dynamic/dylib build/externals/MoltenVK/MoltenVK/
+mv externals/MoltenVK/Package/Release/MoltenVK/dynamic build/externals/MoltenVK/MoltenVK/
 
 # Build Citra
 cd build
