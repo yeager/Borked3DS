@@ -1,6 +1,15 @@
 #!/bin/bash -ex
 
-mkdir build && cd build
+# Build MoltenVK
+cd externals/MoltenVK
+./fetchDependencies --ios
+xcodebuild build -quiet -project MoltenVKPackaging.xcodeproj -scheme "MoltenVK Package (iOS only)" -configuration "Release"
+cd ../..
+mkdir -p build/externals/MoltenVK/MoltenVK
+mv externals/MoltenVK/Package/Release/MoltenVK/dynamic build/externals/MoltenVK/MoltenVK/
+
+# Build Citra
+cd build
 cmake .. -GNinja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_SYSTEM_NAME=iOS \
@@ -10,6 +19,7 @@ cmake .. -GNinja \
     -DENABLE_QT_TRANSLATION=ON \
     -DCITRA_ENABLE_COMPATIBILITY_REPORTING=ON \
     -DCITRA_USE_EXTERNAL_VULKAN_SPIRV_TOOLS=ON \
+    -DCITRA_USE_EXTERNAL_MOLTENVK=ON \
     -DENABLE_COMPATIBILITY_LIST_DOWNLOAD=ON
 ninja
 
