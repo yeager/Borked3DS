@@ -60,10 +60,10 @@ static const std::array<std::array<int, 9>, Settings::NativeAnalog::NumAnalogs> 
         SDL_SCANCODE_LEFT,
         SDL_SCANCODE_RIGHT,
         SDL_SCANCODE_W,
-        SDL_SCANCODE_E,
-        SDL_SCANCODE_S,
-        SDL_SCANCODE_D,
         SDL_SCANCODE_Q,
+        SDL_SCANCODE_E,
+        SDL_SCANCODE_A,
+        SDL_SCANCODE_D,
     },
     {
         SDL_SCANCODE_I,
@@ -71,10 +71,10 @@ static const std::array<std::array<int, 9>, Settings::NativeAnalog::NumAnalogs> 
         SDL_SCANCODE_J,
         SDL_SCANCODE_L,
         SDL_SCANCODE_U,
+        SDL_SCANCODE_H,
         SDL_SCANCODE_O,
-        SDL_SCANCODE_M,
-        SDL_SCANCODE_N,
-        SDL_SCANCODE_Y,
+        SDL_SCANCODE_B,
+        SDL_SCANCODE_D,
     },
 }};
 
