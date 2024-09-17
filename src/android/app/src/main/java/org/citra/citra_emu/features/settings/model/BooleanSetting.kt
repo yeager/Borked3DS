@@ -48,7 +48,8 @@ enum class BooleanSetting(
             PLUGIN_LOADER,
             ALLOW_PLUGIN_LOADER,
             RELAXED_PRECISION_DECORATORS,
-            ADRENO_GPU_BOOST
+            ADRENO_GPU_BOOST,
+            ASYNC_SHADERS
         )
 
         fun from(key: String): BooleanSetting? =
