@@ -647,9 +647,7 @@
               <item>
                <widget class="QLabel" name="label_14">
                 <property name="toolTip">
-                 <string>Set a static analog direction as a input.
- It is most useful to help people with disabilities but can also be used for niche circumstances.
- Not reccomended to use actual controller anolog sticks on these presets but they do work </string>
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Set a static analog direction as a input. It is most useful to help people with disabilities but can also be used for niche circumstances. Not reccomended to use actual controller anolog sticks on these presets but they do work.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="layoutDirection">
                  <enum>Qt::LeftToRight</enum>
@@ -878,7 +876,7 @@
               <item>
                <widget class="QLabel" name="label_15">
                 <property name="toolTip">
-                 <string>Set a static analog direction as a input. It is ost useful to help people with disabilities but can also be used for niche circumstances. Not reccomended to use actual controller anolog sticks on these presets but they do work </string>
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Set a static analog direction as a input. It is ost useful to help people with disabilities but can also be used for niche circumstances. Not reccomended to use actual controller anolog sticks on these presets but they do work.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="text">
                  <string>Directional Presets</string>
@@ -1068,6 +1066,9 @@
      </item>
      <item>
       <widget class="QCheckBox" name="use_artic_controller">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use the controls provided by Artic Base Server when connected to it instead of the configured input device.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <property name="text">
         <string>Use Artic Controller when connected to Artic Base Server</string>
        </property>

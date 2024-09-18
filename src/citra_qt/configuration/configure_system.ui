@@ -55,7 +55,7 @@
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The system model that Citra will try to emulate.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="text">
-               <string>Enable New 3DS Mode</string>
+               <string>New 3DS Mode</string>
               </property>
              </widget>
             </item>
@@ -177,7 +177,7 @@
             <item row="4" column="1">
              <widget class="QComboBox" name="combo_language">
               <property name="toolTip">
-               <string>Note: this can be overridden when region setting is auto-select</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Note: This can be overridden when region setting is 'Auto-select'.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <item>
                <property name="text">
@@ -279,6 +279,9 @@
             </item>
             <item row="7" column="0">
              <widget class="QLabel" name="label_init_clock">
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Set the emulated 3DS clock to either reflect that of your device or start at a simulated date and time.&lt;/p&gt;&lt;p&gt;If the clock is set to 'Simulated Clock', this changes the fixed date and time to start at.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
               <property name="text">
                <string>Clock</string>
               </property>
@@ -293,7 +296,7 @@
               </item>
               <item>
                <property name="text">
-                <string>Fixed Time</string>
+                <string>Simulated Clock</string>
                </property>
               </item>
              </widget>
@@ -301,7 +304,7 @@
             <item row="8" column="0">
              <widget class="QLabel" name="label_init_time">
               <property name="text">
-               <string>Startup time</string>
+               <string>Startup Time</string>
               </property>
              </widget>
             </item>
@@ -314,6 +317,9 @@
             </item>
             <item row="9" column="0">
              <widget class="QLabel" name="label_init_time_offset">
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Displace the system time by days, hours, minutes, or seconds.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
               <property name="text">
                <string>Offset Time</string>
               </property>
@@ -454,13 +460,19 @@
             </item>
             <item row="16" column="1">
              <widget class="QCheckBox" name="plugin_loader">
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Loads 3GX plugins from the emulated SD card if they are available.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
               <property name="text">
-               <string>Enable 3GX Plugin Loader</string>
+               <string>3GX Plugin Loader</string>
               </property>
              </widget>
             </item>
             <item row="17" column="1">
              <widget class="QCheckBox" name="allow_plugin_loader">
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Allows homebrew apps to enable the plugin loader even when it is disabled.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
               <property name="text">
                <string>Allow Games to Change Plugin Loader State</string>
               </property>

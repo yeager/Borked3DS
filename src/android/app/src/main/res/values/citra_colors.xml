@@ -260,5 +260,5 @@
     <color name="citra_onPrimary_gray">#FFFFFF</color>
     <color name="citra_onSecondary_gray">#FFFFFF</color>
     <color name="citra_onTertiary_gray">#FFFFFF</color>
-
+    <color name="citra_inversePrimary">#FFFFFF</color>   <!-- Unused color but Search crashes without this -->
 </resources>

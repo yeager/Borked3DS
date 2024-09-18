@@ -476,7 +476,7 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
             add(
                 DateTimeSetting(
                     StringSetting.INIT_TIME,
-                    R.string.simulated_clock,
+                    R.string.init_time,
                     R.string.init_time_description,
                     StringSetting.INIT_TIME.key,
                     StringSetting.INIT_TIME.defaultValue
@@ -685,7 +685,7 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
             add(
                 RunnableSetting(
                     R.string.controller_quick_config,
-                    0,
+                    R.string.controller_quick_config_description,
                     false,
                     0,
                     { settingsAdapter.onClickControllerQuickConfig() }
@@ -860,15 +860,6 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
                 )
             )
             add(
-                SwitchSetting(
-                    BooleanSetting.USE_SAMPLE_SHADING,
-                    R.string.use_sample_shading,
-                    R.string.use_sample_shading_description,
-                    BooleanSetting.USE_SAMPLE_SHADING.key,
-                    BooleanSetting.USE_SAMPLE_SHADING.defaultValue,
-                )
-            )
-            add(
                 SingleChoiceSetting(
                     IntSetting.OPTIMIZE_SPIRV,
                     R.string.optimize_spirv,
@@ -905,6 +896,15 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
                     BooleanSetting.RELAXED_PRECISION_DECORATORS.key,
                     BooleanSetting.RELAXED_PRECISION_DECORATORS.defaultValue,
                 )    
+            )
+            add(
+                SwitchSetting(
+                    BooleanSetting.USE_SAMPLE_SHADING,
+                    R.string.use_sample_shading,
+                    R.string.use_sample_shading_description,
+                    BooleanSetting.USE_SAMPLE_SHADING.key,
+                    BooleanSetting.USE_SAMPLE_SHADING.defaultValue,
+                )
             )
             add(HeaderSetting(R.string.graphics_hacks))
             add(

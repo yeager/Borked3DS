@@ -141,7 +141,8 @@
     <string name="button_zr" translatable="false">ZR</string>
     <string name="input_message_analog_only">This control must be bound to a gamepad analog stick or D-pad axis!</string>
     <string name="input_message_button_only">This control must be bound to a gamepad button!</string>
-    <string name="controller_quick_config">Quick Configure</string>
+    <string name="controller_quick_config">Quick Configure (Experimental)</string>
+    <string name="controller_quick_config_description">Use a wizard to automatically map controller buttons.</string>
     <string name="controller_quick_config_finish">Finish</string>
     <string name="controller_quick_config_unassigned">Unassigned</string>
     <string name="controller_quick_config_next">Next</string>
@@ -179,7 +180,7 @@
     <string name="button">Button</string>
 
     <!-- Core settings strings -->
-    <string name="cpu_jit">CPU JIT</string>
+    <string name="cpu_jit">CPU JIT Compiler</string>
     <string name="cpu_jit_description">Uses the Just-in-Time (JIT) compiler for CPU emulation. When enabled, game performance will be significantly improved.</string>
     <string name="init_clock">Clock</string>
     <string name="init_clock_description">Set the emulated 3DS clock to either reflect that of your device or start at a simulated date and time.</string>
@@ -194,8 +195,8 @@
     <string name="lle_applets">Use LLE Applets (if installed)</string>
     <string name="lle_applets_description">Use the original 3DS OS software for emulation. For example, use the same keyboard screen as a 3DS when games request the software keyboard, rather than a popup.</string>
     <string name="clock">Clock</string>
-    <string name="init_time">Offset Time</string>
-    <string name="init_time_description">If the clock is set to \"Simulated clock\", this changes the fixed date and time to start at.</string>
+    <string name="init_time">Startup Time</string>
+    <string name="init_time_description">If the clock is set to \"Simulated Clock\", this changes the fixed date and time to start at.</string>
     <string name="emulated_region">Region</string>
     <string name="emulated_language">Language</string>
     <string name="birthday">Birthday</string>
@@ -230,11 +231,11 @@
     <string name="renderer">Renderer</string>
     <string name="vulkan_options">Vulkan Options</string>
     <string name="graphics_api">Graphics API</string>
-    <string name="graphics_hacks">Graphics Hacks</string>
+    <string name="graphics_hacks">Graphics Hacks (Experimental)</string>
     <string name="advanced">Advanced</string>
-    <string name="spirv_shader_gen">Enable SPIR-V shader generation</string>
+    <string name="spirv_shader_gen">SPIR-V Shader Generation</string>
     <string name="spirv_shader_gen_description">Emits the fragment shader used to emulate PICA using SPIR-V instead of GLSL.</string>
-    <string name="use_sample_shading">Enable Sample Shading</string>
+    <string name="use_sample_shading">Sample Shading</string>
     <string name="use_sample_shading_description">Enables a vulkan extension that may improve the rendering quality, at the cost of some performance.</string>
     <string name="optimize_spirv">SPIR-V Shader Optimization Level</string>
     <string name="optimize_spirv_description">Performs various optimizations on SPIR-V modules to improve performance and reduce size. Equivalent to passing -O or -Os to spirv-opt.</string>
@@ -242,30 +243,30 @@
     <string name="spirv_output_validation_description">SPIR-V output validation checks validation rules described by the SPIR-V specification. Ensures that outputs are valid and protects from bad inputs. Useful for debugging.</string>
     <string name="spirv_output_legalization">SPIR-V Shader Legalization</string>
     <string name="spirv_output_legalization_description">Legalizes the SPIR-V code for Vulkan. Primarily used for HLSL shaders.</string>
-    <string name="relaxed_precision_decorators">Enable Relaxed Precision Decorators</string>
+    <string name="relaxed_precision_decorators">Relaxed Precision Decorators</string>
     <string name="relaxed_precision_decorators_desc">Optimizes shader code by allowing certain floating-point operations to use reduced precision. Can improve performance by reducing memory bandwidth and computational requirements. May cause issues on certain GPUs, particularly on Mali GPUs.</string>
-    <string name="async_shaders">Enable Async Shader Compilation</string>
+    <string name="async_shaders">Async Shader Compilation</string>
     <string name="async_shaders_description">Compiles shaders in the background to reduce stuttering during gameplay. When enabled expect temporary graphical glitches.</string>
-    <string name="async_presentation">Enable Async Presentation</string>
+    <string name="async_presentation">Async Presentation</string>
     <string name="async_presentation_description">Perform presentation on seperate threads. Improves performance on Vulkan in most games.</string>
     <string name="renderer_debug">Debug Renderer</string>
     <string name="renderer_debug_description">Log additional graphics related debug information. When enabled, game performance will be significantly reduced.</string>
     <string name="dump_command_buffers">Dump Command Buffers</string>
     <string name="dump_command_buffers_description">Print Vulkan API calls, parameters, and values to an identified output stream.\n\nMay need to be enabled globally through ADB first with:\n<font face="monospace">adb shell \"setprop debug.vulkan.layers \'VK_LAYER_LUNARG_api_dump\'\"</font>\n\nWhen done, disable it with:\n<font face="monospace">adb shell \"setprop debug.vulkan.layers \'\'\"</font>\n\nTo set the save location:\n<font face="monospace">adb shell \"setprop debug.vulkan.api_dump.log_filename \'/sdcard/Android/vk_apidump.txt\'\"</font></string>
-    <string name="vsync">Enable V-Sync</string>
+    <string name="vsync">Enable VSync</string>
     <string name="vsync_description">Synchronizes the game frame rate to the refresh rate of your device.</string>
-    <string name="enable_custom_cpu_ticks">Enable Custom CPU Ticks</string>
+    <string name="enable_custom_cpu_ticks">Custom CPU Ticks</string>
     <string name="enable_custom_cpu_ticks_description">Set a custom value of CPU ticks. Higher values can increase performance but if they\'re too high, it may cause the game to freeze. A range of 77–21000 is recommended.</string>
-    <string name="custom_cpu_ticks">CPU Ticks</string>
-    <string name="core_downcount_hack">Enable Core Downcount Hack</string>
+    <string name="custom_cpu_ticks">Number of CPU Ticks</string>
+    <string name="core_downcount_hack">Core Downcount</string>
     <string name="core_downcount_hack_description">When enabled, core downcount will be limited to a smaller time slice, reducing CPU usage. It may improve performance for low-end devices or GPU hungry games.</string>
-    <string name="priority_boost">Enable Priority Boost</string>
-    <string name="priority_boost_description">Boost low priority starved threads during kernel rescheduling. It may improve performance, at the cost of freezing during cutsences for some games.</string>
+    <string name="priority_boost">Priority Boost</string>
+    <string name="priority_boost_description">Boost low priority starved threads during kernel rescheduling. It may improve performance, at the cost of freezing during cutscenes for some games.</string>
     <string name="linear_filtering">Linear Filtering</string>
     <string name="linear_filtering_description">Enables linear filtering, which causes game visuals to appear smoother.</string>
     <string name="texture_filter_name">Texture Filter</string>
     <string name="texture_filter_description">Enhances the visuals of games by applying a filter to textures. The supported filters are Anime4K Ultrafast, Bicubic, ScaleForce, and xBRZ freescale.</string>
-    <string name="hw_shaders">Enable Hardware Shader</string>
+    <string name="hw_shaders">Hardware Shader Acceleration</string>
     <string name="hw_shaders_description">Uses hardware to emulate 3DS shaders. When enabled, game performance will be significantly improved.</string>
     <string name="skip_slow_draw">Skip Slow Draw</string>
     <string name="skip_slow_draw_description">Skips the slow drawing event from the PICA core. May improve performance, but can cause visual artifacts.</string>
@@ -273,19 +274,19 @@
     <string name="skip_texture_copy_description">Skips the texture copy event from the rasterizer cache. May improve performance, but can cause visual artifacts.</string>
     <string name="skip_cpu_write">Skip CPU Write</string>
     <string name="skip_cpu_write_description">Skips the CPU write event from rasterizer cache invalidation. May improve performance but may cause graphical bugs.</string>
-    <string name="upscaling_hack">Enable Upscaling Hack</string>
+    <string name="upscaling_hack">Upscaling Hack</string>
     <string name="upscaling_hack_description">Overrides upscaling for dst_params. May fix texture ghosting for some games, but may crash other games as well.</string>
     <string name="shaders_accurate_mul">Accurate Multiplication</string>
     <string name="shaders_accurate_mul_description">Uses more accurate multiplication in hardware shaders, which may fix some graphical bugs. When enabled, performance will be reduced.</string>
     <string name="asynchronous_gpu">Enable asynchronous GPU emulation</string>
     <string name="asynchronous_gpu_description">Uses a separate thread to emulate the GPU asynchronously. When enabled, performance will be improved.</string>
-    <string name="sustained_performance">Enable Sustained Performance</string>
+    <string name="sustained_performance">Sustained Performance</string>
     <string name="sustained_performance_description">May reduce thermal throttling by reducing clock speed slightly. Decreases the performance.</string>
     <string name="expand_to_cutout_area">Expand to Cutout Area</string>
     <string name="expand_to_cutout_area_description">Expands the display area to include the cutout (or notch) area.</string>
     <string name="frame_limit_enable">Limit Speed</string>
     <string name="frame_limit_enable_description">When enabled, emulation speed will be limited to a specified percentage of normal speed.</string>
-    <string name="frame_limit_slider">Limit Speed Percent</string>
+    <string name="frame_limit_slider">Limit Speed Percentage</string>
     <string name="frame_limit_slider_description">Specifies the percentage to limit emulation speed. With the default of 100% emulation will be limited to normal speed. Values higher or lower will increase or decrease the speed limit.</string>
     <string name="frame_skip_name">Frame Skip</string>
     <string name="frame_skip_description">The amount of frames to skip. May not work well with Realtime Audio enabled. Experimental.</string>
@@ -309,7 +310,7 @@
     <string name="stereoscopy">Stereoscopy</string>
     <string name="render3d">Stereoscopic 3D Mode</string>
     <string name="factor3d">Depth</string>
-    <string name="factor3d_description">Specifies the value of the 3D slider. This should be set to higher than 0% when Stereoscopic 3D is enabled.</string>
+    <string name="factor3d_description">Specifies the amount of 3D depth. This should be set to higher than 0% when Stereoscopic 3D is enabled.</string>
     <string name="mono_render_option">Eye to Render in Monoscopic Mode</string>
     <string name="mono_render_option_description">Change default eye to render when Stereoscopic 3D Mode is set to Off.</string>
     <string name="left_eye">Left Eye (default)</string>
@@ -330,10 +331,10 @@
     <string name="cardboard_x_shift_description">Specifies the percentage of empty space to shift the screens horizontally. Positive values move the two eyes closer to the middle, while negative values move them away.</string>
     <string name="cardboard_y_shift">Vertical Shift</string>
     <string name="cardboard_y_shift_description">Specifies the percentage of empty space to shift the screens vertically. Positive values move the two eyes towards the bottom, while negative values move them towards the top.</string>
-    <string name="use_shader_jit">Enable Shader JIT</string>
+    <string name="use_shader_jit">Shader JIT Engine</string>
     <string name="use_shader_jit_description">Use the JIT engine instead of the interpreter for software shader emulation. Enable this for better performance.</string>
     <string name="use_disk_shader_cache">Disk Shader Cache</string>
-    <string name="use_disk_shader_cache_description">Reduce stuttering by storing and loading generated shaders to disk. It cannot be used without Enabling Hardware Shader.</string>
+    <string name="use_disk_shader_cache_description">Reduce stuttering by storing and loading generated shaders to disk. It cannot be used without Hardware Shader Acceleration.</string>
     <string name="adreno_gpu_boost">Adreno GPU Boost (Experimental)</string>
     <string name="adreno_gpu_boost_description">Increases graphics throughput on supported devices, improving performance. Use of this setting can increase power usage and temperature. May cause stability issues on certain devices.</string>
     <string name="utility">Utility</string>
@@ -350,7 +351,7 @@
     <string name="audio_volume">Volume</string>
     <string name="audio_stretch">Audio Stretching</string>
     <string name="audio_stretch_description">Stretches audio to reduce stuttering. When enabled, increases audio latency and slightly reduces performance.</string>
-    <string name="realtime_audio">Enable Realtime Audio</string>
+    <string name="realtime_audio">Realtime Audio</string>
     <string name="realtime_audio_description">Scales audio playback speed to account for drops in emulation framerate. This means that audio will play at full speed even while the game framerate is low. May cause audio desync issues.</string>
     <string name="audio_input_type">Audio Input Device</string>
     <string name="sound_output_mode">Sound Output Mode</string>
@@ -386,11 +387,11 @@
     <string name="auto_select">Auto-Select</string>
 
     <!-- Hacks Dialog -->
-    <string name="tweaks_title">Hacks</string>
+    <string name="tweaks_title">Hacks (Experimental)</string>
     <string name="priority_boost_tweaks">Priority Boost</string>
     <string name="realtime_audio_tweaks">Real-time Audio</string>
     <string name="upscaling_hack_tweaks">Upscaling Hack</string>
-    <string name="cpu_hacks">CPU Hacks</string>
+    <string name="cpu_hacks">CPU Hacks (Experimental)</string>
 
     <!-- Add Directory Screen-->
     <string name="select_game_folder">Select Game Folder</string>
@@ -461,7 +462,7 @@
     <string name="emulation_portrait_layout_top_full">Default</string>
     <string name="emulation_screen_layout_custom">Custom Layout</string>
     <string name="emulation_small_screen_position">Small Screen Position</string>
-    <string name="small_screen_position_description">Where should the small screen appear relative to the large one in Large Screen Layout?</string>
+    <string name="small_screen_position_description">Where should the small screen appear relative to the large one in Large Screen layout?</string>
     <string name="small_screen_position_top_right">Top Right</string>
     <string name="small_screen_position_middle_right">Middle Right</string>
     <string name="small_screen_position_bottom_right">Bottom Right</string>

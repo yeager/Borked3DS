@@ -133,6 +133,9 @@
        <layout class="QGridLayout" name="gridLayout_1">
         <item row="0" column="0">
          <widget class="QCheckBox" name="spirv_shader_gen">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Emits the fragment shader used to emulate PICA using SPIR-V instead of GLSL.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
           <property name="text">
            <string>SPIR-V Shader Generation</string>
           </property>
@@ -144,7 +147,7 @@
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Optimizes shader code by allowing certain floating-point operations to use reduced precision. Can improve performance by reducing memory bandwidth and computational requirements. May cause issues on certain GPUs.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="text">
-           <string>Enable Relaxed Precision</string>
+           <string>Relaxed Precision</string>
           </property>
          </widget>
         </item>
@@ -154,7 +157,7 @@
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Enables a Vulkan extension that may improve the rendering quality, at the cost of some performance.&lt;/p&gt;&lt;p&gt;Requires a relatively powerful GPU for better performance.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="text">
-           <string>Enable Sample Shading</string>
+           <string>Sample Shading</string>
           </property>
          </widget>
         </item>
@@ -213,7 +216,7 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Activate SPIR-V output validation. The validator checks validation rules described by the SPIR-V specification.&lt;/p&gt;&lt;p&gt;Ensures that outputs are valid and protects from bad inputs. Useful for debugging.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="text">
-              <string>Enable Validation</string>
+              <string>Shader Validation</string>
              </property>
             </widget>
            </item>
@@ -223,7 +226,7 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Activate SPIR-V output legalization. Legalizes the SPIR-V code for Vulkan. Primarily used for HLSL shaders.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="text">
-              <string>Enable Legalization</string>
+              <string>Shader Legalization</string>
              </property>
             </widget>
            </item>
@@ -262,7 +265,7 @@
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use the selected graphics API to accelerate shader emulation.&lt;/p&gt;&lt;p&gt;Requires a relatively powerful GPU for better performance.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="text">
-            <string>Enable Hardware Shader</string>
+            <string>Hardware Shader Acceleration</string>
            </property>
           </widget>
          </item>
@@ -300,7 +303,7 @@
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use the JIT engine instead of the interpreter for software shader emulation. &lt;/p&gt;&lt;p&gt;Enable this for better performance.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="text">
-            <string>Enable Shader JIT</string>
+            <string>Shader JIT Engine</string>
            </property>
           </widget>
          </item>
@@ -310,7 +313,7 @@
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Compile shaders using background threads to avoid shader compilation stutter. Expect temporary graphical glitches.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="text">
-            <string>Enable Async Shader Compilation</string>
+            <string>Async Shader Compilation</string>
            </property>
           </widget>
          </item>
@@ -320,7 +323,7 @@
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Perform presentation on separate threads. Improves performance when using Vulkan in most games.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="text">
-            <string>Enable Async Presentation</string>
+            <string>Async Presentation</string>
            </property>
           </widget>
          </item>
@@ -333,7 +336,7 @@
    <item>
     <widget class="QGroupBox" name="tweaksBox">
      <property name="title">
-      <string>Graphics Hacks</string>
+      <string>Graphics Hacks (Experimental)</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_6">
       <item>
@@ -455,7 +458,7 @@
         <item row="1" column="0">
          <widget class="QCheckBox" name="toggle_disk_shader_cache">
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Reduce stuttering by storing and loading generated shaders to disk.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Reduce stuttering by storing and loading generated shaders to disk. It cannot be used without Hardware Shader Acceleration.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="text">
            <string>Use Disk Shader Cache</string>
@@ -465,7 +468,7 @@
         <item row="1" column="1">
          <widget class="QCheckBox" name="toggle_vsync_new">
           <property name="toolTip">
-           <string>VSync prevents the screen from tearing, but some graphics cards have lower performance with VSync enabled. Keep it enabled if you don't notice a performance difference.</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;VSync prevents the screen from tearing, but some graphics cards have lower performance with VSync enabled. Keep it enabled if you don't notice a performance difference.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="text">
            <string>Enable VSync</string>
@@ -506,7 +509,7 @@
             <item>
               <widget class="QLabel" name="label_delay_render">
                 <property name="text">
-                  <string>Delay game render thread:</string>
+                  <string>Delay Game Render Thread</string>
                 </property>
                 <property name="toolTip">
                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Delays the emulated game render thread the specified amount of milliseconds every time it submits render commands to the GPU.&lt;/p&gt;&lt;p&gt;Adjust this feature in the (very few) dynamic-fps games to fix performance issues.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>

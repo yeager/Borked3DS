@@ -106,7 +106,6 @@
       <string>Load State</string>
      </property>
      <addaction name="action_Load_from_Newest_Slot"/>
-
      <addaction name="action_Quick_Load"/>
      <addaction name="separator"/>
     </widget>
@@ -504,7 +503,7 @@
     <string>Open Log Folder</string>
    </property>
    <property name="toolTip">
-    <string>Opens the Citra Log folder</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Opens the Citra Log folder.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </action>
   <action name="action_Open_Maintenance_Tool">
@@ -512,7 +511,7 @@
     <string>Modify Citra Install</string>
    </property>
    <property name="toolTip">
-    <string>Opens the maintenance tool to modify your Citra installation</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Opens the maintenance tool to modify your Citra installation.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </action>
   <action name="action_Screen_Layout_Default">

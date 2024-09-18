@@ -34,7 +34,7 @@
       <item>
        <widget class="QLineEdit" name="filter">
         <property name="placeholderText">
-         <string>Leave empty to disable filtering</string>
+         <string>Leave empty to disable filtering.</string>
         </property>
        </widget>
       </item>

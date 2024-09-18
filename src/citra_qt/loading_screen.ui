@@ -84,8 +84,7 @@
         <item>
          <widget class="QLabel" name="title">
           <property name="styleSheet">
-           <string notr="true">background-color: black; color: white;
-font: 75 20pt &quot;Arial&quot;;</string>
+           <string notr="true">background-color: black; color: white; font: 75 20pt &quot;Arial&quot;;</string>
           </property>
           <property name="text">
            <string/>
@@ -104,8 +103,7 @@ font: 75 20pt &quot;Arial&quot;;</string>
            </sizepolicy>
           </property>
           <property name="styleSheet">
-           <string notr="true">background-color: black; color: white;
-font: 75 20pt &quot;Arial&quot;;</string>
+           <string notr="true">background-color: black; color: white; font: 75 20pt &quot;Arial&quot;;</string>
           </property>
           <property name="text">
            <string>Loading Shaders 387 / 1628</string>
@@ -127,16 +125,7 @@ font: 75 20pt &quot;Arial&quot;;</string>
            </size>
           </property>
           <property name="styleSheet">
-           <string notr="true">QProgressBar {
-color: white;
-border: 2px solid white;
-outline-color: black;
-border-radius: 20px;
-}
-QProgressBar::chunk {
-background-color: white;
-border-radius: 15px;
-}</string>
+           <string notr="true">QProgressBar { color: white; border: 2px solid white; outline-color: black; border-radius: 20px; } QProgressBar::chunk { background-color: white; border-radius: 15px; }</string>
           </property>
           <property name="value">
            <number>50</number>
@@ -155,8 +144,7 @@ border-radius: 15px;
            <string notr="true"/>
           </property>
           <property name="styleSheet">
-           <string notr="true">background-color: black; color: white;
-font: 75 15pt &quot;Arial&quot;;</string>
+           <string notr="true">background-color: black; color: white; font: 75 15pt &quot;Arial&quot;;</string>
           </property>
           <property name="text">
            <string>Estimated Time 5m 4s</string>

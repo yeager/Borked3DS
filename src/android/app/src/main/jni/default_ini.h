@@ -494,7 +494,7 @@ renderer_debug =
 # 0 (default): Off, 1: On
 dump_command_buffers =
 
-# Port for listening to GDB connections.
+# Open port for listening to GDB connections.
 use_gdbstub=false
 gdbstub_port=24689
 

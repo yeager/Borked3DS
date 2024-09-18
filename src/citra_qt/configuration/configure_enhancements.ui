@@ -162,8 +162,11 @@
       </item>
       <item>
        <widget class="QCheckBox" name="toggle_linear_filter">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Enables linear filtering, which causes game visuals to appear smoother.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
         <property name="text">
-         <string>Enable Linear Filtering</string>
+         <string>Linear Filtering</string>
         </property>
        </widget>
       </item>
@@ -212,6 +215,9 @@
          </property>
          <item>
           <widget class="QLabel" name="texture_filter_label">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Enhances the visuals of games by applying a filter to textures.&lt;/p&gt;&lt;p&gt;The supported filters are Anime4K, Ultrafast, Bicubic, ScaleForce, and xBRZ freescale.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
            <property name="text">
             <string>Texture Filter</string>
            </property>
@@ -369,6 +375,9 @@
        <layout class="QHBoxLayout" name="horizontalLayout_6">
         <item>
          <widget class="QLabel" name="label_3">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Specifies the amount of 3D depth. This should be set to higher than 0% when Stereoscopic 3D is enabled.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
           <property name="text">
            <string>Depth</string>
           </property>
@@ -422,6 +431,9 @@
       </item>
       <item>
        <widget class="QCheckBox" name="swap_eyes_3d">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Swaps which eye is shown where. Combine with Side by Side mode and cross your eyes to see 3D with no equipment!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
         <property name="text">
          <string>Swap Eyes</string>
         </property>
