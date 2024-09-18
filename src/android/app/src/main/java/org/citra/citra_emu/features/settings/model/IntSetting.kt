@@ -13,6 +13,8 @@ enum class IntSetting(
     FRAME_LIMIT("frame_limit", Settings.SECTION_RENDERER, 100),
     EMULATED_REGION("region_value", Settings.SECTION_SYSTEM, -1),
     INIT_CLOCK("init_clock", Settings.SECTION_SYSTEM, 0),
+    INIT_TICKS_TYPE("init_ticks_type", Settings.SECTION_SYSTEM, 0),
+    INIT_TICKS_OVERRIDE("init_ticks_override", Settings.SECTION_SYSTEM, 0),
     CAMERA_INNER_FLIP("camera_inner_flip", Settings.SECTION_CAMERA, 0),
     CAMERA_OUTER_LEFT_FLIP("camera_outer_left_flip", Settings.SECTION_CAMERA, 0),
     CAMERA_OUTER_RIGHT_FLIP("camera_outer_right_flip", Settings.SECTION_CAMERA, 0),

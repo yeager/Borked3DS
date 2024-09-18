@@ -432,7 +432,8 @@ init_clock =
 # Note: 3DS can only handle times later then Jan 1 2000
 init_time =
 
-# The system ticks count to use when citra starts
+# The system ticks count to use when Citra starts. Simulates the amount of time the system ran before launching the game.
+# This accounts for games that rely on the system tick to seed randomness.
 # 0: Random (default), 1: Fixed
 init_ticks_type =
 

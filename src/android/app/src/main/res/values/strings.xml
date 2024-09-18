@@ -204,6 +204,12 @@
     <string name="birthday_day">Day</string>
     <string name="country">Country</string>
     <string name="play_coins">Play Coins</string>
+    <string name="init_ticks_type">Initial System Ticks</string>
+    <string name="init_ticks_type_description">The system ticks count to use when Citra starts. Simulates the amount of time the system ran before launching the game. This accounts for games that rely on the system tick to seed randomness.</string>
+    <string name="init_ticks_override">Initial System Ticks Override</string>
+    <string name="init_ticks_override_description">The tick count to use when Initial System Ticks is set to Fixed.</string>
+    <string name="random">Random</string>
+    <string name="fixed">Fixed</string>
     <string name="steps_per_hour">Pedometer Steps per Hour</string>
     <string name="steps_per_hour_description">Number of steps per hour reported by the pedometer. Range from 0 to 65,535.</string>
     <string name="console_id">Console ID</string>

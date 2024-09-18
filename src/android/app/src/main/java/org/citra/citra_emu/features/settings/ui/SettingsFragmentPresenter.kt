@@ -356,7 +356,29 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
                     countries.map { it.second }.toTypedArray()
                 )
             )
-
+            add(
+                SingleChoiceSetting(
+                    IntSetting.INIT_TICKS_TYPE,
+                    R.string.init_ticks_type,
+                    R.string.init_ticks_type_description,
+                    R.array.initTicksNames,
+                    R.array.initTicksValues,
+                    IntSetting.INIT_TICKS_TYPE.key,
+                    IntSetting.INIT_TICKS_TYPE.defaultValue
+                )
+            )
+            add(
+                SliderSetting(
+                    IntSetting.INIT_TICKS_OVERRIDE,
+                    R.string.init_ticks_override,
+                    R.string.init_ticks_override_description,
+                    0,
+                    65535,
+                    " ticks",
+                    IntSetting.INIT_TICKS_OVERRIDE.key,
+                    IntSetting.INIT_TICKS_OVERRIDE.defaultValue.toFloat()
+                )
+            )
             val playCoinSettings = object : AbstractIntSetting {
                 override var int: Int
                     get() = SystemSaveGame.getPlayCoins()

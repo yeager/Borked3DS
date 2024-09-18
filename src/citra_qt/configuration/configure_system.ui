@@ -351,6 +351,9 @@
             </item>
             <item row="10" column="0">
              <widget class="QLabel" name="label_init_ticks_type">
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The system ticks count to use when Citra starts. Simulates the amount of time the system ran before launching the game. This accounts for games that rely on the system tick to seed randomness.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
               <property name="text">
                <string>Initial System Ticks</string>
               </property>
@@ -372,6 +375,9 @@
             </item>
             <item row="11" column="0">
              <widget class="QLabel" name="label_init_ticks_value">
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The tick count to use when Initial System Ticks is set to Fixed.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
               <property name="text">
                <string>Initial System Ticks Override</string>
               </property>
