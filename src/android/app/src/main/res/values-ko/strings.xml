@@ -22,10 +22,6 @@
     <!-- Generic buttons (Shared with lots of stuff) -->
     <string name="generic_buttons">버튼</string>
 
-    <!-- Premium settings strings -->
-    <string name="design">테마변경 (Light, Dark)</string>
-    <string name="design_updated">설정을 종료하면 테마가 업데이트됩니다</string>
-
     <!-- Core settings strings -->
     <string name="cpu_jit">CPU JIT 사용</string>
     <string name="cpu_jit_description">CPU 에뮬레이션에 Just-in-Time(JIT) 컴파일러를 사용합니다. 활성화하면 게임 성능이 크게 향상됩니다.</string>
@@ -73,13 +69,6 @@
     <string name="performance_warning">이 설정을 끄면 에뮬레이션 성능이 크게 저하됩니다! 최상의 경험을 위해서는 이 설정을 사용하는 것이 좋습니다.</string>
     <string name="debug_warning">경고: 이 설정을 수정하면 에뮬레이션 속도가 느려집니다</string>
 
-    <!-- Premium strings -->
-    <string name="premium_text">프리미엄</string>
-    <string name="premium_settings_upsell">프리미엄으로 업그레이드하고 Citra를 지원하십시오!</string>
-    <string name="premium_settings_upsell_description">프리미엄으로 개발자가 Citra를 계속 개선 할 수 있도록 지원하고 이 독점 기능에 액세스하세요!</string>
-    <string name="premium_settings_welcome">프리미엄에 오신 것을 환영합니다.</string>
-    <string name="premium_settings_welcome_description">지원해주셔서 감사합니다!</string>
-
     <!-- Audio settings strings -->
     <string name="audio_stretch">오디오 스트레칭 사용</string>
     <string name="audio_stretch_description">Stretches audio to reduce stuttering. When enabled, increases audio latency and slightly reduces performance.
@@ -101,7 +90,6 @@
 
     <!-- Preferences Screen -->
     <string name="preferences_settings">설정</string>
-    <string name="preferences_premium">프리미엄</string>
     <string name="preferences_general">일반</string>
     <string name="preferences_system">설정</string>
     <string name="preferences_camera">카메라</string>
@@ -123,7 +111,6 @@
     <string name="emulation_control_scale">스케일 조정</string>
     <string name="emulation_open_settings">설정 열기</string>
     <string name="emulation_switch_screen_layout">가로 화면 레이아웃</string>
-    <string name="emulation_screen_layout_landscape">기본</string>
     <string name="emulation_screen_layout_portrait">세로</string>
     <string name="emulation_screen_layout_single">단일화면</string>
     <string name="emulation_screen_layout_sidebyside">좌우화면 (Side by Side)  스크린</string>

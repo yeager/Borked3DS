@@ -85,7 +85,6 @@
     <string name="emulation_done">完了</string>
     <string name="emulation_toggle_controls">コントロールの切り替え</string>
     <string name="emulation_open_settings">設定を開く</string>
-    <string name="emulation_screen_layout_landscape">デフォルト</string>
     <string name="emulation_screen_layout_single">Single Screen</string>
     <string name="emulation_screen_layout_sidebyside">Side by Side Screens</string>
     <string name="emulation_swap_screens">スクリーンの上下を入れ替える</string>

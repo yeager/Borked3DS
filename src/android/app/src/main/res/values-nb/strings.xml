@@ -22,10 +22,6 @@
     <!-- Generic buttons (Shared with lots of stuff) -->
     <string name="generic_buttons">Taster</string>
 
-    <!-- Premium settings strings -->
-    <string name="design">Endre Tema (Lys, Mørk)</string>
-    <string name="design_updated">Tema oppdateres når du går ut av Innstillinger</string>
-
     <!-- Core settings strings -->
     <string name="cpu_jit">Aktiver CPU JIT</string>
     <string name="cpu_jit_description">Bruker Just-in-Time (JIT) kompilator til CPU emulering. Når dette er aktivert, vil spill ytelsen bli betydelig forbedret.</string>
@@ -73,13 +69,6 @@
     <string name="performance_warning">Å slå av denne innstillingen vil redusere emuleringsytelsen betydelig! For den beste opplevelsen, anbefales det at du lar denne innstillingen være aktivert.</string>
     <string name="debug_warning">Advarsel: Endring av disse innstillingene reduserer emuleringen</string>
 
-    <!-- Premium strings -->
-    <string name="premium_text">Premium</string>
-    <string name="premium_settings_upsell">Oppgrader til Premium og støtt Citra!</string>
-    <string name="premium_settings_upsell_description">Med Premium vil du støtte utviklerne til å fortsette å forbedre Citra, og få tilgang til disse eksklusive funksjonene!</string>
-    <string name="premium_settings_welcome">Velkommen til Premium.</string>
-    <string name="premium_settings_welcome_description">Takk for støtten!</string>
-
     <!-- Audio settings strings -->
     <string name="audio_stretch">Aktiver lydstrekking</string>
     <string name="audio_stretch_description">Strekker lyd for å redusere stamming. Når dette er aktivert, øker lydforsinkelsen og reduserer ytelsen litt.</string>
@@ -99,7 +88,6 @@
 
     <!-- Preferences Screen -->
     <string name="preferences_settings">Innstillinger </string>
-    <string name="preferences_premium">Premium</string>
     <string name="preferences_general">Generelt</string>
     <string name="preferences_system">System</string>
     <string name="preferences_camera">Kamera</string>
@@ -121,7 +109,6 @@
     <string name="emulation_control_scale">Juster Skala</string>
     <string name="emulation_open_settings">Åpne Innstillinger</string>
     <string name="emulation_switch_screen_layout">Landskap Skjermoppsett</string>
-    <string name="emulation_screen_layout_landscape">Standard</string>
     <string name="emulation_screen_layout_portrait">Bilde</string>
     <string name="emulation_screen_layout_single">Enkel Skjerm</string>
     <string name="emulation_screen_layout_sidebyside">Side ved Side Skjermer</string>

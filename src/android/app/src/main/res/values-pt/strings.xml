@@ -244,7 +244,6 @@
     <string name="emulation_open_settings">Abrir configurações</string>
     <string name="emulation_open_cheats">Mostrar Trapaças</string>
     <string name="emulation_switch_screen_layout">Disposição de tela em paisagem</string>
-    <string name="emulation_screen_layout_landscape">Padrão</string>
     <string name="emulation_screen_layout_portrait">Retrato</string>
     <string name="emulation_screen_layout_single">Tela única</string>
     <string name="emulation_screen_layout_sidebyside">Telas lado a lado</string>
@@ -322,7 +321,6 @@
 
     <!-- Render 3D modes -->
     <string name="side_by_side">Lado a Lado</string>
-    <string name="reverse_side_by_side">Lado a Lado Reverso</string>
     <string name="anaglyph">Anáglifo</string>
     <string name="interlaced">Entrelaçado</string>
     <string name="reverse_interlaced">Entrelaçado Reverso</string>

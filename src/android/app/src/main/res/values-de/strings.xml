@@ -234,7 +234,6 @@
     <string name="emulation_open_settings">Einstellungen öffnen</string>
     <string name="emulation_open_cheats">Öffne Cheats</string>
     <string name="emulation_switch_screen_layout">Querformat-Bildschirmlayout</string>
-    <string name="emulation_screen_layout_landscape">Standard</string>
     <string name="emulation_screen_layout_portrait">Hochformat</string>
     <string name="emulation_screen_layout_single">Einzelbildschirm</string>
     <string name="emulation_screen_layout_sidebyside">Bildschirme Seite an Seite</string>
