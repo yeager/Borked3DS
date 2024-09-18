@@ -446,6 +446,10 @@ gdbstub_port=24689
 # 0 (default): Off, 1: On
 renderer_debug =
 
+# Print Vulkan API calls, parameters and values to an identified output stream.
+# 0 (default): Off, 1: On
+dump_command_buffers =
+
 # To LLE a service module add "LLE\<module name>=true"
 
 [WebService]

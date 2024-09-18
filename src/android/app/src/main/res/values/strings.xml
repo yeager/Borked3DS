@@ -250,6 +250,8 @@
     <string name="async_presentation_description">Perform presentation on seperate threads. Improves performance on Vulkan in most games.</string>
     <string name="renderer_debug">Debug Renderer</string>
     <string name="renderer_debug_description">Log additional graphics related debug information. When enabled, game performance will be significantly reduced.</string>
+    <string name="dump_command_buffers">Dump Command Buffers</string>
+    <string name="dump_command_buffers_description">Print Vulkan API calls, parameters, and values to an identified output stream.\n\nMay need to be enabled globally through ADB first with:\n<font face="monospace">adb shell \"setprop debug.vulkan.layers \'VK_LAYER_LUNARG_api_dump\'\"</font>\n\nWhen done, disable it with:\n<font face="monospace">adb shell \"setprop debug.vulkan.layers \'\'\"</font>\n\nTo set the save location:\n<font face="monospace">adb shell \"setprop debug.vulkan.api_dump.log_filename \'/sdcard/Android/vk_apidump.txt\'\"</font></string>
     <string name="vsync">Enable V-Sync</string>
     <string name="vsync_description">Synchronizes the game frame rate to the refresh rate of your device.</string>
     <string name="enable_custom_cpu_ticks">Enable Custom CPU Ticks</string>

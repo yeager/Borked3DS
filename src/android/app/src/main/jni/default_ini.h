@@ -490,6 +490,10 @@ record_frame_times =
 # 0 (default): Off, 1: On
 renderer_debug =
 
+# Print Vulkan API calls, parameters and values to an identified output stream.
+# 0 (default): Off, 1: On
+dump_command_buffers =
+
 # Port for listening to GDB connections.
 use_gdbstub=false
 gdbstub_port=24689

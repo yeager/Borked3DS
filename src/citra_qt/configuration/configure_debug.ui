@@ -240,6 +240,9 @@
         </item>
         <item row="0" column="2">
          <widget class="QCheckBox" name="toggle_dump_command_buffers">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Print Vulkan API calls, parameters, and values to an identified output stream. Requires the Vulkan SDK to be installed.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
           <property name="text">
            <string>Dump Command Buffers</string>
           </property>

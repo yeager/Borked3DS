@@ -1582,6 +1582,15 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
                     BooleanSetting.INSTANT_DEBUG_LOG.defaultValue
                 )
             )
+            add(
+                SwitchSetting(
+                    BooleanSetting.DUMP_COMMAND_BUFFERS,
+                    R.string.dump_command_buffers,
+                    R.string.dump_command_buffers_description,
+                    BooleanSetting.DUMP_COMMAND_BUFFERS.key,
+                    BooleanSetting.DUMP_COMMAND_BUFFERS.defaultValue
+                )
+            )
         }
     }
 
