@@ -48,6 +48,7 @@ enum class IntSetting(
     NEW_3DS("is_new_3ds", Settings.SECTION_SYSTEM, 1),
     LLE_APPLETS("lle_applets", Settings.SECTION_SYSTEM, 0),
     CPU_CLOCK_SPEED("cpu_clock_percentage", Settings.SECTION_CORE, 100),
+    GDB_PORT("gdbstub_port", Settings.SECTION_DEBUG, 24689),
     LINEAR_FILTERING("filter_mode", Settings.SECTION_RENDERER, 1),
     SKIP_SLOW_DRAW("skip_slow_draw", Settings.SECTION_RENDERER, 0),
     SKIP_TEXTURE_COPY("skip_texture_copy", Settings.SECTION_RENDERER, 0),

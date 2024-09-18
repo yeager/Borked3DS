@@ -19,7 +19,7 @@
      <item>
       <widget class="QGroupBox" name="groupBox">
        <property name="title">
-        <string>GDB</string>
+        <string>Debugging</string>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_3">
         <item>
@@ -49,6 +49,9 @@
           </item>
           <item>
            <widget class="QLabel" name="label_2">
+            <property name="toolTip">
+              <string>&lt;html&gt;&lt;body&gt;Port number to listen for GDB connections.&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
             <property name="text">
              <string>Port</string>
             </property>

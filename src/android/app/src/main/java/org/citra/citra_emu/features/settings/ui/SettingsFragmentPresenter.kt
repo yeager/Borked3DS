@@ -1563,6 +1563,28 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
                     IntSetting.PRIORITY_BOOST.defaultValue
                 )
             )
+            add(HeaderSetting(R.string.gdb))
+            add(
+                SwitchSetting(
+                    BooleanSetting.GDB_STUB,
+                    R.string.gdb_stub,
+                    R.string.gdb_stub_description,
+                    BooleanSetting.GDB_STUB.key,
+                    BooleanSetting.GDB_STUB.defaultValue
+                )
+            )
+            add(
+                SliderSetting(
+                    IntSetting.GDB_PORT,
+                    R.string.gdb_port,
+                    R.string.gdb_port_description,
+                    0,
+                    65535,
+                    "",
+                    IntSetting.GDB_PORT.key,
+                    IntSetting.GDB_PORT.defaultValue.toFloat()
+                )
+            )
             add(HeaderSetting(R.string.logging))
             add(
                 SwitchSetting(

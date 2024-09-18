@@ -249,10 +249,6 @@
     <string name="async_shaders_description">Compiles shaders in the background to reduce stuttering during gameplay. When enabled expect temporary graphical glitches.</string>
     <string name="async_presentation">Async Presentation</string>
     <string name="async_presentation_description">Perform presentation on seperate threads. Improves performance on Vulkan in most games.</string>
-    <string name="renderer_debug">Debug Renderer</string>
-    <string name="renderer_debug_description">Log additional graphics related debug information. When enabled, game performance will be significantly reduced.</string>
-    <string name="dump_command_buffers">Dump Command Buffers</string>
-    <string name="dump_command_buffers_description">Print Vulkan API calls, parameters, and values to an identified output stream.\n\nMay need to be enabled globally through ADB first with:\n<font face="monospace">adb shell \"setprop debug.vulkan.layers \'VK_LAYER_LUNARG_api_dump\'\"</font>\n\nWhen done, disable it with:\n<font face="monospace">adb shell \"setprop debug.vulkan.layers \'\'\"</font>\n\nTo set the save location:\n<font face="monospace">adb shell \"setprop debug.vulkan.api_dump.log_filename \'/sdcard/Android/vk_apidump.txt\'\"</font></string>
     <string name="vsync">Enable VSync</string>
     <string name="vsync_description">Synchronizes the game frame rate to the refresh rate of your device.</string>
     <string name="enable_custom_cpu_ticks">Custom CPU Ticks</string>
@@ -425,8 +421,19 @@
     <string name="loader_error_file_not_found">ROM file does not exist</string>
     <string name="no_game_present">No bootable game present!</string>
 
+    <!-- GDB Menu -->
+    <string name="gdb">Debugging</string>
+    <string name="gdb_stub">GDB Stub</string>
+    <string name="gdb_stub_description">Open for listening to GDB connections.</string>
+    <string name="gdb_port">GDB Port</string>
+    <string name="gdb_port_description">Port number to listen for GDB connections.</string>
+
     <!-- Debug Menu -->
     <string name="logging">Logging</string>
+    <string name="renderer_debug">Debug Renderer</string>
+    <string name="renderer_debug_description">Log additional graphics related debug information. When enabled, game performance will be significantly reduced.</string>
+    <string name="dump_command_buffers">Dump Command Buffers</string>
+    <string name="dump_command_buffers_description">Print Vulkan API calls, parameters, and values to an identified output stream.\n\nMay need to be enabled globally through ADB first with:\n<font face="monospace">adb shell \"setprop debug.vulkan.layers \'VK_LAYER_LUNARG_api_dump\'\"</font>\n\nWhen done, disable it with:\n<font face="monospace">adb shell \"setprop debug.vulkan.layers \'\'\"</font>\n\nTo set the save location:\n<font face="monospace">adb shell \"setprop debug.vulkan.api_dump.log_filename \'/sdcard/Android/vk_apidump.txt\'\"</font></string>
 
     <!-- Emulation Menu -->
     <string name="emulation_menu_help">Press Back to access the menu.</string>
