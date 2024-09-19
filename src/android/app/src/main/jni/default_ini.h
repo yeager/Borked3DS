@@ -327,6 +327,9 @@ custom_portrait_bottom_y =
 custom_portrait_bottom_width =
 custom_portrait_bottom_height =
 
+# Opacity of second layer when using custom layout option (bottom screen unless swapped). Useful if positioning on top of the first layer. OpenGL only.
+custom_second_layer_opacity =
+
 # Swaps the prominent screen with the other screen.
 # For example, if Single Screen is chosen, setting this to 1 will display the bottom screen instead of the top screen.
 # 0 (default): Top Screen is prominent, 1: Bottom Screen is prominent

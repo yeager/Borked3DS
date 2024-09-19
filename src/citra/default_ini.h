@@ -279,7 +279,7 @@ custom_bottom_y =
 custom_bottom_width =
 custom_bottom_height =
 
-# Opacity of second layer when using custom layout option (bottom screen unless swapped)
+# Opacity of second layer when using custom layout option (bottom screen unless swapped). Useful if positioning on top of the first layer. OpenGL only.
 custom_second_layer_opacity =
 
 # Swaps the prominent screen with the other screen.
