@@ -332,6 +332,8 @@ jobs:
         with:
           java-version: '22'
           distribution: 'temurin'
+          cache: 'gradle'
+          check-latest: true
       - name: Build
         run: ./.ci/android.sh
         env:
