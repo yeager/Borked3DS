@@ -310,7 +310,7 @@
          <item row="2" column="1">
           <widget class="QCheckBox" name="toggle_async_shaders">
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Compile shaders using background threads to avoid shader compilation stutter. Expect temporary graphical glitches.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Compiles shaders in the background to reduce stuttering during gameplay. When enabled, expect temporary graphical glitches.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="text">
             <string>Async Shader Compilation</string>

@@ -156,7 +156,7 @@
              <item>
               <widget class="QLabel" name="label_3">
                <property name="toolTip">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;How many times larger is the large screen than the small screen in Large Screen layout?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Specifies the factor by which the large screen will be over the small screen in Large Screen layout mode.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="text">
                 <string>Large Screen Proportion</string>
@@ -197,7 +197,7 @@
              <item>
               <widget class="QLabel" name="small_pos_label">
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Where should the small screen appear relative to the large one in Large Screen layout?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Specifies the position of the small screen relative to the large one in Large Screen layout mode.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
                <property name="text">
                 <string>Small Screen Position</string>

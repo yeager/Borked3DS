@@ -617,7 +617,7 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
                 SingleChoiceSetting(
                     IntSetting.CAMERA_INNER_FLIP,
                     R.string.image_flip,
-                    0,
+                    R.string.image_flip_description,
                     R.array.cameraFlipNames,
                     R.array.cameraDeviceValues,
                     IntSetting.CAMERA_INNER_FLIP.key,
@@ -654,7 +654,7 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
                 SingleChoiceSetting(
                     IntSetting.CAMERA_OUTER_LEFT_FLIP,
                     R.string.image_flip,
-                    0,
+                    R.string.image_flip_description,
                     R.array.cameraFlipNames,
                     R.array.cameraDeviceValues,
                     IntSetting.CAMERA_OUTER_LEFT_FLIP.key,
@@ -691,7 +691,7 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
                 SingleChoiceSetting(
                     IntSetting.CAMERA_OUTER_RIGHT_FLIP,
                     R.string.image_flip,
-                    0,
+                    R.string.image_flip_description,
                     R.array.cameraFlipNames,
                     R.array.cameraDeviceValues,
                     IntSetting.CAMERA_OUTER_RIGHT_FLIP.key,
@@ -1224,7 +1224,7 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
             add(
                 SubmenuSetting(
                     R.string.emulation_landscape_custom_layout,
-                    0,
+                    R.string.emulation_landscape_custom_layout_description,
                     R.drawable.ic_fit_screen,
                     Settings.SECTION_CUSTOM_LANDSCAPE
                 )
@@ -1233,7 +1233,7 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
             add(
                 SubmenuSetting(
                     R.string.emulation_portrait_custom_layout,
-                    0,
+                    R.string.emulation_portrait_custom_layout_description,
                     R.drawable.ic_portrait_fit_screen,
                     Settings.SECTION_CUSTOM_PORTRAIT
                 )

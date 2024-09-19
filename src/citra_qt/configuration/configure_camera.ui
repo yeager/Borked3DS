@@ -228,7 +228,7 @@
         <item>
          <widget class="QLabel" name="camera_flip_label">
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select the image flip to apply.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select the image flip effect to apply.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="frameShape">
            <enum>QFrame::NoFrame</enum>
