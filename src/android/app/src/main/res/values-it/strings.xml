@@ -236,7 +236,7 @@
     </plurals>
     <string name="cia_install_notification_channel_description">Notifiche di Citra durante l\'installazione di un pacchetto CIA.</string>
     <string name="cia_install_notification_title">Installando il CIA</string>
-    <string name="cia_install_notification_installing">Installando %s(%d/%d)</string>
+    <string name="cia_install_notification_installing">Installando %1$s(%2$d/%3$d)</string>
     <string name="cia_install_notification_success_title">CIA installato con successo</string>
     <string name="cia_install_notification_error_title">Errore nell\'installazione del file CIA.</string>
     <string name="cia_install_success">\"%s\" è stato installato con successo</string>

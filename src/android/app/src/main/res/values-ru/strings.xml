@@ -417,7 +417,7 @@
     </plurals>
     <string name="cia_install_notification_channel_description">Уведомления Citra при установке CIA</string>
     <string name="cia_install_notification_title">Установка CIA</string>
-    <string name="cia_install_notification_installing">Установка %s (%d/%d)</string>
+    <string name="cia_install_notification_installing">Установка %1$s (%2$d/%3$d)</string>
     <string name="cia_install_notification_success_title">Успешная установка CIA</string>
     <string name="cia_install_notification_error_title">Не удалось установить CIA</string>
     <string name="cia_install_success">\"%s\" успешно установлено</string>
