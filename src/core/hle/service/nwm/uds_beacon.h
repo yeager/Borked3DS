@@ -9,6 +9,7 @@
 #include <vector>
 #include "common/common_types.h"
 #include "common/swap.h"
+#include "core/hle/service/nwm/nwm_uds.h"
 #include "core/hle/service/service.h"
 
 namespace Service::NWM {
@@ -122,6 +123,12 @@ struct BeaconData {
 #pragma pack(pop)
 
 static_assert(sizeof(BeaconData) == 0x12, "BeaconData has incorrect size.");
+
+struct ScanResult {
+    BeaconEntryHeader entry;
+    NetworkInfo net_info;
+    std::array<NodeInfo, UDSMaxNodes> nodes;
+};
 
 /**
  * Decrypts the beacon data buffer for the network described by `network_info`.
