@@ -253,7 +253,7 @@ class InputBindingSetting(
             Toast.makeText(context, R.string.input_message_analog_only, Toast.LENGTH_LONG).show()
             return
         }
-        key = getInputButtonKey(keyEvent.keyCode)
+        key = getInputButtonKey(keyEvent)
         val uiString = "${keyEvent.device.name}: Button ${keyEvent.keyCode}"
         value = uiString
     }
@@ -318,13 +318,6 @@ class InputBindingSetting(
                 NativeLibrary.ButtonType.DPAD_RIGHT -> Settings.KEY_BUTTON_RIGHT
                 else -> ""
             }
-
-        /**
-         * Helper function to get the settings key for an gamepad button.
-         *
-         */
-        @Deprecated("Use the new getInputButtonKey(keyEvent) method to handle unknown keys")
-        fun getInputButtonKey(keyCode: Int): String = "${INPUT_MAPPING_PREFIX}_HostAxis_${keyCode}"
 
         /**
          * Helper function to get the settings key for an gamepad button.
