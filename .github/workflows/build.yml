@@ -50,17 +50,16 @@ jobs:
           repo: deb http://apt.llvm.org/jammy/ llvm-toolchain-jammy-18 main
           repo-name: llvm
           keys-asc: https://apt.llvm.org/llvm-snapshot.gpg.key
-      - name: Install CMake PPA
-        uses: myci-actions/add-deb-repo@11
+      - name: Get latest CMake and Ninja
+        uses: lukka/get-cmake@latest
         with:
-          repo: deb https://apt.kitware.com/ubuntu/ jammy main
-          repo-name: cmake
-          keys-asc: https://apt.kitware.com/keys/kitware-archive-latest.asc
+          cmakeVersion: latest
+          ninjaVersion: latest 
       - name: Update System Packages
-        run: sudo apt-get update && sudo apt-get install kitware-archive-keyring && sudo apt-get -y dist-upgrade
+        run: sudo apt-get update && sudo apt-get -y dist-upgrade
       - name: Install New Packages
         run: |
-          sudo apt-get -y install cmake ccache ninja-build clang-18 clang-tools-18 clang-18-doc libclang-common-18-dev libclang-18-dev libclang1-18 clang-format-18 python3-clang-18 clangd-18 clang-tidy-18 clang-format-15 libasound-dev xorg-dev libx11-dev libxext-dev jackd libpipewire-0.3-dev libsndio-dev libxcb-cursor-dev libasound2-dev libpulse-dev libaudio-dev libjack-dev libsndio-dev libx11-dev libxext-dev libxrandr-dev libxcursor-dev libxfixes-dev libxi-dev libxss-dev libwayland-dev libxkbcommon-dev libdrm-dev libgbm-dev libgl1-mesa-dev libgles2-mesa-dev libegl1-mesa-dev libdbus-1-dev libibus-1.0-dev libudev-dev fcitx-libs-dev 
+          sudo apt-get -y install ccache clang-18 clang-tools-18 clang-18-doc libclang-common-18-dev libclang-18-dev libclang1-18 clang-format-18 python3-clang-18 clangd-18 clang-tidy-18 clang-format-15 libasound-dev xorg-dev libx11-dev libxext-dev jackd libpipewire-0.3-dev libsndio-dev libxcb-cursor-dev libasound2-dev libpulse-dev libaudio-dev libjack-dev libsndio-dev libx11-dev libxext-dev libxrandr-dev libxcursor-dev libxfixes-dev libxi-dev libxss-dev libwayland-dev libxkbcommon-dev libdrm-dev libgbm-dev libgl1-mesa-dev libgles2-mesa-dev libegl1-mesa-dev libdbus-1-dev libibus-1.0-dev libudev-dev fcitx-libs-dev 
           sudo apt-get clean
       - name: Install Qt
         uses: jurplel/install-qt-action@v4
@@ -108,17 +107,16 @@ jobs:
           key: ${{ runner.os }}-${{ matrix.target }}-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-${{ matrix.target }}-
-      - name: Install CMake PPA
-        uses: myci-actions/add-deb-repo@11
+      - name: Get latest CMake and Ninja
+        uses: lukka/get-cmake@latest
         with:
-          repo: deb https://apt.kitware.com/ubuntu/ noble main
-          repo-name: cmake
-          keys-asc: https://apt.kitware.com/keys/kitware-archive-latest.asc
+          cmakeVersion: latest
+          ninjaVersion: latest 
       - name: Update System Packages
-        run: sudo apt-get update && sudo apt-get install kitware-archive-keyring && sudo apt-get -y dist-upgrade
+        run: sudo apt-get update && sudo apt-get -y dist-upgrade
       - name: Install New Packages
         run: |
-          sudo apt-get -y install cmake ccache ninja-build gcc-14 clang-format-15 libasound-dev xorg-dev libx11-dev libxext-dev jackd libpipewire-0.3-dev libsndio-dev libxcb-cursor-dev libasound2-dev libpulse-dev libaudio-dev libjack-dev libsndio-dev libx11-dev libxext-dev libxrandr-dev libxcursor-dev libxfixes-dev libxi-dev libxss-dev libwayland-dev libxkbcommon-dev libdrm-dev libgbm-dev libgl1-mesa-dev libgles2-mesa-dev libegl1-mesa-dev libdbus-1-dev libibus-1.0-dev libudev-dev fcitx-libs-dev
+          sudo apt-get -y install ccache gcc-14 clang-format-15 libasound-dev xorg-dev libx11-dev libxext-dev jackd libpipewire-0.3-dev libsndio-dev libxcb-cursor-dev libasound2-dev libpulse-dev libaudio-dev libjack-dev libsndio-dev libx11-dev libxext-dev libxrandr-dev libxcursor-dev libxfixes-dev libxi-dev libxss-dev libwayland-dev libxkbcommon-dev libdrm-dev libgbm-dev libgl1-mesa-dev libgles2-mesa-dev libegl1-mesa-dev libdbus-1-dev libibus-1.0-dev libudev-dev fcitx-libs-dev
           sudo apt-get clean
       - name: Install Qt
         uses: jurplel/install-qt-action@v4
@@ -315,17 +313,16 @@ jobs:
               echo "GIT_TAG_NAME=$GITHUB_REF_NAME" >> $GITHUB_ENV
           fi
           echo $GIT_TAG_NAME
-      - name: Install CMake PPA
-        uses: myci-actions/add-deb-repo@11
+      - name: Get latest CMake and Ninja
+        uses: lukka/get-cmake@latest
         with:
-          repo: deb https://apt.kitware.com/ubuntu/ noble main
-          repo-name: cmake
-          keys-asc: https://apt.kitware.com/keys/kitware-archive-latest.asc
+          cmakeVersion: latest
+          ninjaVersion: latest 
       - name: Install system apps
         run: |
           sudo apt-get update -y
           sudo apt-get dist-upgrade -y
-          sudo apt-get install kitware-archive-keyring zip unzip ninja-build python3 cmake ccache apksigner clang-format-15 -y
+          sudo apt-get install zip unzip python3 ccache apksigner clang-format-15 -y
           sudo apt-get clean
       - name: Build
         run: JAVA_HOME=$JAVA_HOME_21_X64 ./.ci/android.sh
