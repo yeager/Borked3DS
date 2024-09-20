@@ -6,11 +6,15 @@ package org.citra.citra_emu.utils
 
 import android.app.Activity
 import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.net.wifi.WifiManager
 import android.text.format.Formatter
 import android.widget.Toast
 import androidx.preference.PreferenceManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import java.net.InetAddress
+import java.nio.ByteBuffer
 import org.citra.citra_emu.NativeLibrary
 import org.citra.citra_emu.R
 import org.citra.citra_emu.databinding.DialogMultiplayerRoomBinding
@@ -194,15 +198,19 @@ object NetPlayManager {
     }
 
     private fun getIpAddressByWifi(activity: Activity): String {
-        val wifiManager = activity.getSystemService(WifiManager::class.java)
-        val wifiInfo = wifiManager.connectionInfo
-        val ipAddress = wifiInfo?.ipAddress ?: wifiManager.dhcpInfo?.ipAddress ?: 0
+        val connectivityManager = activity.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val network = connectivityManager.activeNetwork
+        val networkCapabilities = connectivityManager.getNetworkCapabilities(network)
+        val linkProperties = connectivityManager.getLinkProperties(network)
 
-        return if (ipAddress == 0) {
+        val wifiInfo = networkCapabilities?.transportInfo as? android.net.wifi.WifiInfo
+        val ipAddress = linkProperties?.linkAddresses?.firstOrNull()?.address
+
+        return if (ipAddress == null) {
             "192.168.0.1"
         } else {
-            Formatter.formatIpAddress(ipAddress)
-        }
+            ipAddress.hostAddress
+    }
     }
 
     object NetPlayStatus {
