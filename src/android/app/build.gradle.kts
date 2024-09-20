@@ -23,7 +23,7 @@ plugins {
 val autoVersion = (((System.currentTimeMillis() / 1000) - 1451606400) / 10).toInt()
 val abiFilter = listOf("arm64-v8a", "x86_64")
 
-val downloadedJniLibsPath = "${buildDir}/downloadedJniLibs"
+val downloadedJniLibsPath = "${project.layout.buildDirectory.get().asFile}/downloadedJniLibs"
 
 @Suppress("UnstableApiUsage")
 android {
@@ -215,18 +215,18 @@ dependencies {
 // Download Vulkan Validation Layers from the KhronosGroup GitHub.
 val downloadVulkanValidationLayers = tasks.register<Download>("downloadVulkanValidationLayers") {
     src("https://github.com/KhronosGroup/Vulkan-ValidationLayers/releases/download/vulkan-sdk-1.3.290.0/android-binaries-1.3.290.0.zip")
-    dest(file("${buildDir}/tmp/Vulkan-ValidationLayers.zip"))
+    dest(file("${project.layout.buildDirectory.get().asFile}/tmp/Vulkan-ValidationLayers.zip"))
     onlyIfModified(true)
 }
 
 // Extract Vulkan Validation Layers into the downloaded native libraries directory.
 val unzipVulkanValidationLayers = tasks.register<Copy>("unzipVulkanValidationLayers") {
-    val filePath = "${buildDir}/tmp/Vulkan-ValidationLayers.zip"
+    val filePath = "${project.layout.buildDirectory.get().asFile}/tmp/Vulkan-ValidationLayers.zip"
     val file = File(filePath)
     if (!file.exists()) {
         dependsOn(downloadVulkanValidationLayers)
     }
-    from(zipTree("${buildDir}/tmp/Vulkan-ValidationLayers.zip")) {
+    from(zipTree("${project.layout.buildDirectory.get().asFile}/tmp/Vulkan-ValidationLayers.zip")) {
         // Exclude the top level directory in the zip as it violates the expected jniLibs directory structure.
         eachFile {
             relativePath = RelativePath(true, *relativePath.segments.drop(1).toTypedArray())
