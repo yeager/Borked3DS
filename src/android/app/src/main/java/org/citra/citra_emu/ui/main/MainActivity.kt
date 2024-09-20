@@ -9,6 +9,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup.MarginLayoutParams
+import android.view.WindowInsetsController
 import android.view.WindowManager
 import android.view.animation.PathInterpolator
 import android.widget.Toast
@@ -97,10 +98,13 @@ class MainActivity : AppCompatActivity(), ThemeProvider {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING)
 
-        window.statusBarColor =
-            ContextCompat.getColor(applicationContext, android.R.color.transparent)
-        window.navigationBarColor =
-            ContextCompat.getColor(applicationContext, android.R.color.transparent)
+        val insetsController = window.insetsController
+        if (insetsController != null) {
+            insetsController.setSystemBarsAppearance(
+                WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS,
+                WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS
+            )
+        }
 
         binding.statusBarShade.setBackgroundColor(
             ThemeUtil.getColorWithOpacity(
