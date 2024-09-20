@@ -14,6 +14,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowInsetsController
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -100,8 +101,14 @@ class SetupFragment : Fragment() {
             }
         )
 
-        requireActivity().window.navigationBarColor =
-            ContextCompat.getColor(requireContext(), android.R.color.transparent)
+        val window = requireActivity().window
+        val insetsController = window.insetsController
+        if (insetsController != null) {
+            insetsController.setSystemBarsAppearance(
+                WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS,
+                WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS
+            )
+        }
 
         pages = mutableListOf()
         pages.apply {
