@@ -183,7 +183,7 @@ use_disk_shader_cache =
 resolution_factor =
 
 # Texture filter
-# 0: None, 1: Anime4K, 2: Bicubic, 3: Nearest Neighbor, 4: ScaleForce, 5: xBRZ
+# 0: None, 1: Anime4K Ultrafast, 2: Bicubic, 3: ScaleForce, 4: xBRZ Freescale, 5: MMPX
 texture_filter =
 
 # SPIR-V Shader Generation

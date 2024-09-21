@@ -202,7 +202,7 @@
     <string name="linear_filtering">Линейное сглаживание</string>
     <string name="linear_filtering_description">Вкл. линейное сглаживание для смягчения графики в играх.</string>
     <string name="texture_filter_name">Сглаживание текстур</string>
-    <string name="texture_filter_description">Улучшает визуализацию в играх с помощью фильтрации текстур. Поддерживаются фильтры Anime4K Ultrafast, Bicubic, ScaleForce и xBRZ freescale.</string>
+    <string name="texture_filter_description">Улучшает визуализацию в играх с помощью фильтрации текстур. Поддерживаются фильтры Anime4K Ultrafast, Bicubic, ScaleForce, xBRZ freescale и MMPX.</string>
     <string name="hw_shaders">Вкл. аппаратные шейдеры</string>
     <string name="hw_shaders_description">Эмулировать шейдеры 3DS аппаратными средствами. При включении существенно повышает производительность в играх.</string>
     <string name="shaders_accurate_mul">Точное умножение</string>

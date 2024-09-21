@@ -170,7 +170,7 @@
     <string name="linear_filtering">Filtragem Linear</string>
     <string name="linear_filtering_description">Ativa a filtragem linear, que suaviza o visual do jogo.</string>
     <string name="texture_filter_name">Filtro de texturas</string>
-    <string name="texture_filter_description">Aprimora o visual dos jogos ao aplicar filtros às texturas. Os filtros compatíveis são: Anime4K Ultrafast, Bicúbico, ScaleForce e xBRZ Freescale.</string>
+    <string name="texture_filter_description">Aprimora o visual dos jogos ao aplicar filtros às texturas. Os filtros compatíveis são: Anime4K Ultrafast, Bicúbico, ScaleForce, xBRZ Freescale e MMPX.</string>
     <string name="hw_shaders_description">Utiliza o hardware para emular os shaders do 3DS. Quando ativado, o desempenho do jogo será consideravelmente melhorado.</string>
     <string name="shaders_accurate_mul">Multiplicação precisa</string>
     <string name="shaders_accurate_mul_description">Utiliza uma multiplicação mais precisa de shaders no hardware, o que pode corrigir problemas visuais. Quando ativada, pode haver redução no desempenho.</string>
@@ -330,11 +330,11 @@
     <string name="vulkan">Vulkan</string>
 
     <!-- Texture filter names -->
-    <string name="anime4k">Anime4K</string>
+    <string name="anime4k">Anime4K Ultrafast</string>
     <string name="bicubic">Bicúbico</string>
     <string name="nearest_neighbor">Ponto Vizinho Mais Próximo</string>
     <string name="scaleforce">ScaleForce</string>
-    <string name="xbrz">xBRZ</string>
+    <string name="xbrz">xBRZ Freescale</string>
     <string name="mmpx">MMPX</string>
 
     <!-- Sound output modes -->
