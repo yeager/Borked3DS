@@ -54,12 +54,11 @@ std::vector<u8> HexToVector(const std::string& hex) {
 std::optional<std::size_t> ParseCommonKeyName(const std::string& full_name) {
     std::size_t index;
     int end;
-    if (std::sscanf(full_name.c_str(), "common%zd%n", &index, &end) == 1 &&
-        end == static_cast<int>(full_name.size())) {
+    if ((std::sscanf(full_name.c_str(), "common%zd%n", &index, &end) == 1) &&
+        (end == static_cast<int>(full_name.size()) || !std::isdigit(full_name[end])))
         return index;
-    } else {
-        return std::nullopt;
-    }
+
+    return std::nullopt;
 }
 
 std::optional<std::pair<std::size_t, std::string>> ParseNfcSecretName(
