@@ -14,6 +14,7 @@
 #include "common/literals.h"
 #include "common/logging/log.h"
 #include "common/settings.h"
+#include "video_core/renderer_vulkan/vk_instance.h"
 #include "video_core/renderer_vulkan/vk_shader_util.h"
 
 namespace Vulkan {
@@ -171,9 +172,27 @@ bool InitializeCompiler() {
 std::vector<u32> OptimizeSPIRV(std::vector<u32> code) {
 
     std::vector<u32> result = code;
-
     std::vector<u32> spirv = code;
-    spvtools::Optimizer spv_opt(SPV_ENV_VULKAN_1_3);
+    spv_target_env vulkanEnv = SPV_ENV_UNIVERSAL_1_0;
+
+    const u32 available_version = vk::enumerateInstanceVersion();
+
+    if (VK_API_VERSION_MAJOR(available_version) == 1 &&
+        VK_API_VERSION_MINOR(available_version) == 1) {
+        vulkanEnv = SPV_ENV_VULKAN_1_1;
+        LOG_DEBUG(Render_Vulkan, "SPIRV-OPT Vulkan 1.1");
+    } else if (VK_API_VERSION_MAJOR(available_version) == 1 &&
+               VK_API_VERSION_MINOR(available_version) == 2) {
+        vulkanEnv = SPV_ENV_VULKAN_1_2;
+        LOG_DEBUG(Render_Vulkan, "SPIRV-OPT Vulkan 1.2");
+    } else if (VK_API_VERSION_MAJOR(available_version) == 1 &&
+               VK_API_VERSION_MINOR(available_version) >= 3) {
+        vulkanEnv = SPV_ENV_VULKAN_1_3;
+        LOG_DEBUG(Render_Vulkan, "SPIRV-OPT Vulkan 1.3");
+    }
+
+    spvtools::Optimizer spv_opt(vulkanEnv);
+
     spv_opt.SetMessageConsumer([](spv_message_level_t, const char*, const spv_position_t&,
                                   const char* m) { LOG_ERROR(HW_GPU, "spirv-opt: {}", m); });
 
