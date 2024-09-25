@@ -5,7 +5,6 @@
 package org.citra.citra_emu.fragments
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -166,7 +165,7 @@ class HomeSettingsFragment : Fragment() {
                 R.string.select_citra_user_folder,
                 R.string.select_citra_user_folder_home_description,
                 R.drawable.ic_home,
-                { mainActivity?.openCitraDirectory?.launch(Uri.parse(null)) },
+                { mainActivity?.openCitraDirectory?.launch(null) },
                 details = homeViewModel.userDir
             ),
             HomeSetting(
