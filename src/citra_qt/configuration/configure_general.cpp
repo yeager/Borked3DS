@@ -58,9 +58,11 @@ ConfigureGeneral::ConfigureGeneral(QWidget* parent)
     });
 
     connect(ui->change_screenshot_dir, &QToolButton::clicked, this, [this] {
+        ui->change_screenshot_dir->setEnabled(false);
         const QString dir_path = QFileDialog::getExistingDirectory(
             this, tr("Select Screenshot Directory"), ui->screenshot_dir_path->text(),
             QFileDialog::ShowDirsOnly);
+        ui->change_screenshot_dir->setEnabled(true);
         if (!dir_path.isEmpty()) {
             ui->screenshot_dir_path->setText(dir_path);
         }

@@ -21,10 +21,12 @@ ConfigureStorage::ConfigureStorage(bool is_powered_on_, QWidget* parent)
     });
 
     connect(ui->change_nand_dir, &QPushButton::clicked, this, [this]() {
+        ui->change_nand_dir->setEnabled(false);
         const QString dir_path = QFileDialog::getExistingDirectory(
             this, tr("Select NAND Directory"),
             QString::fromStdString(FileUtil::GetUserPath(FileUtil::UserPath::NANDDir)),
             QFileDialog::ShowDirsOnly);
+        ui->change_nand_dir->setEnabled(true);
         if (!dir_path.isEmpty()) {
             FileUtil::UpdateUserPath(FileUtil::UserPath::NANDDir, dir_path.toStdString());
             SetConfiguration();
@@ -37,10 +39,12 @@ ConfigureStorage::ConfigureStorage(bool is_powered_on_, QWidget* parent)
     });
 
     connect(ui->change_sdmc_dir, &QPushButton::clicked, this, [this]() {
+        ui->change_sdmc_dir->setEnabled(false);
         const QString dir_path = QFileDialog::getExistingDirectory(
             this, tr("Select SDMC Directory"),
             QString::fromStdString(FileUtil::GetUserPath(FileUtil::UserPath::SDMCDir)),
             QFileDialog::ShowDirsOnly);
+        ui->change_sdmc_dir->setEnabled(true);
         if (!dir_path.isEmpty()) {
             FileUtil::UpdateUserPath(FileUtil::UserPath::SDMCDir, dir_path.toStdString());
             SetConfiguration();
