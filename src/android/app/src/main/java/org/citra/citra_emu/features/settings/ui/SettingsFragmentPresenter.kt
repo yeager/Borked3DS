@@ -926,7 +926,7 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
                     BooleanSetting.USE_SAMPLE_SHADING.defaultValue,
                 )
             )
-            add(HeaderSetting(R.string.graphics_hacks))
+            add(HeaderSetting(R.string.graphics_hacks, R.string.hacks_description))
             add(
                 SwitchSetting(
                     IntSetting.SKIP_SLOW_DRAW,
@@ -1551,7 +1551,7 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
                     IntSetting.CPU_JIT.defaultValue
                 )
             )
-            add(HeaderSetting(R.string.cpu_hacks))
+            add(HeaderSetting(R.string.cpu_hacks, R.string.hacks_description))
             add(
                 SwitchSetting(
                     IntSetting.ENABLE_CUSTOM_CPU_TICKS,

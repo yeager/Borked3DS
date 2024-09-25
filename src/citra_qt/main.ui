@@ -236,6 +236,9 @@
    </property>
   </action>
   <action name="action_Connect_Artic">
+    <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Connect to a real 3DS console that is running an Artic Base server.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
     <property name="text">
       <string>Connect to Artic Base...</string>
     </property>

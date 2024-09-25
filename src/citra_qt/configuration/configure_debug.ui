@@ -294,7 +294,7 @@
         <item>
          <widget class="QCheckBox" name="toggle_custom_cpu_ticks">
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;body&gt;Set a custom value of CPU ticks. Higher values can increase performance but if they're too high, it may cause the game to freeze. A range of 77-21000 is recommended.&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;body&gt;Set a custom value of CPU ticks. Higher values can increase performance but if set too high, it may cause the game to freeze. A range of 77 to 21,000 is recommended.&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="text">
            <string>Custom CPU Ticks</string>

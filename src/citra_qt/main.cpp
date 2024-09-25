@@ -2125,7 +2125,7 @@ void GMainWindow::OnMenuInstallCIA() {
 void GMainWindow::OnMenuConnectArticBase() {
     bool ok = false;
     auto res = QInputDialog::getText(this, tr("Connect to Artic Base"),
-                                     tr("Enter Artic Base server address:"), QLineEdit::Normal,
+                                     tr("Enter Artic Base server address"), QLineEdit::Normal,
                                      UISettings::values.last_artic_base_addr, &ok);
     if (ok) {
         UISettings::values.last_artic_base_addr = res;

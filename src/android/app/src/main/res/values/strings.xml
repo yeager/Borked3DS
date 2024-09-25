@@ -114,9 +114,9 @@
     <string name="controller_trigger">Trigger</string>
     <string name="controller_dpad">D-Pad</string>
     <string name="controller_dpad_axis">D-Pad (Axis)</string>
-    <string name="controller_dpad_axis_description">Some controllers will not be able to map their dpad as an axis. In that case, use the D-Pad (buttons) section below instead.</string>
+    <string name="controller_dpad_axis_description">Some controllers may not be able to map their D-Pad as an axis. If that is the case, use the <b>D-Pad (Button)</b> section below instead.</string>
     <string name="controller_dpad_button">D-Pad (Button)</string>
-    <string name="controller_dpad_button_description">Only map these buttons if the D-Pad (Axis) settings above do not work with your controller.</string>
+    <string name="controller_dpad_button_description">Only map these buttons if the <b>D-Pad (Axis)</b> settings above do not work with your controller.</string>
     <string name="controller_axis_vertical">Up/Down Axis</string>
     <string name="controller_axis_horizontal">Left/Right Axis</string>
     <string name="direction_up">Up</string>
@@ -198,7 +198,7 @@
     <string name="lle_applets_description">Use the original 3DS OS software for emulation. For example, use the same keyboard screen as a 3DS when games request the software keyboard, rather than a popup.</string>
     <string name="clock">Clock</string>
     <string name="init_time">Startup Time</string>
-    <string name="init_time_description">If the clock is set to <i>Simulated Clock</i>, this changes the fixed date and time to start at.</string>
+    <string name="init_time_description">If <b>Clock</b> is set to <i>Simulated Clock</i>, this changes the fixed date and time to start at.</string>
     <string name="emulated_region">Region</string>
     <string name="emulated_language">Language</string>
     <string name="birthday">Birthday</string>
@@ -241,6 +241,7 @@
     <string name="vulkan_options">Vulkan Options</string>
     <string name="graphics_api">Graphics API</string>
     <string name="graphics_hacks">Graphics Hacks (Experimental)</string>
+    <string name="hacks_description">The following settings may improve performance or compatability with certain games, but may also cause glitches or crashes on others. Use with caution.</string>
     <string name="advanced">Advanced</string>
     <string name="spirv_shader_gen">SPIR-V Shader Generation</string>
     <string name="spirv_shader_gen_description">Emits the fragment shader used to emulate PICA using SPIR-V instead of GLSL.</string>
@@ -261,7 +262,7 @@
     <string name="vsync">Enable VSync</string>
     <string name="vsync_description">Synchronizes the game frame rate to the refresh rate of your device.</string>
     <string name="enable_custom_cpu_ticks">Custom CPU Ticks</string>
-    <string name="enable_custom_cpu_ticks_description">Set a custom value of CPU ticks. Higher values can increase performance but if they\'re too high, it may cause the game to freeze. A range of 77–21000 is recommended.</string>
+    <string name="enable_custom_cpu_ticks_description">Set a custom value of CPU ticks. Higher values can increase performance but if set too high, it may cause the game to freeze. A range of 77 to 21,000 is recommended.</string>
     <string name="custom_cpu_ticks">Number of CPU Ticks</string>
     <string name="core_downcount_hack">Core Downcount</string>
     <string name="core_downcount_hack_description">When enabled, core downcount will be limited to a smaller time slice, reducing CPU usage. It may improve performance for low-end devices or GPU hungry games.</string>
@@ -311,7 +312,7 @@
     <string name="internal_resolution_setting_9x">9x Native (3600x2160)</string>
     <string name="internal_resolution_setting_10x">10x Native (4000x2400)</string>
     <string name="performance_warning">Turning off this setting will significantly reduce emulation performance! For the best experience, it is recommended that you leave this setting enabled.</string>
-    <string name="debug_warning">Warning: Modifying these settings will slow emulation</string>
+    <string name="debug_warning">Warning: Modifying these settings may slow emulation</string>
     <string name="stereoscopy">Stereoscopy</string>
     <string name="render3d">Stereoscopic 3D Mode</string>
     <string name="factor3d">Depth</string>
@@ -343,9 +344,9 @@
     <string name="adreno_gpu_boost_description">Increases graphics throughput on supported devices, improving performance. Use of this setting can increase power usage and temperature. May cause stability issues on certain devices.</string>
     <string name="utility">Utility</string>
     <string name="dump_textures">Dump Textures</string>
-    <string name="dump_textures_description">Textures are dumped to dump/textures/[Title ID]/.</string>
+    <string name="dump_textures_description">Textures are dumped to <font face="monospace">dump/textures/[Title ID]/</font>.</string>
     <string name="custom_textures">Use Custom Textures</string>
-    <string name="custom_textures_description">Textures are loaded from load/textures/[Title ID]/.</string>
+    <string name="custom_textures_description">Textures are loaded from <font face="monospace">load/textures/[Title ID]/</font>.</string>
     <string name="preload_textures">Preload Custom Textures</string>
     <string name="preload_textures_description">Loads all custom textures into memory rather than when the game requires them. Not recommended for devices with less than 8GB of RAM. 12GB+ recommended.</string>
     <string name="async_custom_loading">Async Custom Texture Loading</string>
@@ -434,12 +435,12 @@
     <string name="gdb_stub">GDB Stub</string>
     <string name="gdb_stub_description">Open for listening to GDB connections.</string>
     <string name="gdb_port">GDB Port</string>
-    <string name="gdb_port_description">Port number to listen for GDB connections.</string>
+    <string name="gdb_port_description">The port number to listen for GDB connections on.</string>
 
     <!-- Debug Menu -->
     <string name="logging">Logging</string>
     <string name="renderer_debug">Debug Renderer</string>
-    <string name="renderer_debug_description">Log additional graphics related debug information. When enabled, game performance will be significantly reduced.</string>
+    <string name="renderer_debug_description">Log additional graphics related debug information. When enabled, game performance may be significantly reduced.</string>
     <string name="dump_command_buffers">Dump Command Buffers</string>
     <string name="dump_command_buffers_description">Print Vulkan API calls, parameters, and values to an identified output stream.\n\nMay need to be enabled globally through ADB first with:\n<font face="monospace">adb shell \"setprop debug.vulkan.layers \'VK_LAYER_LUNARG_api_dump\'\"</font>\n\nWhen done, disable it with:\n<font face="monospace">adb shell \"setprop debug.vulkan.layers \'\'\"</font>\n\nTo set the save location:\n<font face="monospace">adb shell \"setprop debug.vulkan.api_dump.log_filename \'/sdcard/Android/vk_apidump.txt\'\"</font></string>
 
@@ -490,9 +491,9 @@
     <string name="large_screen_proportion_description">Specifies the factor by which the large screen will be over the small screen in <b>Large Screen</b> layout mode.</string>
     <string name="emulation_adjust_custom_layout">Adjust Custom Layout in Settings</string>
     <string name="emulation_landscape_custom_layout">Landscape Custom Layout</string>
-    <string name="emulation_landscape_custom_layout_description">Specify custom layout screen positions in Landscape mode.</string>
+    <string name="emulation_landscape_custom_layout_description">Specify custom layout screen positions in <b>Landscape Screen Layout</b> mode.</string>
     <string name="emulation_portrait_custom_layout">Portrait Custom Layout</string>
-    <string name="emulation_portrait_custom_layout_description">Specify custom layout screen positions in Portrait mode.</string>
+    <string name="emulation_portrait_custom_layout_description">Specify custom layout screen positions in <b>Portrait Screen Layout</b> mode.</string>
     <string name="emulation_top_screen">Top Screen</string>
     <string name="emulation_bottom_screen">Bottom Screen</string>
     <string name="emulation_custom_layout_x">X-Position</string>
@@ -876,7 +877,7 @@
     <!-- Artic base -->
     <string name="artic_server_comm_error">Failed to communicate with the Artic Base server. Emulation will stop.</string>
     <string name="artic_base">Artic Base</string>
-    <string name="artic_base_connect_description">Connect to a real console that is running an Artic Base server</string>
+    <string name="artic_base_connect_description">Connect to a real 3DS console that is running an Artic Base server</string>
     <string name="artic_base_connect">Connect to Artic Base</string>
     <string name="artic_base_enter_address">Enter Artic Base server address</string>
     <string name="delay_render_thread">Delay Game Render Thread</string>
