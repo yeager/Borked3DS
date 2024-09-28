@@ -71,10 +71,10 @@ enum class StereoRenderOption : u32 {
     Off = 0,
     SideBySide = 1,
     SideBySideFull = 2,
-    Anaglyph = 4,
-    Interlaced = 5,
-    ReverseInterlaced = 6,
-    CardboardVR = 7
+    Anaglyph = 3,
+    Interlaced = 4,
+    ReverseInterlaced = 5,
+    CardboardVR = 6
 };
 
 // Which eye to render when 3d is off. 800px wide mode could be added here in the future, when
