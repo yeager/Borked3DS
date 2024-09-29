@@ -288,8 +288,10 @@ void Config::ReadValues() {
         sdl2_config->GetInteger("Camera", "camera_outer_left_flip", 0);
 
     // Miscellaneous
-    ReadSetting("Miscellaneous", Settings::values.log_filter);
-    ReadSetting("Miscellaneous", Settings::values.log_regex_filter);
+
+    // Debugging
+    ReadSetting("Debugging", Settings::values.log_filter);
+    ReadSetting("Debugging", Settings::values.log_regex_filter);
 
     // Apply the log_filter setting as the logger has already been initialized
     // and doesn't pick up the filter on its own.
@@ -298,7 +300,6 @@ void Config::ReadValues() {
     Common::Log::SetGlobalFilter(filter);
     Common::Log::SetRegexFilter(Settings::values.log_regex_filter.GetValue());
 
-    // Debugging
     Settings::values.record_frame_times =
         sdl2_config->GetBoolean("Debugging", "record_frame_times", false);
     ReadSetting("Debugging", Settings::values.renderer_debug);

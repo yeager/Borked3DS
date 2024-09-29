@@ -271,7 +271,7 @@
     <string name="linear_filtering">Linear Filtering</string>
     <string name="linear_filtering_description">Enables linear filtering, which causes game visuals to appear smoother.</string>
     <string name="texture_filter_name">Texture Filter</string>
-    <string name="texture_filter_description">Enhances the visuals of games by applying a filter to textures. The supported filters are Anime4K Ultrafast, Bicubic, ScaleForce, xBRZ freescale, and MMPX.</string>
+    <string name="texture_filter_description">Enhances the visuals of games by applying a filter to textures. The supported filters are Anime4K Ultrafast, Bicubic, ScaleForce, and xBRZ Freescale.</string>
     <string name="hw_shaders">Hardware Shader Acceleration</string>
     <string name="hw_shaders_description">Uses hardware to emulate 3DS shaders. When enabled, game performance will be significantly improved.</string>
     <string name="skip_slow_draw">Skip Slow Draw</string>
@@ -279,7 +279,7 @@
     <string name="skip_texture_copy">Skip Texture Copy</string>
     <string name="skip_texture_copy_description">Skips the texture copy event from the rasterizer cache. May improve performance, but can cause visual artifacts.</string>
     <string name="skip_cpu_write">Skip CPU Write</string>
-    <string name="skip_cpu_write_description">Skips the CPU write event from rasterizer cache invalidation. May improve performance but may cause graphical bugs.</string>
+    <string name="skip_cpu_write_description">Skips the CPU write event from rasterizer cache invalidation. May improve performance but can cause graphical bugs.</string>
     <string name="upscaling_hack">Upscaling Hack</string>
     <string name="upscaling_hack_description">Overrides upscaling for dst_params. May fix texture ghosting for some games, but may crash other games as well.</string>
     <string name="shaders_accurate_mul">Accurate Multiplication</string>
@@ -439,6 +439,20 @@
 
     <!-- Debug Menu -->
     <string name="logging">Logging</string>
+    <string name="log_filter_name">Log Level</string>
+    <string name="log_filter_description">Select the level of verbosity to display in the log files. Ranges from <i>Critical</i> (i.e. minimal) to <i>Trace</i> (i.e. everything). Default is <i>Info</i>.</string>
+    <string name="log_critical">Critical</string>
+    <string name="log_error">Error</string>
+    <string name="log_warning">Warning</string>
+    <string name="log_info">Info</string>
+    <string name="log_debug">Debug</string>
+    <string name="log_trace">Trace</string>
+    <string name="log_filter_critical">*:Critical</string>
+    <string name="log_filter_error">*:Error</string>
+    <string name="log_filter_warning">*:Warning</string>
+    <string name="log_filter_info">*:Info</string>
+    <string name="log_filter_debug">*:Debug</string>
+    <string name="log_filter_trace">*:Trace</string>
     <string name="renderer_debug">Debug Renderer</string>
     <string name="renderer_debug_description">Log additional graphics related debug information. When enabled, game performance may be significantly reduced.</string>
     <string name="dump_command_buffers">Dump Command Buffers</string>

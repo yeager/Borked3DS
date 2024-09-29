@@ -1614,6 +1614,22 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
                 )
             )
             add(HeaderSetting(R.string.logging))
+
+            val logFilterModes =
+                settingsActivity.resources.getStringArray(R.array.logFilterNameModes)
+            val logFilterValues =
+                settingsActivity.resources.getStringArray(R.array.logFilterNameValues)
+            add(
+                StringSingleChoiceSetting(
+                    StringSetting.LOG_FILTER,
+                    R.string.log_filter_name,
+                    R.string.log_filter_description,
+                    logFilterModes,
+                    logFilterValues,
+                    StringSetting.LOG_FILTER.key,
+                    StringSetting.LOG_FILTER.defaultValue
+                )
+            )
             add(
                 SwitchSetting(
                     IntSetting.DEBUG_RENDERER,

@@ -482,11 +482,18 @@ camera_inner_config =
 camera_inner_flip =
 
 [Miscellaneous]
-# A filter which removes logs below a certain logging level.
-# Examples: *:Debug Kernel.SVC:Trace Service.*:Critical
-log_filter = *:Info
 
 [Debugging]
+# log_filter is a filter string which removes logs below a certain logging level,
+# each of the format `<class>:<level>`.
+#
+# Examples: *:Debug Kernel.SVC:Trace Service.*:Critical
+# Default: *:Info
+#
+# See src/common/logging/filter.h and src/common/logging/filter.cpp for
+# the full list of valid classes and levels.
+log_filter = *:Info
+
 # Record frame time data, can be found in the log directory. Boolean value
 record_frame_times =
 
