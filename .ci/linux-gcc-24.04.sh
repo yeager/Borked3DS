@@ -1,6 +1,6 @@
 #!/bin/bash -ex
 
-if [ "$TARGET" = "appimage-gcc" ]; then
+if [ "$TARGET" = "appimage-gcc-24.04" ]; then
     # Bundle required QT wayland libraries
     export EXTRA_QT_PLUGINS="waylandcompositor"
     export EXTRA_PLATFORM_PLUGINS="libqwayland-egl.so;libqwayland-generic.so"
@@ -53,7 +53,7 @@ cmake .. -G Ninja \
 ninja
 strip -s bin/Release/*
 
-if [ "$TARGET" = "appimage-gcc" ]; then
+if [ "$TARGET" = "appimage-gcc-24.04" ]; then
     ninja bundle
     # TODO: Our AppImage environment currently uses an older ccache version without the verbose flag.
     ccache -s
