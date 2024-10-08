@@ -274,7 +274,11 @@ find_package(Threads REQUIRED)
 
 if (ENABLE_QT)
     if (NOT USE_SYSTEM_QT)
-        download_qt(6.7.3)
+       if (IOS)
+           download_qt(6.7.3) # iOS build fails with QT 6.8 with undefined refs
+       else()
+           download_qt(6.8.0)
+       endif()
     endif()
 
     find_package(Qt6 REQUIRED COMPONENTS Widgets Multimedia Concurrent)
