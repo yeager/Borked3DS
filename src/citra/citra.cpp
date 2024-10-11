@@ -73,8 +73,8 @@ static void PrintHelp(const char* argv0) {
                  "-i, --install=FILE    Installs a specified CIA file\n"
                  "-m, --multiplayer=nick:password@address:port"
                  " Nickname, password, address and port for multiplayer\n"
-                 "-p, --movie-play=[file]    Playback the movie (game inputs) from the given file\n"
-                 "-r, --movie-record=[file]  Record a movie (game inputs) to the given file\n"
+                 "-p, --play-movie=[file]    Playback the movie (game inputs) from the given file\n"
+                 "-r, --record-movie=[file]  Record a movie (game inputs) to the given file\n"
                  "-v, --version        Output version information and exit\n";
 }
 
@@ -215,9 +215,9 @@ int main(int argc, char** argv) {
         {"gdbport", required_argument, 0, 'g'},
         {"install", required_argument, 0, 'i'},
         {"multiplayer", required_argument, 0, 'm'},
-        {"movie-record", required_argument, 0, 'r'},
-        {"movie-record-author", required_argument, 0, 'a'},
-        {"movie-play", required_argument, 0, 'p'},
+        {"record-movie", required_argument, 0, 'r'},
+        {"author-record-movie", required_argument, 0, 'a'},
+        {"play-movie", required_argument, 0, 'p'},
         {"dump-video", required_argument, 0, 'd'},
         {"fullscreen", no_argument, 0, 'f'},
         {"help", no_argument, 0, 'h'},

@@ -3739,8 +3739,8 @@ static void PrintHelp(const char* argv0) {
                  "-g, --gdbport=[port]    Enable gdb stub on the given port\n"
                  "-h, --help           Display this help and exit\n"
                  "-i, --install=[path]    Install a CIA file at the given path\n"
-                 "-p, --movie-play=[path]    Play a TAS movie located at the given path\n"
-                 "-r, --movie-record=[path]    Record a TAS movie to the given file path\n"
+                 "-p, --play-movie=[path]    Play a TAS movie located at the given path\n"
+                 "-r, --record-movie=[path]    Record a TAS movie to the given file path\n"
                  "-v, --version           Output version information and exit\n"
                  "-w, --windowed           Start in windowed mode\n";
 }
