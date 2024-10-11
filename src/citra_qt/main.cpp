@@ -284,18 +284,27 @@ GMainWindow::GMainWindow(Core::System& system_)
     }
 #endif
 
+    // Process remaining command line options
     QStringList args = QApplication::arguments();
     if (args.size() < 2) {
         return;
     }
 
-    // Process remaining command line options
     QString game_path;
     for (int i = 1; i < args.size(); ++i) {
         // Preserves drag/drop functionality
         if (args.size() == 2 && !args[1].startsWith(QChar::fromLatin1('-'))) {
             game_path = args[1];
             break;
+        }
+
+        // Set author name for recorded movies
+        if (args[i] == QStringLiteral("-a") || args[i] == QStringLiteral("--author-record-video")) {
+            if (i >= args.size() - 1 || args[i + 1].startsWith(QChar::fromLatin1('-'))) {
+                continue;
+            }
+            movie_record_author = args[++i];
+            continue;
         }
 
         // Dump video
@@ -330,7 +339,7 @@ GMainWindow::GMainWindow(Core::System& system_)
         }
 
         // Play movie
-        if (args[i] == QStringLiteral("-p") || args[i] == QStringLiteral("--play-movile")) {
+        if (args[i] == QStringLiteral("-p") || args[i] == QStringLiteral("--play-movie")) {
             if (i >= args.size() - 1 || args[i + 1].startsWith(QChar::fromLatin1('-'))) {
                 continue;
             }
@@ -3782,7 +3791,7 @@ int main(int argc, char* argv[]) {
 #endif
 
     while (optind < argc) {
-        int arg = getopt_long(argc, argv, "d:fg:hi:p:r:vw", long_options, &option_index);
+        int arg = getopt_long(argc, argv, "a:d:fg:hi:p:r:vw", long_options, &option_index);
         if (arg != -1) {
             switch (static_cast<char>(arg)) {
             case 'h':
