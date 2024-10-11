@@ -3740,7 +3740,8 @@ static void PrintHelp(const char* argv0) {
                  "-i [path]    Install a CIA file at the given path\n"
                  "-p [path]    Play a TAS movie located at the given path\n"
                  "-r [path]    Record a TAS movie to the given file path\n"
-                 "-v           Output version information and exit\n";
+                 "-v           Output version information and exit\n"
+                 "-w           Start in windowed mode\n";
 }
 
 static void PrintVersion() {
@@ -3748,7 +3749,6 @@ static void PrintVersion() {
 }
 
 int main(int argc, char* argv[]) {
-
 #ifdef _WIN32
     bool console = false;
 
@@ -3760,7 +3760,7 @@ int main(int argc, char* argv[]) {
 #endif
 
     while (optind < argc) {
-        int arg = getopt(argc, argv, "d:fg:hi:p:r:v");
+        int arg = getopt(argc, argv, "d:fg:hi:p:r:vw");
         if (arg != -1) {
             switch (static_cast<char>(arg)) {
             case 'h':
