@@ -289,6 +289,7 @@ GMainWindow::GMainWindow(Core::System& system_)
         return;
     }
 
+    // Process remaining command line options
     QString game_path;
     for (int i = 1; i < args.size(); ++i) {
         // Preserves drag/drop functionality
@@ -298,7 +299,7 @@ GMainWindow::GMainWindow(Core::System& system_)
         }
 
         // Dump video
-        if (args[i] == QStringLiteral("-d")) {
+        if (args[i] == QStringLiteral("-d") || args[i] == QStringLiteral("--dump-video")) {
             if (i >= args.size() - 1 || args[i + 1].startsWith(QChar::fromLatin1('-'))) {
                 continue;
             }
@@ -313,13 +314,13 @@ GMainWindow::GMainWindow(Core::System& system_)
         }
 
         // Launch game in fullscreen mode
-        if (args[i] == QStringLiteral("-f")) {
+        if (args[i] == QStringLiteral("-f") || args[i] == QStringLiteral("--fullscreen")) {
             ui->action_Fullscreen->setChecked(true);
             continue;
         }
 
         // Enable GDB stub
-        if (args[i] == QStringLiteral("-g")) {
+        if (args[i] == QStringLiteral("-g") || args[i] == QStringLiteral("--gdbport")) {
             if (i >= args.size() - 1 || args[i + 1].startsWith(QChar::fromLatin1('-'))) {
                 continue;
             }
@@ -328,7 +329,8 @@ GMainWindow::GMainWindow(Core::System& system_)
             continue;
         }
 
-        if (args[i] == QStringLiteral("-p")) {
+        // Play movie
+        if (args[i] == QStringLiteral("-p") || args[i] == QStringLiteral("--play-movile")) {
             if (i >= args.size() - 1 || args[i + 1].startsWith(QChar::fromLatin1('-'))) {
                 continue;
             }
@@ -337,7 +339,8 @@ GMainWindow::GMainWindow(Core::System& system_)
             continue;
         }
 
-        if (args[i] == QStringLiteral("-r")) {
+        // Record movie
+        if (args[i] == QStringLiteral("-r") || args[i] == QStringLiteral("--record-movie")) {
             if (i >= args.size() - 1 || args[i + 1].startsWith(QChar::fromLatin1('-'))) {
                 continue;
             }
@@ -347,7 +350,7 @@ GMainWindow::GMainWindow(Core::System& system_)
         }
 
         // Launch game in windowed mode
-        if (args[i] == QStringLiteral("-w")) {
+        if (args[i] == QStringLiteral("-w") || args[i] == QStringLiteral("--windowed")) {
             ui->action_Fullscreen->setChecked(false);
             continue;
         }
@@ -3731,18 +3734,20 @@ static Qt::HighDpiScaleFactorRoundingPolicy GetHighDpiRoundingPolicy() {
 }
 
 static void PrintHelp(const char* argv0) {
-    std::cout << "\nUsage: " << argv0
-              << " [options] <file path>\n"
-                 "-d, --dump-video=[path]    Dump video recording of emulator playback to the "
-                 "given file path\n"
-                 "-f, --fullscreen           Start in fullscreen mode\n"
-                 "-g, --gdbport=[port]    Enable gdb stub on the given port\n"
-                 "-h, --help           Display this help and exit\n"
-                 "-i, --install=[path]    Install a CIA file at the given path\n"
-                 "-p, --play-movie=[path]    Play a TAS movie located at the given path\n"
-                 "-r, --record-movie=[path]    Record a TAS movie to the given file path\n"
-                 "-v, --version           Output version information and exit\n"
-                 "-w, --windowed           Start in windowed mode\n";
+    std::cout
+        << "\nUsage: " << argv0
+        << " [options] <file path>\n"
+           "-a, --author-record-movie [author]   Sets the author of the movie to be recorded\n"
+           "-d, --dump-video [path]              Dump video recording of emulator playback to the "
+           "given file path\n"
+           "-f, --fullscreen                     Start in fullscreen mode\n"
+           "-g, --gdbport [port]                 Enable gdb stub on the given port\n"
+           "-h, --help                           Display this help and exit\n"
+           "-i, --install [path]                 Install a CIA file at the given path\n"
+           "-p, --play-movie [path]              Play a TAS movie located at the given path\n"
+           "-r, --record-movie [path]            Record a TAS movie to the given file path\n"
+           "-v, --version                        Output version information and exit\n"
+           "-w, --windowed                       Start in windowed mode\n";
 }
 
 static void PrintVersion() {
@@ -3753,11 +3758,17 @@ int main(int argc, char* argv[]) {
     int option_index = 0;
 
     static struct option long_options[] = {
-        {"dump-video", required_argument, 0, 'd'},   {"fullscreen", no_argument, 0, 'f'},
-        {"gdbport", required_argument, 0, 'g'},      {"help", no_argument, 0, 'h'},
-        {"install", required_argument, 0, 'i'},      {"movie-play", required_argument, 0, 'p'},
-        {"movie-record", required_argument, 0, 'r'}, {"version", no_argument, 0, 'v'},
-        {"windowed", no_argument, 0, 'w'},           {0, 0, 0, 0},
+        {"author-record-movie", required_argument, 0, 'a'},
+        {"dump-video", required_argument, 0, 'd'},
+        {"fullscreen", no_argument, 0, 'f'},
+        {"gdbport", required_argument, 0, 'g'},
+        {"help", no_argument, 0, 'h'},
+        {"install", required_argument, 0, 'i'},
+        {"movie-play", required_argument, 0, 'p'},
+        {"movie-record", required_argument, 0, 'r'},
+        {"version", no_argument, 0, 'v'},
+        {"windowed", no_argument, 0, 'w'},
+        {0, 0, 0, 0},
     };
 
 #ifdef _WIN32
