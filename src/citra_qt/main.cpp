@@ -3823,6 +3823,11 @@ int main(int argc, char* argv[]) {
                         failure_reason = "CIA is encrypted.";
 
                     std::cout << "\nFailed to install CIA: " << failure_reason << std::endl;
+#ifdef _WIN32
+                    if (console) {
+                        sendEnterKey();
+                    }
+#endif
                     return (int)result +
                            2; // 2 is added here to avoid stepping on the toes of
                               // exit codes 1 and 2 which have pre-established conventional meanings
