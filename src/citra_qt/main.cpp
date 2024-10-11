@@ -3733,15 +3733,16 @@ static Qt::HighDpiScaleFactorRoundingPolicy GetHighDpiRoundingPolicy() {
 static void PrintHelp(const char* argv0) {
     std::cout << "\nUsage: " << argv0
               << " [options] <file path>\n"
-                 "-d [path]    Dump video recording of emulator playback to the given file path\n"
-                 "-f           Start in fullscreen mode\n"
-                 "-g [port]    Enable gdb stub on the given port\n"
-                 "-h           Display this help and exit\n"
-                 "-i [path]    Install a CIA file at the given path\n"
-                 "-p [path]    Play a TAS movie located at the given path\n"
-                 "-r [path]    Record a TAS movie to the given file path\n"
-                 "-v           Output version information and exit\n"
-                 "-w           Start in windowed mode\n";
+                 "-d, --dump-video=[path]    Dump video recording of emulator playback to the "
+                 "given file path\n"
+                 "-f, --fullscreen           Start in fullscreen mode\n"
+                 "-g, --gdbport=[port]    Enable gdb stub on the given port\n"
+                 "-h, --help           Display this help and exit\n"
+                 "-i, --install=[path]    Install a CIA file at the given path\n"
+                 "-p, --movie-play=[path]    Play a TAS movie located at the given path\n"
+                 "-r, --movie-record=[path]    Record a TAS movie to the given file path\n"
+                 "-v, --version           Output version information and exit\n"
+                 "-w, --windowed           Start in windowed mode\n";
 }
 
 static void PrintVersion() {
@@ -3749,6 +3750,16 @@ static void PrintVersion() {
 }
 
 int main(int argc, char* argv[]) {
+    int option_index = 0;
+
+    static struct option long_options[] = {
+        {"dump-video", required_argument, 0, 'd'},   {"fullscreen", no_argument, 0, 'f'},
+        {"gdbport", required_argument, 0, 'g'},      {"help", no_argument, 0, 'h'},
+        {"install", required_argument, 0, 'i'},      {"movie-play", required_argument, 0, 'p'},
+        {"movie-record", required_argument, 0, 'r'}, {"version", no_argument, 0, 'v'},
+        {"windowed", no_argument, 0, 'w'},           {0, 0, 0, 0},
+    };
+
 #ifdef _WIN32
     bool console = false;
 
@@ -3760,7 +3771,7 @@ int main(int argc, char* argv[]) {
 #endif
 
     while (optind < argc) {
-        int arg = getopt(argc, argv, "d:fg:hi:p:r:vw");
+        int arg = getopt_long(argc, argv, "d:fg:hi:p:r:vw", long_options, &option_index);
         if (arg != -1) {
             switch (static_cast<char>(arg)) {
             case 'h':
