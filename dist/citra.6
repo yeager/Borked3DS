@@ -8,6 +8,11 @@
 .Nm citra
 .Op Ar options
 .Op Ar file
+.Sh DESCRIPTION
+Citra is an experimental open-source Nintendo 3DS emulator/debugger.
+.Pp
+.Nm citra
+is the Simple DirectMedia Layer (SDL) implementation.
 .Sh OPTIONS
 .Bl -tag -width Ds
 .It Fl a , Fl Fl author-record-movie Ar AUTHOR
@@ -20,21 +25,16 @@ Start in fullscreen mode
 Enable GDB stub on the specified port number
 .It Fl h , Fl Fl help
 Show syntax help and exit
-.It Fl i , Fl Fl install Ar PATH
+.It Fl i , Fl Fl install Ar FILE 
 Install a CIA file at the specified file path
 .It Fl m , Fl Fl multiplayer Ar nick:password@address:port
 Nickname, password, address and port for multiplayer
-.It Fl p , Fl Fl play-movie Ar PATH
+.It Fl p , Fl Fl play-movie Ar FILE 
 Play a TAS movie locatd at the specified file path
 .It Fl r , Fl Fl record-movie Ar PATH
 Record a TAS movie to the specified file path
 .It Fl v , Fl Fl version
 Output version information and exit
-.Sh DESCRIPTION
-Citra is an experimental open-source Nintendo 3DS emulator/debugger.
-.Pp
-.Nm citra
-is the Simple DirectMedia Layer (SDL) implementation.
 .Sh FILES
 .Bl -tag -width Ds
 .It Pa $XDG_DATA_HOME/citra-emu
@@ -42,6 +42,15 @@ Emulator storage.
 .It Pa $XDG_CONFIG_HOME/citra-emu
 Configuration files.
 .El
+.Sh EXAMPLES
+.Nm citra Ar ROM.3ds
+.D1 Start citra and launch ROM.3ds.
+.Nm citra Fl i Ar ROM.cia
+.D1 Install ROM.cia and exit.
+.Nm citra Fl d Ar demo.avi Ar ROM.3ds
+.D1 When ROM.3ds is loaded and played, dump a video recording of emulator playback with audio to demo.avi.
+.Nm citra Fl f Fl a Ar \(dqJohn Smith\(dq Fl r Ar gameplay.tas Ar ROM.3ds
+.D1 Start citra-qt and launch ROM.3ds. A TAS movie attributed to John Smith will be saved under the file gameplay.tas.
 .Sh AUTHORS
 This document is made available to you under the CC-BY license.
 .Pp
