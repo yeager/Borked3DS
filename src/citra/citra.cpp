@@ -63,19 +63,22 @@ __declspec(dllexport) unsigned long NvOptimusEnablement = 0x00000001;
 #endif
 
 static void PrintHelp(const char* argv0) {
-    std::cout << "Usage: " << argv0
-              << " [options] <filename>\n"
-                 "-g, --gdbport=NUMBER Enable gdb stub on port NUMBER\n"
-                 "-i, --install=FILE    Installs a specified CIA file\n"
-                 "-m, --multiplayer=nick:password@address:port"
-                 " Nickname, password, address and port for multiplayer\n"
-                 "-r, --movie-record=[file]  Record a movie (game inputs) to the given file\n"
-                 "-a, --movie-record-author=AUTHOR Sets the author of the movie to be recorded\n"
-                 "-p, --movie-play=[file]    Playback the movie (game inputs) from the given file\n"
-                 "-d, --dump-video=[file]    Dumps audio and video to the given video file\n"
-                 "-f, --fullscreen     Start in fullscreen mode\n"
-                 "-h, --help           Display this help and exit\n"
-                 "-v, --version        Output version information and exit\n";
+    std::cout
+        << "Usage: " << argv0
+        << " [options] <filename>\n"
+           "-a, --movie-record-author=[author] Sets the author of the TAS movie to be recorded\n"
+           "-d, --dump-video=[path]    Dump video recording of emulator playback to the specified "
+           "file path\n"
+           "-f, --fullscreen     Start in fullscreen mode\n"
+           "-g, --gdbport=[port] Enable gdb stub on the specified port number\n"
+           "-h, --help           Display this help and exit\n"
+           "-i, --install=[path]    Install a CIA file at the specified file path\n"
+           "-m, --multiplayer=[nick:password@address:port]"
+           " Nickname, password, address and port for multiplayer\n"
+           "-p, --play-movie=[path]    Play a TAS movie (game inputs) located at the specified "
+           "file path\n"
+           "-r, --record-movie=[path]  Record a TAS movieto the specified file path\n"
+           "-v, --version        Output version information and exit\n";
 }
 
 static void PrintVersion() {
@@ -215,9 +218,9 @@ int main(int argc, char** argv) {
         {"gdbport", required_argument, 0, 'g'},
         {"install", required_argument, 0, 'i'},
         {"multiplayer", required_argument, 0, 'm'},
-        {"movie-record", required_argument, 0, 'r'},
-        {"movie-record-author", required_argument, 0, 'a'},
-        {"movie-play", required_argument, 0, 'p'},
+        {"record-movie", required_argument, 0, 'r'},
+        {"author-record-movie", required_argument, 0, 'a'},
+        {"play-movie", required_argument, 0, 'p'},
         {"dump-video", required_argument, 0, 'd'},
         {"fullscreen", no_argument, 0, 'f'},
         {"help", no_argument, 0, 'h'},

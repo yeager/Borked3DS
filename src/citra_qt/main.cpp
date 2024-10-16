@@ -3,6 +3,7 @@
 // Refer to the license.txt file included.
 
 #include <clocale>
+#include <iostream>
 #include <memory>
 #include <thread>
 #include <QFileDialog>
@@ -16,12 +17,15 @@
 #include <QtWidgets>
 #include <fmt/format.h>
 #include <fmt/ostream.h>
+#undef _UNICODE
+#include <getopt.h>
 #ifdef __APPLE__
 #include <unistd.h> // for chdir
 #endif
 #ifdef _WIN32
 #include <shlobj.h>
 #include <windows.h>
+#include "common/win_console.h"
 #endif
 #ifdef __unix__
 #include <QVariant>
@@ -280,6 +284,7 @@ GMainWindow::GMainWindow(Core::System& system_)
     }
 #endif
 
+    // Process remaining command line options
     QStringList args = QApplication::arguments();
     if (args.size() < 2) {
         return;
@@ -293,29 +298,76 @@ GMainWindow::GMainWindow(Core::System& system_)
             break;
         }
 
+        // Set author name for recorded movies
+        if (args[i] == QStringLiteral("-a") || args[i] == QStringLiteral("--author-record-video")) {
+            if (i >= args.size() - 1 || args[i + 1].startsWith(QChar::fromLatin1('-'))) {
+                continue;
+            }
+            movie_record_author = args[++i];
+            continue;
+        }
+
+        // Dump video
+        if (args[i] == QStringLiteral("-d") || args[i] == QStringLiteral("--dump-video")) {
+            if (i >= args.size() - 1 || args[i + 1].startsWith(QChar::fromLatin1('-'))) {
+                continue;
+            }
+            if (!DynamicLibrary::FFmpeg::LoadFFmpeg()) {
+                ShowFFmpegErrorMessage();
+                continue;
+            }
+            video_dumping_path = args[++i];
+            video_dumping_on_start = true;
+            ui->action_Dump_Video->setChecked(true);
+            continue;
+        }
+
         // Launch game in fullscreen mode
-        if (args[i] == QStringLiteral("-f")) {
+        if (args[i] == QStringLiteral("-f") || args[i] == QStringLiteral("--fullscreen")) {
             ui->action_Fullscreen->setChecked(true);
             continue;
         }
 
+        // Enable GDB stub
+        if (args[i] == QStringLiteral("-g") || args[i] == QStringLiteral("--gdbport")) {
+            if (i >= args.size() - 1 || args[i + 1].startsWith(QChar::fromLatin1('-'))) {
+                continue;
+            }
+            Settings::values.use_gdbstub = true;
+            Settings::values.gdbstub_port = strtoul(args[++i].toLatin1(), NULL, 0);
+            continue;
+        }
+
+        // Play movie
+        if (args[i] == QStringLiteral("-p") || args[i] == QStringLiteral("--play-movie")) {
+            if (i >= args.size() - 1 || args[i + 1].startsWith(QChar::fromLatin1('-'))) {
+                continue;
+            }
+            movie_playback_path = args[++i];
+            movie_playback_on_start = true;
+            continue;
+        }
+
+        // Record movie
+        if (args[i] == QStringLiteral("-r") || args[i] == QStringLiteral("--record-movie")) {
+            if (i >= args.size() - 1 || args[i + 1].startsWith(QChar::fromLatin1('-'))) {
+                continue;
+            }
+            movie_record_path = args[++i];
+            movie_record_on_start = true;
+            continue;
+        }
+
         // Launch game in windowed mode
-        if (args[i] == QStringLiteral("-w")) {
+        if (args[i] == QStringLiteral("-w") || args[i] == QStringLiteral("--windowed")) {
             ui->action_Fullscreen->setChecked(false);
             continue;
         }
 
         // Launch game at path
-        if (args[i] == QStringLiteral("-g")) {
-            if (i >= args.size() - 1) {
-                continue;
-            }
-
-            if (args[i + 1].startsWith(QChar::fromLatin1('-'))) {
-                continue;
-            }
-
-            game_path = args[++i];
+        if (i == args.size() - 1 && !args[i].startsWith(QChar::fromLatin1('-'))) {
+            game_path = args[i];
+            continue;
         }
     }
 
@@ -2824,6 +2876,32 @@ void GMainWindow::OnCaptureScreenshot() {
     }
 }
 
+void GMainWindow::ShowFFmpegErrorMessage() {
+    QMessageBox message_box;
+    message_box.setWindowTitle(tr("Could not load video dumper"));
+    message_box.setText(
+        tr("FFmpeg could not be loaded. Make sure you have a compatible version installed."
+#ifdef _WIN32
+           "\n\nTo install FFmpeg to Citra, press Open and select your FFmpeg directory."
+#endif
+           "\n\nTo view a guide on how to install FFmpeg, press Help."));
+    message_box.setStandardButtons(QMessageBox::Ok | QMessageBox::Help
+#ifdef _WIN32
+                                   | QMessageBox::Open
+#endif
+    );
+    auto result = message_box.exec();
+    if (result == QMessageBox::Help) {
+        QDesktopServices::openUrl(
+            QUrl(QStringLiteral("https://web.archive.org/web/20240301121456/https://"
+                                "citra-emu.org/wiki/installing-ffmpeg-for-the-video-dumper/")));
+#ifdef _WIN32
+    } else if (result == QMessageBox::Open) {
+        OnOpenFFmpeg();
+#endif
+    }
+}
+
 void GMainWindow::OnDumpVideo() {
     if (DynamicLibrary::FFmpeg::LoadFFmpeg()) {
         if (ui->action_Dump_Video->isChecked()) {
@@ -2833,29 +2911,7 @@ void GMainWindow::OnDumpVideo() {
         }
     } else {
         ui->action_Dump_Video->setChecked(false);
-
-        QMessageBox message_box;
-        message_box.setWindowTitle(tr("Could not load video dumper"));
-        message_box.setText(
-            tr("FFmpeg could not be loaded. Make sure you have a compatible version installed."
-#ifdef _WIN32
-               "\n\nTo install FFmpeg to Citra, press Open and select your FFmpeg directory."
-#endif
-               "\n\nTo view a guide on how to install FFmpeg, press Help."));
-        message_box.setStandardButtons(QMessageBox::Ok | QMessageBox::Help
-#ifdef _WIN32
-                                       | QMessageBox::Open
-#endif
-        );
-        auto result = message_box.exec();
-        if (result == QMessageBox::Help) {
-            QDesktopServices::openUrl(QUrl(QStringLiteral(
-                "https://citra-emu.org/wiki/installing-ffmpeg-for-the-video-dumper/")));
-#ifdef _WIN32
-        } else if (result == QMessageBox::Open) {
-            OnOpenFFmpeg();
-#endif
-        }
+        ShowFFmpegErrorMessage();
     }
 }
 
@@ -2940,7 +2996,8 @@ void GMainWindow::StartVideoDumping(const QString& path) {
     } else {
         QMessageBox::critical(
             this, tr("Citra"),
-            tr("Could not start video dumping.<br>Refer to the log for details."));
+            tr("Could not start video dumping.<br>Please ensure that the video encoder is "
+               "configured correctly.<br>Refer to the log for details."));
         ui->action_Dump_Video->setChecked(false);
     }
 }
@@ -3685,7 +3742,119 @@ static Qt::HighDpiScaleFactorRoundingPolicy GetHighDpiRoundingPolicy() {
 #endif
 }
 
+static void PrintHelp(const char* argv0) {
+    std::cout
+        << "\nUsage: " << argv0
+        << " [options] <file path>\n"
+           "-a, --author-record-movie [author]   Sets the author of the TAS movie to be recorded\n"
+           "-d, --dump-video [path]              Dump video recording of emulator playback to the "
+           "specified file path\n"
+           "-f, --fullscreen                     Start in fullscreen mode\n"
+           "-g, --gdbport [port]                 Enable gdb stub on the specified port number\n"
+           "-h, --help                           Display this help and exit\n"
+           "-i, --install [path]                 Install a CIA file at the specified file path\n"
+           "-p, --play-movie [path]              Play a TAS movie located at the specified file "
+           "path\n"
+           "-r, --record-movie [path]            Record a TAS movie to the specified file path\n"
+           "-v, --version                        Output version information and exit\n"
+           "-w, --windowed                       Start in windowed mode\n";
+}
+
+static void PrintVersion() {
+    std::cout << "\nCitra " << Common::g_scm_branch << " " << Common::g_scm_desc << std::endl;
+}
+
 int main(int argc, char* argv[]) {
+    int option_index = 0;
+
+    static struct option long_options[] = {
+        {"author-record-movie", required_argument, 0, 'a'},
+        {"dump-video", required_argument, 0, 'd'},
+        {"fullscreen", no_argument, 0, 'f'},
+        {"gdbport", required_argument, 0, 'g'},
+        {"help", no_argument, 0, 'h'},
+        {"install", required_argument, 0, 'i'},
+        {"movie-play", required_argument, 0, 'p'},
+        {"movie-record", required_argument, 0, 'r'},
+        {"version", no_argument, 0, 'v'},
+        {"windowed", no_argument, 0, 'w'},
+        {0, 0, 0, 0},
+    };
+
+#ifdef _WIN32
+    bool console = false;
+
+    // Explicitly redirect output if terminal is NOT mintty
+    if (!isMintty()) {
+        // Is the program running as console or GUI application
+        console = attachOutputToConsole();
+    }
+#endif
+
+    while (optind < argc) {
+        int arg = getopt_long(argc, argv, "a:d:fg:hi:p:r:vw", long_options, &option_index);
+        if (arg != -1) {
+            switch (static_cast<char>(arg)) {
+            case 'h':
+                PrintHelp(argv[0]);
+#ifdef _WIN32
+                if (console) {
+                    sendEnterKey();
+                }
+#endif
+                return 0;
+            case 'i': {
+                Service::AM::InstallStatus result = Service::AM::InstallCIA(std::string(optarg));
+                if (result != Service::AM::InstallStatus::Success) {
+                    std::string failure_reason;
+
+                    if (result == Service::AM::InstallStatus::ErrorFailedToOpenFile)
+                        failure_reason = "Unable to open file.";
+
+                    if (result == Service::AM::InstallStatus::ErrorFileNotFound)
+                        failure_reason = "File not found.";
+
+                    if (result == Service::AM::InstallStatus::ErrorAborted)
+                        failure_reason = "Install was aborted.";
+
+                    if (result == Service::AM::InstallStatus::ErrorInvalid)
+                        failure_reason = "CIA is invalid.";
+
+                    if (result == Service::AM::InstallStatus::ErrorEncrypted)
+                        failure_reason = "CIA is encrypted.";
+
+                    std::cout << "\nFailed to install CIA: " << failure_reason << std::endl;
+#ifdef _WIN32
+                    if (console) {
+                        sendEnterKey();
+                    }
+#endif
+                    return (int)result +
+                           2; // 2 is added here to avoid stepping on the toes of
+                              // exit codes 1 and 2 which have pre-established conventional meanings
+                }
+                std::cout << "\nInstalled CIA successfully." << std::endl;
+#ifdef _WIN32
+                if (console) {
+                    sendEnterKey();
+                }
+#endif
+                return 0;
+            }
+            case 'v':
+                PrintVersion();
+#ifdef _WIN32
+                if (console) {
+                    sendEnterKey();
+                }
+#endif
+                return 0;
+            }
+        } else {
+            optind++;
+        }
+    }
+
     Common::DetachedTasks detached_tasks;
 
     // Init settings params
@@ -3738,5 +3907,15 @@ int main(int argc, char* argv[]) {
 
     int result = app.exec();
     detached_tasks.WaitForAllTasks();
+
+#ifdef _WIN32
+    // Send "enter" to release application from the console
+    // This is a hack, but if not used the console doesn't know the application has
+    // returned. The "enter" key only sent if the console window is in focus.
+    if (console && (GetConsoleWindow() == GetForegroundWindow())) {
+        sendEnterKey();
+    }
+#endif
+
     return result;
 }

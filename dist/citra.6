@@ -1,4 +1,4 @@
-.Dd September 13 2024
+.Dd October 11 2024
 .Dt citra 6
 .Os
 .Sh NAME
@@ -8,33 +8,33 @@
 .Nm citra
 .Op Ar options
 .Op Ar file
-.Sh OPTIONS
-.Bl -tag -width Ds
-.It Fl g Ar port , Fl Fl gdbport Ar port
-Starts the GDB stub on the specified port
-.It Fl i , Fl Fl install Ar FILE
-Installs a specified CIA file
-.It Fl m , Fl Fl multiplayer Ar nick:password@address:port
-Nickname, password, address and port for multiplayer
-.It Fl r , Fl Fl movie-record Ar file
-Record a movie (game inputs) to the given file
-.It Fl a , Fl Fl movie-record-author Ar AUTHOR
-Sets the author of the movie to be recorded
-.It Fl p , Fl Fl movie-play Ar file
-Playback the movie (game inputs) from the given file
-.It Fl d , Fl Fl dump-video Ar file
-Dumps audio and video to the given video file
-.It Fl f , Fl Fl fullscreen
-Start in fullscreen mode
-.It Fl h , Fl Fl help
-Shows syntax help and exits
-.It Fl v , Fl Fl version
-Describes the installed version and exits
 .Sh DESCRIPTION
 Citra is an experimental open-source Nintendo 3DS emulator/debugger.
 .Pp
 .Nm citra
 is the Simple DirectMedia Layer (SDL) implementation.
+.Sh OPTIONS
+.Bl -tag -width Ds
+.It Fl a , Fl Fl author-record-movie Ar AUTHOR
+Sets the author of the TAS movie to be recorded
+.It Fl d , Fl Fl dump-video Ar PATH
+Dump video recording of emulator playback to the specified file path
+.It Fl f , Fl Fl fullscreen
+Start in fullscreen mode
+.It Fl g , Fl Fl gdbport Ar PORT
+Enable GDB stub on the specified port number
+.It Fl h , Fl Fl help
+Show syntax help and exit
+.It Fl i , Fl Fl install Ar FILE 
+Install a CIA file at the specified file path
+.It Fl m , Fl Fl multiplayer Ar nick:password@address:port
+Nickname, password, address and port for multiplayer
+.It Fl p , Fl Fl play-movie Ar FILE 
+Play a TAS movie locatd at the specified file path
+.It Fl r , Fl Fl record-movie Ar PATH
+Record a TAS movie to the specified file path
+.It Fl v , Fl Fl version
+Output version information and exit
 .Sh FILES
 .Bl -tag -width Ds
 .It Pa $XDG_DATA_HOME/citra-emu
@@ -42,6 +42,15 @@ Emulator storage.
 .It Pa $XDG_CONFIG_HOME/citra-emu
 Configuration files.
 .El
+.Sh EXAMPLES
+.Nm citra Ar ROM.3ds
+.D1 Start citra and launch ROM.3ds.
+.Nm citra Fl i Ar ROM.cia
+.D1 Install ROM.cia and exit.
+.Nm citra Fl d Ar demo.avi Ar ROM.3ds
+.D1 When ROM.3ds is loaded and played, dump a video recording of emulator playback with audio to demo.avi.
+.Nm citra Fl f Fl a Ar \(dqJohn Smith\(dq Fl r Ar gameplay.tas Ar ROM.3ds
+.D1 Start citra-qt and launch ROM.3ds. A TAS movie attributed to John Smith will be saved under the file gameplay.tas.
 .Sh AUTHORS
 This document is made available to you under the CC-BY license.
 .Pp
