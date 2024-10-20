@@ -229,7 +229,7 @@ int main(int argc, char** argv) {
     };
 
     while (optind < argc) {
-        int arg = getopt_long(argc, argv, "g:i:m:r:p:fhv", long_options, &option_index);
+        int arg = getopt_long(argc, argv, "a:d:fg:hi:m:p:r:v", long_options, &option_index);
         if (arg != -1) {
             switch (static_cast<char>(arg)) {
             case 'g':
