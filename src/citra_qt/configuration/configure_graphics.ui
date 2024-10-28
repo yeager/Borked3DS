@@ -354,7 +354,7 @@
          <property name="bottomMargin">
           <number>0</number>
          </property>
-         <item row="1" column="0">
+         <item row="0" column="0">
           <widget class="QCheckBox" name="toggle_skip_slow_draw">
            <property name="toolTip">
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Skips the slow drawing event from the PICA core. May improve performance, but can cause visual artifacts.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -364,17 +364,7 @@
            </property>
           </widget>
          </item>
-         <item row="1" column="3">
-          <widget class="QCheckBox" name="toggle_skip_texture_copy">
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Skips the texture copy event from the rasterizer cache. May improve performance, but can cause visual artifacts.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-           <property name="text">
-            <string>Skip Texture Copy</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1">
+         <item row="0" column="1">
           <widget class="QCheckBox" name="toggle_skip_cpu_write">
            <property name="toolTip">
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Skips the CPU write event from rasterizer cache invalidation. May improve performance but may cause visual artifacts.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -384,7 +374,17 @@
            </property>
           </widget>
          </item>
-         <item row="2" column="0">
+         <item row="0" column="2">
+          <widget class="QCheckBox" name="toggle_skip_texture_copy">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Skips the texture copy event from the rasterizer cache. May improve performance, but can cause visual artifacts.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="text">
+            <string>Skip Texture Copy</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="3">
           <widget class="QCheckBox" name="toggle_upscaling_hack">
            <property name="toolTip">
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Overrides upscaling for dst_params. May fix texture ghosting for some games, but may crash other games as well.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
