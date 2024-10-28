@@ -910,6 +910,15 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
             )
             add(
                 SwitchSetting(
+                    BooleanSetting.GEOMETRY_SHADER,
+                    R.string.geometry_shader,
+                    R.string.geometry_shader_desc,
+                    BooleanSetting.GEOMETRY_SHADER.key,
+                    BooleanSetting.GEOMETRY_SHADER.defaultValue,
+                )
+            )
+            add(
+                SwitchSetting(
                     BooleanSetting.RELAXED_PRECISION_DECORATORS,
                     R.string.relaxed_precision_decorators,
                     R.string.relaxed_precision_decorators_desc,

@@ -151,6 +151,7 @@ void Config::ReadValues() {
     ReadSetting("Renderer", Settings::values.graphics_api);
     ReadSetting("Renderer", Settings::values.physical_device);
     ReadSetting("Renderer", Settings::values.spirv_shader_gen);
+    ReadSetting("Renderer", Settings::values.geometry_shader);
     ReadSetting("Renderer", Settings::values.use_sample_shading);
     ReadSetting("Renderer", Settings::values.optimize_spirv_output);
     ReadSetting("Renderer", Settings::values.spirv_output_validation);

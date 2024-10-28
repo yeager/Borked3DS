@@ -58,6 +58,7 @@ ConfigureGraphics::ConfigureGraphics(QString gl_renderer, std::span<const QStrin
 
         ui->physical_device_combo->setVisible(false);
         ui->spirv_shader_gen->setVisible(false);
+        ui->toggle_geometry_shader->setVisible(false);
         ui->sample_shading->setVisible(false);
         ui->toggle_relaxed_precision->setVisible(false);
         ui->widget_optimize_spirv->setVisible(false);
@@ -175,6 +176,7 @@ void ConfigureGraphics::SetConfiguration() {
     ui->toggle_disk_shader_cache->setChecked(Settings::values.use_disk_shader_cache.GetValue());
     ui->toggle_vsync_new->setChecked(Settings::values.use_vsync_new.GetValue());
     ui->spirv_shader_gen->setChecked(Settings::values.spirv_shader_gen.GetValue());
+    ui->toggle_geometry_shader->setChecked(Settings::values.geometry_shader.GetValue());
     ui->sample_shading->setChecked(Settings::values.use_sample_shading.GetValue());
     ui->toggle_relaxed_precision->setChecked(
         Settings::values.relaxed_precision_decorators.GetValue());
@@ -217,6 +219,8 @@ void ConfigureGraphics::ApplyConfiguration() {
                                              ui->toggle_upscaling_hack, upscaling_hack);
     ConfigurationShared::ApplyPerGameSetting(&Settings::values.spirv_shader_gen,
                                              ui->spirv_shader_gen, spirv_shader_gen);
+    ConfigurationShared::ApplyPerGameSetting(&Settings::values.geometry_shader,
+                                             ui->toggle_geometry_shader, geometry_shader);
     ConfigurationShared::ApplyPerGameSetting(&Settings::values.use_sample_shading,
                                              ui->sample_shading, sample_shading);
     ConfigurationShared::ApplyPerGameSetting(&Settings::values.relaxed_precision_decorators,
@@ -321,6 +325,8 @@ void ConfigureGraphics::SetupPerGameUI() {
                                             Settings::values.upscaling_hack, upscaling_hack);
     ConfigurationShared::SetColoredTristate(ui->spirv_shader_gen, Settings::values.spirv_shader_gen,
                                             spirv_shader_gen);
+    ConfigurationShared::SetColoredTristate(ui->toggle_geometry_shader,
+                                            Settings::values.geometry_shader, geometry_shader);
     ConfigurationShared::SetColoredTristate(ui->sample_shading, Settings::values.use_sample_shading,
                                             sample_shading);
     ConfigurationShared::SetColoredTristate(ui->toggle_relaxed_precision,
@@ -354,6 +360,7 @@ void ConfigureGraphics::SetPhysicalDeviceComboVisibility(int index) {
 
     ui->physical_device_group->setVisible(effective_api == Settings::GraphicsAPI::Vulkan);
     ui->spirv_shader_gen->setVisible(effective_api == Settings::GraphicsAPI::Vulkan);
+    ui->toggle_geometry_shader->setVisible(effective_api == Settings::GraphicsAPI::Vulkan);
     ui->sample_shading->setVisible(effective_api == Settings::GraphicsAPI::Vulkan);
     ui->toggle_relaxed_precision->setVisible(effective_api == Settings::GraphicsAPI::Vulkan);
     ui->toggle_relaxed_precision->setEnabled(Settings::values.spirv_shader_gen.GetValue() == true);

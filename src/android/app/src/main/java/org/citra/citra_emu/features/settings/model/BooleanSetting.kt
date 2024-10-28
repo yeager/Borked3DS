@@ -12,6 +12,7 @@ enum class BooleanSetting(
     EXPAND_TO_CUTOUT_AREA("expand_to_cutout_area", Settings.SECTION_LAYOUT, false),
     SPIRV_SHADER_GEN("spirv_shader_gen", Settings.SECTION_RENDERER, true),
     USE_SAMPLE_SHADING("use_sample_shading", Settings.SECTION_RENDERER, false),
+    GEOMETRY_SHADER("geometry_shader", Settings.SECTION_RENDERER, false),
     SPIRV_OUTPUT_VALIDATION("spirv_output_validation", Settings.SECTION_RENDERER, false),
     SPIRV_OUTPUT_LEGALIZATION("spirv_output_legalization", Settings.SECTION_RENDERER, false),
     ASYNC_SHADERS("async_shader_compilation", Settings.SECTION_RENDERER, false),

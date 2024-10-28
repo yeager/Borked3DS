@@ -6,6 +6,7 @@
 
 #include <span>
 
+#include "common/settings.h"
 #include "video_core/pica/regs_pipeline.h"
 #include "video_core/rasterizer_cache/pixel_format.h"
 #include "video_core/renderer_vulkan/vk_platform.h"
@@ -109,13 +110,11 @@ public:
     }
 
     bool UseGeometryShaders() const {
-#ifdef __ANDROID__
-        // Geometry shaders are extremely expensive on tilers to avoid them at all
-        // cost even if it hurts accuracy somewhat. TODO: Make this an option
-        return false;
-#else
-        return features.geometryShader;
-#endif
+        if (Settings::values.geometry_shader.GetValue()) {
+            return features.geometryShader;
+        } else {
+            return false;
+        }
     }
 
     /// Returns true if anisotropic filtering is supported

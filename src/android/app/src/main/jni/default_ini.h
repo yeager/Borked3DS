@@ -134,6 +134,11 @@ async_shader_compilation =
 # 0: GLSL, 1: SPIR-V (default)
 spirv_shader_gen =
 
+# Enable Geometry Shaders. Improved accuracy but extremely expensive on tilers.
+# (Vulkan only)
+# 0 (default): Off, 1: On
+geometry_shader =
+
 # Enables a Vulkan extension that may improve the rendering quality. (Vulkan only)
 # 0 (default): Off, 1: On
 use_sample_shading =

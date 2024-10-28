@@ -190,6 +190,11 @@ texture_filter =
 # 0: Disabled, 1: Enabled
 spirv_shader_gen =
 
+# Enable Geometry Shaders. Improved accuracy but extremely expensive on tilers.
+# (Vulkan only)
+# 0: Off, 1 (default): On
+geometry_shader =
+
 # Enables a Vulkan extension that may improve the rendering quality. (Vulkan only)
 # 0 (default): Off, 1: On
 use_sample_shading =

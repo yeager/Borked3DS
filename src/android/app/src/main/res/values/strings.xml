@@ -253,6 +253,8 @@
     <string name="spirv_output_validation_description">SPIR-V output validation checks validation rules described by the SPIR-V specification. Ensures that outputs are valid and protects from bad inputs. Useful for debugging.</string>
     <string name="spirv_output_legalization">SPIR-V Shader Legalization</string>
     <string name="spirv_output_legalization_description">Legalizes the SPIR-V code for Vulkan. Primarily used for HLSL shaders.</string>
+    <string name="geometry_shader">Geometry Shader</string>
+    <string name="geometry_shader_desc">Improved accuracy but extremely expensive on tilers.</string>
     <string name="relaxed_precision_decorators">Relaxed Precision Decorators</string>
     <string name="relaxed_precision_decorators_desc">Optimizes shader code by allowing certain floating-point operations to use reduced precision. Can improve performance by reducing memory bandwidth and computational requirements. May cause issues on certain GPUs, particularly on Mali GPUs.</string>
     <string name="async_shaders">Async Shader Compilation</string>

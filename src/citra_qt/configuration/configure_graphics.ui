@@ -142,6 +142,16 @@
          </widget>
         </item>
         <item row="0" column="1">
+         <widget class="QCheckBox" name="toggle_geometry_shader">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Enable Geometry Shaders. Improved accuracy but extremely expensive on tilers.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="text">
+           <string>Geometry Shader</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="2">
          <widget class="QCheckBox" name="toggle_relaxed_precision">
           <property name="toolTip">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Optimizes shader code by allowing certain floating-point operations to use reduced precision. Can improve performance by reducing memory bandwidth and computational requirements. May cause issues on certain GPUs.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -151,7 +161,7 @@
           </property>
          </widget>
         </item>
-        <item row="0" column="2">
+        <item row="0" column="3">
          <widget class="QCheckBox" name="sample_shading">
           <property name="toolTip">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Enables a Vulkan extension that may improve the rendering quality, at the cost of some performance.&lt;/p&gt;&lt;p&gt;Requires a relatively powerful GPU for better performance.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>

@@ -110,6 +110,7 @@ void LogSettings() {
     log_setting("Renderer_SkipCPUWrite", values.skip_cpu_write.GetValue());
     log_setting("Renderer_UpscalingHack", values.upscaling_hack.GetValue());
     log_setting("Renderer_SpirvShaderGen", values.spirv_shader_gen.GetValue());
+    log_setting("Renderer_GeometryShader", values.geometry_shader.GetValue());
     log_setting("Renderer_UseSampleShading", values.use_sample_shading.GetValue());
     log_setting("Renderer_RelaxedPrecision", values.relaxed_precision_decorators.GetValue());
     log_setting("Renderer_OptimizeSpirv",
@@ -222,6 +223,7 @@ void RestoreGlobalState(bool is_powered_on) {
     values.graphics_api.SetGlobal(true);
     values.physical_device.SetGlobal(true);
     values.spirv_shader_gen.SetGlobal(true);
+    values.geometry_shader.SetGlobal(true);
     values.use_sample_shading.SetGlobal(true);
     values.relaxed_precision_decorators.SetGlobal(true);
     values.optimize_spirv_output.SetGlobal(true);
