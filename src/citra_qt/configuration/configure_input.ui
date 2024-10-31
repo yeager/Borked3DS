@@ -647,13 +647,13 @@
               <item>
                <widget class="QLabel" name="label_14">
                 <property name="toolTip">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Set a static analog direction as a input. It is most useful to help people with disabilities but can also be used for niche circumstances. Not reccomended to use actual controller anolog sticks on these presets but they do work.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Set a static analog direction as a input. Not reccomended to use actual controller anolog sticks on these presets but they do work.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="layoutDirection">
                  <enum>Qt::LeftToRight</enum>
                 </property>
                 <property name="text">
-                 <string>Directional Presets</string>
+                 <string>Diagonals</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignCenter</set>
@@ -876,10 +876,10 @@
               <item>
                <widget class="QLabel" name="label_15">
                 <property name="toolTip">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Set a static analog direction as a input. It is ost useful to help people with disabilities but can also be used for niche circumstances. Not reccomended to use actual controller anolog sticks on these presets but they do work.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Set a static analog direction as a input. Not reccomended to use actual controller anolog sticks on these presets but they do work.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="text">
-                 <string>Directional Presets</string>
+                 <string>Diagonals</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignCenter</set>
