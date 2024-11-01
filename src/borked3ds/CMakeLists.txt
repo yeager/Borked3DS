@@ -12,6 +12,8 @@ add_executable(borked3ds
     resource.h
 )
 
+set_target_properties(borked3ds PROPERTIES OUTPUT_NAME "borked3ds-cli")
+
 if (ENABLE_SOFTWARE_RENDERER)
     target_sources(borked3ds PRIVATE
         emu_window/emu_window_sdl2_sw.cpp

@@ -11,7 +11,7 @@ BASE_ARTIFACT_ARCH="${BASE_ARTIFACT##*-}"
 mv $BASE_ARTIFACT $BUNDLE_DIR
 
 # Executable binary paths that need to be combined.
-BIN_PATHS=(borked3ds borked3ds-room borked3ds-qt.app/Contents/MacOS/borked3ds-qt)
+BIN_PATHS=(borked3ds-cli borked3ds-room borked3ds.app/Contents/MacOS/borked3ds)
 
 # Dylib paths that need to be combined.
 IFS=$'\n'
@@ -37,7 +37,7 @@ for OTHER_ARTIFACT in "${ARTIFACTS_LIST[@]:1}"; do
 done
 
 # Re-sign executables and bundles after combining.
-APP_PATHS=(borked3ds borked3ds-room borked3ds-qt.app)
+APP_PATHS=(borked3ds-cli borked3ds-room borked3ds.app)
 for APP_PATH in "${APP_PATHS[@]}"; do
     codesign --deep -fs - $BUNDLE_DIR/$APP_PATH
 done
