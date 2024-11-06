@@ -1,4 +1,5 @@
 // Copyright 2024 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -13,7 +14,7 @@
 namespace FileSys {
 class SecureValueBackend : NonCopyable {
 public:
-    virtual ~SecureValueBackend(){};
+    virtual ~SecureValueBackend() {};
 
     virtual Result ObsoletedSetSaveDataSecureValue(u32 unique_id, u8 title_variation,
                                                    u32 secure_value_slot, u64 secure_value) = 0;

@@ -1,4 +1,5 @@
 // Copyright 2014 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -63,10 +64,10 @@ Result Semaphore::Release(s32* out_count, s32 release_count) {
 template <class Archive>
 void Semaphore::serialize(Archive& ar, const unsigned int) {
     ar& boost::serialization::base_object<WaitObject>(*this);
-    ar& max_count;
-    ar& available_count;
-    ar& name;
-    ar& resource_limit;
+    ar & max_count;
+    ar & available_count;
+    ar & name;
+    ar & resource_limit;
 }
 SERIALIZE_IMPL(Semaphore)
 

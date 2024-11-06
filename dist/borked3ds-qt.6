@@ -1,0 +1,72 @@
+.Dd October 11 2024
+.Dt borked3ds-qt 6
+.Os
+.Sh NAME
+.Nm Borked3DS-Qt
+.Nd Nintendo 3DS Emulator/Debugger (Qt)
+.Sh SYNOPSIS
+.Nm borked3ds-qt
+.Op Ar options
+.Op Ar file
+.Sh DESCRIPTION
+Borked3DS is an experimental open-source Nintendo 3DS emulator/debugger.
+.Pp
+.Nm borked3ds-qt
+is the Qt implementation.
+.Sh OPTIONS
+.Bl -tag -width Ds
+.It Fl a , Fl Fl author-record-movie Ar AUTHOR
+Sets the author of the TAS movie to be recorded
+.It Fl d , Fl Fl dump-video Ar PATH
+Dump video recording of emulator playback to the specified file path
+.It Fl f , Fl Fl fullscreen
+Start in fullscreen mode
+.It Fl g , Fl Fl gdbport Ar PORT
+Starts the GDB stub on the specified port number
+.It Fl h , Fl Fl help
+Show syntax help and exit
+.It Fl i , Fl Fl install Ar FILE 
+Install a CIA file at the specified file path
+.It Fl p , Fl Fl play-movie Ar FILE 
+Play a TAS movie located at the specified file path
+.It Fl r , Fl Fl record-movie Ar PATH
+Record a TAS movie located to the specified path
+.It Fl v , Fl Fl version
+Output version information and exit
+.It Fl w , Fl Fl windowed
+Start in windowed mode
+.Sh FILES
+.Bl -tag -width Ds
+.It Pa $XDG_DATA_HOME/borked3ds-emu
+Emulator storage.
+.It Pa $XDG_CONFIG_HOME/borked3ds-emu
+Configuration files.
+.El
+.Sh EXAMPLES
+.Nm borked3ds-qt Ar ROM.3ds
+.D1 Start borked3ds-qt and launch ROM.3ds.
+.Nm borked3ds-qt Fl i Ar ROM.cia
+.D1 Install ROM.cia and exit.
+.Nm borked3ds-qt Fl d Ar demo.avi
+.D1 When game is loaded and played, dump a video recording of emulator playback with audio to demo.avi.
+.Nm borked3ds-qt Fl f Fl a Ar \(dqJohn Smith\(dq Fl r Ar gameplay.tas Ar ROM.3ds
+.D1 Start borked3ds-qt and launch ROM.3ds in fullscreen. A TAS movie attributed to John Smith will be saved under the file gameplay.tas. 
+.Sh AUTHORS
+This document is made available to you under the CC-BY license.
+.Pp
+Borked3DS is made by a team of volunteers. These contributors are listed
+ at <\fBhttps://github.com/Borked3DS/Borked3DS/contributors\fR>.
+.Pp
+.Sh SEE ALSO
+.Bl -tag -width Ds
+.It Xr borked3ds 6
+The SDL frontend of the application
+.El
+.Pp
+Resources are available for this project:
+.Bl -tag -width Ds
+.It <\fBhttps://borked3ds-emu.org\fR>
+The main homepage of the project.
+.It <\fBhttps://github.com/Borked3DS/Borked3DS\fR>
+The main source code repository for the Borked3DS emulator.
+.Pp

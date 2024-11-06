@@ -1,4 +1,5 @@
 // Copyright 2013 Dolphin Emulator Project / 2014 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -83,7 +84,7 @@
 #include <sys/stat.h>
 
 #ifndef S_ISDIR
-#define S_ISDIR(m) (((m)&S_IFMT) == S_IFDIR)
+#define S_ISDIR(m) (((m) & S_IFMT) == S_IFDIR)
 #endif
 
 // This namespace has various generic functions related to files and paths.
@@ -853,8 +854,8 @@ bool StringReplace(std::string& haystack, const std::string& a, const std::strin
 
 std::string SerializePath(const std::string& input, bool is_saving) {
     auto result = input;
-    StringReplace(result, "%CITRA_ROM_FILE%", g_currentRomPath, is_saving);
-    StringReplace(result, "%CITRA_USER_DIR%", GetUserPath(UserPath::UserDir), is_saving);
+    StringReplace(result, "%BORKED3DS_ROM_FILE%", g_currentRomPath, is_saving);
+    StringReplace(result, "%BORKED3DS_USER_DIR%", GetUserPath(UserPath::UserDir), is_saving);
     return result;
 }
 

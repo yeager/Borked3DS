@@ -1,4 +1,5 @@
 // Copyright 2022 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -188,7 +189,7 @@ void RasterizerOpenGL::SyncFixedState() {
 
 void RasterizerOpenGL::SetupVertexArray(u8* array_ptr, GLintptr buffer_offset,
                                         GLuint vs_input_index_min, GLuint vs_input_index_max) {
-    CITRA_PROFILE("OpenGL", "Vertex Array Setup");
+    BORKED3DS_PROFILE("OpenGL", "Vertex Array Setup");
     const auto& vertex_attributes = regs.pipeline.vertex_attributes;
     PAddr base_address = vertex_attributes.GetPhysicalBaseAddress();
 
@@ -264,12 +265,12 @@ void RasterizerOpenGL::SetupVertexArray(u8* array_ptr, GLintptr buffer_offset,
 }
 
 bool RasterizerOpenGL::SetupVertexShader() {
-    CITRA_PROFILE("OpenGL", "Vertex Shader Setup");
+    BORKED3DS_PROFILE("OpenGL", "Vertex Shader Setup");
     return shader_manager.UseProgrammableVertexShader(regs, pica.vs_setup);
 }
 
 bool RasterizerOpenGL::SetupGeometryShader() {
-    CITRA_PROFILE("OpenGL", "Geometry Shader Setup");
+    BORKED3DS_PROFILE("OpenGL", "Geometry Shader Setup");
 
     if (regs.pipeline.use_gs != Pica::PipelineRegs::UseGS::No) {
         LOG_ERROR(Render_OpenGL, "Accelerate draw doesn't support geometry shader");
@@ -364,7 +365,7 @@ void RasterizerOpenGL::DrawTriangles() {
 
 bool RasterizerOpenGL::Draw(bool accelerate, bool is_indexed) {
 
-    CITRA_PROFILE("OpenGL", "Drawing");
+    BORKED3DS_PROFILE("OpenGL", "Drawing");
     const bool shadow_rendering = regs.framebuffer.IsShadowRendering();
     const bool has_stencil = regs.framebuffer.HasStencil();
 
@@ -723,7 +724,7 @@ bool RasterizerOpenGL::AccelerateDisplay(const Pica::FramebufferConfig& config,
     if (framebuffer_addr == 0) {
         return false;
     }
-    CITRA_PROFILE("OpenGL", "Display");
+    BORKED3DS_PROFILE("OpenGL", "Display");
 
     VideoCore::SurfaceParams src_params;
     src_params.addr = framebuffer_addr;
@@ -963,10 +964,9 @@ void RasterizerOpenGL::SyncAndUploadLUTsLF() {
     if (fs_uniform_block_data.fog_lut_dirty || invalidate) {
         std::array<Common::Vec2f, 128> new_data;
 
-        std::transform(pica.fog.lut.begin(), pica.fog.lut.end(), new_data.begin(),
-                       [](const auto& entry) {
-                           return Common::Vec2f{entry.ToFloat(), entry.DiffToFloat()};
-                       });
+        std::transform(
+            pica.fog.lut.begin(), pica.fog.lut.end(), new_data.begin(),
+            [](const auto& entry) { return Common::Vec2f{entry.ToFloat(), entry.DiffToFloat()}; });
 
         if (new_data != fog_lut_data || invalidate) {
             fog_lut_data = new_data;

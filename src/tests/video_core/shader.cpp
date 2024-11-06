@@ -1,9 +1,10 @@
 // Copyright 2023 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
 #include "common/arch.h"
-#if CITRA_ARCH(x86_64) || CITRA_ARCH(arm64)
+#if BORKED3DS_ARCH(x86_64) || BORKED3DS_ARCH(arm64)
 
 #include <algorithm>
 #include <cmath>
@@ -18,9 +19,9 @@
 #include "video_core/pica/shader_setup.h"
 #include "video_core/pica/shader_unit.h"
 #include "video_core/shader/shader_interpreter.h"
-#if CITRA_ARCH(x86_64)
+#if BORKED3DS_ARCH(x86_64)
 #include "video_core/shader/shader_jit_x64_compiler.h"
-#elif CITRA_ARCH(arm64)
+#elif BORKED3DS_ARCH(arm64)
 #include "video_core/shader/shader_jit_a64_compiler.h"
 #endif
 
@@ -802,4 +803,4 @@ SHADER_TEST_CASE("Source Swizzle", "[video_core][shader]") {
             Common::Vec4f(iota_vec.y, iota_vec.y, iota_vec.y, iota_vec.y));
 }
 
-#endif // CITRA_ARCH(x86_64) || CITRA_ARCH(arm64)
+#endif // BORKED3DS_ARCH(x86_64) || BORKED3DS_ARCH(arm64)

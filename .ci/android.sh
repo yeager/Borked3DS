@@ -67,7 +67,7 @@ zip -r Vulkan-ValidationLayers.zip lib
 mv Vulkan-ValidationLayers.zip ../../src/android/app/build/tmp
 cd ../..
 
-# Build Citra
+# Build Borked3DS
 cd src/android
 chmod +x ./gradlew
 ./gradlew assembleRelease

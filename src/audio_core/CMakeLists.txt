@@ -49,7 +49,7 @@ endif()
 
 create_target_directory_groups(audio_core)
 
-target_link_libraries(audio_core PUBLIC citra_common citra_core)
+target_link_libraries(audio_core PUBLIC borked3ds_common borked3ds_core)
 target_link_libraries(audio_core PRIVATE faad2 SoundTouch teakra)
 
 if(ENABLE_SDL2)
@@ -76,6 +76,6 @@ if(ANDROID)
     target_link_libraries(audio_core PRIVATE oboe)
 endif()
 
-if (CITRA_USE_PRECOMPILED_HEADERS)
+if (BORKED3DS_USE_PRECOMPILED_HEADERS)
     target_precompile_headers(audio_core PRIVATE precompiled_headers.h)
 endif()

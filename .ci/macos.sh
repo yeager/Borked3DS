@@ -8,7 +8,7 @@ cd ../..
 mkdir -p build/externals/MoltenVK/MoltenVK
 mv externals/MoltenVK/Package/Release/MoltenVK/dynamic build/externals/MoltenVK/MoltenVK/
 
-# Build Citra
+# Build Borked3DS
 cd build
 cmake .. -GNinja \
     -DCMAKE_BUILD_TYPE=Release \
@@ -19,9 +19,9 @@ cmake .. -GNinja \
     -DUSE_SYSTEM_GLSLANG=OFF \
     -DUSE_SYSTEM_VULKAN_HEADERS=OFF \
     -DUSE_SYSTEM_VMA=OFF \
-    -DCITRA_USE_EXTERNAL_VULKAN_SPIRV_TOOLS=ON \
-    -DCITRA_USE_EXTERNAL_MOLTENVK=ON \
-    -DCITRA_ENABLE_COMPATIBILITY_REPORTING=OFF \
+    -DBORKED3DS_USE_EXTERNAL_VULKAN_SPIRV_TOOLS=ON \
+    -DBORKED3DS_USE_EXTERNAL_MOLTENVK=ON \
+    -DBORKED3DS_ENABLE_COMPATIBILITY_REPORTING=OFF \
     -DUSE_DISCORD_PRESENCE=ON
 ninja
 ninja bundle

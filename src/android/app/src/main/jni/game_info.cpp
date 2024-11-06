@@ -1,4 +1,5 @@
 // Copyright 2017 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -60,8 +61,9 @@ static Loader::SMDH* GetPointer(JNIEnv* env, jobject obj) {
     return reinterpret_cast<Loader::SMDH*>(env->GetLongField(obj, IDCache::GetGameInfoPointer()));
 }
 
-JNIEXPORT jlong JNICALL Java_org_citra_citra_1emu_model_GameInfo_initialize(JNIEnv* env, jclass,
-                                                                            jstring j_path) {
+JNIEXPORT jlong JNICALL Java_io_github_borked3ds_android_model_GameInfo_initialize(JNIEnv* env,
+                                                                                   jclass,
+                                                                                   jstring j_path) {
     std::vector<u8> smdh_data = GetSMDHData(GetJString(env, j_path));
 
     Loader::SMDH* smdh = nullptr;
@@ -72,11 +74,12 @@ JNIEXPORT jlong JNICALL Java_org_citra_citra_1emu_model_GameInfo_initialize(JNIE
     return reinterpret_cast<jlong>(smdh);
 }
 
-JNIEXPORT void JNICALL Java_org_citra_citra_1emu_model_GameInfo_finalize(JNIEnv* env, jobject obj) {
+JNIEXPORT void JNICALL Java_io_github_borked3ds_android_model_GameInfo_finalize(JNIEnv* env,
+                                                                                jobject obj) {
     delete GetPointer(env, obj);
 }
 
-jstring Java_org_citra_citra_1emu_model_GameInfo_getTitle(JNIEnv* env, jobject obj) {
+jstring Java_io_github_borked3ds_android_model_GameInfo_getTitle(JNIEnv* env, jobject obj) {
     Loader::SMDH* smdh = GetPointer(env, obj);
     Loader::SMDH::TitleLanguage language = Loader::SMDH::TitleLanguage::English;
 
@@ -87,7 +90,7 @@ jstring Java_org_citra_citra_1emu_model_GameInfo_getTitle(JNIEnv* env, jobject o
     return ToJString(env, Common::UTF16ToUTF8(title).data());
 }
 
-jstring Java_org_citra_citra_1emu_model_GameInfo_getCompany(JNIEnv* env, jobject obj) {
+jstring Java_io_github_borked3ds_android_model_GameInfo_getCompany(JNIEnv* env, jobject obj) {
     Loader::SMDH* smdh = GetPointer(env, obj);
     Loader::SMDH::TitleLanguage language = Loader::SMDH::TitleLanguage::English;
 
@@ -99,7 +102,7 @@ jstring Java_org_citra_citra_1emu_model_GameInfo_getCompany(JNIEnv* env, jobject
     return ToJString(env, Common::UTF16ToUTF8(publisher).data());
 }
 
-jstring Java_org_citra_citra_1emu_model_GameInfo_getRegions(JNIEnv* env, jobject obj) {
+jstring Java_io_github_borked3ds_android_model_GameInfo_getRegions(JNIEnv* env, jobject obj) {
     Loader::SMDH* smdh = GetPointer(env, obj);
 
     using GameRegion = Loader::SMDH::GameRegion;
@@ -132,7 +135,7 @@ jstring Java_org_citra_citra_1emu_model_GameInfo_getRegions(JNIEnv* env, jobject
     return ToJString(env, result);
 }
 
-jintArray Java_org_citra_citra_1emu_model_GameInfo_getIcon(JNIEnv* env, jobject obj) {
+jintArray Java_io_github_borked3ds_android_model_GameInfo_getIcon(JNIEnv* env, jobject obj) {
     Loader::SMDH* smdh = GetPointer(env, obj);
 
     // Always get a 48x48(large) icon
@@ -148,8 +151,8 @@ jintArray Java_org_citra_citra_1emu_model_GameInfo_getIcon(JNIEnv* env, jobject 
     return icon;
 }
 
-jboolean Java_org_citra_citra_1emu_model_GameInfo_getIsVisibleSystemTitle(JNIEnv* env,
-                                                                          jobject obj) {
+jboolean Java_io_github_borked3ds_android_model_GameInfo_getIsVisibleSystemTitle(JNIEnv* env,
+                                                                                 jobject obj) {
     Loader::SMDH* smdh = GetPointer(env, obj);
     if (smdh == nullptr) {
         return false;

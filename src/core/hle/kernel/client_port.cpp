@@ -1,4 +1,5 @@
 // Copyright 2016 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -53,10 +54,10 @@ void ClientPort::ConnectionClosed() {
 template <class Archive>
 void ClientPort::serialize(Archive& ar, const unsigned int) {
     ar& boost::serialization::base_object<Object>(*this);
-    ar& server_port;
-    ar& max_sessions;
-    ar& active_sessions;
-    ar& name;
+    ar & server_port;
+    ar & max_sessions;
+    ar & active_sessions;
+    ar & name;
 }
 SERIALIZE_IMPL(ClientPort)
 

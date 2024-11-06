@@ -1,4 +1,5 @@
 // Copyright 2020 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -15,8 +16,8 @@ static jmethodID s_load_image_from_file;
 namespace Camera::StillImage {
 
 void InitJNI(JNIEnv* env) {
-    s_still_image_camera_helper_class = reinterpret_cast<jclass>(
-        env->NewGlobalRef(env->FindClass("org/citra/citra_emu/camera/StillImageCameraHelper")));
+    s_still_image_camera_helper_class = reinterpret_cast<jclass>(env->NewGlobalRef(
+        env->FindClass("io/github/borked3ds/android/camera/StillImageCameraHelper")));
     s_open_file_picker = env->GetStaticMethodID(s_still_image_camera_helper_class, "OpenFilePicker",
                                                 "()Ljava/lang/String;");
     s_load_image_from_file =

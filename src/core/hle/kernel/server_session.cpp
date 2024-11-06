@@ -1,4 +1,5 @@
 // Copyright 2016 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -21,12 +22,12 @@ namespace Kernel {
 template <class Archive>
 void ServerSession::serialize(Archive& ar, const unsigned int) {
     ar& boost::serialization::base_object<WaitObject>(*this);
-    ar& name;
-    ar& parent;
-    ar& hle_handler;
-    ar& pending_requesting_threads;
-    ar& currently_handling;
-    ar& mapped_buffer_context;
+    ar & name;
+    ar & parent;
+    ar & hle_handler;
+    ar & pending_requesting_threads;
+    ar & currently_handling;
+    ar & mapped_buffer_context;
 }
 SERIALIZE_IMPL(ServerSession)
 

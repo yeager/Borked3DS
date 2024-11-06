@@ -1,4 +1,5 @@
 // Copyright 2014 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -70,20 +71,20 @@ private:
 
     template <class Archive>
     void serialize(Archive& ar, const unsigned int) {
-        ar& type;
+        ar & type;
         switch (type) {
         case LowPathType::Binary:
-            ar& binary;
+            ar & binary;
             break;
         case LowPathType::Char:
-            ar& string;
+            ar & string;
             break;
         case LowPathType::Wchar: {
             std::vector<char16_t> data;
             if (Archive::is_saving::value) {
                 std::copy(u16str.begin(), u16str.end(), std::back_inserter(data));
             }
-            ar& data;
+            ar & data;
             if (Archive::is_loading::value) {
                 u16str = std::u16string(data.data(), data.size());
             }
@@ -242,7 +243,7 @@ protected:
 private:
     template <class Archive>
     void serialize(Archive& ar, const unsigned int) {
-        ar& delay_generator;
+        ar & delay_generator;
     }
     friend class boost::serialization::access;
 };

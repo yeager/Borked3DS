@@ -1,4 +1,5 @@
 // Copyright 2015 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -226,7 +227,7 @@ void RasterizerSoftware::MakeScreenCoords(Vertex& vtx) {
 
 void RasterizerSoftware::ProcessTriangle(const Vertex& v0, const Vertex& v1, const Vertex& v2,
                                          bool reversed) {
-    CITRA_PROFILE("Software", "Rasterization");
+    BORKED3DS_PROFILE("Software", "Rasterization");
 
     // Vertex positions in rasterizer coordinates
     static auto screen_to_rasterizer_coords = [](const Common::Vec3<f24>& vec) {

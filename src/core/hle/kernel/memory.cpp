@@ -1,4 +1,5 @@
 // Copyright 2014 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -273,10 +274,10 @@ void MemoryRegionInfo::Unlock() {
 
 template <class Archive>
 void MemoryRegionInfo::serialize(Archive& ar, const unsigned int) {
-    ar& base;
-    ar& size;
-    ar& used;
-    ar& free_blocks;
+    ar & base;
+    ar & size;
+    ar & used;
+    ar & free_blocks;
     if (Archive::is_loading::value) {
         is_locked = true;
     }

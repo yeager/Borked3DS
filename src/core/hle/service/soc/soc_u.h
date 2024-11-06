@@ -1,4 +1,5 @@
 // Copyright 2014 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -39,10 +40,10 @@ struct SocketHolder {
 private:
     template <class Archive>
     void serialize(Archive& ar, const unsigned int) {
-        ar& socket_fd;
-        ar& blocking;
-        ar& isGlobal;
-        ar& ownerProcess;
+        ar & socket_fd;
+        ar & blocking;
+        ar & isGlobal;
+        ar & ownerProcess;
     }
     friend class boost::serialization::access;
 };
@@ -170,8 +171,8 @@ private:
     template <class Archive>
     void serialize(Archive& ar, const unsigned int) {
         ar& boost::serialization::base_object<Kernel::SessionRequestHandler>(*this);
-        ar& created_sockets;
-        ar& initialized_processes;
+        ar & created_sockets;
+        ar & initialized_processes;
     }
     friend class boost::serialization::access;
 };

@@ -268,10 +268,10 @@ This project is currently licensed under the Boost Software License 1.0 (http://
     <string name="license_catch2_description" translatable="false">A unit testing framework for C++, but it also provides basic micro-benchmarking features, and simple BDD macros</string>
     <string name="license_catch2_link" translatable="false">https://github.com/catchorg/Catch2</string>
     <string name="license_catch2_copyright" translatable="false">Copyright © Catch Org</string>
-    <string name="license_citra" translatable="false">Citra</string>
-    <string name="license_citra_description" translatable="false">A Nintendo 3DS Emulator</string>
-    <string name="license_citra_link" translatable="false">https://github.com/rtiangha/bravely-offline-citra</string>
-    <string name="license_citra_copyright" translatable="false">Copyright © Citra Project Developers</string>
+    <string name="license_borked3ds" translatable="false">Borked3DS</string>
+    <string name="license_borked3ds_description" translatable="false">A Nintendo 3DS Emulator</string>
+    <string name="license_borked3ds_link" translatable="false">https://github.com/rtiangha/bravely-offline-borked3ds</string>
+    <string name="license_borked3ds_copyright" translatable="false">Copyright © Borked3DS Project Developers</string>
     <string name="license_httplib" translatable="false">cpp-httplib</string>
     <string name="license_httplib_description" translatable="false">A C++ header-only HTTP/HTTPS server and client library</string>
     <string name="license_httplib_link" translatable="false">https://github.com/yhirose/cpp-httplib</string>

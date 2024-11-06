@@ -1,4 +1,5 @@
 // Copyright 2015 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -26,10 +27,10 @@ namespace Service::CAM {
 
 template <class Archive>
 void Module::serialize(Archive& ar, const unsigned int file_version) {
-    ar& cameras;
-    ar& ports;
-    ar& is_camera_reload_pending;
-    ar& initialized;
+    ar & cameras;
+    ar & ports;
+    ar & is_camera_reload_pending;
+    ar & initialized;
     if (Archive::is_loading::value && initialized) {
         for (int i = 0; i < NumCameras; i++) {
             LoadCameraImplementation(cameras[i], i);

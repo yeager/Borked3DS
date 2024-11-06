@@ -212,7 +212,7 @@ endif()
 
 create_target_directory_groups(video_core)
 
-target_link_libraries(video_core PUBLIC citra_common citra_core)
+target_link_libraries(video_core PUBLIC borked3ds_common borked3ds_core)
 target_link_libraries(video_core PRIVATE Boost::serialization dds-ktx json-headers nihstro-headers tsl::robin_map)
 
 if ("x86_64" IN_LIST ARCHITECTURE)
@@ -223,6 +223,6 @@ if ("arm64" IN_LIST ARCHITECTURE)
     target_link_libraries(video_core PUBLIC oaknut)
 endif()
 
-if (CITRA_USE_PRECOMPILED_HEADERS)
+if (BORKED3DS_USE_PRECOMPILED_HEADERS)
     target_precompile_headers(video_core PRIVATE precompiled_headers.h)
 endif()

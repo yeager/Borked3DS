@@ -1,4 +1,5 @@
 // Copyright 2023 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -55,12 +56,12 @@ OGLProgram CreateProgram(std::string_view frag) {
 
 BlitHelper::BlitHelper(const Driver& driver_)
     : driver{driver_}, linear_sampler{CreateSampler(GL_LINEAR)},
-      nearest_sampler{CreateSampler(GL_NEAREST)}, bicubic_program{CreateProgram(
-                                                      HostShaders::BICUBIC_FRAG)},
+      nearest_sampler{CreateSampler(GL_NEAREST)},
+      bicubic_program{CreateProgram(HostShaders::BICUBIC_FRAG)},
       scale_force_program{CreateProgram(HostShaders::SCALE_FORCE_FRAG)},
       xbrz_program{CreateProgram(HostShaders::XBRZ_FREESCALE_FRAG)},
-      mmpx_program{CreateProgram(HostShaders::MMPX_FRAG)}, gradient_x_program{CreateProgram(
-                                                               HostShaders::X_GRADIENT_FRAG)},
+      mmpx_program{CreateProgram(HostShaders::MMPX_FRAG)},
+      gradient_x_program{CreateProgram(HostShaders::X_GRADIENT_FRAG)},
       gradient_y_program{CreateProgram(HostShaders::Y_GRADIENT_FRAG)},
       refine_program{CreateProgram(HostShaders::REFINE_FRAG)},
       d24s8_to_rgba8{CreateProgram(HostShaders::D24S8_TO_RGBA8_FRAG)},

@@ -1,4 +1,5 @@
 // Copyright 2023 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -29,9 +30,8 @@ union CommandHeader {
 static_assert(sizeof(CommandHeader) == sizeof(u32), "CommandHeader has incorrect size!");
 
 PicaCore::PicaCore(Memory::MemorySystem& memory_, std::shared_ptr<DebugContext> debug_context_)
-    : memory{memory_}, debug_context{std::move(debug_context_)}, geometry_pipeline{regs.internal,
-                                                                                   gs_unit,
-                                                                                   gs_setup},
+    : memory{memory_}, debug_context{std::move(debug_context_)},
+      geometry_pipeline{regs.internal, gs_unit, gs_setup},
       shader_engine{CreateEngine(Settings::values.use_shader_jit.GetValue())} {
     InitializeRegs();
 
@@ -448,7 +448,7 @@ void PicaCore::SubmitImmediate(u32 value) {
 }
 
 void PicaCore::DrawImmediate() {
-    CITRA_PROFILE("PicaCore", "Draw Immediate");
+    BORKED3DS_PROFILE("PicaCore", "Draw Immediate");
 
     // Compile the vertex shader.
     shader_engine->SetupBatch(vs_setup, regs.internal.vs.main_offset);
@@ -486,7 +486,7 @@ void PicaCore::DrawImmediate() {
 }
 
 void PicaCore::DrawArrays(bool is_indexed) {
-    CITRA_PROFILE("PicaCore", "Draw Arrays");
+    BORKED3DS_PROFILE("PicaCore", "Draw Arrays");
 
     // Track vertex in the debug recorder.
     if (debug_context) {
@@ -615,9 +615,9 @@ void PicaCore::LoadVertices(bool is_indexed) {
 
 template <class Archive>
 void PicaCore::CommandList::serialize(Archive& ar, const u32 file_version) {
-    ar& addr;
-    ar& length;
-    ar& current_index;
+    ar & addr;
+    ar & length;
+    ar & current_index;
     if (Archive::is_loading::value) {
         const u8* ptr = Core::System::GetInstance().Memory().GetPhysicalPointer(addr);
         head = reinterpret_cast<const u32*>(ptr);

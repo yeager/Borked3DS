@@ -1,4 +1,5 @@
 // Copyright 2023 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -50,8 +51,8 @@ struct GPU::Impl {
         : timing{system.CoreTiming()}, system{system}, memory{system.Memory()},
           debug_context{Pica::g_debug_context}, pica{memory, debug_context},
           renderer{VideoCore::CreateRenderer(emu_window, secondary_window, pica, system)},
-          rasterizer{renderer->Rasterizer()}, sw_blitter{std::make_unique<SwRenderer::SwBlitter>(
-                                                  memory, rasterizer)} {}
+          rasterizer{renderer->Rasterizer()},
+          sw_blitter{std::make_unique<SwRenderer::SwBlitter>(memory, rasterizer)} {}
     ~Impl() = default;
 };
 
@@ -348,7 +349,7 @@ void GPU::SubmitCmdList(u32 index) {
         return;
     }
 
-    CITRA_PROFILE("GPU", "Command List Processing");
+    BORKED3DS_PROFILE("GPU", "Command List Processing");
 
     // Forward command list processing to the PICA core.
     const PAddr addr = config.GetPhysicalAddress(index);
@@ -399,12 +400,12 @@ void GPU::MemoryTransfer() {
 
     // Perform memory transfer
     if (config.is_texture_copy) {
-        CITRA_PROFILE("GPU", "Texture Copy");
+        BORKED3DS_PROFILE("GPU", "Texture Copy");
         if (!impl->rasterizer->AccelerateTextureCopy(config)) {
             impl->sw_blitter->TextureCopy(config);
         }
     } else {
-        CITRA_PROFILE("GPU", "Display Transfer");
+        BORKED3DS_PROFILE("GPU", "Display Transfer");
         if (!impl->rasterizer->AccelerateDisplayTransfer(config)) {
             impl->sw_blitter->DisplayTransfer(config);
         }

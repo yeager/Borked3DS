@@ -1,4 +1,5 @@
 // Copyright 2017 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Copyright 2024 Jarrod Norwell
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
@@ -32,9 +33,9 @@ namespace Service::NWM {
 template <class Archive>
 void NWM_UDS::serialize(Archive& ar, const unsigned int) {
     ar& boost::serialization::base_object<Kernel::SessionRequestHandler>(*this);
-    ar& node_map;
-    ar& connection_event;
-    ar& received_beacons;
+    ar & node_map;
+    ar & connection_event;
+    ar & received_beacons;
     // wifi_packet_received set in constructor
 }
 
@@ -98,7 +99,7 @@ u16 NWM_UDS::GetNextAvailableNodeId() {
 
 void NWM_UDS::BroadcastNodeMap() {
     // Note: This is not how UDS on a 3ds does it but it shouldn't be
-    // necessary for citra
+    // necessary for borked3ds
     Network::WifiPacket packet;
     packet.channel = network_channel;
     packet.type = Network::WifiPacket::PacketType::NodeMap;
@@ -1272,7 +1273,7 @@ private:
     template <class Archive>
     void serialize(Archive& ar, const unsigned int) {
         ar& boost::serialization::base_object<Kernel::HLERequestContext::WakeupCallback>(*this);
-        ar& command_id;
+        ar & command_id;
     }
     friend class boost::serialization::access;
 };

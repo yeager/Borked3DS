@@ -1,4 +1,5 @@
 // Copyright 2015 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -45,10 +46,10 @@ constexpr std::array<u8, 8> news_system_savedata_id{
 
 template <class Archive>
 void Module::serialize(Archive& ar, const unsigned int) {
-    ar& db;
-    ar& notification_ids;
-    ar& automatic_sync_flag;
-    ar& news_system_save_data_archive;
+    ar & db;
+    ar & notification_ids;
+    ar & automatic_sync_flag;
+    ar & news_system_save_data_archive;
 }
 SERIALIZE_IMPL(Module)
 

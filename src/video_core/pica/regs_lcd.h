@@ -1,4 +1,5 @@
 // Copyright 2023 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -56,10 +57,10 @@ struct RegsLcd {
 private:
     template <class Archive>
     void serialize(Archive& ar, const unsigned int) {
-        ar& color_fill_top.raw;
-        ar& backlight_top;
-        ar& color_fill_bottom.raw;
-        ar& backlight_bottom;
+        ar & color_fill_top.raw;
+        ar & backlight_top;
+        ar & color_fill_bottom.raw;
+        ar & backlight_bottom;
     }
     friend class boost::serialization::access;
 };

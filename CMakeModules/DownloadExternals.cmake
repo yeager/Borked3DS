@@ -177,7 +177,7 @@ function(download_moltenvk)
     endif()
 
     set(MOLTENVK_DIR "${CMAKE_BINARY_DIR}/externals/MoltenVK")
-    if (NOT CITRA_USE_EXTERNAL_MOLTENVK)
+    if (NOT BORKED3DS_USE_EXTERNAL_MOLTENVK)
         set(MOLTENVK_TAR "${CMAKE_BINARY_DIR}/externals/MoltenVK.tar")
         if (NOT EXISTS ${MOLTENVK_DIR})
             if (NOT EXISTS ${MOLTENVK_TAR})

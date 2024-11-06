@@ -1,4 +1,5 @@
 // Copyright 2015 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -225,9 +226,9 @@ Module::Module(Core::System& system_) : system(system_) {
 
 template <class Archive>
 void Module::serialize(Archive& ar, const unsigned int) {
-    ar& shell_open;
-    ar& battery_is_charging;
-    ar& pedometer_is_counting;
+    ar & shell_open;
+    ar & battery_is_charging;
+    ar & pedometer_is_counting;
 }
 SERIALIZE_IMPL(Module)
 

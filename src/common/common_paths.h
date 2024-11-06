@@ -1,4 +1,5 @@
 // Copyright 2013 Dolphin Emulator Project / 2014 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -18,18 +19,18 @@
 #define EMU_DATA_DIR USER_DIR
 #else
 #ifdef _WIN32
-#define EMU_DATA_DIR "Citra"
+#define EMU_DATA_DIR "Borked3DS"
 #elif defined(__APPLE__)
 #include <TargetConditionals.h>
 #if TARGET_OS_IPHONE
-#define APPLE_EMU_DATA_DIR "Documents" DIR_SEP "Citra"
+#define APPLE_EMU_DATA_DIR "Documents" DIR_SEP "Borked3DS"
 #else
-#define APPLE_EMU_DATA_DIR "Library" DIR_SEP "Application Support" DIR_SEP "Citra"
+#define APPLE_EMU_DATA_DIR "Library" DIR_SEP "Application Support" DIR_SEP "Borked3DS"
 #endif
 // For compatibility with XDG paths.
-#define EMU_DATA_DIR "citra-emu"
+#define EMU_DATA_DIR "borked3ds-emu"
 #else
-#define EMU_DATA_DIR "citra-emu"
+#define EMU_DATA_DIR "borked3ds-emu"
 #endif
 #endif
 
@@ -55,7 +56,7 @@
 
 // Filenames
 // Files in the directory returned by GetUserPath(UserPath::LogDir)
-#define LOG_FILE "citra_log.txt"
+#define LOG_FILE "borked3ds_log.txt"
 
 // Files in the directory returned by GetUserPath(UserPath::ConfigDir)
 #define EMU_CONFIG "emu.ini"

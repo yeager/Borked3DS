@@ -1,4 +1,5 @@
 // Copyright 2023 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -27,7 +28,7 @@ val downloadedJniLibsPath = "${project.layout.buildDirectory.get().asFile}/downl
 
 @Suppress("UnstableApiUsage")
 android {
-    namespace = "org.citra.citra_emu"
+    namespace = "io.github.borked3ds.android"
 
     compileSdkVersion = "android-35"
     ndkVersion = "27.2.12479018"
@@ -63,7 +64,7 @@ android {
 
     defaultConfig {
         // TODO If this is ever modified, change application_id in strings.xml
-        applicationId = "org.citra.citra_emu"
+        applicationId = "io.github.borked3ds.android"
         minSdk = 28
         targetSdk = 35
         versionCode = autoVersion
@@ -107,7 +108,7 @@ android {
                     "-DUSE_SYSTEM_GLSLANG=OFF",
                     "-DUSE_SYSTEM_VULKAN_HEADERS=OFF",
                     "-DUSE_SYSTEM_VMA=OFF",
-                    "-DCITRA_USE_EXTERNAL_VULKAN_SPIRV_TOOLS=ON"
+                    "-DBORKED3DS_USE_EXTERNAL_VULKAN_SPIRV_TOOLS=ON"
                 )
             }
         }

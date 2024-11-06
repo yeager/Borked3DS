@@ -1,4 +1,5 @@
 // Copyright 2017 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -29,11 +30,11 @@ struct NCCHData {
 private:
     template <class Archive>
     void serialize(Archive& ar, const unsigned int) {
-        ar& icon;
-        ar& logo;
-        ar& banner;
-        ar& romfs_file;
-        ar& update_romfs_file;
+        ar & icon;
+        ar & logo;
+        ar & banner;
+        ar & romfs_file;
+        ar & update_romfs_file;
     }
     friend class boost::serialization::access;
 };
@@ -61,7 +62,7 @@ private:
     template <class Archive>
     void serialize(Archive& ar, const unsigned int) {
         ar& boost::serialization::base_object<ArchiveFactory>(*this);
-        ar& ncch_data;
+        ar & ncch_data;
     }
     friend class boost::serialization::access;
 };

@@ -1,4 +1,5 @@
 // Copyright 2014 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -133,11 +134,11 @@ void Mutex::UpdatePriority() {
 template <class Archive>
 void Mutex::serialize(Archive& ar, const unsigned int) {
     ar& boost::serialization::base_object<WaitObject>(*this);
-    ar& lock_count;
-    ar& priority;
-    ar& name;
-    ar& holding_thread;
-    ar& resource_limit;
+    ar & lock_count;
+    ar & priority;
+    ar & name;
+    ar & holding_thread;
+    ar & resource_limit;
 }
 SERIALIZE_IMPL(Mutex)
 

@@ -1,4 +1,5 @@
 // Copyright 2014 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -63,10 +64,10 @@ void Event::WakeupAllWaitingThreads() {
 template <class Archive>
 void Event::serialize(Archive& ar, const unsigned int) {
     ar& boost::serialization::base_object<WaitObject>(*this);
-    ar& reset_type;
-    ar& signaled;
-    ar& name;
-    ar& resource_limit;
+    ar & reset_type;
+    ar & signaled;
+    ar & name;
+    ar & resource_limit;
 }
 SERIALIZE_IMPL(Event)
 

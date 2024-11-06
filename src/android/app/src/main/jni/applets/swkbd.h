@@ -1,4 +1,5 @@
 // Copyright 2020 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -27,9 +28,9 @@ void CleanupJNI(JNIEnv* env);
 
 // Native function calls
 extern "C" {
-JNIEXPORT jobject JNICALL Java_org_citra_citra_1emu_applets_SoftwareKeyboard_ValidateFilters(
+JNIEXPORT jobject JNICALL Java_io_github_borked3ds_android_applets_SoftwareKeyboard_ValidateFilters(
     JNIEnv* env, jclass clazz, jstring text);
 
-JNIEXPORT jobject JNICALL Java_org_citra_citra_1emu_applets_SoftwareKeyboard_ValidateInput(
+JNIEXPORT jobject JNICALL Java_io_github_borked3ds_android_applets_SoftwareKeyboard_ValidateInput(
     JNIEnv* env, jclass clazz, jstring text);
 }

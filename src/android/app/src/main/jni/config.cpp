@@ -1,4 +1,5 @@
 // Copyright 2014 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -163,7 +164,8 @@ void Config::ReadValues() {
     ReadSetting("Renderer", Settings::values.texture_sampling);
     ReadSetting("Renderer", Settings::values.frame_skip);
 
-    // Work around to map Android setting for enabling the frame limiter to the format Citra expects
+    // Work around to map Android setting for enabling the frame limiter to the format Borked3DS
+    // expects
     if (sdl2_config->GetBoolean("Renderer", "use_frame_limit", true)) {
         ReadSetting("Renderer", Settings::values.frame_limit);
     } else {
@@ -314,9 +316,11 @@ void Config::ReadValues() {
 
     // Web Service
     NetSettings::values.web_api_url =
-        sdl2_config->GetString("WebService", "web_api_url", "https://api.citra-emu.org");
-    NetSettings::values.citra_username = sdl2_config->GetString("WebService", "citra_username", "");
-    NetSettings::values.citra_token = sdl2_config->GetString("WebService", "citra_token", "");
+        sdl2_config->GetString("WebService", "web_api_url", "https://api.borked3ds-emu.org");
+    NetSettings::values.borked3ds_username =
+        sdl2_config->GetString("WebService", "borked3ds_username", "");
+    NetSettings::values.borked3ds_token =
+        sdl2_config->GetString("WebService", "borked3ds_token", "");
 }
 
 void Config::Reload() {

@@ -1,4 +1,5 @@
 // Copyright 2014 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -101,10 +102,10 @@ void HandleTable::Clear() {
 
 template <class Archive>
 void HandleTable::serialize(Archive& ar, const unsigned int) {
-    ar& objects;
-    ar& generations;
-    ar& next_generation;
-    ar& next_free_slot;
+    ar & objects;
+    ar & generations;
+    ar & next_generation;
+    ar & next_free_slot;
 }
 SERIALIZE_IMPL(HandleTable)
 

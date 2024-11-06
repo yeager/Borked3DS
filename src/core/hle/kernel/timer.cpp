@@ -1,4 +1,5 @@
 // Copyright 2015 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -102,13 +103,13 @@ void Timer::Signal(s64 cycles_late) {
 template <class Archive>
 void Timer::serialize(Archive& ar, const unsigned int) {
     ar& boost::serialization::base_object<WaitObject>(*this);
-    ar& reset_type;
-    ar& initial_delay;
-    ar& interval_delay;
-    ar& signaled;
-    ar& name;
-    ar& callback_id;
-    ar& resource_limit;
+    ar & reset_type;
+    ar & initial_delay;
+    ar & interval_delay;
+    ar & signaled;
+    ar & name;
+    ar & callback_id;
+    ar & resource_limit;
 }
 SERIALIZE_IMPL(Timer)
 
@@ -133,8 +134,8 @@ TimerManager::TimerManager(Core::Timing& timing) : timing(timing) {
 
 template <class Archive>
 void TimerManager::serialize(Archive& ar, const unsigned int) {
-    ar& next_timer_callback_id;
-    ar& timer_callback_table;
+    ar & next_timer_callback_id;
+    ar & timer_callback_table;
 }
 SERIALIZE_IMPL(TimerManager)
 

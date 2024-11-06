@@ -1,4 +1,5 @@
 // Copyright 2016 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -57,9 +58,9 @@ KernelSystem::PortPair KernelSystem::CreatePortPair(u32 max_sessions, std::strin
 template <class Archive>
 void ServerPort::serialize(Archive& ar, const unsigned int) {
     ar& boost::serialization::base_object<WaitObject>(*this);
-    ar& name;
-    ar& pending_sessions;
-    ar& hle_handler;
+    ar & name;
+    ar & pending_sessions;
+    ar & hle_handler;
 }
 SERIALIZE_IMPL(ServerPort)
 

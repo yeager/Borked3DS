@@ -1,4 +1,5 @@
 // Copyright 2014 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -165,27 +166,27 @@ void KernelSystem::ResetThreadIDs() {
 
 template <class Archive>
 void KernelSystem::serialize(Archive& ar, const unsigned int) {
-    ar& memory_regions;
-    ar& named_ports;
+    ar & memory_regions;
+    ar & named_ports;
     // current_cpu set externally
     // NB: subsystem references and prepare_reschedule_callback are constant
     ar&* resource_limits.get();
-    ar& next_object_id;
+    ar & next_object_id;
     ar&* timer_manager.get();
-    ar& next_process_id;
-    ar& process_list;
-    ar& current_process;
+    ar & next_process_id;
+    ar & process_list;
+    ar & current_process;
     // NB: core count checked in 'core'
     for (auto& thread_manager : thread_managers) {
         ar&* thread_manager.get();
     }
-    ar& config_mem_handler;
-    ar& shared_page_handler;
-    ar& stored_processes;
-    ar& next_thread_id;
-    ar& memory_mode;
-    ar& n3ds_hw_caps;
-    ar& main_thread_extended_sleep;
+    ar & config_mem_handler;
+    ar & shared_page_handler;
+    ar & stored_processes;
+    ar & next_thread_id;
+    ar & memory_mode;
+    ar & n3ds_hw_caps;
+    ar & main_thread_extended_sleep;
     // Deliberately don't include debugger info to allow debugging through loads
 
     if (Archive::is_loading::value) {
@@ -201,9 +202,9 @@ SERIALIZE_IMPL(KernelSystem)
 
 template <class Archive>
 void New3dsHwCapabilities::serialize(Archive& ar, const unsigned int) {
-    ar& enable_l2_cache;
-    ar& enable_804MHz_cpu;
-    ar& memory_mode;
+    ar & enable_l2_cache;
+    ar & enable_804MHz_cpu;
+    ar & memory_mode;
 }
 SERIALIZE_IMPL(New3dsHwCapabilities)
 

@@ -1,4 +1,5 @@
 // Copyright 2019 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -40,8 +41,8 @@ class SharedContext_Android : public Frontend::GraphicsContext {
 public:
     SharedContext_Android(EGLDisplay egl_display, EGLConfig egl_config,
                           EGLContext egl_share_context)
-        : egl_display{egl_display}, egl_surface{eglCreatePbufferSurface(egl_display, egl_config,
-                                                                        egl_empty_attribs.data())},
+        : egl_display{egl_display},
+          egl_surface{eglCreatePbufferSurface(egl_display, egl_config, egl_empty_attribs.data())},
           egl_context{eglCreateContext(egl_display, egl_config, egl_share_context,
                                        egl_context_attribs.data())} {
         ASSERT_MSG(egl_surface, "eglCreatePbufferSurface() failed!");

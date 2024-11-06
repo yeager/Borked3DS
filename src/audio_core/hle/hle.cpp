@@ -1,4 +1,5 @@
 // Copyright 2017 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -101,11 +102,11 @@ private:
 
     template <class Archive>
     void serialize(Archive& ar, const unsigned int) {
-        ar& dsp_state;
-        ar& pipe_data;
-        ar& dsp_memory.raw_memory;
-        ar& sources;
-        ar& mixers;
+        ar & dsp_state;
+        ar & pipe_data;
+        ar & dsp_memory.raw_memory;
+        ar & sources;
+        ar & mixers;
         // interrupt_handler is reregistered when loading state from DSP_DSP
     }
     friend class boost::serialization::access;

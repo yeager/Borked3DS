@@ -1,4 +1,5 @@
 // Copyright 2023 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -58,11 +59,8 @@ RasterizerVulkan::RasterizerVulkan(Memory::MemorySystem& memory, Pica::PicaCore&
                                    DescriptorUpdateQueue& update_queue_, u32 image_count)
     : RasterizerAccelerated{memory, pica}, instance{instance}, scheduler{scheduler},
       renderpass_cache{renderpass_cache}, update_queue{update_queue_},
-      pipeline_cache{instance, scheduler, renderpass_cache, update_queue}, runtime{instance,
-                                                                                   scheduler,
-                                                                                   renderpass_cache,
-                                                                                   update_queue,
-                                                                                   image_count},
+      pipeline_cache{instance, scheduler, renderpass_cache, update_queue},
+      runtime{instance, scheduler, renderpass_cache, update_queue, image_count},
       res_cache{memory, custom_tex_manager, runtime, regs, renderer},
       stream_buffer{instance, scheduler, BUFFER_USAGE, STREAM_BUFFER_SIZE},
       uniform_buffer{instance, scheduler, vk::BufferUsageFlagBits::eUniformBuffer,
@@ -327,13 +325,13 @@ void RasterizerVulkan::SetupFixedAttribs() {
 }
 
 bool RasterizerVulkan::SetupVertexShader() {
-    CITRA_PROFILE("Vulkan", "Vertex Shader Setup");
+    BORKED3DS_PROFILE("Vulkan", "Vertex Shader Setup");
     return pipeline_cache.UseProgrammableVertexShader(regs, pica.vs_setup,
                                                       pipeline_info.vertex_layout);
 }
 
 bool RasterizerVulkan::SetupGeometryShader() {
-    CITRA_PROFILE("Vulkan", "Geometry Shader Setup");
+    BORKED3DS_PROFILE("Vulkan", "Geometry Shader Setup");
 
     if (regs.pipeline.use_gs != Pica::PipelineRegs::UseGS::No) {
         LOG_ERROR(Render_Vulkan, "Accelerate draw doesn't support geometry shader");
@@ -462,7 +460,7 @@ void RasterizerVulkan::DrawTriangles() {
 
 bool RasterizerVulkan::Draw(bool accelerate, bool is_indexed) {
 
-    CITRA_PROFILE("Vulkan", "Drawing");
+    BORKED3DS_PROFILE("Vulkan", "Drawing");
     const bool shadow_rendering = regs.framebuffer.IsShadowRendering();
     const bool has_stencil = regs.framebuffer.HasStencil();
 
@@ -962,10 +960,9 @@ void RasterizerVulkan::SyncAndUploadLUTsLF() {
     if (fs_uniform_block_data.fog_lut_dirty || invalidate) {
         std::array<Common::Vec2f, 128> new_data;
 
-        std::transform(pica.fog.lut.begin(), pica.fog.lut.end(), new_data.begin(),
-                       [](const auto& entry) {
-                           return Common::Vec2f{entry.ToFloat(), entry.DiffToFloat()};
-                       });
+        std::transform(
+            pica.fog.lut.begin(), pica.fog.lut.end(), new_data.begin(),
+            [](const auto& entry) { return Common::Vec2f{entry.ToFloat(), entry.DiffToFloat()}; });
 
         if (new_data != fog_lut_data || invalidate) {
             fog_lut_data = new_data;

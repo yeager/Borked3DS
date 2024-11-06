@@ -1,4 +1,5 @@
 // Copyright 2013 Dolphin Emulator Project / 2014 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -84,11 +85,11 @@ struct FSTEntry {
 private:
     template <class Archive>
     void serialize(Archive& ar, const unsigned int) {
-        ar& isDirectory;
-        ar& size;
+        ar & isDirectory;
+        ar & size;
         ar& Path::make(physicalName);
         ar& Path::make(virtualName);
-        ar& children;
+        ar & children;
     }
     friend class boost::serialization::access;
 };
@@ -185,11 +186,11 @@ void SetUserPath(const std::string& path = "");
 
 void SetCurrentRomPath(const std::string& path);
 
-// Returns a pointer to a string with a Citra data dir in the user's home
+// Returns a pointer to a string with a Borked3DS data dir in the user's home
 // directory. To be used in "multi-user" mode (that is, installed).
 [[nodiscard]] const std::string& GetUserPath(UserPath path);
 
-// Returns a pointer to a string with the default Citra data dir in the user's home
+// Returns a pointer to a string with the default Borked3DS data dir in the user's home
 // directory.
 [[nodiscard]] const std::string& GetDefaultUserPath(UserPath path);
 
@@ -272,8 +273,9 @@ public:
     IOFile();
 
     // flags is used for windows specific file open mode flags, which
-    // allows citra to open the logs in shared write mode, so that the file
-    // isn't considered "locked" while citra is open and people can open the log file and view it
+    // allows borked3ds to open the logs in shared write mode, so that the file
+    // isn't considered "locked" while borked3ds is open and people can open the log file and view
+    // it
     IOFile(const std::string& filename, const char openmode[], int flags = 0);
 
     ~IOFile();
@@ -454,13 +456,13 @@ private:
     template <class Archive>
     void serialize(Archive& ar, const unsigned int) {
         ar& Path::make(filename);
-        ar& openmode;
-        ar& flags;
+        ar & openmode;
+        ar & flags;
         u64 pos;
         if (Archive::is_saving::value) {
             pos = Tell();
         }
-        ar& pos;
+        ar & pos;
         if (Archive::is_loading::value) {
             Open();
             Seek(pos, SEEK_SET);

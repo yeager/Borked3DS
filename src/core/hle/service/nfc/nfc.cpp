@@ -1,4 +1,5 @@
 // Copyright 2016 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -16,8 +17,8 @@ namespace Service::NFC {
 
 template <class Archive>
 void Module::serialize(Archive& ar, const unsigned int) {
-    ar& nfc_mode;
-    ar& device;
+    ar & nfc_mode;
+    ar & device;
 }
 SERIALIZE_IMPL(Module)
 

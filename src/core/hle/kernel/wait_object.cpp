@@ -1,4 +1,5 @@
 // Copyright 2014 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -25,7 +26,7 @@ namespace Kernel {
 template <class Archive>
 void WaitObject::serialize(Archive& ar, const unsigned int) {
     ar& boost::serialization::base_object<Object>(*this);
-    ar& waiting_threads;
+    ar & waiting_threads;
     // NB: hle_notifier *not* serialized since it's a callback!
     // Fortunately it's only used in one place (DSP) so we can reconstruct it there
 }

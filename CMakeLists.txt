@@ -50,7 +50,7 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/externals/cmake-modul
 include(DownloadExternals)
 include(CMakeDependentOption)
 
-project(citra LANGUAGES C CXX ASM)
+project(borked3ds LANGUAGES C CXX ASM)
 
 # Some submodules like to pick their own default build type if not specified.
 # Make sure we default to Release build type always, unless the generator has custom types.
@@ -118,7 +118,7 @@ CMAKE_DEPENDENT_OPTION(ENABLE_SOFTWARE_RENDERER "Enables the software renderer" 
 CMAKE_DEPENDENT_OPTION(ENABLE_OPENGL "Enables the OpenGL renderer" ON "NOT APPLE" OFF)
 option(ENABLE_VULKAN "Enables the Vulkan renderer" ON)
 
-option(CITRA_USE_EXTERNAL_VULKAN_SPIRV_TOOLS "Use SPIRV-Tools from externals" ON)
+option(BORKED3DS_USE_EXTERNAL_VULKAN_SPIRV_TOOLS "Use SPIRV-Tools from externals" ON)
 
 option(ENABLE_PROFILING "Enables integration with the Tracy profiler" ON)
 option(USE_DISCORD_PRESENCE "Enables Discord Rich Presence" OFF)
@@ -127,12 +127,12 @@ option(USE_DISCORD_PRESENCE "Enables Discord Rich Presence" OFF)
 # Compile options
 CMAKE_DEPENDENT_OPTION(COMPILE_WITH_DWARF "Add DWARF debugging information" ${IS_DEBUG_BUILD} "MINGW" OFF)
 option(ENABLE_LTO "Enable link time optimization" ${DEFAULT_ENABLE_LTO})
-option(CITRA_USE_PRECOMPILED_HEADERS "Use precompiled headers" ON)
-option(CITRA_WARNINGS_AS_ERRORS "Enable warnings as errors" ON)
+option(BORKED3DS_USE_PRECOMPILED_HEADERS "Use precompiled headers" ON)
+option(BORKED3DS_WARNINGS_AS_ERRORS "Enable warnings as errors" ON)
 
-include(CitraHandleSystemLibs)
+include(Borked3DSHandleSystemLibs)
 
-if (CITRA_USE_PRECOMPILED_HEADERS)
+if (BORKED3DS_USE_PRECOMPILED_HEADERS)
     message(STATUS "Using Precompiled Headers.")
     set(CMAKE_PCH_INSTANTIATE_TEMPLATES ON)
 
@@ -195,9 +195,9 @@ configure_file(${PROJECT_SOURCE_DIR}/dist/compatibility_list/compatibility_list.
                ${PROJECT_BINARY_DIR}/dist/compatibility_list/compatibility_list.qrc
                COPYONLY)
 #if (ENABLE_COMPATIBILITY_LIST_DOWNLOAD AND NOT EXISTS ${PROJECT_BINARY_DIR}/dist/compatibility_list/compatibility_list.json)
-#    message(STATUS "Downloading compatibility list for citra...")
+#    message(STATUS "Downloading compatibility list for borked3ds...")
 #    file(DOWNLOAD
-#        https://api.citra-emu.org/gamedb/
+#        https://api.borked3ds-emu.org/gamedb/
 #        "${PROJECT_BINARY_DIR}/dist/compatibility_list/compatibility_list.json" SHOW_PROGRESS)
 #endif()
 if (EXISTS ${PROJECT_SOURCE_DIR}/dist/compatibility_list/compatibility_list.json)
@@ -336,7 +336,7 @@ if (APPLE)
         find_library(MOLTENVK_LIBRARY MoltenVK REQUIRED)
         message(STATUS "Using MoltenVK at ${MOLTENVK_LIBRARY}.")
         set(PLATFORM_LIBRARIES ${PLATFORM_LIBRARIES} ${MOLTENVK_LIBRARY})
-        if (NOT CITRA_USE_EXTERNAL_VULKAN_SPIRV_TOOLS AND NOT IOS)
+        if (NOT BORKED3DS_USE_EXTERNAL_VULKAN_SPIRV_TOOLS AND NOT IOS)
             find_package(PkgConfig REQUIRED)
             pkg_check_modules(SPIRV-Tools REQUIRED SPIRV-Tools)
         endif()
@@ -355,7 +355,7 @@ endif()
 # against all the src files. This should be used before making a pull request.
 # =======================================================================
 
-set(CLANG_FORMAT_POSTFIX "-15")
+set(CLANG_FORMAT_POSTFIX "-18")
 find_program(CLANG_FORMAT
     NAMES clang-format${CLANG_FORMAT_POSTFIX}
           clang-format
@@ -366,7 +366,7 @@ if (NOT CLANG_FORMAT)
         message(STATUS "Clang format not found! Downloading...")
         set(CLANG_FORMAT "${PROJECT_BINARY_DIR}/externals/clang-format${CLANG_FORMAT_POSTFIX}.exe")
         file(DOWNLOAD
-            https://github.com/rtiangha/ext-windows-bin/raw/master/clang-format${CLANG_FORMAT_POSTFIX}.exe
+            https://github.com/Borked3DS/ext-windows-bin/raw/master/clang-format${CLANG_FORMAT_POSTFIX}.exe
             "${CLANG_FORMAT}" SHOW_PROGRESS
             STATUS DOWNLOAD_SUCCESS)
         if (NOT DOWNLOAD_SUCCESS EQUAL 0)
@@ -483,11 +483,11 @@ add_subdirectory(src)
 add_subdirectory(dist/installer)
 
 
-# Set citra-qt project or citra project as default StartUp Project in Visual Studio depending on whether QT is enabled or not
+# Set borked3ds-qt project or borked3ds project as default StartUp Project in Visual Studio depending on whether QT is enabled or not
 if(ENABLE_QT)
-    set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT citra-qt)
+    set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT borked3ds-qt)
 else()
-    set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT citra)
+    set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT borked3ds)
 endif()
 
 # Create target for outputting distributable bundles.
@@ -495,13 +495,13 @@ endif()
 if (NOT ANDROID AND NOT IOS)
     include(BundleTarget)
     if (ENABLE_SDL2_FRONTEND)
-        bundle_target(citra)
+        bundle_target(borked3ds)
     endif()
     if (ENABLE_QT)
-        bundle_target(citra-qt)
+        bundle_target(borked3ds-qt)
     endif()
     if (ENABLE_DEDICATED_ROOM)
-        bundle_target(citra-room)
+        bundle_target(borked3ds-room)
     endif()
 endif()
 
@@ -513,22 +513,22 @@ endif()
 # http://standards.freedesktop.org/icon-theme-spec/icon-theme-spec-latest.html
 # http://standards.freedesktop.org/shared-mime-info-spec/shared-mime-info-spec-latest.html
 if(ENABLE_QT AND UNIX AND NOT APPLE)
-    install(FILES "${PROJECT_SOURCE_DIR}/dist/citra-qt.desktop"
+    install(FILES "${PROJECT_SOURCE_DIR}/dist/borked3ds-qt.desktop"
             DESTINATION "${CMAKE_INSTALL_PREFIX}/share/applications")
-    install(FILES "${PROJECT_SOURCE_DIR}/dist/citra.svg"
+    install(FILES "${PROJECT_SOURCE_DIR}/dist/borked3ds.svg"
             DESTINATION "${CMAKE_INSTALL_PREFIX}/share/icons/hicolor/scalable/apps")
-    install(FILES "${PROJECT_SOURCE_DIR}/dist/citra.xml"
+    install(FILES "${PROJECT_SOURCE_DIR}/dist/borked3ds.xml"
             DESTINATION "${CMAKE_INSTALL_PREFIX}/share/mime/packages")
 endif()
 
 if(UNIX)
     if(ENABLE_SDL2)
-        install(FILES "${PROJECT_SOURCE_DIR}/dist/citra.6"
+        install(FILES "${PROJECT_SOURCE_DIR}/dist/borked3ds.6"
                 DESTINATION "${CMAKE_INSTALL_PREFIX}/share/man/man6")
     endif()
 
     if (ENABLE_QT)
-        install(FILES "${PROJECT_SOURCE_DIR}/dist/citra-qt.6"
+        install(FILES "${PROJECT_SOURCE_DIR}/dist/borked3ds-qt.6"
                 DESTINATION "${CMAKE_INSTALL_PREFIX}/share/man/man6")
     endif()
 endif()

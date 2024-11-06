@@ -1,4 +1,5 @@
 // Copyright 2023 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -191,7 +192,7 @@ void PipelineCache::SaveDiskCache() {
 }
 
 bool PipelineCache::BindPipeline(const PipelineInfo& info, bool wait_built) {
-    CITRA_PROFILE("Vulkan", "Pipeline Bind");
+    BORKED3DS_PROFILE("Vulkan", "Pipeline Bind");
 
     u64 shader_hash = 0;
     for (u32 i = 0; i < MAX_SHADER_STAGES; i++) {

@@ -1,4 +1,5 @@
 // Copyright 2017 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -82,8 +83,8 @@ private:
 
     template <class Archive>
     void serialize(Archive& ar, const unsigned int) {
-        ar& hid_period;
-        ar& calibration_data; // This isn't writeable for now, but might be in future
+        ar & hid_period;
+        ar & calibration_data; // This isn't writeable for now, but might be in future
         if (Archive::is_loading::value) {
             LoadInputDevices(); // zl, zr, c_stick are loaded here
         }

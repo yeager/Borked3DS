@@ -3,7 +3,7 @@ description: File a bug report
 body:
   - type: markdown
     attributes:
-      value: Tech support does not belong here. You should only file an issue here if you think you have experienced an actual bug with Citra.
+      value: Tech support does not belong here. You should only file an issue here if you think you have experienced an actual bug with Borked3DS.
   - type: checkboxes
     attributes:
       label: Is there an existing issue for this?
@@ -20,15 +20,15 @@ body:
       required: true
   - type: input
     attributes:
-      label: Sanity Check (Citra)
-      description: Does the issue also occur on the last official Citra Nightly release (https://archive.org/details/citra-nightly-2104_20240304)?
+      label: Sanity Check (Borked3DS)
+      description: Does the issue also occur on the last official Borked3DS Nightly release (https://archive.org/details/borked3ds-nightly-2104_20240304)?
       placeholder: Yes or No; explain.
     validations:
       required: true
   - type: input
     attributes:
       label: Sanity Check (PabloMK7)
-      description: Does the issue also occur upstream on the lastest PabloMK7 release (http://github.com/PabloMK7/citra/releases)?
+      description: Does the issue also occur upstream on the lastest PabloMK7 release (http://github.com/PabloMK7/borked3ds/releases)?
       placeholder: Yes or No; explain.
     validations:
       required: true
@@ -64,7 +64,7 @@ body:
     id: log
     attributes:
       label: Log File
-      description: A log file will help our developers to better diagnose and fix the issue. On Desktop, navigate to Help->Open Log Folder. On Android, go to "Share Log" in the menu or the 'log' folder in the Citra User Folder.
+      description: A log file will help our developers to better diagnose and fix the issue. On Desktop, navigate to Help->Open Log Folder. On Android, go to "Share Log" in the menu or the 'log' folder in the Borked3DS User Folder.
     validations:
       required: true
   - type: textarea

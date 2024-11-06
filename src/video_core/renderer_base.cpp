@@ -1,4 +1,5 @@
 // Copyright 2015 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -16,7 +17,7 @@ namespace VideoCore {
 RendererBase::RendererBase(Core::System& system_, Frontend::EmuWindow& window,
                            Frontend::EmuWindow* secondary_window_)
     : system{system_}, render_window{window}, secondary_window{secondary_window_} {
-    CITRA_FRAME_BEGIN(EmuThreadFrame);
+    BORKED3DS_FRAME_BEGIN(EmuThreadFrame);
 }
 
 RendererBase::~RendererBase() = default;
@@ -49,11 +50,11 @@ void RendererBase::EndFrame() {
 
     system.perf_stats->EndSystemFrame();
     render_window.PollEvents();
-    CITRA_FRAME_END(EmuThreadFrame);
+    BORKED3DS_FRAME_END(EmuThreadFrame);
 
     system.frame_limiter.DoFrameLimiting(system.CoreTiming().GetGlobalTimeUs());
     system.perf_stats->BeginSystemFrame();
-    CITRA_FRAME_BEGIN(EmuThreadFrame);
+    BORKED3DS_FRAME_BEGIN(EmuThreadFrame);
 }
 
 bool RendererBase::IsScreenshotPending() const {

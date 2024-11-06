@@ -1,4 +1,5 @@
 // Copyright 2019 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -172,17 +173,17 @@ jint JNI_OnLoad(JavaVM* vm, void* reserved) {
         return JNI_ERR;
 
     // Initialize misc classes
-    s_savestate_info_class = reinterpret_cast<jclass>(
-        env->NewGlobalRef(env->FindClass("org/citra/citra_emu/NativeLibrary$SaveStateInfo")));
+    s_savestate_info_class = reinterpret_cast<jclass>(env->NewGlobalRef(
+        env->FindClass("io/github/borked3ds/android/NativeLibrary$SaveStateInfo")));
     s_core_error_class = reinterpret_cast<jclass>(
-        env->NewGlobalRef(env->FindClass("org/citra/citra_emu/NativeLibrary$CoreError")));
+        env->NewGlobalRef(env->FindClass("io/github/borked3ds/android/NativeLibrary$CoreError")));
 
     // Initialize NativeLibrary
-    const jclass native_library_class = env->FindClass("org/citra/citra_emu/NativeLibrary");
+    const jclass native_library_class = env->FindClass("io/github/borked3ds/android/NativeLibrary");
     s_native_library_class = reinterpret_cast<jclass>(env->NewGlobalRef(native_library_class));
     s_on_core_error = env->GetStaticMethodID(
         s_native_library_class, "onCoreError",
-        "(Lorg/citra/citra_emu/NativeLibrary$CoreError;Ljava/lang/String;)Z");
+        "(Lio/github/borked3ds/android/NativeLibrary$CoreError;Ljava/lang/String;)Z");
     s_is_portrait_mode = env->GetStaticMethodID(s_native_library_class, "isPortraitMode", "()Z");
     s_exit_emulation_activity =
         env->GetStaticMethodID(s_native_library_class, "exitEmulationActivity", "(I)V");
@@ -195,32 +196,33 @@ jint JNI_OnLoad(JavaVM* vm, void* reserved) {
     env->DeleteLocalRef(native_library_class);
 
     // Initialize Cheat
-    const jclass cheat_class = env->FindClass("org/citra/citra_emu/features/cheats/model/Cheat");
+    const jclass cheat_class =
+        env->FindClass("io/github/borked3ds/android/features/cheats/model/Cheat");
     s_cheat_class = reinterpret_cast<jclass>(env->NewGlobalRef(cheat_class));
     s_cheat_pointer = env->GetFieldID(cheat_class, "mPointer", "J");
     s_cheat_constructor = env->GetMethodID(cheat_class, "<init>", "(J)V");
     env->DeleteLocalRef(cheat_class);
 
     // Initialize GameInfo
-    const jclass game_info_class = env->FindClass("org/citra/citra_emu/model/GameInfo");
+    const jclass game_info_class = env->FindClass("io/github/borked3ds/android/model/GameInfo");
     s_game_info_pointer = env->GetFieldID(game_info_class, "pointer", "J");
     env->DeleteLocalRef(game_info_class);
 
     // Initialize Disk Shader Cache Progress Dialog
-    s_disk_cache_progress_class = reinterpret_cast<jclass>(
-        env->NewGlobalRef(env->FindClass("org/citra/citra_emu/utils/DiskShaderCacheProgress")));
-    jclass load_callback_stage_class =
-        env->FindClass("org/citra/citra_emu/utils/DiskShaderCacheProgress$LoadCallbackStage");
+    s_disk_cache_progress_class = reinterpret_cast<jclass>(env->NewGlobalRef(
+        env->FindClass("io/github/borked3ds/android/utils/DiskShaderCacheProgress")));
+    jclass load_callback_stage_class = env->FindClass(
+        "io/github/borked3ds/android/utils/DiskShaderCacheProgress$LoadCallbackStage");
     s_disk_cache_load_progress = env->GetStaticMethodID(
         s_disk_cache_progress_class, "loadProgress",
-        "(Lorg/citra/citra_emu/utils/DiskShaderCacheProgress$LoadCallbackStage;II)V");
+        "(Lio/github/borked3ds/android/utils/DiskShaderCacheProgress$LoadCallbackStage;II)V");
     // Initialize LoadCallbackStage map
     const auto to_java_load_callback_stage = [env,
                                               load_callback_stage_class](const std::string& stage) {
         return env->NewGlobalRef(env->GetStaticObjectField(
             load_callback_stage_class,
             env->GetStaticFieldID(load_callback_stage_class, stage.c_str(),
-                                  "Lorg/citra/citra_emu/utils/"
+                                  "Lio/github/borked3ds/android/utils/"
                                   "DiskShaderCacheProgress$LoadCallbackStage;")));
     };
     s_java_load_callback_stages.emplace(VideoCore::LoadCallbackStage::Prepare,
@@ -235,17 +237,17 @@ jint JNI_OnLoad(JavaVM* vm, void* reserved) {
 
     // CIA Install
     s_cia_install_helper_class = reinterpret_cast<jclass>(
-        env->NewGlobalRef(env->FindClass("org/citra/citra_emu/utils/CiaInstallWorker")));
+        env->NewGlobalRef(env->FindClass("io/github/borked3ds/android/utils/CiaInstallWorker")));
     s_cia_install_helper_set_progress =
         env->GetMethodID(s_cia_install_helper_class, "setProgressCallback", "(II)V");
     // Initialize CIA InstallStatus map
     jclass cia_install_status_class =
-        env->FindClass("org/citra/citra_emu/NativeLibrary$InstallStatus");
+        env->FindClass("io/github/borked3ds/android/NativeLibrary$InstallStatus");
     const auto to_java_cia_install_status = [env,
                                              cia_install_status_class](const std::string& stage) {
         return env->NewGlobalRef(env->GetStaticObjectField(
             cia_install_status_class, env->GetStaticFieldID(cia_install_status_class, stage.c_str(),
-                                                            "Lorg/citra/citra_emu/"
+                                                            "Lio/github/borked3ds/android/"
                                                             "NativeLibrary$InstallStatus;")));
     };
     s_java_cia_install_status.emplace(Service::AM::InstallStatus::Success,

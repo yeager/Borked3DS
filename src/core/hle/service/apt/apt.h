@@ -1,4 +1,5 @@
 // Copyright 2015 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -1055,7 +1056,7 @@ public:
     private:
         template <class Archive>
         void serialize(Archive& ar, const unsigned int) {
-            ar& application_reset_prepared;
+            ar & application_reset_prepared;
         }
         friend class boost::serialization::access;
     };

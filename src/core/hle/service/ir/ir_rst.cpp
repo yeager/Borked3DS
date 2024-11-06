@@ -1,4 +1,5 @@
 // Copyright 2015 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -23,11 +24,11 @@ namespace Service::IR {
 template <class Archive>
 void IR_RST::serialize(Archive& ar, const unsigned int) {
     ar& boost::serialization::base_object<Kernel::SessionRequestHandler>(*this);
-    ar& update_event;
-    ar& shared_memory;
-    ar& next_pad_index;
-    ar& raw_c_stick;
-    ar& update_period;
+    ar & update_event;
+    ar & shared_memory;
+    ar & next_pad_index;
+    ar & raw_c_stick;
+    ar & update_period;
     // update_callback_id and input devices are set separately
     ReloadInputDevices();
 }

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Borked3DS Room
+Comment=Multiplayer room host for Borked3DS
+Icon=borked3ds
+TryExec=borked3ds-room
+Exec=borked3ds-room %f
+Categories=Game;Emulator;
+Keywords=3DS;Nintendo

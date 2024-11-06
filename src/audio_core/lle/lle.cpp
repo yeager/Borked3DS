@@ -1,4 +1,5 @@
 // Copyright 2018 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -152,7 +153,7 @@ struct DspLle::Impl final {
 
     void TeakraThread() {
         while (true) {
-            CITRA_PROFILE("Audio", "Teakra");
+            BORKED3DS_PROFILE("Audio", "Teakra");
             teakra.Run(TeakraSlice);
             teakra_slice_barrier.Sync();
             if (stop_signal) {
@@ -176,7 +177,7 @@ struct DspLle::Impl final {
         if (multithread) {
             teakra_slice_barrier.Sync();
         } else {
-            CITRA_PROFILE("Audio", "Teakra");
+            BORKED3DS_PROFILE("Audio", "Teakra");
             teakra.Run(TeakraSlice);
         }
     }

@@ -1,4 +1,5 @@
 // Copyright 2014 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -93,7 +94,7 @@ void LogSettings() {
         LOG_INFO(Config, "{}: {}", name, value);
     };
 
-    LOG_INFO(Config, "Citra Configuration:");
+    LOG_INFO(Config, "Borked3DS Configuration:");
     log_setting("Core_UseCpuJit", values.use_cpu_jit.GetValue());
     log_setting("Core_CPUClockPercentage", values.cpu_clock_percentage.GetValue());
     log_setting("Core_EnableCustomCPUTicks", values.enable_custom_cpu_ticks.GetValue());

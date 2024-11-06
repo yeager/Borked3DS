@@ -1,4 +1,5 @@
 // Copyright 2023 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -79,7 +80,7 @@ bool Swapchain::AcquireNextImage() {
         return false;
     }
 
-    CITRA_PROFILE("Vulkan", "Swapchain Acquire");
+    BORKED3DS_PROFILE("Vulkan", "Swapchain Acquire");
     const vk::Device device = instance.GetDevice();
     const vk::Result result =
         device.acquireNextImageKHR(swapchain, std::numeric_limits<u64>::max(),
@@ -111,7 +112,7 @@ void Swapchain::Present() {
         .pImageIndices = &image_index,
     };
 
-    CITRA_PROFILE("Vulkan", "Swapchain Present");
+    BORKED3DS_PROFILE("Vulkan", "Swapchain Present");
     try {
         [[maybe_unused]] vk::Result result = instance.GetPresentQueue().presentKHR(present_info);
     } catch (vk::OutOfDateKHRError&) {

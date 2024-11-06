@@ -1,4 +1,5 @@
 // Copyright 2015 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -15,9 +16,9 @@ namespace Kernel {
 
 template <class Archive>
 void Session::serialize(Archive& ar, const unsigned int file_version) {
-    ar& client;
-    ar& server;
-    ar& port;
+    ar & client;
+    ar & server;
+    ar & port;
 }
 SERIALIZE_IMPL(Session)
 

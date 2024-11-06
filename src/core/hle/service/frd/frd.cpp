@@ -1,4 +1,5 @@
 // Copyright 2015 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -281,7 +282,7 @@ void Module::Interface::GetLastResponseResult(Kernel::HLERequestContext& ctx) {
     rb.Push(ResultSuccess);
 }
 
-Module::Module(Core::System& system) : system(system){};
+Module::Module(Core::System& system) : system(system) {};
 Module::~Module() = default;
 
 void InstallInterfaces(Core::System& system) {

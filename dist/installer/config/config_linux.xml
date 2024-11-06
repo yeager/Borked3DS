@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Installer>
-    <Name>Citra</Name>
+    <Name>Borked3DS</Name>
     <Version>1.0.0</Version>
-    <Title>Citra Updater</Title>
-    <Publisher>Citra Team</Publisher>
-    <!-- e.g. /home/<user>/.citra or /opt/citra if run as root -->
-    <TargetDir>@HomeDir@/.citra</TargetDir>
-    <AdminTargetDir>/opt/citra</AdminTargetDir>
+    <Title>Borked3DS Updater</Title>
+    <Publisher>Borked3DS Team</Publisher>
+    <!-- e.g. /home/<user>/.borked3ds or /opt/borked3ds if run as root -->
+    <TargetDir>@HomeDir@/.borked3ds</TargetDir>
+    <AdminTargetDir>/opt/borked3ds</AdminTargetDir>
     <InstallerApplicationIcon>icon</InstallerApplicationIcon>
     <InstallerWindowIcon>icon.png</InstallerWindowIcon>
     <RemoteRepositories>
         <Repository>
-            <Url>https://repo.citra-emu.org</Url>
+            <Url>https://repo.borked3ds-emu.org</Url>
             <Enabled>1</Enabled>
-            <DisplayName>Official Citra Repository</DisplayName>
+            <DisplayName>Official Borked3DS Repository</DisplayName>
         </Repository>
     </RemoteRepositories>
 </Installer>

@@ -1,4 +1,5 @@
 // Copyright 2014 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -76,11 +77,11 @@ enum class KernelState {
      */
     KERNEL_STATE_REBOOT = 7,
 
-    // Special Citra only states.
+    // Special Borked3DS only states.
     /**
      * Sets the emulation speed percentage. A value of 0 means unthrottled.
      */
-    KERNEL_STATE_CITRA_EMULATION_SPEED = 0x20000 ///
+    KERNEL_STATE_BORKED3DS_EMULATION_SPEED = 0x20000 ///
 };
 
 struct PageInfo {
@@ -125,10 +126,10 @@ enum class SystemInfoType {
      */
     NEW_3DS_INFO = 0x10001,
     /**
-     * Gets citra related information. This parameter is not available on real systems,
+     * Gets borked3ds related information. This parameter is not available on real systems,
      * but can be used by homebrew applications to get some emulator info.
      */
-    CITRA_INFORMATION = 0x20000,
+    BORKED3DS_INFORMATION = 0x20000,
 };
 
 enum class ProcessInfoType {
@@ -271,16 +272,16 @@ enum class SystemInfoMemUsageRegion {
 };
 
 /**
- * Accepted by svcGetSystemInfo param with CITRA_INFORMATION type. Selects which information
- * to fetch from Citra. Some string params don't fit in 7 bytes, so they are split.
+ * Accepted by svcGetSystemInfo param with BORKED3DS_INFORMATION type. Selects which information
+ * to fetch from Borked3DS. Some string params don't fit in 7 bytes, so they are split.
  */
-enum class SystemInfoCitraInformation {
-    IS_CITRA = 0,          // Always set the output to 1, signaling the app is running on Citra.
+enum class SystemInfoBorked3DSInformation {
+    IS_BORKED3DS = 0,      // Always set the output to 1, signaling the app is running on Borked3DS.
     HOST_TICK = 1,         // Tick reference from the host in ns, unaffected by lag or cpu speed.
     EMULATION_SPEED = 2,   // Gets the emulation speed set by the user or by KernelSetState.
     BUILD_NAME = 10,       // (ie: Nightly, Canary).
     BUILD_VERSION = 11,    // Build version.
-    BUILD_PLATFORM = 12,   // Build platform, see SystemInfoCitraPlatform.
+    BUILD_PLATFORM = 12,   // Build platform, see SystemInfoBorked3DSPlatform.
     BUILD_DATE_PART1 = 20, // Build date first 7 characters.
     BUILD_DATE_PART2 = 21, // Build date next 7 characters.
     BUILD_DATE_PART3 = 22, // Build date next 7 characters.
@@ -294,7 +295,7 @@ enum class SystemInfoCitraInformation {
 /**
  * Current officially supported platforms.
  */
-enum class SystemInfoCitraPlatform {
+enum class SystemInfoBorked3DSPlatform {
     PLATFORM_UNKNOWN = 0,
     PLATFORM_WINDOWS = 1,
     PLATFORM_LINUX = 2,
@@ -495,9 +496,9 @@ Result SVC::ControlMemory(u32* out_addr, u32 addr0, u32 addr1, u32 size, u32 ope
               "size=0x{:X}, permissions=0x{:08X}",
               operation, addr0, addr1, size, permissions);
 
-    R_UNLESS((addr0 & Memory::CITRA_PAGE_MASK) == 0, ResultMisalignedAddress);
-    R_UNLESS((addr1 & Memory::CITRA_PAGE_MASK) == 0, ResultMisalignedAddress);
-    R_UNLESS((size & Memory::CITRA_PAGE_MASK) == 0, ResultMisalignedSize);
+    R_UNLESS((addr0 & Memory::BORKED3DS_PAGE_MASK) == 0, ResultMisalignedAddress);
+    R_UNLESS((addr1 & Memory::BORKED3DS_PAGE_MASK) == 0, ResultMisalignedAddress);
+    R_UNLESS((size & Memory::BORKED3DS_PAGE_MASK) == 0, ResultMisalignedSize);
 
     const u32 region = operation & MEMOP_REGION_MASK;
     operation &= ~MEMOP_REGION_MASK;
@@ -723,7 +724,7 @@ private:
     template <class Archive>
     void serialize(Archive& ar, const unsigned int) {
         ar& boost::serialization::base_object<Kernel::WakeupCallback>(*this);
-        ar& do_output;
+        ar & do_output;
     }
     friend class boost::serialization::access;
 };
@@ -1440,8 +1441,8 @@ Result SVC::KernelSetState(u32 kernel_state, u32 varg1, u32 varg2) {
         system.RequestShutdown();
         break;
 
-    // Citra specific states.
-    case KernelState::KERNEL_STATE_CITRA_EMULATION_SPEED: {
+    // Borked3DS specific states.
+    case KernelState::KERNEL_STATE_BORKED3DS_EMULATION_SPEED: {
         u16 new_value = static_cast<u16>(varg1);
         Settings::values.frame_limit.SetValue(new_value);
     } break;
@@ -1657,7 +1658,7 @@ Result SVC::GetHandleInfo(s64* out, Handle handle, u32 type) {
 /// Creates a memory block at the specified address with the specified permissions and size
 Result SVC::CreateMemoryBlock(Handle* out_handle, u32 addr, u32 size, u32 my_permission,
                               u32 other_permission) {
-    R_UNLESS(size % Memory::CITRA_PAGE_SIZE == 0, ResultMisalignedSize);
+    R_UNLESS(size % Memory::BORKED3DS_PAGE_SIZE == 0, ResultMisalignedSize);
 
     std::shared_ptr<SharedMemory> shared_memory = nullptr;
 
@@ -1810,73 +1811,73 @@ Result SVC::GetSystemInfo(s64* out, u32 type, s32 param) {
         LOG_ERROR(Kernel_SVC, "unimplemented GetSystemInfo type=65537 param={}", param);
         *out = 0;
         return (system.GetNumCores() == 4) ? ResultSuccess : ResultInvalidEnumValue;
-    case SystemInfoType::CITRA_INFORMATION:
-        switch ((SystemInfoCitraInformation)param) {
-        case SystemInfoCitraInformation::IS_CITRA:
+    case SystemInfoType::BORKED3DS_INFORMATION:
+        switch ((SystemInfoBorked3DSInformation)param) {
+        case SystemInfoBorked3DSInformation::IS_BORKED3DS:
             *out = 1;
             break;
-        case SystemInfoCitraInformation::HOST_TICK:
+        case SystemInfoBorked3DSInformation::HOST_TICK:
             *out = static_cast<s64>(std::chrono::duration_cast<std::chrono::nanoseconds>(
                                         std::chrono::steady_clock::now().time_since_epoch())
                                         .count());
             break;
-        case SystemInfoCitraInformation::EMULATION_SPEED:
+        case SystemInfoBorked3DSInformation::EMULATION_SPEED:
             *out = static_cast<s64>(Settings::values.frame_limit.GetValue());
             break;
-        case SystemInfoCitraInformation::BUILD_NAME:
+        case SystemInfoBorked3DSInformation::BUILD_NAME:
             CopyStringPart(reinterpret_cast<char*>(out), Common::g_build_name, 0, sizeof(s64));
             break;
-        case SystemInfoCitraInformation::BUILD_VERSION:
+        case SystemInfoBorked3DSInformation::BUILD_VERSION:
             CopyStringPart(reinterpret_cast<char*>(out), Common::g_build_version, 0, sizeof(s64));
             break;
-        case SystemInfoCitraInformation::BUILD_PLATFORM: {
+        case SystemInfoBorked3DSInformation::BUILD_PLATFORM: {
 #if defined(_WIN32)
-            *out = static_cast<s64>(SystemInfoCitraPlatform::PLATFORM_WINDOWS);
+            *out = static_cast<s64>(SystemInfoBorked3DSPlatform::PLATFORM_WINDOWS);
 #elif defined(ANDROID)
-            *out = static_cast<s64>(SystemInfoCitraPlatform::PLATFORM_ANDROID);
+            *out = static_cast<s64>(SystemInfoBorked3DSPlatform::PLATFORM_ANDROID);
 #elif defined(__linux__)
-            *out = static_cast<s64>(SystemInfoCitraPlatform::PLATFORM_LINUX);
+            *out = static_cast<s64>(SystemInfoBorked3DSPlatform::PLATFORM_LINUX);
 #elif defined(__APPLE__)
-            *out = static_cast<s64>(SystemInfoCitraPlatform::PLATFORM_APPLE);
+            *out = static_cast<s64>(SystemInfoBorked3DSPlatform::PLATFORM_APPLE);
 #else
-            *out = static_cast<s64>(SystemInfoCitraPlatform::PLATFORM_UNKNOWN);
+            *out = static_cast<s64>(SystemInfoBorked3DSPlatform::PLATFORM_UNKNOWN);
 #endif
             break;
         }
-        case SystemInfoCitraInformation::BUILD_DATE_PART1:
+        case SystemInfoBorked3DSInformation::BUILD_DATE_PART1:
             CopyStringPart(reinterpret_cast<char*>(out), Common::g_build_date,
                            (sizeof(s64) - 1) * 0, sizeof(s64));
             break;
-        case SystemInfoCitraInformation::BUILD_DATE_PART2:
+        case SystemInfoBorked3DSInformation::BUILD_DATE_PART2:
             CopyStringPart(reinterpret_cast<char*>(out), Common::g_build_date,
                            (sizeof(s64) - 1) * 1, sizeof(s64));
             break;
-        case SystemInfoCitraInformation::BUILD_DATE_PART3:
+        case SystemInfoBorked3DSInformation::BUILD_DATE_PART3:
             CopyStringPart(reinterpret_cast<char*>(out), Common::g_build_date,
                            (sizeof(s64) - 1) * 2, sizeof(s64));
             break;
-        case SystemInfoCitraInformation::BUILD_DATE_PART4:
+        case SystemInfoBorked3DSInformation::BUILD_DATE_PART4:
             CopyStringPart(reinterpret_cast<char*>(out), Common::g_build_date,
                            (sizeof(s64) - 1) * 3, sizeof(s64));
             break;
-        case SystemInfoCitraInformation::BUILD_GIT_BRANCH_PART1:
+        case SystemInfoBorked3DSInformation::BUILD_GIT_BRANCH_PART1:
             CopyStringPart(reinterpret_cast<char*>(out), Common::g_scm_branch,
                            (sizeof(s64) - 1) * 0, sizeof(s64));
             break;
-        case SystemInfoCitraInformation::BUILD_GIT_BRANCH_PART2:
+        case SystemInfoBorked3DSInformation::BUILD_GIT_BRANCH_PART2:
             CopyStringPart(reinterpret_cast<char*>(out), Common::g_scm_branch,
                            (sizeof(s64) - 1) * 1, sizeof(s64));
             break;
-        case SystemInfoCitraInformation::BUILD_GIT_DESCRIPTION_PART1:
+        case SystemInfoBorked3DSInformation::BUILD_GIT_DESCRIPTION_PART1:
             CopyStringPart(reinterpret_cast<char*>(out), Common::g_scm_desc, (sizeof(s64) - 1) * 0,
                            sizeof(s64));
             break;
-        case SystemInfoCitraInformation::BUILD_GIT_DESCRIPTION_PART2:
+        case SystemInfoBorked3DSInformation::BUILD_GIT_DESCRIPTION_PART2:
             CopyStringPart(reinterpret_cast<char*>(out), Common::g_scm_desc, (sizeof(s64) - 1) * 1,
                            sizeof(s64));
             break;
         default:
-            LOG_ERROR(Kernel_SVC, "unknown GetSystemInfo citra info param={}", param);
+            LOG_ERROR(Kernel_SVC, "unknown GetSystemInfo borked3ds info param={}", param);
             *out = 0;
             break;
         }
@@ -1904,7 +1905,7 @@ Result SVC::GetProcessInfo(s64* out, Handle process_handle, u32 type) {
         // TODO(yuriks): Type 0 returns a slightly higher number than type 2, but I'm not sure
         // what's the difference between them.
         *out = process->memory_used;
-        if (*out % Memory::CITRA_PAGE_SIZE != 0) {
+        if (*out % Memory::BORKED3DS_PAGE_SIZE != 0) {
             LOG_ERROR(Kernel_SVC, "called, memory size not page-aligned");
             return ResultMisalignedSize;
         }
@@ -2047,7 +2048,7 @@ Result SVC::MapProcessMemoryEx(Handle dst_process_handle, u32 dst_address,
     R_UNLESS(dst_process && src_process, ResultInvalidHandle);
 
     if (size & 0xFFF) {
-        size = (size & ~0xFFF) + Memory::CITRA_PAGE_SIZE;
+        size = (size & ~0xFFF) + Memory::BORKED3DS_PAGE_SIZE;
     }
 
     // TODO(PabloMK7) Fix-up this svc.
@@ -2081,7 +2082,7 @@ Result SVC::UnmapProcessMemoryEx(Handle process, u32 dst_address, u32 size) {
     R_UNLESS(dst_process, ResultInvalidHandle);
 
     if (size & 0xFFF) {
-        size = (size & ~0xFFF) + Memory::CITRA_PAGE_SIZE;
+        size = (size & ~0xFFF) + Memory::BORKED3DS_PAGE_SIZE;
     }
 
     // Only linear memory supported
@@ -2346,7 +2347,7 @@ const SVC::FunctionDef* SVC::GetSVCInfo(u32 func_num) {
 }
 
 void SVC::CallSVC(u32 immediate) {
-    CITRA_PROFILE("Kernel", "SVC");
+    BORKED3DS_PROFILE("Kernel", "SVC");
 
     // Lock the kernel mutex when we enter the kernel HLE.
     std::scoped_lock lock{kernel.GetHLELock()};

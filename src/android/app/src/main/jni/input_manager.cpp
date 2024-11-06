@@ -1,4 +1,5 @@
 // Copyright 2017 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -215,8 +216,8 @@ Joystick::~Joystick() {
 }
 
 ButtonFactory::ButtonFactory()
-    : button_list{std::make_shared<ButtonList>()}, analog_button_list{
-                                                       std::make_shared<AnalogButtonList>()} {}
+    : button_list{std::make_shared<ButtonList>()},
+      analog_button_list{std::make_shared<AnalogButtonList>()} {}
 
 std::unique_ptr<Input::ButtonDevice> ButtonFactory::Create(const Common::ParamPackage& params) {
     if (params.Has("axis")) {

@@ -1,4 +1,5 @@
 // Copyright 2023 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -58,7 +59,7 @@ CustomTexManager::CustomTexManager(Core::System& system_)
 CustomTexManager::~CustomTexManager() = default;
 
 void CustomTexManager::TickFrame() {
-    CITRA_PROFILE("CustomTexManager", "Tick Frame");
+    BORKED3DS_PROFILE("CustomTexManager", "Tick Frame");
     if (!textures_loaded) {
         return;
     }
@@ -187,7 +188,7 @@ void CustomTexManager::PrepareDumping(u64 title_id) {
     }
 
     nlohmann::ordered_json json;
-    json["author"] = "citra";
+    json["author"] = "borked3ds";
     json["version"] = "1.0.0";
     json["description"] = "A graphics pack";
 

@@ -1,4 +1,5 @@
 // Copyright 2016 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -147,7 +148,7 @@ ARM_Dynarmic::~ARM_Dynarmic() = default;
 
 void ARM_Dynarmic::Run() {
     ASSERT(memory.GetCurrentPageTable() == current_page_table);
-    CITRA_PROFILE("Dynarmic", "ARM JIT");
+    BORKED3DS_PROFILE("Dynarmic", "ARM JIT");
 
     jit->Run();
 }

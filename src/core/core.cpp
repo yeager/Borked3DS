@@ -1,4 +1,5 @@
 // Copyright 2014 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -16,7 +17,7 @@
 #include "core/hle/service/cam/cam.h"
 #include "core/hle/service/hid/hid.h"
 #include "core/hle/service/ir/ir_user.h"
-#if CITRA_ARCH(x86_64) || CITRA_ARCH(arm64)
+#if BORKED3DS_ARCH(x86_64) || BORKED3DS_ARCH(arm64)
 #include "core/arm/dynarmic/arm_dynarmic.h"
 #endif
 #include "core/arm/dyncom/arm_dyncom.h"
@@ -570,7 +571,7 @@ System::ResultStatus System::Init(Frontend::EmuWindow& emu_window,
     exclusive_monitor = MakeExclusiveMonitor(*memory, num_cores);
     cpu_cores.reserve(num_cores);
     if (Settings::values.use_cpu_jit) {
-#if CITRA_ARCH(x86_64) || CITRA_ARCH(arm64)
+#if BORKED3DS_ARCH(x86_64) || BORKED3DS_ARCH(arm64)
         for (u32 i = 0; i < num_cores; ++i) {
             cpu_cores.push_back(std::make_shared<ARM_Dynarmic>(
                 *this, *memory, i, timing->GetTimer(i), *exclusive_monitor));
@@ -879,7 +880,7 @@ void System::serialize(Archive& ar, const unsigned int file_version) {
     if (Archive::is_saving::value) {
         num_cores = this->GetNumCores();
     }
-    ar& num_cores;
+    ar & num_cores;
 
     if (Archive::is_loading::value) {
         // When loading, we want to make sure any lingering state gets cleared out before we
@@ -915,7 +916,7 @@ void System::serialize(Archive& ar, const unsigned int file_version) {
     ar&* memory.get();
     ar&* kernel.get();
     ar&* gpu.get();
-    ar& movie;
+    ar & movie;
 
     // This needs to be set from somewhere - might as well be here!
     if (Archive::is_loading::value) {

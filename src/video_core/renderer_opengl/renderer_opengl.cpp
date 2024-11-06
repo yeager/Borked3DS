@@ -1,4 +1,5 @@
 // Copyright 2022 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -73,9 +74,8 @@ static std::array<GLfloat, 3 * 2> MakeOrthographicMatrix(const float width, cons
 RendererOpenGL::RendererOpenGL(Core::System& system, Pica::PicaCore& pica_,
                                Frontend::EmuWindow& window, Frontend::EmuWindow* secondary_window)
     : VideoCore::RendererBase{system, window, secondary_window}, pica{pica_},
-      rasterizer{system.Memory(), pica, system.CustomTexManager(), *this, driver}, frame_dumper{
-                                                                                       system,
-                                                                                       window} {
+      rasterizer{system.Memory(), pica, system.CustomTexManager(), *this, driver},
+      frame_dumper{system, window} {
     const bool has_debug_tool = driver.HasDebugTool();
     window.mailbox = std::make_unique<OGLTextureMailbox>(has_debug_tool);
     if (secondary_window) {
@@ -180,7 +180,7 @@ void RendererOpenGL::RenderToMailbox(const Layout::FramebufferLayout& layout,
 
     Frontend::Frame* frame;
     {
-        CITRA_PROFILE("OpenGL", "Wait For Present");
+        BORKED3DS_PROFILE("OpenGL", "Wait For Present");
 
         frame = mailbox->GetRenderFrame();
 
@@ -207,7 +207,7 @@ void RendererOpenGL::RenderToMailbox(const Layout::FramebufferLayout& layout,
     }
 
     {
-        CITRA_PROFILE("OpenGL", "Render Frame");
+        BORKED3DS_PROFILE("OpenGL", "Render Frame");
         // Recreate the frame if the size of the window has changed
         if (layout.width != frame->width || layout.height != frame->height) {
             LOG_DEBUG(Render_OpenGL, "Reloading render frame");
@@ -271,7 +271,7 @@ void RendererOpenGL::LoadFBToScreenInfo(const Pica::FramebufferConfig& framebuff
         // Update existing texture
         // TODO: Test what happens on hardware when you change the framebuffer dimensions so that
         //       they differ from the LCD resolution.
-        // TODO: Applications could theoretically crash Citra here by specifying too large
+        // TODO: Applications could theoretically crash Borked3DS here by specifying too large
         //       framebuffer sizes. We should make sure that this cannot happen.
         glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, framebuffer.width, framebuffer.height,
                         screen_info.texture.gl_format, screen_info.texture.gl_type,

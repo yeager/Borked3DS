@@ -1,4 +1,5 @@
 // Copyright 2017 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -390,7 +391,7 @@ void GeometryPipeline::SubmitVertex(const AttributeBuffer& input) {
 template <class Archive>
 void GeometryPipeline::serialize(Archive& ar, const unsigned int version) {
     // vertex_handler and shader_engine are always set to the same value
-    ar& backend;
+    ar & backend;
 }
 
 } // namespace Pica

@@ -2,7 +2,7 @@
 
 GITDATE="`git show -s --date=short --format='%ad' | sed 's/-//g'`"
 GITREV="`git show -s --format='%h'`"
-REV_NAME="citra-unified-source-${GITDATE}-${GITREV}"
+REV_NAME="borked3ds-unified-source-${GITDATE}-${GITREV}"
 
 COMPAT_LIST='dist/compatibility_list/compatibility_list.json'
 
@@ -10,7 +10,7 @@ mkdir artifacts
 
 pip3 install git-archive-all
 
-# wget -q https://web.archive.org/web/20231111133415if_/https://api.citra-emu.org/gamedb -O "${COMPAT_LIST}"
+# wget -q https://web.archive.org/web/20231111133415if_/https://api.borked3ds-emu.org/gamedb -O "${COMPAT_LIST}"
 touch "${COMPAT_LIST}"
 
 git describe --abbrev=0 --always HEAD > GIT-COMMIT

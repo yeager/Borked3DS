@@ -1,4 +1,5 @@
 // Copyright 2020 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -21,12 +22,12 @@ public:
     Interface(SharedGlobalRef<jstring> path, const Service::CAM::Flip& flip);
     ~Interface();
     void StartCapture() override;
-    void StopCapture() override{};
+    void StopCapture() override {};
     void SetResolution(const Service::CAM::Resolution& resolution) override;
     void SetFlip(Service::CAM::Flip flip) override;
-    void SetEffect(Service::CAM::Effect effect) override{};
+    void SetEffect(Service::CAM::Effect effect) override {};
     void SetFormat(Service::CAM::OutputFormat format) override;
-    void SetFrameRate(Service::CAM::FrameRate frame_rate) override{};
+    void SetFrameRate(Service::CAM::FrameRate frame_rate) override {};
     std::vector<u16> ReceiveFrame() override;
     bool IsPreviewAvailable() override;
 

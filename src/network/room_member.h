@@ -1,4 +1,5 @@
 // Copyright 2017 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -35,11 +36,11 @@ struct WifiPacket {
 private:
     template <class Archive>
     void serialize(Archive& ar, const unsigned int) {
-        ar& type;
-        ar& data;
-        ar& transmitter_address;
-        ar& destination_address;
-        ar& channel;
+        ar & type;
+        ar & data;
+        ar & transmitter_address;
+        ar & destination_address;
+        ar & channel;
     }
     friend class boost::serialization::access;
 };

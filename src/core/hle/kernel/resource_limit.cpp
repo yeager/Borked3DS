@@ -1,4 +1,5 @@
 // Copyright 2015 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -69,9 +70,9 @@ bool ResourceLimit::Release(ResourceLimitType type, s32 amount) {
 template <class Archive>
 void ResourceLimit::serialize(Archive& ar, const unsigned int) {
     ar& boost::serialization::base_object<Object>(*this);
-    ar& m_name;
-    ar& m_limit_values;
-    ar& m_current_values;
+    ar & m_name;
+    ar & m_limit_values;
+    ar & m_current_values;
 }
 SERIALIZE_IMPL(ResourceLimit)
 
@@ -154,7 +155,7 @@ std::shared_ptr<ResourceLimit> ResourceLimitList::GetForCategory(ResourceLimitCa
 
 template <class Archive>
 void ResourceLimitList::serialize(Archive& ar, const unsigned int) {
-    ar& resource_limits;
+    ar & resource_limits;
 }
 SERIALIZE_IMPL(ResourceLimitList)
 

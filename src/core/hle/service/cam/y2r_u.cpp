@@ -1,4 +1,5 @@
 // Copyright 2015 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -23,12 +24,12 @@ namespace Service::Y2R {
 template <class Archive>
 void Y2R_U::serialize(Archive& ar, const unsigned int) {
     ar& boost::serialization::base_object<Kernel::SessionRequestHandler>(*this);
-    ar& completion_event;
-    ar& conversion;
-    ar& dithering_weight_params;
-    ar& temporal_dithering_enabled;
-    ar& transfer_end_interrupt_enabled;
-    ar& spacial_dithering_enabled;
+    ar & completion_event;
+    ar & conversion;
+    ar & dithering_weight_params;
+    ar & temporal_dithering_enabled;
+    ar & transfer_end_interrupt_enabled;
+    ar & spacial_dithering_enabled;
 }
 
 constexpr std::array<CoefficientSet, 4> standard_coefficients{{

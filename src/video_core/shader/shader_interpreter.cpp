@@ -1,4 +1,5 @@
 // Copyright 2014 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -726,7 +727,7 @@ void InterpreterEngine::SetupBatch(ShaderSetup& setup, unsigned int entry_point)
 }
 
 void InterpreterEngine::Run(const ShaderSetup& setup, ShaderUnit& state) const {
-    CITRA_PROFILE("Shader", "Shader Interpreter");
+    BORKED3DS_PROFILE("Shader", "Shader Interpreter");
 
     DebugData<false> dummy_debug_data;
     RunInterpreter(setup, state, dummy_debug_data, setup.entry_point);

@@ -1,7 +1,7 @@
-Citra Qt Installer
+Borked3DS Qt Installer
 ==================
 
-This contains the configuration files for building Citra's installer.
+This contains the configuration files for building Borked3DS's installer.
 
 Installers can only be built on the platform that they are targeting.
 

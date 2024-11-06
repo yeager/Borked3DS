@@ -1,4 +1,5 @@
 // Copyright 2020 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -42,7 +43,9 @@ struct CaptureSession final {
 
 #define MEMBER(type, name, func)                                                                   \
     struct type##Deleter {                                                                         \
-        void operator()(type* ptr) { type##_##func(ptr); }                                         \
+        void operator()(type* ptr) {                                                               \
+            type##_##func(ptr);                                                                    \
+        }                                                                                          \
     };                                                                                             \
     std::unique_ptr<type, type##Deleter> name
 

@@ -1,4 +1,5 @@
 // Copyright 2023 Citra Emulator Project
+// Copyright 2024 Borked3DS Emulator Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -98,9 +99,9 @@ bool CanBlitToSwapchain(const vk::PhysicalDevice& physical_device, vk::Format fo
 PresentWindow::PresentWindow(Frontend::EmuWindow& emu_window_, const Instance& instance_,
                              Scheduler& scheduler_)
     : emu_window{emu_window_}, instance{instance_}, scheduler{scheduler_},
-      surface{CreateSurface(instance.GetInstance(), emu_window)},
-      next_surface{surface}, swapchain{instance, emu_window.GetFramebufferLayout().width,
-                                       emu_window.GetFramebufferLayout().height, surface},
+      surface{CreateSurface(instance.GetInstance(), emu_window)}, next_surface{surface},
+      swapchain{instance, emu_window.GetFramebufferLayout().width,
+                emu_window.GetFramebufferLayout().height, surface},
       graphics_queue{instance.GetGraphicsQueue()}, present_renderpass{CreateRenderpass()},
       vsync_enabled{Settings::values.use_vsync_new.GetValue()},
       blit_supported{
@@ -238,7 +239,7 @@ void PresentWindow::RecreateFrame(Frame* frame, u32 width, u32 height) {
 }
 
 Frame* PresentWindow::GetRenderFrame() {
-    CITRA_PROFILE("Vulkan", "Wait For Present");
+    BORKED3DS_PROFILE("Vulkan", "Wait For Present");
 
     // Wait for free presentation frames
     std::unique_lock lock{free_mutex};
