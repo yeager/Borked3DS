@@ -6,10 +6,11 @@ GITREV="`git show -s --format='%h'`"
 REV_NAME="borked3ds-$OS-$TARGET-$GITDATE-$GITREV"
 
 # Determine the name of the release being built.
-if [[ "$GITHUB_REF_NAME" =~ ^canary- ]] || [[ "$GITHUB_REF_NAME" =~ ^nightly- ]]; then
-    RELEASE_NAME=$(echo $GITHUB_REF_NAME | cut -d- -f1)
+if [ "$GITHUB_REF_TYPE" = "tag" ]; then
+    RELEASE_NAME=borked3ds-$GITHUB_REF_NAME
+    REV_NAME="borked3ds-$GITHUB_REF_NAME-$OS-$TARGET"
 else
-    RELEASE_NAME=head
+    RELEASE_NAME=borked3ds-head
 fi
 
 # Archive and upload the artifacts.
@@ -48,6 +49,11 @@ function pack_artifacts() {
      # Clean up created rev artifacts directory.
     rm -rf "$REV_NAME"
 }
+
+if [ "$OS" = "windows" ] && [ "$GITHUB_REF_TYPE" = "tag" ]; then
+    # Move the installer to the artifacts directory
+    mv src/installer/bin/*.exe artifacts/
+fi
 
 if [ -n "$UNPACKED" ]; then
     # Copy the artifacts to be uploaded unpacked.
