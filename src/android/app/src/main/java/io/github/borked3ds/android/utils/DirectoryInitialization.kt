@@ -93,7 +93,10 @@ object DirectoryInitialization {
         val dataPath = PermissionsHandler.borked3dsDirectory
         if (dataPath.toString().isNotEmpty()) {
             userPath = dataPath.toString()
-            android.util.Log.d("[Borked3DS Frontend]", "[DirectoryInitialization] User Dir: $userPath")
+            android.util.Log.d(
+                "[Borked3DS Frontend]",
+                "[DirectoryInitialization] User Dir: $userPath"
+            )
             return true
         }
         return false

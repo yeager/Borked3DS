@@ -92,7 +92,8 @@ class SystemFilesFragment : Fragment() {
         homeViewModel.setNavigationVisibility(visible = false, animated = true)
         homeViewModel.setStatusBarShadeVisibility(visible = false)
 
-        val preferences = PreferenceManager.getDefaultSharedPreferences(Borked3DSApplication.appContext)
+        val preferences =
+            PreferenceManager.getDefaultSharedPreferences(Borked3DSApplication.appContext)
         if (!preferences.getBoolean(WARNING_SHOWN, false)) {
             MessageDialogFragment.newInstance(
                 R.string.home_menu_warning,
@@ -155,7 +156,8 @@ class SystemFilesFragment : Fragment() {
     }
 
     private fun reloadUi() {
-        val preferences = PreferenceManager.getDefaultSharedPreferences(Borked3DSApplication.appContext)
+        val preferences =
+            PreferenceManager.getDefaultSharedPreferences(Borked3DSApplication.appContext)
 
         binding.switchRunSystemSetup.isChecked = SystemSaveGame.getIsSystemSetupNeeded()
         binding.switchRunSystemSetup.setOnCheckedChangeListener { _, isChecked ->

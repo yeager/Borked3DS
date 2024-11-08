@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    android:id="@+id/coordinator_main"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/coordinator_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/colorSurface">
@@ -15,8 +14,8 @@
         app:elevation="0dp">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
-            style="?attr/collapsingToolbarLayoutMediumStyle"
             android:id="@+id/toolbar_settings_layout"
+            style="?attr/collapsingToolbarLayoutMediumStyle"
             android:layout_width="match_parent"
             android:layout_height="?attr/collapsingToolbarLayoutMediumSize"
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
@@ -42,9 +41,9 @@
         android:id="@+id/navigation_bar_shade"
         android:layout_width="match_parent"
         android:layout_height="1px"
+        android:layout_gravity="bottom|center_horizontal"
         android:background="@android:color/transparent"
         android:clickable="false"
-        android:focusable="false"
-        android:layout_gravity="bottom|center_horizontal" />
+        android:focusable="false" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

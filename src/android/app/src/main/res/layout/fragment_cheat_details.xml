@@ -57,8 +57,8 @@
                         android:importantForAutofill="no"
                         android:inputType="text"
                         android:minHeight="48dp"
-                        android:textAlignment="viewStart"
                         android:nextFocusDown="@id/edit_notes_input"
+                        android:textAlignment="viewStart"
                         tools:text="Hyrule Field Speed Hack" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -78,8 +78,8 @@
                         android:importantForAutofill="no"
                         android:inputType="textMultiLine"
                         android:minHeight="48dp"
-                        android:textAlignment="viewStart"
-                        android:nextFocusDown="@id/edit_code_input" />
+                        android:nextFocusDown="@id/edit_code_input"
+                        android:textAlignment="viewStart" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -100,9 +100,9 @@
                         android:importantForAutofill="no"
                         android:inputType="textMultiLine"
                         android:minHeight="108sp"
+                        android:nextFocusDown="@id/button_cancel"
                         android:textAlignment="viewStart"
                         android:typeface="monospace"
-                        android:nextFocusDown="@id/button_cancel"
                         tools:text="0x8003d63c:dword:0x60000000\n0x8003d658:dword:0x60000000" />
 
                 </com.google.android.material.textfield.TextInputLayout>

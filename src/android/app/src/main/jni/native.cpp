@@ -17,11 +17,13 @@
 #include <core/hle/service/cfg/cfg.h>
 #include "audio_core/dsp_interface.h"
 #include "common/arch.h"
+
 #if BORKED3DS_ARCH(arm64)
 #include "common/aarch64/cpu_detect.h"
 #elif BORKED3DS_ARCH(x86_64)
 #include "common/x64/cpu_detect.h"
 #endif
+
 #include "common/common_paths.h"
 #include "common/dynamic_library/dynamic_library.h"
 #include "common/file_util.h"
@@ -44,12 +46,14 @@
 #include "jni/camera/ndk_camera.h"
 #include "jni/camera/still_image_camera.h"
 #include "jni/config.h"
+
 #ifdef ENABLE_OPENGL
 #include "jni/emu_window/emu_window_gl.h"
 #endif
 #ifdef ENABLE_VULKAN
 #include "jni/emu_window/emu_window_vk.h"
 #endif
+
 #include "jni/id_cache.h"
 #include "jni/input_manager.h"
 #include "jni/ndk_motion.h"
@@ -352,8 +356,21 @@ void Java_io_github_borked3ds_android_NativeLibrary_updateFramebuffer([[maybe_un
                                                                       [[maybe_unused]] jobject obj,
                                                                       jboolean is_portrait_mode) {
     auto& system = Core::System::GetInstance();
-    if (system.IsPoweredOn()) {
-        system.GPU().Renderer().UpdateCurrentFramebufferLayout(is_portrait_mode);
+    if (system.
+
+        IsPoweredOn()
+
+    ) {
+        system
+            .
+
+            GPU()
+
+            .
+
+            Renderer()
+
+            .UpdateCurrentFramebufferLayout(is_portrait_mode);
     }
 }
 
@@ -363,8 +380,23 @@ void Java_io_github_borked3ds_android_NativeLibrary_swapScreens([[maybe_unused]]
                                                                 jint rotation) {
     Settings::values.swap_screen = swap_screens;
     auto& system = Core::System::GetInstance();
-    if (system.IsPoweredOn()) {
-        system.GPU().Renderer().UpdateCurrentFramebufferLayout(IsPortraitMode());
+    if (system.
+
+        IsPoweredOn()
+
+    ) {
+        system
+            .
+
+            GPU()
+
+            .
+
+            Renderer()
+
+            .
+
+            UpdateCurrentFramebufferLayout(IsPortraitMode());
     }
     InputManager::screen_rotation = rotation;
     Camera::NDK::g_rotation = rotation;
@@ -376,14 +408,37 @@ jintArray Java_io_github_borked3ds_android_NativeLibrary_getTweaks(JNIEnv* env,
     int settings[8];
 
     // get settings
-    settings[i++] = Settings::values.custom_cpu_ticks.GetValue();
-    settings[i++] = Settings::values.skip_slow_draw.GetValue();
-    settings[i++] = Settings::values.skip_texture_copy.GetValue();
-    settings[i++] = Settings::values.skip_cpu_write.GetValue();
-    settings[i++] = Settings::values.core_downcount_hack.GetValue();
-    settings[i++] = Settings::values.priority_boost.GetValue();
-    settings[i++] = Settings::values.enable_realtime_audio.GetValue();
-    settings[i++] = Settings::values.upscaling_hack.GetValue();
+    settings[i++] = Settings::values.custom_cpu_ticks.
+
+                    GetValue();
+
+    settings[i++] = Settings::values.skip_slow_draw.
+
+                    GetValue();
+
+    settings[i++] = Settings::values.skip_texture_copy.
+
+                    GetValue();
+
+    settings[i++] = Settings::values.skip_cpu_write.
+
+                    GetValue();
+
+    settings[i++] = Settings::values.core_downcount_hack.
+
+                    GetValue();
+
+    settings[i++] = Settings::values.priority_boost.
+
+                    GetValue();
+
+    settings[i++] = Settings::values.enable_realtime_audio.
+
+                    GetValue();
+
+    settings[i++] = Settings::values.upscaling_hack.
+
+                    GetValue();
 
     jintArray array = env->NewIntArray(i);
     env->SetIntArrayRegion(array, 0, i, settings);
@@ -426,6 +481,7 @@ void Java_io_github_borked3ds_android_NativeLibrary_setTweaks(JNIEnv* env,
 jboolean Java_io_github_borked3ds_android_NativeLibrary_areKeysAvailable(
     [[maybe_unused]] JNIEnv* env, [[maybe_unused]] jobject obj) {
     HW::AES::InitKeys();
+
     return HW::AES::IsKeyXAvailable(HW::AES::KeySlotID::NCCHSecure1) &&
            HW::AES::IsKeyXAvailable(HW::AES::KeySlotID::NCCHSecure2);
 }
@@ -479,8 +535,17 @@ jobjectArray Java_io_github_borked3ds_android_NativeLibrary_getInstalledGamePath
                 "00000000000000000000000000000000/title/00040010");
     jobjectArray jgames = env->NewObjectArray(static_cast<jsize>(games.size()),
                                               env->FindClass("java/lang/String"), nullptr);
-    for (jsize i = 0; i < games.size(); ++i)
-        env->SetObjectArrayElement(jgames, i, env->NewStringUTF(games[i].c_str()));
+    for (jsize i = 0; i < games.
+
+                          size();
+
+         ++i)
+        env->SetObjectArrayElement(jgames, i,
+                                   env->NewStringUTF(games[i].
+
+                                                     c_str()
+
+                                                         ));
     return jgames;
 }
 
@@ -489,8 +554,16 @@ jlongArray Java_io_github_borked3ds_android_NativeLibrary_getSystemTitleIds(
     const auto mode = static_cast<Core::SystemTitleSet>(system_type);
     const std::vector<u64> titles = Core::GetSystemTitleIds(mode, region);
     jlongArray jTitles = env->NewLongArray(titles.size());
-    env->SetLongArrayRegion(jTitles, 0, titles.size(),
-                            reinterpret_cast<const jlong*>(titles.data()));
+    env->SetLongArrayRegion(jTitles, 0,
+                            titles.
+
+                            size(),
+
+                            reinterpret_cast<const jlong*>(titles.
+
+                                                           data()
+
+                                                               ));
     return jTitles;
 }
 
@@ -526,17 +599,36 @@ jboolean JNICALL Java_io_github_borked3ds_android_utils_GpuDriverHelper_supports
 
 void Java_io_github_borked3ds_android_NativeLibrary_unPauseEmulation([[maybe_unused]] JNIEnv* env,
                                                                      [[maybe_unused]] jobject obj) {
-    if (!pause_emulation.load() || stop_run.load()) {
+    if (!pause_emulation.
+
+         load()
+
+        || stop_run.
+
+           load()
+
+    ) {
         return; // Exit if already Unpaused or if the emulation has been stopped
     }
     pause_emulation = false;
-    running_cv.notify_all();
+    running_cv.
+
+        notify_all();
+
     InputManager::NDKMotionHandler()->EnableSensors();
 }
 
 void Java_io_github_borked3ds_android_NativeLibrary_pauseEmulation([[maybe_unused]] JNIEnv* env,
                                                                    [[maybe_unused]] jobject obj) {
-    if (pause_emulation.load() || stop_run.load()) {
+    if (pause_emulation.
+
+        load()
+
+        || stop_run.
+
+           load()
+
+    ) {
         return; // Exit if already paused or if the emulation has been stopped
     }
     pause_emulation = true;
@@ -545,13 +637,22 @@ void Java_io_github_borked3ds_android_NativeLibrary_pauseEmulation([[maybe_unuse
 
 void Java_io_github_borked3ds_android_NativeLibrary_stopEmulation([[maybe_unused]] JNIEnv* env,
                                                                   [[maybe_unused]] jobject obj) {
-    if (stop_run.load()) {
+    if (stop_run.
+
+        load()
+
+    ) {
         return; // Exit if already stopped
     }
     stop_run = true;
     pause_emulation = false;
-    window->StopPresenting();
-    running_cv.notify_all();
+    window->
+
+        StopPresenting();
+
+    running_cv.
+
+        notify_all();
 }
 
 jboolean Java_io_github_borked3ds_android_NativeLibrary_isRunning([[maybe_unused]] JNIEnv* env,
@@ -562,7 +663,14 @@ jboolean Java_io_github_borked3ds_android_NativeLibrary_isRunning([[maybe_unused
 jlong Java_io_github_borked3ds_android_NativeLibrary_getRunningTitleId(
     [[maybe_unused]] JNIEnv* env, [[maybe_unused]] jobject obj) {
     u64 title_id{};
-    Core::System::GetInstance().GetAppLoader().ReadProgramId(title_id);
+
+    Core::System::GetInstance()
+
+        .
+
+        GetAppLoader()
+
+        .ReadProgramId(title_id);
     return static_cast<jlong>(title_id);
 }
 
@@ -595,14 +703,21 @@ jboolean Java_io_github_borked3ds_android_NativeLibrary_onGamePadMoveEvent(
         x /= r;
         y /= r;
     }
-    return static_cast<jboolean>(InputManager::AnalogHandler()->MoveJoystick(axis, x, y));
+    return static_cast
+
+        <jboolean>(InputManager::AnalogHandler()
+
+                       ->MoveJoystick(axis, x, y));
 }
 
 jboolean Java_io_github_borked3ds_android_NativeLibrary_onGamePadAxisEvent(
     [[maybe_unused]] JNIEnv* env, [[maybe_unused]] jobject obj, [[maybe_unused]] jstring j_device,
     jint axis_id, jfloat axis_val) {
-    return static_cast<jboolean>(
-        InputManager::ButtonHandler()->AnalogButtonEvent(axis_id, axis_val));
+    return static_cast
+
+        <jboolean>(InputManager::ButtonHandler()
+
+                       ->AnalogButtonEvent(axis_id, axis_val));
 }
 
 jboolean Java_io_github_borked3ds_android_NativeLibrary_onTouchEvent([[maybe_unused]] JNIEnv* env,
@@ -655,7 +770,9 @@ void Java_io_github_borked3ds_android_NativeLibrary_createConfigFile([[maybe_unu
 void Java_io_github_borked3ds_android_NativeLibrary_createLogFile([[maybe_unused]] JNIEnv* env,
                                                                   [[maybe_unused]] jobject obj) {
     Common::Log::Initialize();
+
     Common::Log::Start();
+
     LOG_INFO(Frontend, "Logging backend initialised");
 }
 
@@ -664,14 +781,20 @@ void Java_io_github_borked3ds_android_NativeLibrary_logUserDirectory(JNIEnv* env
                                                                      jstring j_path) {
     std::string_view path = env->GetStringUTFChars(j_path, 0);
     LOG_INFO(Frontend, "User directory path: {}", path);
-    env->ReleaseStringUTFChars(j_path, path.data());
+    env->ReleaseStringUTFChars(j_path, path.
+
+                                       data()
+
+    );
 }
 
 void Java_io_github_borked3ds_android_NativeLibrary_reloadSettings([[maybe_unused]] JNIEnv* env,
                                                                    [[maybe_unused]] jobject obj) {
     Config{};
     Core::System& system{Core::System::GetInstance()};
-    system.ApplySettings();
+    system.
+
+        ApplySettings();
 }
 
 jdoubleArray Java_io_github_borked3ds_android_NativeLibrary_getPerfStats(
@@ -679,7 +802,11 @@ jdoubleArray Java_io_github_borked3ds_android_NativeLibrary_getPerfStats(
     auto& core = Core::System::GetInstance();
     jdoubleArray j_stats = env->NewDoubleArray(4);
 
-    if (core.IsPoweredOn()) {
+    if (core.
+
+        IsPoweredOn()
+
+    ) {
         auto results = core.GetAndResetPerfStats();
 
         // Converting the structure into an array makes it easier to pass it to the frontend
@@ -698,20 +825,28 @@ void Java_io_github_borked3ds_android_NativeLibrary_run__Ljava_lang_String_2(
 
     if (!stop_run) {
         stop_run = true;
-        running_cv.notify_all();
+        running_cv.
+
+            notify_all();
     }
 
     const Core::System::ResultStatus result{RunBorked3DS(path)};
     if (result != Core::System::ResultStatus::Success) {
-        env->CallStaticVoidMethod(IDCache::GetNativeLibraryClass(),
-                                  IDCache::GetExitEmulationActivity(), static_cast<int>(result));
+        env->
+
+            CallStaticVoidMethod(IDCache::GetNativeLibraryClass(),
+                                 IDCache::GetExitEmulationActivity(),
+
+                                 static_cast<int>(result));
     }
 }
 
 void Java_io_github_borked3ds_android_NativeLibrary_reloadCameraDevices(
     [[maybe_unused]] JNIEnv* env, [[maybe_unused]] jobject obj) {
     if (g_ndk_factory) {
-        g_ndk_factory->ReloadCameraDevices();
+        g_ndk_factory->
+
+            ReloadCameraDevices();
     }
 }
 
@@ -738,7 +873,9 @@ void Java_io_github_borked3ds_android_NativeLibrary_removeAmiibo([[maybe_unused]
         return;
     }
 
-    nfc->RemoveAmiibo();
+    nfc->
+
+        RemoveAmiibo();
 }
 
 JNIEXPORT jint JNICALL Java_io_github_borked3ds_android_utils_NetPlayManager_netPlayCreateRoom(
@@ -764,13 +901,17 @@ Java_io_github_borked3ds_android_utils_NetPlayManager_netPlayRoomInfo(
 
 JNIEXPORT jboolean JNICALL Java_io_github_borked3ds_android_utils_NetPlayManager_netPlayIsJoined(
     [[maybe_unused]] JNIEnv* env, [[maybe_unused]] jobject obj) {
-    return NetPlayIsJoined();
+    return
+
+        NetPlayIsJoined();
 }
 
 JNIEXPORT jboolean JNICALL
 Java_io_github_borked3ds_android_utils_NetPlayManager_netPlayIsHostedRoom(
     [[maybe_unused]] JNIEnv* env, [[maybe_unused]] jobject obj) {
-    return NetPlayIsHostedRoom();
+    return
+
+        NetPlayIsHostedRoom();
 }
 
 JNIEXPORT void JNICALL Java_io_github_borked3ds_android_utils_NetPlayManager_netPlaySendMessage(
@@ -815,19 +956,32 @@ jobjectArray Java_io_github_borked3ds_android_NativeLibrary_getSavestateInfo(
     const auto date_field = env->GetFieldID(savestate_info_class, "time", "Ljava/util/Date;");
 
     const Core::System& system{Core::System::GetInstance()};
-    if (!system.IsPoweredOn()) {
+    if (!system.
+
+         IsPoweredOn()
+
+    ) {
         return nullptr;
     }
 
     u64 title_id;
-    if (system.GetAppLoader().ReadProgramId(title_id) != Loader::ResultStatus::Success) {
+    if (system
+            .
+
+        GetAppLoader()
+
+            .ReadProgramId(title_id) != Loader::ResultStatus::Success) {
         return nullptr;
     }
 
     const auto savestates = Core::ListSaveStates(title_id, system.Movie().GetCurrentMovieID());
     const jobjectArray array =
         env->NewObjectArray(static_cast<jsize>(savestates.size()), savestate_info_class, nullptr);
-    for (std::size_t i = 0; i < savestates.size(); ++i) {
+    for (std::size_t i = 0; i < savestates.
+
+                                size();
+
+         ++i) {
         const jobject object = env->AllocObject(savestate_info_class);
         env->SetIntField(object, slot_field, static_cast<jint>(savestates[i].slot));
         env->SetObjectField(object, date_field,
@@ -842,27 +996,41 @@ jobjectArray Java_io_github_borked3ds_android_NativeLibrary_getSavestateInfo(
 void Java_io_github_borked3ds_android_NativeLibrary_saveState([[maybe_unused]] JNIEnv* env,
                                                               [[maybe_unused]] jobject obj,
                                                               jint slot) {
-    Core::System::GetInstance().SendSignal(Core::System::Signal::Save, slot);
+    Core::System::GetInstance()
+
+        .SendSignal(Core::System::Signal::Save, slot);
 }
 
 void Java_io_github_borked3ds_android_NativeLibrary_loadState([[maybe_unused]] JNIEnv* env,
                                                               [[maybe_unused]] jobject obj,
                                                               jint slot) {
-    Core::System::GetInstance().SendSignal(Core::System::Signal::Load, slot);
+    Core::System::GetInstance()
+
+        .SendSignal(Core::System::Signal::Load, slot);
 }
 
 void Java_io_github_borked3ds_android_NativeLibrary_logDeviceInfo([[maybe_unused]] JNIEnv* env,
                                                                   [[maybe_unused]] jobject obj) {
     LOG_INFO(Frontend, "Borked3DS Version: {} | {}-{}", Common::g_build_fullname,
              Common::g_scm_branch, Common::g_scm_desc);
-    LOG_INFO(Frontend, "Host CPU: {}", Common::GetCPUCaps().cpu_string);
+    LOG_INFO(Frontend, "Host CPU: {}",
+
+             Common::GetCPUCaps()
+
+                 .cpu_string);
     // There is no decent way to get the OS version, so we log the API level instead.
-    LOG_INFO(Frontend, "Host OS: Android API level {}", android_get_device_api_level());
+    LOG_INFO(Frontend, "Host OS: Android API level {}",
+
+             android_get_device_api_level()
+
+    );
 }
 
 JNIEXPORT jboolean JNICALL Java_io_github_borked3ds_android_utils_NetPlayManager_netPlayIsModerator(
     [[maybe_unused]] JNIEnv* env, [[maybe_unused]] jobject obj) {
-    return NetPlayIsModerator();
+    return
+
+        NetPlayIsModerator();
 }
 
 } // extern "C"

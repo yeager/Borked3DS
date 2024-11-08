@@ -2,8 +2,8 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="?attr/materialCardViewOutlinedStyle"
     android:id="@+id/card_game"
+    style="?attr/materialCardViewOutlinedStyle"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
@@ -32,8 +32,8 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="8dp"
-            android:orientation="vertical"
             android:gravity="center_vertical"
+            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/image_game_screen"
@@ -44,11 +44,11 @@
                 style="@style/TextAppearance.Material3.BodyMedium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAlignment="viewStart"
-                android:singleLine="true"
-                android:marqueeRepeatLimit="marquee_forever"
                 android:ellipsize="none"
+                android:marqueeRepeatLimit="marquee_forever"
                 android:requiresFadingEdge="horizontal"
+                android:singleLine="true"
+                android:textAlignment="viewStart"
                 tools:text="The Legend of Zelda\nOcarina of Time 3D" />
 
             <TextView
@@ -56,11 +56,11 @@
                 style="@style/TextAppearance.Material3.BodySmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAlignment="viewStart"
-                android:singleLine="true"
-                android:marqueeRepeatLimit="marquee_forever"
                 android:ellipsize="none"
+                android:marqueeRepeatLimit="marquee_forever"
                 android:requiresFadingEdge="horizontal"
+                android:singleLine="true"
+                android:textAlignment="viewStart"
                 tools:text="Nintendo" />
 
             <TextView
@@ -68,11 +68,11 @@
                 style="@style/TextAppearance.Material3.BodySmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAlignment="viewStart"
-                android:singleLine="true"
-                android:marqueeRepeatLimit="marquee_forever"
                 android:ellipsize="none"
+                android:marqueeRepeatLimit="marquee_forever"
                 android:requiresFadingEdge="horizontal"
+                android:singleLine="true"
+                android:textAlignment="viewStart"
                 tools:text="Region" />
 
             <TextView
@@ -80,11 +80,11 @@
                 style="@style/TextAppearance.Material3.BodySmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAlignment="viewStart"
-                android:singleLine="true"
-                android:marqueeRepeatLimit="marquee_forever"
                 android:ellipsize="none"
+                android:marqueeRepeatLimit="marquee_forever"
                 android:requiresFadingEdge="horizontal"
+                android:singleLine="true"
+                android:textAlignment="viewStart"
                 tools:text="0004000000033400" />
 
             <TextView
@@ -92,11 +92,11 @@
                 style="@style/TextAppearance.Material3.BodySmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAlignment="viewStart"
-                android:singleLine="true"
-                android:marqueeRepeatLimit="marquee_forever"
                 android:ellipsize="none"
+                android:marqueeRepeatLimit="marquee_forever"
                 android:requiresFadingEdge="horizontal"
+                android:singleLine="true"
+                android:textAlignment="viewStart"
                 tools:text="Pilotwings_Resort.cxi" />
 
         </LinearLayout>

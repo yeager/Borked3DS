@@ -5,14 +5,14 @@
     android:id="@+id/edit_text"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="16dp"
     android:paddingHorizontal="24dp"
-    tools:hint="@string/cheats_name"
+    android:paddingTop="16dp"
     app:errorEnabled="true"
     app:layout_constraintBottom_toTopOf="@id/edit_notes"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent">
+    app:layout_constraintTop_toTopOf="parent"
+    tools:hint="@string/cheats_name">
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/edit_text_input"

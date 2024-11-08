@@ -106,7 +106,7 @@ class SettingsFragment : Fragment(), SettingsFragmentView {
 
             val leftInsets = barInsets.left + cutoutInsets.left
             val rightInsets = barInsets.right + cutoutInsets.right
-            
+
             binding.listSettings.updateMargins(left = leftInsets, right = rightInsets)
             binding.listSettings.updatePadding(bottom = barInsets.bottom)
             windowInsets

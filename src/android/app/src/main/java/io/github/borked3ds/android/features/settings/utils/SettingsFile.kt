@@ -185,13 +185,15 @@ object SettingsFile {
     }
 
     fun getSettingsFile(fileName: String): DocumentFile {
-        val root = DocumentFile.fromTreeUri(Borked3DSApplication.appContext, Uri.parse(userDirectory))
+        val root =
+            DocumentFile.fromTreeUri(Borked3DSApplication.appContext, Uri.parse(userDirectory))
         val configDirectory = root!!.findFile("config")
         return configDirectory!!.findFile("$fileName.ini")!!
     }
 
     private fun getCustomGameSettingsFile(gameId: String): DocumentFile {
-        val root = DocumentFile.fromTreeUri(Borked3DSApplication.appContext, Uri.parse(userDirectory))
+        val root =
+            DocumentFile.fromTreeUri(Borked3DSApplication.appContext, Uri.parse(userDirectory))
         val configDirectory = root!!.findFile("GameSettings")
         return configDirectory!!.findFile("$gameId.ini")!!
     }

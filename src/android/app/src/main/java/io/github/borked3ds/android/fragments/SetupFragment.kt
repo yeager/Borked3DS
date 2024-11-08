@@ -411,7 +411,10 @@ class SetupFragment : Fragment() {
             return@registerForActivityResult
         }
 
-        Borked3DSDirectoryHelper(requireActivity()).showBorked3DSDirectoryDialog(result, userDirCallback)
+        Borked3DSDirectoryHelper(requireActivity()).showBorked3DSDirectoryDialog(
+            result,
+            userDirCallback
+        )
     }
 
     private lateinit var gamesDirCallback: SetupCallback

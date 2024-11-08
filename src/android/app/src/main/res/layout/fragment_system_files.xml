@@ -26,9 +26,9 @@
         android:id="@+id/scroll_system_files"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:clipToPadding="false"
         android:fadeScrollbars="false"
         android:scrollbars="vertical"
-        android:clipToPadding="false"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
@@ -119,8 +119,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:hint="@string/emulated_region"
                 android:enabled="false"
+                android:hint="@string/emulated_region"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.textfield.MaterialAutoCompleteTextView
@@ -149,9 +149,9 @@
                     android:id="@+id/text_run_system_setup"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
                     android:text="@string/run_system_setup"
                     android:textAlignment="viewStart"
-                    android:layout_marginEnd="16dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/switch_run_system_setup"
                     app:layout_constraintStart_toStartOf="parent"
@@ -176,9 +176,9 @@
                     android:id="@+id/text_show_apps"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
                     android:text="@string/show_home_apps"
                     android:textAlignment="viewStart"
-                    android:layout_marginEnd="16dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/switch_show_apps"
                     app:layout_constraintStart_toStartOf="parent"

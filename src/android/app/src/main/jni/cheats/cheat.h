@@ -12,4 +12,5 @@ class CheatBase;
 }
 
 std::shared_ptr<Cheats::CheatBase>* CheatFromJava(JNIEnv* env, jobject cheat);
+
 jobject CheatToJava(JNIEnv* env, std::shared_ptr<Cheats::CheatBase> cheat);

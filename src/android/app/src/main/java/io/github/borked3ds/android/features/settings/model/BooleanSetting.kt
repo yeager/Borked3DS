@@ -28,9 +28,9 @@ enum class BooleanSetting(
     INSTANT_DEBUG_LOG("instant_debug_log", Settings.SECTION_DEBUG, false),
     DUMP_COMMAND_BUFFERS("dump_command_buffers", Settings.SECTION_DEBUG, false),
     RELAXED_PRECISION_DECORATORS("relaxed_precision_decorators", Settings.SECTION_RENDERER, false),
-    CUSTOM_LAYOUT("custom_layout",Settings.SECTION_LAYOUT,false),
+    CUSTOM_LAYOUT("custom_layout", Settings.SECTION_LAYOUT, false),
     ADRENO_GPU_BOOST("adreno_gpu_boost", Settings.SECTION_RENDERER, false),
-    SWAP_EYES_3D("swap_eyes_3d",Settings.SECTION_RENDERER,false);
+    SWAP_EYES_3D("swap_eyes_3d", Settings.SECTION_RENDERER, false);
 
     override var boolean: Boolean = defaultValue
 

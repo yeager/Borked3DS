@@ -55,8 +55,9 @@ class HomeSettingsFragment : Fragment() {
     private val homeViewModel: HomeViewModel by activityViewModels()
     private val driverViewModel: DriverViewModel by activityViewModels()
 
-    private val preferences get() =
-        PreferenceManager.getDefaultSharedPreferences(Borked3DSApplication.appContext)
+    private val preferences
+        get() =
+            PreferenceManager.getDefaultSharedPreferences(Borked3DSApplication.appContext)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -115,7 +116,7 @@ class HomeSettingsFragment : Fragment() {
                                     binding.root.findNavController().navigate(action)
                                 }
                             }
-                            .setNegativeButton(android.R.string.cancel) {_, _ -> }
+                            .setNegativeButton(android.R.string.cancel) { _, _ -> }
                             .show()
                     }
                 }

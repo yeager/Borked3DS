@@ -18,7 +18,8 @@ class InputBindingSettingViewHolder(val binding: ListItemSettingBinding, adapter
     private lateinit var setting: InputBindingSetting
 
     override fun bind(item: SettingsItem) {
-        val preferences = PreferenceManager.getDefaultSharedPreferences(Borked3DSApplication.appContext)
+        val preferences =
+            PreferenceManager.getDefaultSharedPreferences(Borked3DSApplication.appContext)
         setting = item as InputBindingSetting
         binding.textSettingName.setText(item.nameId)
         val uiString = preferences.getString(setting.abstractSetting.key, "")!!

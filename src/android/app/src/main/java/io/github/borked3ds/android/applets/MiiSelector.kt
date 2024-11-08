@@ -44,5 +44,5 @@ object MiiSelector {
         lateinit var miiNames: Array<String>
     }
 
-    class MiiSelectorData (var returnCode: Long, var index: Int)
+    class MiiSelectorData(var returnCode: Long, var index: Int)
 }

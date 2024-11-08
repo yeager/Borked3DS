@@ -74,7 +74,8 @@ class MainActivity : AppCompatActivity(), ThemeProvider {
         }
 
         if (PermissionsHandler.hasWriteAccess(applicationContext) &&
-            DirectoryInitialization.areBorked3DSDirectoriesReady()) {
+            DirectoryInitialization.areBorked3DSDirectoriesReady()
+        ) {
             settingsViewModel.settings.loadSettings()
         }
 

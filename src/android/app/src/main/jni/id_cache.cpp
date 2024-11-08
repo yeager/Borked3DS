@@ -153,6 +153,7 @@ jclass GetCiaInstallHelperClass() {
 jmethodID GetCiaInstallHelperSetProgress() {
     return s_cia_install_helper_set_progress;
 }
+
 jobject GetJavaCiaInstallStatus(Service::AM::InstallStatus status) {
     const auto it = s_java_cia_install_status.find(status);
     ASSERT_MSG(it != s_java_cia_install_status.end(), "Invalid InstallStatus: {}", status);

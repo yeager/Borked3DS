@@ -283,7 +283,7 @@
         <item>4</item>
     </integer-array>
 
-        <string-array name="textureSamplingNames">
+    <string-array name="textureSamplingNames">
         <item>@string/game_controlled</item>
         <item>@string/nearest_neighbor</item>
         <item>@string/linear</item>

@@ -93,8 +93,8 @@ class InputOverlay(context: Context?, attrs: AttributeSet?) : SurfaceView(contex
         NativeLibrary.swapScreens(isEnabled, rotation)
     }
 
-    fun hapticFeedback(type:Int){
-        if(EmulationMenuSettings.hapticFeedback)
+    fun hapticFeedback(type: Int) {
+        if (EmulationMenuSettings.hapticFeedback)
             performHapticFeedback(type)
     }
 
@@ -551,13 +551,15 @@ class InputOverlay(context: Context?, attrs: AttributeSet?) : SurfaceView(contex
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             // For API 30 and above
-            val windowMetrics: WindowMetrics = (context as Activity).windowManager.currentWindowMetrics
+            val windowMetrics: WindowMetrics =
+                (context as Activity).windowManager.currentWindowMetrics
             val bounds = windowMetrics.bounds
             maxX = bounds.height().toFloat()
             maxY = bounds.width().toFloat()
         } else {
             // For API 29 and below
-            val display = @Suppress("DEPRECATION") (context as Activity).windowManager.defaultDisplay
+            val display =
+                @Suppress("DEPRECATION") (context as Activity).windowManager.defaultDisplay
             val outMetrics = DisplayMetrics()
             @Suppress("DEPRECATION") display.getMetrics(outMetrics)
             maxX = outMetrics.heightPixels.toFloat()
@@ -704,13 +706,15 @@ class InputOverlay(context: Context?, attrs: AttributeSet?) : SurfaceView(contex
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             // For API 30 and above
-            val windowMetrics: WindowMetrics = (context as Activity).windowManager.currentWindowMetrics
+            val windowMetrics: WindowMetrics =
+                (context as Activity).windowManager.currentWindowMetrics
             val bounds = windowMetrics.bounds
             maxX = bounds.height().toFloat()
             maxY = bounds.width().toFloat()
         } else {
             // For API 29 and below
-            val display = @Suppress("DEPRECATION") (context as Activity).windowManager.defaultDisplay
+            val display =
+                @Suppress("DEPRECATION") (context as Activity).windowManager.defaultDisplay
             val outMetrics = DisplayMetrics()
             @Suppress("DEPRECATION") display.getMetrics(outMetrics)
             maxX = outMetrics.heightPixels.toFloat()
@@ -976,14 +980,20 @@ class InputOverlay(context: Context?, attrs: AttributeSet?) : SurfaceView(contex
 
             scale *= (preferences.getInt("controlScale-$buttonId", 50) + 50).toFloat()
             scale /= 100f
-          
+
             val opacity: Int = preferences.getInt("controlOpacity", 50) * 255 / 100
 
             // Initialize the InputOverlayDrawableButton.
             val defaultStateBitmap = getBitmap(context, defaultResId, scale)
             val pressedStateBitmap = getBitmap(context, pressedResId, scale)
             val overlayDrawable =
-                InputOverlayDrawableButton(res, defaultStateBitmap, pressedStateBitmap, buttonId, opacity)
+                InputOverlayDrawableButton(
+                    res,
+                    defaultStateBitmap,
+                    pressedStateBitmap,
+                    buttonId,
+                    opacity
+                )
 
             // The X and Y coordinates of the InputOverlayDrawableButton on the InputOverlay.
             // These were set in the input overlay configuration menu.
@@ -1039,15 +1049,16 @@ class InputOverlay(context: Context?, attrs: AttributeSet?) : SurfaceView(contex
                 "controlScale-" + NativeLibrary.ButtonType.DPAD,
                 50
             ) + 50).toFloat()
-            
+
             scale /= 100f
-          
+
             val opacity: Int = preferences.getInt("controlOpacity", 50) * 255 / 100
 
             // Initialize the InputOverlayDrawableDpad.
             val defaultStateBitmap = getBitmap(context, defaultResId, scale)
             val pressedOneDirectionStateBitmap = getBitmap(context, pressedOneDirectionResId, scale)
-            val pressedTwoDirectionsStateBitmap = getBitmap(context, pressedTwoDirectionsResId, scale)
+            val pressedTwoDirectionsStateBitmap =
+                getBitmap(context, pressedTwoDirectionsResId, scale)
             val overlayDrawable = InputOverlayDrawableDpad(
                 res,
                 defaultStateBitmap,

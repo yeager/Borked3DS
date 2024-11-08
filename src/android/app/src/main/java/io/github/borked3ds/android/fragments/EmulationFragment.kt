@@ -150,7 +150,11 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
         retainInstance = true
         emulationState = EmulationState(game.path)
         emulationActivity = requireActivity() as EmulationActivity
-        screenAdjustmentUtil = ScreenAdjustmentUtil(requireContext(), requireActivity().windowManager, settingsViewModel.settings)
+        screenAdjustmentUtil = ScreenAdjustmentUtil(
+            requireContext(),
+            requireActivity().windowManager,
+            settingsViewModel.settings
+        )
         EmulationLifecycleUtil.addShutdownHook(hook = { emulationState.stop() })
         EmulationLifecycleUtil.addPauseResumeHook(hook = { togglePause() })
     }
@@ -451,9 +455,11 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
 
     private fun rotateScreen() {
         if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
-            (context as? EmulationActivity)?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+            (context as? EmulationActivity)?.requestedOrientation =
+                ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
         } else {
-            (context as? EmulationActivity)?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+            (context as? EmulationActivity)?.requestedOrientation =
+                ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         }
     }
 
@@ -566,17 +572,21 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
                 }
 
                 add(text).setEnabled(enableClick).setOnMenuItemClickListener {
-                    if(isSaving) {
+                    if (isSaving) {
                         NativeLibrary.saveState(slot)
-                        Toast.makeText(context,
+                        Toast.makeText(
+                            context,
                             getString(R.string.quicksave_saving),
-                            Toast.LENGTH_SHORT).show()
+                            Toast.LENGTH_SHORT
+                        ).show()
                     } else {
                         NativeLibrary.loadState(slot)
                         binding.drawerLayout.close()
-                        Toast.makeText(context,
+                        Toast.makeText(
+                            context,
                             getString(R.string.quickload_loading),
-                            Toast.LENGTH_SHORT).show()
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                     true
                 }
@@ -585,9 +595,9 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
 
         savestates?.forEach {
             var enableClick = true
-            val text = if(it.slot == NativeLibrary.QUICKSAVE_SLOT) {
+            val text = if (it.slot == NativeLibrary.QUICKSAVE_SLOT) {
                 getString(R.string.emulation_occupied_quicksave_slot, it.time)
-            } else{
+            } else {
                 getString(R.string.emulation_occupied_state_slot, it.slot, it.time)
             }
             popupMenu.menu.getItem(it.slot).setTitle(text).setEnabled(enableClick)
@@ -992,7 +1002,7 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
             slider.valueFrom = 0f
             slider.value = preferences.getInt(target, 50).toFloat()
             textValue.setText((slider.value + 50).toInt().toString())
-            textValue.addTextChangedListener( object : TextWatcher {
+            textValue.addTextChangedListener(object : TextWatcher {
                 override fun afterTextChanged(s: Editable) {
                     val value = s.toString().toIntOrNull()
                     if (value == null || value < 50 || value > 150) {
@@ -1002,6 +1012,7 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
                         slider.value = value.toFloat() - 50
                     }
                 }
+
                 override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
                 override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
             })
@@ -1042,7 +1053,7 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
             slider.value = preferences.getInt("controlOpacity", 50).toFloat()
             textValue.setText(slider.value.toInt().toString())
 
-            textValue.addTextChangedListener( object : TextWatcher {
+            textValue.addTextChangedListener(object : TextWatcher {
                 override fun afterTextChanged(s: Editable) {
                     val value = s.toString().toIntOrNull()
                     if (value == null || value < slider.valueFrom || value > slider.valueTo) {
@@ -1052,6 +1063,7 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
                         slider.value = value.toFloat()
                     }
                 }
+
                 override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
                 override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
             })
@@ -1060,11 +1072,11 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
             slider.addOnChangeListener { _: Slider, value: Float, _: Boolean ->
 
                 if (textValue.text.toString() != slider.value.toInt().toString()) {
-                        textValue.setText(slider.value.toInt().toString())
-                        textValue.setSelection(textValue.length())
-                        setControlOpacity(slider.value.toInt())
-                    }
+                    textValue.setText(slider.value.toInt().toString())
+                    textValue.setSelection(textValue.length())
+                    setControlOpacity(slider.value.toInt())
                 }
+            }
 
             textInput.suffixText = "%"
         }
@@ -1161,10 +1173,16 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
             val SPEED = 3
             perfStatsUpdater = Runnable {
                 val perfStats = NativeLibrary.getPerfStats()
-                val ramUsage = File("/proc/self/statm").readLines()[0].split(' ')[1].toLong() * 4096 / 1000000
+                val ramUsage =
+                    File("/proc/self/statm").readLines()[0].split(' ')[1].toLong() * 4096 / 1000000
                 val ramUsageText = "RAM USAGE: " + ramUsage + " MB"
                 if (perfStats[FPS] > 0) {
-                    binding.showFpsText.text = String.format("FPS: %d Speed: %d%%\n%s", (perfStats[FPS] + 0.5).toInt(), (perfStats[SPEED] * 100.0 + 0.5).toInt(), ramUsageText)
+                    binding.showFpsText.text = String.format(
+                        "FPS: %d Speed: %d%%\n%s",
+                        (perfStats[FPS] + 0.5).toInt(),
+                        (perfStats[SPEED] * 100.0 + 0.5).toInt(),
+                        ramUsageText
+                    )
                 }
                 perfStatsUpdateHandler.postDelayed(perfStatsUpdater!!, 800)
             }

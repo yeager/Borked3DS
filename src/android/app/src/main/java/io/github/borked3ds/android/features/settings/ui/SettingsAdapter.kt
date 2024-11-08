@@ -309,14 +309,14 @@ class SettingsAdapter(
                     sliderString = sliderProgress.roundToInt().toString()
                     if (textSliderValue?.text.toString() != sliderString) {
                         textSliderValue?.setText(sliderString)
-                        textSliderValue?.setSelection(textSliderValue?.length() ?: 0 )
+                        textSliderValue?.setSelection(textSliderValue?.length() ?: 0)
                     }
                 } else {
                     val currentText = textSliderValue?.text.toString()
                     val currentTextValue = currentText.toFloat()
                     if (currentTextValue != sliderProgress) {
                         textSliderValue?.setText(sliderString)
-                        textSliderValue?.setSelection(textSliderValue?.length() ?: 0 )
+                        textSliderValue?.setSelection(textSliderValue?.length() ?: 0)
                     }
                 }
             }
@@ -454,7 +454,7 @@ class SettingsAdapter(
                             val setting = it.setSelectedValue(sliderProgress)
                             fragmentView?.putSetting(setting)
                         }
-                   }
+                    }
                     closeDialog()
                 }
             }
@@ -468,7 +468,7 @@ class SettingsAdapter(
                     val setting = it.setSelectedValue(textInputValue ?: "")
                     fragmentView?.putSetting(setting)
                     closeDialog()
-               }
+                }
             }
 
         }

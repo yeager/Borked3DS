@@ -730,12 +730,22 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
                 add(InputBindingSetting(button, Settings.axisTitles[i]))
             }
 
-            add(HeaderSetting(R.string.controller_dpad_axis,R.string.controller_dpad_axis_description))
+            add(
+                HeaderSetting(
+                    R.string.controller_dpad_axis,
+                    R.string.controller_dpad_axis_description
+                )
+            )
             Settings.dPadAxisKeys.forEachIndexed { i: Int, key: String ->
                 val button = InputBindingSetting.getInputObject(key, preferences)
                 add(InputBindingSetting(button, Settings.axisTitles[i]))
             }
-            add(HeaderSetting(R.string.controller_dpad_button,R.string.controller_dpad_button_description))
+            add(
+                HeaderSetting(
+                    R.string.controller_dpad_button,
+                    R.string.controller_dpad_button_description
+                )
+            )
             Settings.dPadButtonKeys.forEachIndexed { i: Int, key: String ->
                 val button = InputBindingSetting.getInputObject(key, preferences)
                 add(InputBindingSetting(button, Settings.dPadTitles[i]))
@@ -922,7 +932,7 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
                     R.string.relaxed_precision_decorators_desc,
                     BooleanSetting.RELAXED_PRECISION_DECORATORS.key,
                     BooleanSetting.RELAXED_PRECISION_DECORATORS.defaultValue,
-                )    
+                )
             )
             add(
                 SwitchSetting(

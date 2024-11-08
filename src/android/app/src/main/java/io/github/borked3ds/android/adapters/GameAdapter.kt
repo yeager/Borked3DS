@@ -179,7 +179,9 @@ class GameAdapter(private val activity: AppCompatActivity, private val inflater:
 
             val backgroundColorId =
                 if (
-                    isValidGame(game.filename.substring(game.filename.lastIndexOf(".") + 1).lowercase())
+                    isValidGame(
+                        game.filename.substring(game.filename.lastIndexOf(".") + 1).lowercase()
+                    )
                 ) {
                     R.attr.colorSurface
                 } else {
@@ -213,7 +215,12 @@ class GameAdapter(private val activity: AppCompatActivity, private val inflater:
         }
     }
 
-    private fun showAboutGameDialog(context: Context, game: Game, holder: GameViewHolder, view: View) {
+    private fun showAboutGameDialog(
+        context: Context,
+        game: Game,
+        holder: GameViewHolder,
+        view: View
+    ) {
         val bottomSheetView = inflater.inflate(R.layout.dialog_about_game, null)
 
         val bottomSheetDialog = BottomSheetDialog(context)
@@ -222,8 +229,10 @@ class GameAdapter(private val activity: AppCompatActivity, private val inflater:
         bottomSheetView.findViewById<TextView>(R.id.about_game_title).text = game.title
         bottomSheetView.findViewById<TextView>(R.id.about_game_company).text = game.company
         bottomSheetView.findViewById<TextView>(R.id.about_game_region).text = game.regions
-        bottomSheetView.findViewById<TextView>(R.id.about_game_id).text = "ID: " + String.format("%016X", game.titleId)
-        bottomSheetView.findViewById<TextView>(R.id.about_game_filename).text = "File: " + game.filename
+        bottomSheetView.findViewById<TextView>(R.id.about_game_id).text =
+            "ID: " + String.format("%016X", game.titleId)
+        bottomSheetView.findViewById<TextView>(R.id.about_game_filename).text =
+            "File: " + game.filename
         GameIconUtils.loadGameIcon(activity, game, bottomSheetView.findViewById(R.id.game_icon))
 
         bottomSheetView.findViewById<MaterialButton>(R.id.about_game_play).setOnClickListener {
@@ -235,7 +244,8 @@ class GameAdapter(private val activity: AppCompatActivity, private val inflater:
             val shortcutManager = activity.getSystemService(ShortcutManager::class.java)
 
             CoroutineScope(Dispatchers.IO).launch {
-                val bitmap = (bottomSheetView.findViewById<ImageView>(R.id.game_icon).drawable as BitmapDrawable).bitmap
+                val bitmap =
+                    (bottomSheetView.findViewById<ImageView>(R.id.game_icon).drawable as BitmapDrawable).bitmap
                 val icon = Icon.createWithBitmap(bitmap)
 
                 val shortcut = ShortcutInfo.Builder(context, game.title)

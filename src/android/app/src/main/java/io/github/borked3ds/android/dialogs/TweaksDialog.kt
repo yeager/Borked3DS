@@ -41,7 +41,12 @@ class TweaksDialog(context: Context) : BaseSheetDialog(context) {
         recyclerView.layoutManager = LinearLayoutManager(context)
         adapter = SettingsAdapter(context)
         recyclerView.adapter = adapter
-        recyclerView.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
+        recyclerView.addItemDecoration(
+            DividerItemDecoration(
+                context,
+                DividerItemDecoration.VERTICAL
+            )
+        )
     }
 
     override fun onStop() {
@@ -76,7 +81,8 @@ class TweaksDialog(context: Context) : BaseSheetDialog(context) {
         }
     }
 
-    abstract class SettingViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
+    abstract class SettingViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
+        View.OnClickListener {
         init {
             itemView.setOnClickListener(this)
             findViews(itemView)
@@ -89,7 +95,8 @@ class TweaksDialog(context: Context) : BaseSheetDialog(context) {
         }
     }
 
-    inner class SwitchSettingViewHolder(itemView: View) : SettingViewHolder(itemView), CompoundButton.OnCheckedChangeListener {
+    inner class SwitchSettingViewHolder(itemView: View) : SettingViewHolder(itemView),
+        CompoundButton.OnCheckedChangeListener {
         private var settingsItem: SettingsItem? = null
         private var textSettingName: TextView? = null
         private var switch: MaterialSwitch? = null
@@ -130,14 +137,70 @@ class TweaksDialog(context: Context) : BaseSheetDialog(context) {
             settings = ArrayList()
 
             // native settings
-            settings.add(SettingsItem(SETTING_ENABLE_CUSTOM_CPU_TICKS, context.getString(R.string.enable_custom_cpu_ticks), TYPE_SWITCH, tweaks[i++]))
-            settings.add(SettingsItem(SETTING_SKIP_SLOW_DRAW, context.getString(R.string.skip_slow_draw), TYPE_SWITCH, tweaks[i++]))
-            settings.add(SettingsItem(SETTING_SKIP_TEXTURE_COPY, context.getString(R.string.skip_texture_copy), TYPE_SWITCH, tweaks[i++]))
-            settings.add(SettingsItem(SETTING_SKIP_CPU_WRITE, context.getString(R.string.skip_cpu_write), TYPE_SWITCH, tweaks[i++]))
-            settings.add(SettingsItem(SETTING_CORE_DOWNCOUNT_HACK, context.getString(R.string.core_downcount_hack), TYPE_SWITCH, tweaks[i++]))
-            settings.add(SettingsItem(SETTING_PRIORITY_BOOST, context.getString(R.string.priority_boost_tweaks), TYPE_SWITCH, tweaks[i++]))
-            settings.add(SettingsItem(SETTING_REALTIME_AUDIO, context.getString(R.string.realtime_audio_tweaks), TYPE_SWITCH, tweaks[i++]))
-            settings.add(SettingsItem(SETTING_UPSCALING_HACK, context.getString(R.string.upscaling_hack_tweaks), TYPE_SWITCH, tweaks[i++]))
+            settings.add(
+                SettingsItem(
+                    SETTING_ENABLE_CUSTOM_CPU_TICKS,
+                    context.getString(R.string.enable_custom_cpu_ticks),
+                    TYPE_SWITCH,
+                    tweaks[i++]
+                )
+            )
+            settings.add(
+                SettingsItem(
+                    SETTING_SKIP_SLOW_DRAW,
+                    context.getString(R.string.skip_slow_draw),
+                    TYPE_SWITCH,
+                    tweaks[i++]
+                )
+            )
+            settings.add(
+                SettingsItem(
+                    SETTING_SKIP_TEXTURE_COPY,
+                    context.getString(R.string.skip_texture_copy),
+                    TYPE_SWITCH,
+                    tweaks[i++]
+                )
+            )
+            settings.add(
+                SettingsItem(
+                    SETTING_SKIP_CPU_WRITE,
+                    context.getString(R.string.skip_cpu_write),
+                    TYPE_SWITCH,
+                    tweaks[i++]
+                )
+            )
+            settings.add(
+                SettingsItem(
+                    SETTING_CORE_DOWNCOUNT_HACK,
+                    context.getString(R.string.core_downcount_hack),
+                    TYPE_SWITCH,
+                    tweaks[i++]
+                )
+            )
+            settings.add(
+                SettingsItem(
+                    SETTING_PRIORITY_BOOST,
+                    context.getString(R.string.priority_boost_tweaks),
+                    TYPE_SWITCH,
+                    tweaks[i++]
+                )
+            )
+            settings.add(
+                SettingsItem(
+                    SETTING_REALTIME_AUDIO,
+                    context.getString(R.string.realtime_audio_tweaks),
+                    TYPE_SWITCH,
+                    tweaks[i++]
+                )
+            )
+            settings.add(
+                SettingsItem(
+                    SETTING_UPSCALING_HACK,
+                    context.getString(R.string.upscaling_hack_tweaks),
+                    TYPE_SWITCH,
+                    tweaks[i++]
+                )
+            )
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SettingViewHolder {
@@ -147,6 +210,7 @@ class TweaksDialog(context: Context) : BaseSheetDialog(context) {
                     val itemView = inflater.inflate(R.layout.list_item_tweaks_switch, parent, false)
                     SwitchSettingViewHolder(itemView)
                 }
+
                 else -> throw IllegalArgumentException("Invalid view type")
             }
         }

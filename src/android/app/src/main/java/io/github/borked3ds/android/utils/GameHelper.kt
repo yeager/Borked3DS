@@ -77,7 +77,10 @@ object GameHelper {
         }
 
         val newGame = Game(
-            (gameInfo?.getTitle() ?: FileUtil.getFilename(uri)).replace("[\\t\\n\\r]+".toRegex(), " "),
+            (gameInfo?.getTitle() ?: FileUtil.getFilename(uri)).replace(
+                "[\\t\\n\\r]+".toRegex(),
+                " "
+            ),
             filePath.replace("\n", " "),
             filePath,
             NativeLibrary.getTitleId(filePath),

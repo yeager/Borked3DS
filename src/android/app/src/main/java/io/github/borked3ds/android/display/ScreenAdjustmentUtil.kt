@@ -29,6 +29,7 @@ class ScreenAdjustmentUtil(
         BooleanSetting.SWAP_SCREEN.boolean = isEnabled
         settings.saveSetting(BooleanSetting.SWAP_SCREEN, SettingsFile.FILE_NAME_CONFIG)
     }
+
     fun cycleLayouts() {
         val landscapeValues = context.resources.getIntArray(R.array.landscapeValues)
         val portraitValues = context.resources.getIntArray(R.array.portraitValues)
@@ -65,5 +66,5 @@ class ScreenAdjustmentUtil(
         IntSetting.ORIENTATION_OPTION.int = orientationOption
         settings.saveSetting(IntSetting.ORIENTATION_OPTION, SettingsFile.FILE_NAME_CONFIG)
         activity.requestedOrientation = orientationOption
-        }
     }
+}

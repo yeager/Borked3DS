@@ -13,6 +13,7 @@ class EmuWindow_Android_Vulkan : public EmuWindow_Android {
 public:
     EmuWindow_Android_Vulkan(ANativeWindow* surface,
                              std::shared_ptr<Common::DynamicLibrary> driver_library);
+
     ~EmuWindow_Android_Vulkan() override = default;
 
     void PollEvents() override {}

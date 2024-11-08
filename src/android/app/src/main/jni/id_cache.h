@@ -19,33 +19,51 @@ namespace IDCache {
 JNIEnv* GetEnvForThread();
 
 jclass GetCoreErrorClass();
+
 jclass GetSavestateInfoClass();
 
 jclass GetNativeLibraryClass();
+
 jmethodID GetOnCoreError();
+
 jmethodID GetDisplayAlertMsg();
+
 jmethodID GetDisplayAlertPrompt();
+
 jmethodID GetAlertPromptButton();
+
 jmethodID GetIsPortraitMode();
+
 jmethodID GetLandscapeScreenLayout();
+
 jmethodID GetPortraitScreenLayout();
+
 jmethodID GetExitEmulationActivity();
+
 jmethodID GetRequestCameraPermission();
+
 jmethodID GetRequestMicPermission();
+
 jmethodID GetAddNetPlayMessage();
 
 jclass GetCheatClass();
+
 jfieldID GetCheatPointer();
+
 jmethodID GetCheatConstructor();
 
 jfieldID GetGameInfoPointer();
 
 jclass GetDiskCacheProgressClass();
+
 jmethodID GetDiskCacheLoadProgress();
+
 jobject GetJavaLoadCallbackStage(VideoCore::LoadCallbackStage stage);
 
 jclass GetCiaInstallHelperClass();
+
 jmethodID GetCiaInstallHelperSetProgress();
+
 jobject GetJavaCiaInstallStatus(Service::AM::InstallStatus status);
 
 } // namespace IDCache

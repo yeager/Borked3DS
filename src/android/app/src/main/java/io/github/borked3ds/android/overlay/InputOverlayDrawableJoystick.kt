@@ -94,7 +94,7 @@ class InputOverlayDrawableJoystick(
         currentStateBitmapDrawable.draw(canvas)
     }
 
-    fun updateStatus(event: MotionEvent, overlay:InputOverlay): Boolean {
+    fun updateStatus(event: MotionEvent, overlay: InputOverlay): Boolean {
         val pointerIndex = event.actionIndex
         val xPosition = event.getX(pointerIndex).toInt()
         val yPosition = event.getY(pointerIndex).toInt()
@@ -170,7 +170,8 @@ class InputOverlayDrawableJoystick(
             setInnerBounds()
 
             if (kotlin.math.abs(oldRadius - radius) > .34f
-                    || radius > .5f && kotlin.math.abs(oldAngle - angle) > kotlin.math.PI / 8) {
+                || radius > .5f && kotlin.math.abs(oldAngle - angle) > kotlin.math.PI / 8
+            ) {
                 this.radius = radius
                 this.angle = angle
 

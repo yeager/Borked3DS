@@ -150,7 +150,8 @@ class GamesFragment : Fragment() {
     }
 
     private fun setAdapter(games: List<Game>) {
-        val preferences = PreferenceManager.getDefaultSharedPreferences(Borked3DSApplication.appContext)
+        val preferences =
+            PreferenceManager.getDefaultSharedPreferences(Borked3DSApplication.appContext)
         if (preferences.getBoolean(Settings.PREF_SHOW_HOME_APPS, false)) {
             (binding.gridGames.adapter as GameAdapter).submitList(games)
         } else {

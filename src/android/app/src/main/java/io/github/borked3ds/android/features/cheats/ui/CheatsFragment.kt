@@ -204,7 +204,8 @@ class CheatsFragment : Fragment(), SlidingPaneLayout.PanelSlideListener {
             val keyboardInsets = windowInsets.getInsets(WindowInsetsCompat.Type.ime())
 
             // Set keyboard insets if the system supports smooth keyboard animations
-            val mlpDetails = binding.cheatDetailsContainer.layoutParams as ViewGroup.MarginLayoutParams
+            val mlpDetails =
+                binding.cheatDetailsContainer.layoutParams as ViewGroup.MarginLayoutParams
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
                 if (keyboardInsets.bottom > 0) {
                     mlpDetails.bottomMargin = keyboardInsets.bottom

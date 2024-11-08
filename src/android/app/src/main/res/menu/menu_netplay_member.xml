@@ -2,6 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/action_kick"
-        android:title="@string/multiplayer_kick_member"
-        android:enabled="false" />
+        android:enabled="false"
+        android:title="@string/multiplayer_kick_member" />
 </menu>

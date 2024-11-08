@@ -36,13 +36,13 @@ class ControllerQuickConfigDialog(
     var allTitles = arrayListOf<Int>()
 
     init {
-        buttons.forEach {group ->
-            group.forEach {button ->
+        buttons.forEach { group ->
+            group.forEach { button ->
                 allButtons.add(button)
             }
         }
-        titles.forEach {group ->
-            group.forEach {title ->
+        titles.forEach { group ->
+            group.forEach { title ->
                 allTitles.add(title)
             }
         }
@@ -53,7 +53,7 @@ class ControllerQuickConfigDialog(
         builder
             .setView(quickConfigBinding.root)
             .setTitle(context.getString(R.string.controller_quick_config))
-            .setPositiveButton(context.getString(R.string.controller_quick_config_next)) {_,_ -> }
+            .setPositiveButton(context.getString(R.string.controller_quick_config_next)) { _, _ -> }
             .setNegativeButton(context.getString(R.string.controller_quick_config_close)) { dialog, which ->
                 dialog.dismiss()
             }
@@ -75,13 +75,13 @@ class ControllerQuickConfigDialog(
     }
 
     private fun prepareUIforIndex(i: Int) {
-        if (allButtons.size-1 < i) {
+        if (allButtons.size - 1 < i) {
             settingsList.forEach { it.applyMapping() }
             dialog?.dismiss()
             return
         }
 
-        if (index>0) {
+        if (index > 0) {
             quickConfigBinding.lastMappingIcon.visibility = View.VISIBLE
             quickConfigBinding.lastMappingDescription.visibility = View.VISIBLE
         }
@@ -103,7 +103,7 @@ class ControllerQuickConfigDialog(
         quickConfigBinding.currentMappingDescription.text = setting?.value
         quickConfigBinding.currentMappingIcon.setImageDrawable(getIcon())
 
-        if (allButtons.size-1 < index) {
+        if (allButtons.size - 1 < index) {
             dialog?.getButton(AlertDialog.BUTTON_POSITIVE)?.text =
                 context.getString(R.string.controller_quick_config_finish)
             dialog?.getButton(AlertDialog.BUTTON_NEGATIVE)?.visibility = View.GONE
@@ -156,7 +156,7 @@ class ControllerQuickConfigDialog(
     private fun onKeyEvent(event: KeyEvent): Boolean {
         return when (event.action) {
             KeyEvent.ACTION_UP -> {
-                if (System.currentTimeMillis()-debounceTimestamp < DEBOUNCE_TIMER) {
+                if (System.currentTimeMillis() - debounceTimestamp < DEBOUNCE_TIMER) {
                     return true
                 }
 
@@ -170,13 +170,15 @@ class ControllerQuickConfigDialog(
                 // Even if we ignore the key, we still consume it. Thus return true regardless.
                 true
             }
+
             else -> false
         }
     }
 
     private fun onMotionEvent(event: MotionEvent): Boolean {
         if ((event.source and InputDevice.SOURCE_CLASS_JOYSTICK == 0) ||
-            event.action != MotionEvent.ACTION_MOVE) return false
+            event.action != MotionEvent.ACTION_MOVE
+        ) return false
 
         val input = event.device
         val motionRanges = input.motionRanges
