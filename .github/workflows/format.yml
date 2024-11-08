@@ -20,7 +20,7 @@ jobs:
           repo-name: llvm
           keys-asc: https://apt.llvm.org/llvm-snapshot.gpg.key
       - name: Install New Packages
-        run: sudo apt-get update && sudo apt-get -y dist-upgrade && sudo apt-get -y install clang-format-18
+        run: sudo apt-get update && sudo apt-get -y install clang-format-18 && sudo apt-get clean
       - name: Build
         env:
           COMMIT_RANGE: ${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }}
