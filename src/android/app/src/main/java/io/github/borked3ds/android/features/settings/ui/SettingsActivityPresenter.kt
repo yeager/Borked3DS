@@ -8,11 +8,10 @@ package io.github.borked3ds.android.features.settings.ui
 import android.os.Bundle
 import android.text.TextUtils
 import io.github.borked3ds.android.NativeLibrary
-import io.github.borked3ds.android.features.settings.model.IntSetting
 import io.github.borked3ds.android.features.settings.model.Settings
-import io.github.borked3ds.android.utils.SystemSaveGame
 import io.github.borked3ds.android.utils.DirectoryInitialization
 import io.github.borked3ds.android.utils.Log
+import io.github.borked3ds.android.utils.SystemSaveGame
 
 class SettingsActivityPresenter(private val activityView: SettingsActivityView) {
     val settings: Settings get() = activityView.settings

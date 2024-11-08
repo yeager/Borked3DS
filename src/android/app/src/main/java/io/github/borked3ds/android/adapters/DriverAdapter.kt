@@ -16,9 +16,9 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import io.github.borked3ds.android.R
 import io.github.borked3ds.android.databinding.CardDriverOptionBinding
+import io.github.borked3ds.android.utils.GpuDriverHelper
 import io.github.borked3ds.android.utils.GpuDriverMetadata
 import io.github.borked3ds.android.viewmodel.DriverViewModel
-import io.github.borked3ds.android.utils.GpuDriverHelper
 
 class DriverAdapter(private val driverViewModel: DriverViewModel) :
     ListAdapter<Pair<Uri, GpuDriverMetadata>, DriverAdapter.DriverViewHolder>(

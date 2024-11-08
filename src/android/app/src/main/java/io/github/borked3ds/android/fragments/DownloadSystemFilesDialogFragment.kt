@@ -17,14 +17,14 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 import io.github.borked3ds.android.NativeLibrary.InstallStatus
 import io.github.borked3ds.android.R
 import io.github.borked3ds.android.databinding.DialogProgressBarBinding
 import io.github.borked3ds.android.viewmodel.GamesViewModel
 import io.github.borked3ds.android.viewmodel.SystemFilesViewModel
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 class DownloadSystemFilesDialogFragment : DialogFragment() {
     private var _binding: DialogProgressBarBinding? = null

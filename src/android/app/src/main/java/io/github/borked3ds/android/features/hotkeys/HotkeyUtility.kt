@@ -9,8 +9,8 @@ import android.content.Context
 import android.widget.Toast
 import io.github.borked3ds.android.NativeLibrary
 import io.github.borked3ds.android.R
-import io.github.borked3ds.android.utils.EmulationLifecycleUtil
 import io.github.borked3ds.android.display.ScreenAdjustmentUtil
+import io.github.borked3ds.android.utils.EmulationLifecycleUtil
 
 class HotkeyUtility(private val screenAdjustmentUtil: ScreenAdjustmentUtil, private val context: Context) {
 

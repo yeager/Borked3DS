@@ -7,19 +7,15 @@ package io.github.borked3ds.android.activities
 
 import android.Manifest.permission
 import android.annotation.SuppressLint
-import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.view.Display
 import android.view.InputDevice
 import android.view.KeyEvent
 import android.view.MotionEvent
-import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -43,7 +39,6 @@ import io.github.borked3ds.android.features.hotkeys.HotkeyUtility
 import io.github.borked3ds.android.features.settings.model.BooleanSetting
 import io.github.borked3ds.android.features.settings.model.IntSetting
 import io.github.borked3ds.android.features.settings.model.SettingsViewModel
-import io.github.borked3ds.android.features.settings.model.Settings
 import io.github.borked3ds.android.features.settings.model.view.InputBindingSetting
 import io.github.borked3ds.android.fragments.EmulationFragment
 import io.github.borked3ds.android.fragments.MessageDialogFragment
@@ -51,7 +46,6 @@ import io.github.borked3ds.android.utils.ControllerMappingHelper
 import io.github.borked3ds.android.utils.EmulationLifecycleUtil
 import io.github.borked3ds.android.utils.EmulationMenuSettings
 import io.github.borked3ds.android.utils.FileBrowserHelper
-import io.github.borked3ds.android.utils.ForegroundService
 import io.github.borked3ds.android.utils.ThemeUtil
 import io.github.borked3ds.android.viewmodel.EmulationViewModel
 

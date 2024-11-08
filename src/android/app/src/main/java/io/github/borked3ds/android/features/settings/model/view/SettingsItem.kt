@@ -5,9 +5,8 @@
 
 package io.github.borked3ds.android.features.settings.model.view
 
-import io.github.borked3ds.android.NativeLibrary
-import io.github.borked3ds.android.features.settings.model.AbstractSetting
 import io.github.borked3ds.android.activities.EmulationActivity
+import io.github.borked3ds.android.features.settings.model.AbstractSetting
 
 /**
  * ViewModel abstraction for an Item in the RecyclerView powering SettingsFragments.

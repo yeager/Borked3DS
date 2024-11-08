@@ -8,13 +8,13 @@ package io.github.borked3ds.android.utils
 import android.content.SharedPreferences
 import android.net.Uri
 import androidx.preference.PreferenceManager
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
 import io.github.borked3ds.android.Borked3DSApplication
 import io.github.borked3ds.android.NativeLibrary
 import io.github.borked3ds.android.model.CheapDocument
 import io.github.borked3ds.android.model.Game
 import io.github.borked3ds.android.model.GameInfo
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import java.io.IOException
 
 object GameHelper {

@@ -17,12 +17,10 @@ import android.graphics.drawable.VectorDrawable
 import android.os.Build
 import android.util.AttributeSet
 import android.util.DisplayMetrics
-import android.view.Display
 import android.view.MotionEvent
 import android.view.SurfaceView
 import android.view.View
 import android.view.View.OnTouchListener
-import android.view.WindowManager
 import android.view.WindowMetrics
 import androidx.core.content.ContextCompat
 import androidx.preference.PreferenceManager

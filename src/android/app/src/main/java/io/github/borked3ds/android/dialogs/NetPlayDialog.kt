@@ -4,6 +4,8 @@
 
 package io.github.borked3ds.android.dialogs
 
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Context
 import android.os.Bundle
 import android.os.Handler
@@ -16,15 +18,10 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import io.github.borked3ds.android.Borked3DSApplication
-import io.github.borked3ds.android.NativeLibrary
 import io.github.borked3ds.android.R
-import io.github.borked3ds.android.activities.EmulationActivity
 import io.github.borked3ds.android.databinding.*
-import io.github.borked3ds.android.ui.main.MainActivity
-import io.github.borked3ds.android.utils.NetPlayManager
 import io.github.borked3ds.android.utils.CompatUtils
-import android.content.ClipData
-import android.content.ClipboardManager
+import io.github.borked3ds.android.utils.NetPlayManager
 
 class NetPlayDialog(context: Context) : BaseSheetDialog(context) {
     private lateinit var adapter: NetPlayAdapter

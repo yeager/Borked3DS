@@ -26,12 +26,10 @@ import androidx.navigation.findNavController
 import androidx.preference.PreferenceManager
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.google.android.material.transition.MaterialSharedAxis
-import kotlinx.coroutines.launch
 import io.github.borked3ds.android.Borked3DSApplication
 import io.github.borked3ds.android.HomeNavigationDirections
 import io.github.borked3ds.android.NativeLibrary
 import io.github.borked3ds.android.R
-import io.github.borked3ds.android.activities.EmulationActivity
 import io.github.borked3ds.android.databinding.FragmentSystemFilesBinding
 import io.github.borked3ds.android.features.settings.model.Settings
 import io.github.borked3ds.android.model.Game
@@ -39,6 +37,7 @@ import io.github.borked3ds.android.utils.SystemSaveGame
 import io.github.borked3ds.android.viewmodel.GamesViewModel
 import io.github.borked3ds.android.viewmodel.HomeViewModel
 import io.github.borked3ds.android.viewmodel.SystemFilesViewModel
+import kotlinx.coroutines.launch
 
 class SystemFilesFragment : Fragment() {
     private var _binding: FragmentSystemFilesBinding? = null

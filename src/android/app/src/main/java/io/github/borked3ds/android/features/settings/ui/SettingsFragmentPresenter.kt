@@ -16,19 +16,17 @@ import android.text.TextUtils
 import androidx.preference.PreferenceManager
 import io.github.borked3ds.android.Borked3DSApplication
 import io.github.borked3ds.android.R
-import io.github.borked3ds.android.display.PortraitScreenLayout
-import io.github.borked3ds.android.display.ScreenLayout
 import io.github.borked3ds.android.features.settings.model.AbstractBooleanSetting
 import io.github.borked3ds.android.features.settings.model.AbstractIntSetting
 import io.github.borked3ds.android.features.settings.model.AbstractSetting
+import io.github.borked3ds.android.features.settings.model.AbstractShortSetting
 import io.github.borked3ds.android.features.settings.model.AbstractStringSetting
 import io.github.borked3ds.android.features.settings.model.BooleanSetting
+import io.github.borked3ds.android.features.settings.model.FloatSetting
 import io.github.borked3ds.android.features.settings.model.IntSetting
 import io.github.borked3ds.android.features.settings.model.ScaledFloatSetting
 import io.github.borked3ds.android.features.settings.model.Settings
 import io.github.borked3ds.android.features.settings.model.StringSetting
-import io.github.borked3ds.android.features.settings.model.AbstractShortSetting
-import io.github.borked3ds.android.features.settings.model.FloatSetting
 import io.github.borked3ds.android.features.settings.model.view.DateTimeSetting
 import io.github.borked3ds.android.features.settings.model.view.HeaderSetting
 import io.github.borked3ds.android.features.settings.model.view.InputBindingSetting
@@ -47,7 +45,6 @@ import io.github.borked3ds.android.utils.GpuDriverHelper
 import io.github.borked3ds.android.utils.Log
 import io.github.borked3ds.android.utils.SystemSaveGame
 import io.github.borked3ds.android.utils.ThemeUtil
-import kotlin.math.min
 
 class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) {
     private var menuTag: String? = null

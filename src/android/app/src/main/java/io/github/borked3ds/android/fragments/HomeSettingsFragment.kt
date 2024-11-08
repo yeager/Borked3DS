@@ -34,18 +34,17 @@ import io.github.borked3ds.android.adapters.HomeSettingAdapter
 import io.github.borked3ds.android.databinding.DialogSoftwareKeyboardBinding
 import io.github.borked3ds.android.databinding.FragmentHomeSettingsBinding
 import io.github.borked3ds.android.features.settings.model.Settings
-import io.github.borked3ds.android.features.settings.model.StringSetting
 import io.github.borked3ds.android.features.settings.ui.SettingsActivity
 import io.github.borked3ds.android.features.settings.utils.SettingsFile
 import io.github.borked3ds.android.model.Game
 import io.github.borked3ds.android.model.HomeSetting
 import io.github.borked3ds.android.ui.main.MainActivity
 import io.github.borked3ds.android.utils.GameHelper
-import io.github.borked3ds.android.utils.PermissionsHandler
-import io.github.borked3ds.android.viewmodel.HomeViewModel
 import io.github.borked3ds.android.utils.GpuDriverHelper
 import io.github.borked3ds.android.utils.Log
+import io.github.borked3ds.android.utils.PermissionsHandler
 import io.github.borked3ds.android.viewmodel.DriverViewModel
+import io.github.borked3ds.android.viewmodel.HomeViewModel
 
 class HomeSettingsFragment : Fragment() {
     private var _binding: FragmentHomeSettingsBinding? = null

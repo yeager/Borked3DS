@@ -5,14 +5,14 @@
 
 package io.github.borked3ds.android.model
 
-import android.os.Parcelable
 import android.content.Intent
 import android.net.Uri
-import java.util.HashSet
-import kotlinx.parcelize.Parcelize
-import kotlinx.serialization.Serializable
+import android.os.Parcelable
 import io.github.borked3ds.android.Borked3DSApplication
 import io.github.borked3ds.android.activities.EmulationActivity
+import kotlinx.parcelize.Parcelize
+import kotlinx.serialization.Serializable
+import java.util.HashSet
 
 @Parcelize
 @Serializable

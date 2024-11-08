@@ -22,12 +22,12 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.divider.MaterialDividerItemDecoration
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
 import io.github.borked3ds.android.R
 import io.github.borked3ds.android.databinding.FragmentCheatListBinding
 import io.github.borked3ds.android.features.cheats.model.CheatsViewModel
 import io.github.borked3ds.android.ui.main.MainActivity
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 class CheatListFragment : Fragment() {
     private var _binding: FragmentCheatListBinding? = null

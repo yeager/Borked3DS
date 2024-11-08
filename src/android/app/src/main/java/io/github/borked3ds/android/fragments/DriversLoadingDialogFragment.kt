@@ -16,10 +16,10 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import kotlinx.coroutines.launch
 import io.github.borked3ds.android.R
 import io.github.borked3ds.android.databinding.DialogProgressBarBinding
 import io.github.borked3ds.android.viewmodel.DriverViewModel
+import kotlinx.coroutines.launch
 
 class DriversLoadingDialogFragment : DialogFragment() {
     private val driverViewModel: DriverViewModel by activityViewModels()

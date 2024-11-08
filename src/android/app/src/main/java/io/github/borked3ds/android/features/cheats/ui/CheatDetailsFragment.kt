@@ -20,12 +20,12 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
 import io.github.borked3ds.android.R
 import io.github.borked3ds.android.databinding.FragmentCheatDetailsBinding
 import io.github.borked3ds.android.features.cheats.model.Cheat
 import io.github.borked3ds.android.features.cheats.model.CheatsViewModel
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 class CheatDetailsFragment : Fragment() {
     private val cheatsViewModel: CheatsViewModel by activityViewModels()

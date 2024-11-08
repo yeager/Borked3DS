@@ -8,7 +8,6 @@ package io.github.borked3ds.android.features.settings.ui
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.DialogInterface
-import android.graphics.Color
 import android.icu.util.Calendar
 import android.icu.util.TimeZone
 import android.text.Editable
@@ -18,7 +17,6 @@ import android.text.TextWatcher
 import android.text.format.DateFormat
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
@@ -41,10 +39,10 @@ import io.github.borked3ds.android.features.settings.model.AbstractBooleanSettin
 import io.github.borked3ds.android.features.settings.model.AbstractFloatSetting
 import io.github.borked3ds.android.features.settings.model.AbstractIntSetting
 import io.github.borked3ds.android.features.settings.model.AbstractSetting
+import io.github.borked3ds.android.features.settings.model.AbstractShortSetting
 import io.github.borked3ds.android.features.settings.model.AbstractStringSetting
 import io.github.borked3ds.android.features.settings.model.FloatSetting
 import io.github.borked3ds.android.features.settings.model.ScaledFloatSetting
-import io.github.borked3ds.android.features.settings.model.AbstractShortSetting
 import io.github.borked3ds.android.features.settings.model.Settings
 import io.github.borked3ds.android.features.settings.model.view.DateTimeSetting
 import io.github.borked3ds.android.features.settings.model.view.InputBindingSetting

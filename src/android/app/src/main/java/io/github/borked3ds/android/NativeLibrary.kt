@@ -22,7 +22,6 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import io.github.borked3ds.android.activities.EmulationActivity
-import io.github.borked3ds.android.utils.EmulationMenuSettings
 import io.github.borked3ds.android.utils.FileUtil
 import io.github.borked3ds.android.utils.Log
 import io.github.borked3ds.android.utils.NetPlayManager

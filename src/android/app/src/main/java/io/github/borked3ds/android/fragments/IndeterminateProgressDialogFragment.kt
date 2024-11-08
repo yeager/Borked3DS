@@ -20,10 +20,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import kotlinx.coroutines.launch
 import io.github.borked3ds.android.R
 import io.github.borked3ds.android.databinding.DialogProgressBarBinding
 import io.github.borked3ds.android.viewmodel.TaskViewModel
+import kotlinx.coroutines.launch
 
 class IndeterminateProgressDialogFragment : DialogFragment() {
     private val taskViewModel: TaskViewModel by activityViewModels()

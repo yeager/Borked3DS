@@ -20,10 +20,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import io.github.borked3ds.android.Borked3DSApplication
 import io.github.borked3ds.android.R
 import io.github.borked3ds.android.databinding.DialogCopyDirBinding
@@ -32,6 +28,10 @@ import io.github.borked3ds.android.utils.Borked3DSDirectoryHelper
 import io.github.borked3ds.android.utils.FileUtil
 import io.github.borked3ds.android.utils.PermissionsHandler
 import io.github.borked3ds.android.viewmodel.HomeViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class CopyDirProgressDialog : DialogFragment() {
     private var _binding: DialogCopyDirBinding? = null

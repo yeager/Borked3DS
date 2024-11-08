@@ -12,12 +12,10 @@ import android.os.Looper
 import android.text.format.Formatter
 import android.widget.Toast
 import androidx.preference.PreferenceManager
-import io.github.borked3ds.android.NativeLibrary
 import io.github.borked3ds.android.Borked3DSApplication
 import io.github.borked3ds.android.R
 import io.github.borked3ds.android.dialogs.ChatMessage
 import io.github.borked3ds.android.dialogs.NetPlayDialog
-import io.github.borked3ds.android.ui.main.MainActivity
 
 object NetPlayManager {
     external fun netPlayCreateRoom(ipAddress: String, port: Int, username: String, password: String, roomName: String, maxPlayers: Int): Int

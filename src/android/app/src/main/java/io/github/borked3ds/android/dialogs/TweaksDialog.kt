@@ -1,7 +1,6 @@
 package io.github.borked3ds.android.dialogs
 
 import android.content.Context
-import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View

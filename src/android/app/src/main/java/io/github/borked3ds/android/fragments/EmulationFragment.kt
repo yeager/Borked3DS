@@ -9,6 +9,8 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.DialogInterface
 import android.content.SharedPreferences
+import android.content.pm.ActivityInfo
+import android.content.res.Configuration
 import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
@@ -23,7 +25,6 @@ import android.view.Surface
 import android.view.SurfaceHolder
 import android.view.View
 import android.view.ViewGroup
-import android.content.res.Configuration
 import android.widget.PopupMenu
 import android.widget.TextView
 import android.widget.Toast
@@ -40,14 +41,11 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import android.content.pm.ActivityInfo
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.preference.PreferenceManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.slider.Slider
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 import io.github.borked3ds.android.Borked3DSApplication
 import io.github.borked3ds.android.EmulationNavigationDirections
 import io.github.borked3ds.android.NativeLibrary
@@ -66,14 +64,16 @@ import io.github.borked3ds.android.features.settings.utils.SettingsFile
 import io.github.borked3ds.android.model.Game
 import io.github.borked3ds.android.utils.DirectoryInitialization
 import io.github.borked3ds.android.utils.DirectoryInitialization.DirectoryInitializationState
+import io.github.borked3ds.android.utils.EmulationLifecycleUtil
 import io.github.borked3ds.android.utils.EmulationMenuSettings
 import io.github.borked3ds.android.utils.FileUtil
 import io.github.borked3ds.android.utils.GameHelper
 import io.github.borked3ds.android.utils.GameIconUtils
-import io.github.borked3ds.android.utils.EmulationLifecycleUtil
 import io.github.borked3ds.android.utils.Log
 import io.github.borked3ds.android.utils.ViewUtils
 import io.github.borked3ds.android.viewmodel.EmulationViewModel
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import java.io.File
 
 class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.FrameCallback {
