@@ -856,7 +856,7 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
 
             else -> R.id.menu_screen_layout_largescreen
         }
-        popupMenu.menu.findItem(layoutOptionMenuItem).setChecked(true)
+        popupMenu.menu.findItem(layoutOptionMenuItem).isChecked = true
 
         popupMenu.setOnMenuItemClickListener {
             when (it.itemId) {
@@ -922,7 +922,7 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
 
         }
 
-        popupMenu.menu.findItem(layoutOptionMenuItem).setChecked(true)
+        popupMenu.menu.findItem(layoutOptionMenuItem).isChecked = true
 
         popupMenu.setOnMenuItemClickListener {
             when (it.itemId) {
@@ -1157,9 +1157,7 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
 
     fun updateShowFpsOverlay() {
         if (EmulationMenuSettings.showFps) {
-            val SYSTEM_FPS = 0
             val FPS = 1
-            val FRAMETIME = 2
             val SPEED = 3
             perfStatsUpdater = Runnable {
                 val perfStats = NativeLibrary.getPerfStats()

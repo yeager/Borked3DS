@@ -97,7 +97,7 @@ class HomeSettingsFragment : Fragment() {
                         textInputValue = text.toString()
                     }
 
-                    val dialog = context?.let {
+                    context?.let {
                         MaterialAlertDialogBuilder(it)
                             .setView(inputBinding.root)
                             .setTitle(getString(R.string.artic_base_enter_address))

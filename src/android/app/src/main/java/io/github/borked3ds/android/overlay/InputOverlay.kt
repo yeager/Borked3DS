@@ -86,7 +86,7 @@ class InputOverlay(context: Context?, attrs: AttributeSet?) : SurfaceView(contex
         EmulationMenuSettings.swapScreens = isEnabled
 
         val rotation = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            context.getDisplay()!!.getRotation()
+            context.display!!.rotation
         } else {
             @Suppress("DEPRECATION")
             (context as Activity).windowManager.defaultDisplay.rotation

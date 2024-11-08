@@ -26,7 +26,7 @@ abstract class SettingsItem(
     val isEditable: Boolean
         get() {
             if (!EmulationActivity.isRunning()) return true
-            return setting?.isRuntimeEditable ?: false
+            return setting?.isRuntimeEditable == true
         }
 
     companion object {

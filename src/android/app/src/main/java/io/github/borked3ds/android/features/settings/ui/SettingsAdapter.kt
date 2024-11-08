@@ -287,9 +287,9 @@ class SettingsAdapter(
             textSliderValue?.addTextChangedListener(object : TextWatcher {
                 override fun afterTextChanged(s: Editable) {
 
-                    var textValue = s.toString().toFloatOrNull();
+                    var textValue = s.toString().toFloatOrNull()
                     if (item.setting !is FloatSetting) {
-                        textValue = textValue?.roundToInt()?.toFloat();
+                        textValue = textValue?.roundToInt()?.toFloat()
                     }
                     if (textValue == null || textValue < valueFrom || textValue > valueTo) {
                         textInputLayout?.error = "Inappropriate value"

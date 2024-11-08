@@ -85,7 +85,7 @@ object GameHelper {
             gameInfo?.getRegions() ?: "Invalid region",
             isInstalled,
             NativeLibrary.getIsSystemTitle(filePath),
-            gameInfo?.getIsVisibleSystemTitle() ?: false,
+            gameInfo?.getIsVisibleSystemTitle() == true,
             gameInfo?.getIcon(),
             if (FileUtil.isNativePath(filePath)) {
                 Borked3DSApplication.documentsTree.getFilename(filePath)

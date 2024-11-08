@@ -538,7 +538,7 @@ class EmulationActivity : AppCompatActivity() {
         private var instance: EmulationActivity? = null
 
         fun isRunning(): Boolean {
-            return instance?.isEmulationRunning ?: false
+            return instance?.isEmulationRunning == true
         }
     }
 }

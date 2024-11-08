@@ -54,7 +54,7 @@ class CheatsViewModel : ViewModel() {
     private var selectedCheatPosition = -1
 
     fun initialize(titleId_: Long) {
-        titleId = titleId_;
+        titleId = titleId_
         load()
     }
 

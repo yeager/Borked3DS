@@ -114,7 +114,7 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
 
     /** Returns the portrait mode width */
     private fun getWidth(): Int {
-        val dm = Resources.getSystem().displayMetrics;
+        val dm = Resources.getSystem().displayMetrics
         return if (dm.widthPixels < dm.heightPixels)
             dm.widthPixels
         else
@@ -122,7 +122,7 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
     }
 
     private fun getHeight(): Int {
-        val dm = Resources.getSystem().displayMetrics;
+        val dm = Resources.getSystem().displayMetrics
         return if (dm.widthPixels < dm.heightPixels)
             dm.heightPixels
         else
@@ -1641,10 +1641,6 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
                 )
             )
 
-            val logRegexFilterModes =
-                settingsActivity.resources.getStringArray(R.array.logRegexFilterNameModes)
-            val logRegexFilterValues =
-                settingsActivity.resources.getStringArray(R.array.logRegexFilterNameValues)
             add(
                 StringInputSetting(
                     StringSetting.LOG_REGEX_FILTER,
