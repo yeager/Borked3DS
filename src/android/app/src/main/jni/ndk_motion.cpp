@@ -23,7 +23,11 @@ class NDKMotion final : public Input::MotionDevice {
 
     mutable std::atomic<Vec3<float>> acceleration{};
     mutable std::atomic<Vec3<float>> rotation{};
-    static_assert(decltype(acceleration)::is_always_lock_free, "vectors are not lock free");
+
+    static_assert(decltype(acceleration)
+
+                      ::is_always_lock_free,
+                  "vectors are not lock free");
     std::thread poll_thread;
     std::atomic<bool> stop_polling = false;
 

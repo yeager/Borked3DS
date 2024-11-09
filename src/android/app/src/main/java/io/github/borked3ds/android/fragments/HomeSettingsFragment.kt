@@ -34,18 +34,17 @@ import io.github.borked3ds.android.adapters.HomeSettingAdapter
 import io.github.borked3ds.android.databinding.DialogSoftwareKeyboardBinding
 import io.github.borked3ds.android.databinding.FragmentHomeSettingsBinding
 import io.github.borked3ds.android.features.settings.model.Settings
-import io.github.borked3ds.android.features.settings.model.StringSetting
 import io.github.borked3ds.android.features.settings.ui.SettingsActivity
 import io.github.borked3ds.android.features.settings.utils.SettingsFile
 import io.github.borked3ds.android.model.Game
 import io.github.borked3ds.android.model.HomeSetting
 import io.github.borked3ds.android.ui.main.MainActivity
 import io.github.borked3ds.android.utils.GameHelper
-import io.github.borked3ds.android.utils.PermissionsHandler
-import io.github.borked3ds.android.viewmodel.HomeViewModel
 import io.github.borked3ds.android.utils.GpuDriverHelper
 import io.github.borked3ds.android.utils.Log
+import io.github.borked3ds.android.utils.PermissionsHandler
 import io.github.borked3ds.android.viewmodel.DriverViewModel
+import io.github.borked3ds.android.viewmodel.HomeViewModel
 
 class HomeSettingsFragment : Fragment() {
     private var _binding: FragmentHomeSettingsBinding? = null
@@ -56,8 +55,9 @@ class HomeSettingsFragment : Fragment() {
     private val homeViewModel: HomeViewModel by activityViewModels()
     private val driverViewModel: DriverViewModel by activityViewModels()
 
-    private val preferences get() =
-        PreferenceManager.getDefaultSharedPreferences(Borked3DSApplication.appContext)
+    private val preferences
+        get() =
+            PreferenceManager.getDefaultSharedPreferences(Borked3DSApplication.appContext)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -97,7 +97,7 @@ class HomeSettingsFragment : Fragment() {
                         textInputValue = text.toString()
                     }
 
-                    val dialog = context?.let {
+                    context?.let {
                         MaterialAlertDialogBuilder(it)
                             .setView(inputBinding.root)
                             .setTitle(getString(R.string.artic_base_enter_address))
@@ -116,7 +116,7 @@ class HomeSettingsFragment : Fragment() {
                                     binding.root.findNavController().navigate(action)
                                 }
                             }
-                            .setNegativeButton(android.R.string.cancel) {_, _ -> }
+                            .setNegativeButton(android.R.string.cancel) { _, _ -> }
                             .show()
                     }
                 }

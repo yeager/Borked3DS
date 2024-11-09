@@ -12,8 +12,8 @@
         tools:layout="@layout/fragment_cheats">
         <argument
             android:name="titleId"
-            app:argType="long"
-            android:defaultValue="-1L" />
+            android:defaultValue="-1L"
+            app:argType="long" />
     </fragment>
 
 </navigation>

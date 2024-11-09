@@ -5,20 +5,20 @@
 
 package io.github.borked3ds.android.adapters
 
+import android.content.Context
+import android.content.pm.ShortcutInfo
+import android.content.pm.ShortcutManager
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Icon
 import android.net.Uri
 import android.os.SystemClock
 import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.content.Context
-import android.widget.TextView
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
-import android.graphics.drawable.BitmapDrawable
-import android.graphics.Bitmap
-import android.content.pm.ShortcutInfo
-import android.content.pm.ShortcutManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.documentfile.provider.DocumentFile
 import androidx.lifecycle.ViewModelProvider
@@ -28,17 +28,13 @@ import androidx.recyclerview.widget.AsyncDifferConfig
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import android.graphics.drawable.Icon
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.CoroutineScope
-import com.google.android.material.color.MaterialColors
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.button.MaterialButton
-import io.github.borked3ds.android.HomeNavigationDirections
+import com.google.android.material.color.MaterialColors
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import io.github.borked3ds.android.Borked3DSApplication
+import io.github.borked3ds.android.HomeNavigationDirections
 import io.github.borked3ds.android.R
 import io.github.borked3ds.android.adapters.GameAdapter.GameViewHolder
 import io.github.borked3ds.android.databinding.CardGameBinding
@@ -46,8 +42,9 @@ import io.github.borked3ds.android.features.cheats.ui.CheatsFragmentDirections
 import io.github.borked3ds.android.model.Game
 import io.github.borked3ds.android.utils.GameIconUtils
 import io.github.borked3ds.android.viewmodel.GamesViewModel
-import io.github.borked3ds.android.features.settings.ui.SettingsActivity
-import io.github.borked3ds.android.features.settings.utils.SettingsFile
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class GameAdapter(private val activity: AppCompatActivity, private val inflater: LayoutInflater) :
     ListAdapter<Game, GameViewHolder>(AsyncDifferConfig.Builder(DiffCallback()).build()),
@@ -182,7 +179,9 @@ class GameAdapter(private val activity: AppCompatActivity, private val inflater:
 
             val backgroundColorId =
                 if (
-                    isValidGame(game.filename.substring(game.filename.lastIndexOf(".") + 1).lowercase())
+                    isValidGame(
+                        game.filename.substring(game.filename.lastIndexOf(".") + 1).lowercase()
+                    )
                 ) {
                     R.attr.colorSurface
                 } else {
@@ -216,7 +215,12 @@ class GameAdapter(private val activity: AppCompatActivity, private val inflater:
         }
     }
 
-    private fun showAboutGameDialog(context: Context, game: Game, holder: GameViewHolder, view: View) {
+    private fun showAboutGameDialog(
+        context: Context,
+        game: Game,
+        holder: GameViewHolder,
+        view: View
+    ) {
         val bottomSheetView = inflater.inflate(R.layout.dialog_about_game, null)
 
         val bottomSheetDialog = BottomSheetDialog(context)
@@ -225,8 +229,10 @@ class GameAdapter(private val activity: AppCompatActivity, private val inflater:
         bottomSheetView.findViewById<TextView>(R.id.about_game_title).text = game.title
         bottomSheetView.findViewById<TextView>(R.id.about_game_company).text = game.company
         bottomSheetView.findViewById<TextView>(R.id.about_game_region).text = game.regions
-        bottomSheetView.findViewById<TextView>(R.id.about_game_id).text = "ID: " + String.format("%016X", game.titleId)
-        bottomSheetView.findViewById<TextView>(R.id.about_game_filename).text = "File: " + game.filename
+        bottomSheetView.findViewById<TextView>(R.id.about_game_id).text =
+            "ID: " + String.format("%016X", game.titleId)
+        bottomSheetView.findViewById<TextView>(R.id.about_game_filename).text =
+            "File: " + game.filename
         GameIconUtils.loadGameIcon(activity, game, bottomSheetView.findViewById(R.id.game_icon))
 
         bottomSheetView.findViewById<MaterialButton>(R.id.about_game_play).setOnClickListener {
@@ -238,7 +244,8 @@ class GameAdapter(private val activity: AppCompatActivity, private val inflater:
             val shortcutManager = activity.getSystemService(ShortcutManager::class.java)
 
             CoroutineScope(Dispatchers.IO).launch {
-                val bitmap = (bottomSheetView.findViewById<ImageView>(R.id.game_icon).drawable as BitmapDrawable).bitmap
+                val bitmap =
+                    (bottomSheetView.findViewById<ImageView>(R.id.game_icon).drawable as BitmapDrawable).bitmap
                 val icon = Icon.createWithBitmap(bitmap)
 
                 val shortcut = ShortcutInfo.Builder(context, game.title)

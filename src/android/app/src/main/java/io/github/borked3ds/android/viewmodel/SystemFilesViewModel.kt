@@ -6,6 +6,9 @@
 package io.github.borked3ds.android.viewmodel
 
 import androidx.lifecycle.ViewModel
+import io.github.borked3ds.android.NativeLibrary
+import io.github.borked3ds.android.NativeLibrary.InstallStatus
+import io.github.borked3ds.android.utils.Log
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -15,9 +18,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.yield
-import io.github.borked3ds.android.NativeLibrary
-import io.github.borked3ds.android.NativeLibrary.InstallStatus
-import io.github.borked3ds.android.utils.Log
 import java.util.concurrent.atomic.AtomicInteger
 import kotlin.coroutines.CoroutineContext
 import kotlin.math.min

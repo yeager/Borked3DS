@@ -24,14 +24,14 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.slidingpanelayout.widget.SlidingPaneLayout
 import com.google.android.material.transition.MaterialSharedAxis
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
 import io.github.borked3ds.android.databinding.FragmentCheatsBinding
 import io.github.borked3ds.android.features.cheats.model.Cheat
 import io.github.borked3ds.android.features.cheats.model.CheatsViewModel
 import io.github.borked3ds.android.ui.TwoPaneOnBackPressedCallback
 import io.github.borked3ds.android.ui.main.MainActivity
 import io.github.borked3ds.android.viewmodel.HomeViewModel
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 class CheatsFragment : Fragment(), SlidingPaneLayout.PanelSlideListener {
     private var cheatListLastFocus: View? = null
@@ -204,7 +204,8 @@ class CheatsFragment : Fragment(), SlidingPaneLayout.PanelSlideListener {
             val keyboardInsets = windowInsets.getInsets(WindowInsetsCompat.Type.ime())
 
             // Set keyboard insets if the system supports smooth keyboard animations
-            val mlpDetails = binding.cheatDetailsContainer.layoutParams as ViewGroup.MarginLayoutParams
+            val mlpDetails =
+                binding.cheatDetailsContainer.layoutParams as ViewGroup.MarginLayoutParams
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
                 if (keyboardInsets.bottom > 0) {
                     mlpDetails.bottomMargin = keyboardInsets.bottom

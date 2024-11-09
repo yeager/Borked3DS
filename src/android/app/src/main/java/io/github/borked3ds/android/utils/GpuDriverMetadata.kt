@@ -5,10 +5,10 @@
 
 package io.github.borked3ds.android.utils
 
-import java.io.IOException
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.File
+import java.io.IOException
 import java.io.InputStream
 
 class GpuDriverMetadata {

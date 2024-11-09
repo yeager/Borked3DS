@@ -21,17 +21,22 @@ struct ANativeWindow;
 class EmuWindow_Android_OpenGL : public EmuWindow_Android {
 public:
     EmuWindow_Android_OpenGL(Core::System& system, ANativeWindow* surface);
+
     ~EmuWindow_Android_OpenGL() override = default;
 
     void TryPresenting() override;
+
     void StopPresenting() override;
+
     void PollEvents() override;
 
     std::unique_ptr<GraphicsContext> CreateSharedContext() const override;
 
 private:
     bool CreateWindowSurface() override;
+
     void DestroyWindowSurface() override;
+
     void DestroyContext() override;
 
 private:

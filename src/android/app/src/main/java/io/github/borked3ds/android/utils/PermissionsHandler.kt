@@ -9,8 +9,8 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
-import androidx.preference.PreferenceManager
 import androidx.documentfile.provider.DocumentFile
+import androidx.preference.PreferenceManager
 import io.github.borked3ds.android.Borked3DSApplication
 
 object PermissionsHandler {

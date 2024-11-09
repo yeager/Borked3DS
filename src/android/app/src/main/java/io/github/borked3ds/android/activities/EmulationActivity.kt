@@ -7,19 +7,15 @@ package io.github.borked3ds.android.activities
 
 import android.Manifest.permission
 import android.annotation.SuppressLint
-import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.view.Display
 import android.view.InputDevice
 import android.view.KeyEvent
 import android.view.MotionEvent
-import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -43,7 +39,6 @@ import io.github.borked3ds.android.features.hotkeys.HotkeyUtility
 import io.github.borked3ds.android.features.settings.model.BooleanSetting
 import io.github.borked3ds.android.features.settings.model.IntSetting
 import io.github.borked3ds.android.features.settings.model.SettingsViewModel
-import io.github.borked3ds.android.features.settings.model.Settings
 import io.github.borked3ds.android.features.settings.model.view.InputBindingSetting
 import io.github.borked3ds.android.fragments.EmulationFragment
 import io.github.borked3ds.android.fragments.MessageDialogFragment
@@ -51,7 +46,6 @@ import io.github.borked3ds.android.utils.ControllerMappingHelper
 import io.github.borked3ds.android.utils.EmulationLifecycleUtil
 import io.github.borked3ds.android.utils.EmulationMenuSettings
 import io.github.borked3ds.android.utils.FileBrowserHelper
-import io.github.borked3ds.android.utils.ForegroundService
 import io.github.borked3ds.android.utils.ThemeUtil
 import io.github.borked3ds.android.viewmodel.EmulationViewModel
 
@@ -269,7 +263,8 @@ class EmulationActivity : AppCompatActivity() {
             return super.dispatchKeyEvent(event)
         }
 
-        val button = preferences.getInt(InputBindingSetting.getInputButtonKey(event), event.scanCode)
+        val button =
+            preferences.getInt(InputBindingSetting.getInputButtonKey(event), event.scanCode)
         val action: Int = when (event.action) {
             KeyEvent.ACTION_DOWN -> {
                 // On some devices, the back gesture / button press is not intercepted by androidx
@@ -308,7 +303,8 @@ class EmulationActivity : AppCompatActivity() {
         // TODO: Move this check into native code - prevents crash if input pressed before starting emulation
         if (!NativeLibrary.isRunning() ||
             (event.source and InputDevice.SOURCE_CLASS_JOYSTICK == 0) ||
-            emulationFragment.isDrawerOpen()) {
+            emulationFragment.isDrawerOpen()
+        ) {
             return super.dispatchGenericMotionEvent(event)
         }
 
@@ -538,7 +534,7 @@ class EmulationActivity : AppCompatActivity() {
         private var instance: EmulationActivity? = null
 
         fun isRunning(): Boolean {
-            return instance?.isEmulationRunning ?: false
+            return instance?.isEmulationRunning == true
         }
     }
 }

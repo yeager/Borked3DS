@@ -11,13 +11,13 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.preference.PreferenceManager
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import io.github.borked3ds.android.Borked3DSApplication
 import io.github.borked3ds.android.R
 import io.github.borked3ds.android.fragments.Borked3DSDirectoryDialogFragment
 import io.github.borked3ds.android.utils.GameHelper
 import io.github.borked3ds.android.utils.PermissionsHandler
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 
 class HomeViewModel : ViewModel() {
     val navigationVisible get() = _navigationVisible.asStateFlow()

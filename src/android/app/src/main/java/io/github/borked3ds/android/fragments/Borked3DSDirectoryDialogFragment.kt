@@ -35,7 +35,7 @@ class Borked3DSDirectoryDialogFragment : DialogFragment() {
 
         val path = Uri.parse(requireArguments().getString(PATH))
 
-        binding.checkBox.isChecked = savedInstanceState?.getBoolean(MOVE_DATE_ENABLE) ?: false
+        binding.checkBox.isChecked = savedInstanceState?.getBoolean(MOVE_DATE_ENABLE) == true
         val oldPath = PermissionsHandler.borked3dsDirectory
         if (!PermissionsHandler.hasWriteAccess(requireActivity()) ||
             oldPath.toString() == path.toString()

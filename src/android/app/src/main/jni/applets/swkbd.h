@@ -15,6 +15,7 @@ public:
     ~AndroidKeyboard();
 
     void Execute(const Frontend::KeyboardConfig& config) override;
+
     void ShowError(const std::string& error) override;
 };
 

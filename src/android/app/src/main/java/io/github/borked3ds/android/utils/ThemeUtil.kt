@@ -13,9 +13,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsControllerCompat
-import androidx.lifecycle.DefaultLifecycleObserver
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleOwner
 import androidx.preference.PreferenceManager
 import io.github.borked3ds.android.Borked3DSApplication
 import io.github.borked3ds.android.R
@@ -26,8 +23,9 @@ import kotlin.math.roundToInt
 object ThemeUtil {
     const val SYSTEM_BAR_ALPHA = 0.9f
 
-    private val preferences: SharedPreferences get() =
-        PreferenceManager.getDefaultSharedPreferences(Borked3DSApplication.appContext)
+    private val preferences: SharedPreferences
+        get() =
+            PreferenceManager.getDefaultSharedPreferences(Borked3DSApplication.appContext)
 
     private fun getSelectedStaticThemeColor(): Int {
         val themeIndex = preferences.getInt(Settings.PREF_STATIC_THEME_COLOR, 0)
@@ -77,6 +75,7 @@ object ThemeUtil {
                 false -> setLightModeSystemBars(windowController)
                 true -> setDarkModeSystemBars(windowController)
             }
+
             AppCompatDelegate.MODE_NIGHT_NO -> setLightModeSystemBars(windowController)
             AppCompatDelegate.MODE_NIGHT_YES -> setDarkModeSystemBars(windowController)
         }
@@ -123,7 +122,11 @@ object ThemeUtil {
 
     fun ThemeChangeListener(activity: AppCompatActivity) {
         listener = SharedPreferences.OnSharedPreferenceChangeListener { _, key ->
-            val relevantKeys = listOf(Settings.PREF_STATIC_THEME_COLOR, Settings.PREF_MATERIAL_YOU, Settings.PREF_BLACK_BACKGROUNDS)
+            val relevantKeys = listOf(
+                Settings.PREF_STATIC_THEME_COLOR,
+                Settings.PREF_MATERIAL_YOU,
+                Settings.PREF_BLACK_BACKGROUNDS
+            )
             if (key in relevantKeys) {
                 activity.recreate()
             }

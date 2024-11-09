@@ -82,6 +82,7 @@ class InputBindingSetting(
 
             else -> false
         }
+
     /**
      * Returns true if this key is for the 3DS L/R or ZL/ZR buttons. Note, these are not real
      * triggers on the 3DS, but we support them as such on a physical gamepad.
@@ -314,7 +315,8 @@ class InputBindingSetting(
          * Helper function to get the settings key for an gamepad button.
          *
          */
-        fun getInputButtonKey(event: KeyEvent): String = "${INPUT_MAPPING_PREFIX}_HostAxis_${translateEventToKeyId(event)}"
+        fun getInputButtonKey(event: KeyEvent): String =
+            "${INPUT_MAPPING_PREFIX}_HostAxis_${translateEventToKeyId(event)}"
 
         /**
          * Helper function to get the settings key for an gamepad axis.

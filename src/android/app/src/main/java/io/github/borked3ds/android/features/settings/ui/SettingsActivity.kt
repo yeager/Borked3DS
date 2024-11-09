@@ -26,7 +26,6 @@ import io.github.borked3ds.android.Borked3DSApplication
 import io.github.borked3ds.android.NativeLibrary
 import io.github.borked3ds.android.R
 import io.github.borked3ds.android.databinding.ActivitySettingsBinding
-import java.io.IOException
 import io.github.borked3ds.android.features.settings.model.BooleanSetting
 import io.github.borked3ds.android.features.settings.model.FloatSetting
 import io.github.borked3ds.android.features.settings.model.IntSetting
@@ -35,10 +34,11 @@ import io.github.borked3ds.android.features.settings.model.Settings
 import io.github.borked3ds.android.features.settings.model.SettingsViewModel
 import io.github.borked3ds.android.features.settings.model.StringSetting
 import io.github.borked3ds.android.features.settings.utils.SettingsFile
-import io.github.borked3ds.android.utils.SystemSaveGame
 import io.github.borked3ds.android.utils.DirectoryInitialization
 import io.github.borked3ds.android.utils.InsetsHelper
+import io.github.borked3ds.android.utils.SystemSaveGame
 import io.github.borked3ds.android.utils.ThemeUtil
+import java.io.IOException
 
 class SettingsActivity : AppCompatActivity(), SettingsActivityView {
     private val presenter = SettingsActivityPresenter(this)

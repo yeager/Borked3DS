@@ -11,7 +11,6 @@ import io.github.borked3ds.android.features.settings.model.AbstractSetting
 import io.github.borked3ds.android.features.settings.model.FloatSetting
 import io.github.borked3ds.android.features.settings.model.ScaledFloatSetting
 import io.github.borked3ds.android.utils.Log
-import kotlin.math.roundToInt
 
 class SliderSetting(
     setting: AbstractSetting?,

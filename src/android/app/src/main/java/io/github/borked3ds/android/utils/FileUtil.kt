@@ -5,7 +5,6 @@
 
 package io.github.borked3ds.android.utils
 
-import okio.ByteString.Companion.readByteString
 import android.content.Context
 import android.database.Cursor
 import android.net.Uri
@@ -15,6 +14,7 @@ import android.util.Pair
 import androidx.documentfile.provider.DocumentFile
 import io.github.borked3ds.android.Borked3DSApplication
 import io.github.borked3ds.android.model.CheapDocument
+import okio.ByteString.Companion.readByteString
 import java.io.BufferedInputStream
 import java.io.File
 import java.io.FileOutputStream

@@ -270,7 +270,7 @@ fun getGitHash(): String =
 fun getBranch(): String =
     runGitCommand(ProcessBuilder("git", "rev-parse", "--abbrev-ref", "HEAD")) ?: "dummy-branch"
 
-fun runGitCommand(command: ProcessBuilder) : String? {
+fun runGitCommand(command: ProcessBuilder): String? {
     try {
         command.directory(project.rootDir)
         val process = command.start()

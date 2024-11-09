@@ -8,15 +8,15 @@ package io.github.borked3ds.android.features.settings.ui.viewholder
 import android.annotation.SuppressLint
 import android.view.View
 import io.github.borked3ds.android.databinding.ListItemSettingBinding
+import io.github.borked3ds.android.features.settings.model.view.DateTimeSetting
+import io.github.borked3ds.android.features.settings.model.view.SettingsItem
+import io.github.borked3ds.android.features.settings.ui.SettingsAdapter
+import java.text.SimpleDateFormat
 import java.time.Instant
 import java.time.ZoneId
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
-import io.github.borked3ds.android.features.settings.model.view.DateTimeSetting
-import io.github.borked3ds.android.features.settings.model.view.SettingsItem
-import io.github.borked3ds.android.features.settings.ui.SettingsAdapter
-import java.text.SimpleDateFormat
 
 class DateTimeViewHolder(val binding: ListItemSettingBinding, adapter: SettingsAdapter) :
     SettingViewHolder(binding.root, adapter) {

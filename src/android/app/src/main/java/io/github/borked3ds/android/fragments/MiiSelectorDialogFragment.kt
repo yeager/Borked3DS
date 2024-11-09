@@ -28,7 +28,10 @@ class MiiSelectorDialogFragment : DialogFragment() {
         MiiSelector.data.index = initialIndex
         val builder = MaterialAlertDialogBuilder(requireActivity())
             .setTitle(if (config.title!!.isEmpty()) getString(R.string.mii_selector) else config.title)
-            .setSingleChoiceItems(list.toTypedArray(), initialIndex) { _: DialogInterface?, which: Int ->
+            .setSingleChoiceItems(
+                list.toTypedArray(),
+                initialIndex
+            ) { _: DialogInterface?, which: Int ->
                 MiiSelector.data.index = which
             }
             .setPositiveButton(android.R.string.ok) { _: DialogInterface?, _: Int ->

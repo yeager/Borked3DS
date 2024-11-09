@@ -10,7 +10,9 @@ import androidx.documentfile.provider.DocumentFile
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.preference.PreferenceManager
-import java.util.Locale
+import io.github.borked3ds.android.Borked3DSApplication
+import io.github.borked3ds.android.model.Game
+import io.github.borked3ds.android.utils.GameHelper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -18,9 +20,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
-import io.github.borked3ds.android.Borked3DSApplication
-import io.github.borked3ds.android.model.Game
-import io.github.borked3ds.android.utils.GameHelper
+import java.util.Locale
 
 class GamesViewModel : ViewModel() {
     val games get() = _games.asStateFlow()
@@ -43,8 +43,9 @@ class GamesViewModel : ViewModel() {
 
     init {
         // Retrieve list of cached games
-        val storedGames = PreferenceManager.getDefaultSharedPreferences(Borked3DSApplication.appContext)
-            .getStringSet(GameHelper.KEY_GAMES, emptySet())
+        val storedGames =
+            PreferenceManager.getDefaultSharedPreferences(Borked3DSApplication.appContext)
+                .getStringSet(GameHelper.KEY_GAMES, emptySet())
         if (storedGames!!.isNotEmpty()) {
             val deserializedGames = mutableSetOf<Game>()
             storedGames.forEach {
@@ -56,7 +57,10 @@ class GamesViewModel : ViewModel() {
                 }
 
                 val gameExists =
-                    DocumentFile.fromSingleUri(Borked3DSApplication.appContext, Uri.parse(game.path))
+                    DocumentFile.fromSingleUri(
+                        Borked3DSApplication.appContext,
+                        Uri.parse(game.path)
+                    )
                         ?.exists()
                 if (gameExists == true) {
                     deserializedGames.add(game)

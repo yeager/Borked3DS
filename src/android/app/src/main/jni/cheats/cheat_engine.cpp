@@ -32,11 +32,16 @@ JNIEXPORT void JNICALL
 Java_io_github_borked3ds_android_features_cheats_model_CheatEngine_saveCheatFile(JNIEnv* env,
                                                                                  jclass,
                                                                                  jlong title_id) {
-    GetEngine().SaveCheatFile(title_id);
+    GetEngine()
+
+        .SaveCheatFile(title_id);
 }
 
-JNIEXPORT jobjectArray JNICALL
-Java_io_github_borked3ds_android_features_cheats_model_CheatEngine_getCheats(JNIEnv* env, jclass) {
+JNIEXPORT jobjectArray
+
+    JNICALL
+    Java_io_github_borked3ds_android_features_cheats_model_CheatEngine_getCheats(JNIEnv* env,
+                                                                                 jclass) {
     auto cheats = GetEngine().GetCheats();
 
     const jobjectArray array =
@@ -52,19 +57,27 @@ Java_io_github_borked3ds_android_features_cheats_model_CheatEngine_getCheats(JNI
 JNIEXPORT void JNICALL Java_io_github_borked3ds_android_features_cheats_model_CheatEngine_addCheat(
     JNIEnv* env, jclass, jobject j_cheat) {
     auto cheat = *CheatFromJava(env, j_cheat);
-    GetEngine().AddCheat(std::move(cheat));
+
+    GetEngine()
+
+        .AddCheat(std::move(cheat));
 }
 
 JNIEXPORT void JNICALL
 Java_io_github_borked3ds_android_features_cheats_model_CheatEngine_removeCheat(JNIEnv* env, jclass,
                                                                                jint index) {
-    GetEngine().RemoveCheat(index);
+    GetEngine()
+
+        .RemoveCheat(index);
 }
 
 JNIEXPORT void JNICALL
 Java_io_github_borked3ds_android_features_cheats_model_CheatEngine_updateCheat(
     JNIEnv* env, jclass, jint index, jobject j_new_cheat) {
     auto cheat = *CheatFromJava(env, j_new_cheat);
-    GetEngine().UpdateCheat(index, std::move(cheat));
+
+    GetEngine()
+
+        .UpdateCheat(index, std::move(cheat));
 }
 }

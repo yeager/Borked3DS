@@ -22,7 +22,6 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import io.github.borked3ds.android.activities.EmulationActivity
-import io.github.borked3ds.android.utils.EmulationMenuSettings
 import io.github.borked3ds.android.utils.FileUtil
 import io.github.borked3ds.android.utils.Log
 import io.github.borked3ds.android.utils.NetPlayManager
@@ -396,7 +395,7 @@ object NativeLibrary {
                             Borked3DSApplication.appContext.resources.getString(R.string.artic_server_comm_error)
                         else
                             Borked3DSApplication.appContext.resources.getString(R.string.redump_games),
-                    Html.FROM_HTML_MODE_LEGACY
+                        Html.FROM_HTML_MODE_LEGACY
                     )
                 )
                 .setPositiveButton(android.R.string.ok) { _: DialogInterface?, _: Int ->
@@ -541,7 +540,7 @@ object NativeLibrary {
     fun loadStateIfAvailable(slot: Int): Boolean {
         var available = false
         getSavestateInfo()?.forEach {
-            if (it.slot == slot){
+            if (it.slot == slot) {
                 available = true
                 return@forEach
             }
@@ -722,7 +721,11 @@ object NativeLibrary {
             const val MESSAGE = "message"
             const val CAN_CONTINUE = "canContinue"
 
-            fun newInstance(title: String, message: String, canContinue: Boolean): CoreErrorDialogFragment {
+            fun newInstance(
+                title: String,
+                message: String,
+                canContinue: Boolean
+            ): CoreErrorDialogFragment {
                 val frag = CoreErrorDialogFragment()
                 val args = Bundle()
                 args.putString(TITLE, title)

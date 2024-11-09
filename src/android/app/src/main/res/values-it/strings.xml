@@ -245,4 +245,4 @@
     <string name="cia_install_error_encrypted">\"%s\" deve essere decriptato prima dell\'utilizzo con Borked3DS.\nHai Bisogno di un 3DS.</string>
     <string name="cia_install_error_unknown">Errore Sconosciuto durante l\'installazione di \"%s\".\n Consulta i log per maggiori dettagli</string>
 
-    </resources>
+</resources>

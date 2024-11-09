@@ -10,7 +10,7 @@ enum class FloatSetting(
     override val section: String,
     override val defaultValue: Float
 ) : AbstractFloatSetting {
-    LARGE_SCREEN_PROPORTION("large_screen_proportion",Settings.SECTION_LAYOUT,2.25f),
+    LARGE_SCREEN_PROPORTION("large_screen_proportion", Settings.SECTION_LAYOUT, 2.25f),
     SECOND_SCREEN_OPACITY("custom_second_layer_opacity", Settings.SECTION_LAYOUT, 100f),
     EMPTY_SETTING("", "", 0.0f);
 

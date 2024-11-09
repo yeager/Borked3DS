@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
     <com.google.android.material.bottomsheet.BottomSheetDragHandleView
         android:id="@+id/drag_handle"
@@ -18,12 +18,12 @@
 
         <TextView
             android:id="@+id/text_title"
-            android:text="@string/multiplayer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?attr/textAppearanceHeadline6"
-            android:gravity="center"
             android:layout_marginTop="4dp"
+            android:gravity="center"
+            android:text="@string/multiplayer"
+            android:textAppearance="?attr/textAppearanceHeadline6"
             android:textColor="?attr/colorOnSurface" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -42,8 +42,8 @@
             android:layout_marginBottom="8dp"
             android:enabled="true"
             android:text="@string/multiplayer_chat"
-            app:icon="@drawable/ic_chat"
-            app:cornerRadius="16dp" />
+            app:cornerRadius="16dp"
+            app:icon="@drawable/ic_chat" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_leave"
@@ -52,8 +52,8 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:text="@string/multiplayer_exit_room"
-            app:icon="@drawable/ic_exit"
-            app:cornerRadius="16dp" />
+            app:cornerRadius="16dp"
+            app:icon="@drawable/ic_exit" />
 
     </LinearLayout>
 </LinearLayout>

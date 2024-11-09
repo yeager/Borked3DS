@@ -32,15 +32,15 @@ object EmulationMenuSettings {
         get() = preferences.getBoolean("EmulationMenuSettings_ShowFps", false)
         set(value) {
             preferences.edit()
-                    .putBoolean("EmulationMenuSettings_ShowFps", value)
-                    .apply()
+                .putBoolean("EmulationMenuSettings_ShowFps", value)
+                .apply()
         }
     var hapticFeedback: Boolean
         get() = preferences.getBoolean("EmulationMenuSettings_HapticFeedback", true)
         set(value) {
             preferences.edit()
-                    .putBoolean("EmulationMenuSettings_HapticFeedback", value)
-                    .apply()
+                .putBoolean("EmulationMenuSettings_HapticFeedback", value)
+                .apply()
         }
     var swapScreens: Boolean
         get() = preferences.getBoolean("EmulationMenuSettings_SwapScreens", false)

@@ -8,13 +8,13 @@ package io.github.borked3ds.android.utils
 import android.content.SharedPreferences
 import android.net.Uri
 import androidx.preference.PreferenceManager
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
 import io.github.borked3ds.android.Borked3DSApplication
 import io.github.borked3ds.android.NativeLibrary
 import io.github.borked3ds.android.model.CheapDocument
 import io.github.borked3ds.android.model.Game
 import io.github.borked3ds.android.model.GameInfo
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import java.io.IOException
 
 object GameHelper {
@@ -77,7 +77,10 @@ object GameHelper {
         }
 
         val newGame = Game(
-            (gameInfo?.getTitle() ?: FileUtil.getFilename(uri)).replace("[\\t\\n\\r]+".toRegex(), " "),
+            (gameInfo?.getTitle() ?: FileUtil.getFilename(uri)).replace(
+                "[\\t\\n\\r]+".toRegex(),
+                " "
+            ),
             filePath.replace("\n", " "),
             filePath,
             NativeLibrary.getTitleId(filePath),
@@ -85,7 +88,7 @@ object GameHelper {
             gameInfo?.getRegions() ?: "Invalid region",
             isInstalled,
             NativeLibrary.getIsSystemTitle(filePath),
-            gameInfo?.getIsVisibleSystemTitle() ?: false,
+            gameInfo?.getIsVisibleSystemTitle() == true,
             gameInfo?.getIcon(),
             if (FileUtil.isNativePath(filePath)) {
                 Borked3DSApplication.documentsTree.getFilename(filePath)

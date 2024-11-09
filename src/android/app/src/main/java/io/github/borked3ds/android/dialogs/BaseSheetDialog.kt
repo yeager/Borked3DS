@@ -14,7 +14,8 @@ import io.github.borked3ds.android.utils.CompatUtils
 
 // TODO: Fix the dialog to resize when the keyboard is shown
 
-open class BaseSheetDialog(context: Context) : BottomSheetDialog(CompatUtils.findActivity(context)) {
+open class BaseSheetDialog(context: Context) :
+    BottomSheetDialog(CompatUtils.findActivity(context)) {
     private val contentView: LinearLayout
     private val binding = DialogBottomSheetBinding.inflate(layoutInflater)
 

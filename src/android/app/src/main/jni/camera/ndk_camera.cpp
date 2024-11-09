@@ -50,12 +50,17 @@ struct CaptureSession final {
     std::unique_ptr<type, type##Deleter> name
 
     MEMBER(ACameraDevice, device, close);
+
     MEMBER(AImageReader, image_reader, delete);
+
     MEMBER(ANativeWindow, native_window, release);
 
     MEMBER(ACaptureSessionOutputContainer, outputs, free);
+
     MEMBER(ACaptureSessionOutput, output, free);
+
     MEMBER(ACameraOutputTarget, target, free);
+
     MEMBER(ACaptureRequest, request, free);
 
     // Put session last to close the session before we destruct everything else
@@ -153,7 +158,9 @@ void ImageCallback(void* context, AImageReader* reader) {
 
 // We have to define these no-op callbacks
 static void OnClosed(void* context, ACameraCaptureSession* session) {}
+
 static void OnReady(void* context, ACameraCaptureSession* session) {}
+
 static void OnActive(void* context, ACameraCaptureSession* session) {}
 
 void CaptureSession::Load(ACameraManager* manager, const std::string& id) {

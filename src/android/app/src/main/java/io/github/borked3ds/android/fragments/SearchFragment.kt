@@ -27,7 +27,6 @@ import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.GridLayoutManager
 import info.debatty.java.stringsimilarity.Jaccard
 import info.debatty.java.stringsimilarity.JaroWinkler
-import kotlinx.coroutines.launch
 import io.github.borked3ds.android.Borked3DSApplication
 import io.github.borked3ds.android.R
 import io.github.borked3ds.android.adapters.GameAdapter
@@ -35,6 +34,7 @@ import io.github.borked3ds.android.databinding.FragmentSearchBinding
 import io.github.borked3ds.android.model.Game
 import io.github.borked3ds.android.viewmodel.GamesViewModel
 import io.github.borked3ds.android.viewmodel.HomeViewModel
+import kotlinx.coroutines.launch
 import java.time.temporal.ChronoField
 import java.util.Locale
 

@@ -17,14 +17,14 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 import io.github.borked3ds.android.NativeLibrary.InstallStatus
 import io.github.borked3ds.android.R
 import io.github.borked3ds.android.databinding.DialogProgressBarBinding
 import io.github.borked3ds.android.viewmodel.GamesViewModel
 import io.github.borked3ds.android.viewmodel.SystemFilesViewModel
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 class DownloadSystemFilesDialogFragment : DialogFragment() {
     private var _binding: DialogProgressBarBinding? = null
@@ -81,7 +81,10 @@ class DownloadSystemFilesDialogFragment : DialogFragment() {
                                 downloadViewModel.clear()
                                 dismiss()
                                 MessageDialogFragment.newInstance(R.string.download_success, 0)
-                                    .show(requireActivity().supportFragmentManager, MessageDialogFragment.TAG)
+                                    .show(
+                                        requireActivity().supportFragmentManager,
+                                        MessageDialogFragment.TAG
+                                    )
                                 gamesViewModel.setShouldSwapData(true)
                             }
 
@@ -95,7 +98,10 @@ class DownloadSystemFilesDialogFragment : DialogFragment() {
                                 MessageDialogFragment.newInstance(
                                     R.string.download_failed,
                                     R.string.download_failed_description
-                                ).show(requireActivity().supportFragmentManager, MessageDialogFragment.TAG)
+                                ).show(
+                                    requireActivity().supportFragmentManager,
+                                    MessageDialogFragment.TAG
+                                )
                                 gamesViewModel.setShouldSwapData(true)
                             }
 
@@ -105,7 +111,10 @@ class DownloadSystemFilesDialogFragment : DialogFragment() {
                                 MessageDialogFragment.newInstance(
                                     R.string.download_cancelled,
                                     R.string.download_cancelled_description
-                                ).show(requireActivity().supportFragmentManager, MessageDialogFragment.TAG)
+                                ).show(
+                                    requireActivity().supportFragmentManager,
+                                    MessageDialogFragment.TAG
+                                )
                             }
 
                             // Do nothing on null

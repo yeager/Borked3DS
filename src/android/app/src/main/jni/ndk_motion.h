@@ -21,6 +21,7 @@ public:
     std::unique_ptr<Input::MotionDevice> Create(const Common::ParamPackage& params) override;
 
     void EnableSensors();
+
     void DisableSensors();
 
 private:

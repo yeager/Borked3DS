@@ -24,8 +24,6 @@ import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.color.MaterialColors
 import com.google.android.material.transition.MaterialFadeThrough
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 import io.github.borked3ds.android.Borked3DSApplication
 import io.github.borked3ds.android.R
 import io.github.borked3ds.android.adapters.GameAdapter
@@ -34,6 +32,8 @@ import io.github.borked3ds.android.features.settings.model.Settings
 import io.github.borked3ds.android.model.Game
 import io.github.borked3ds.android.viewmodel.GamesViewModel
 import io.github.borked3ds.android.viewmodel.HomeViewModel
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 class GamesFragment : Fragment() {
     private var _binding: FragmentGamesBinding? = null
@@ -150,7 +150,8 @@ class GamesFragment : Fragment() {
     }
 
     private fun setAdapter(games: List<Game>) {
-        val preferences = PreferenceManager.getDefaultSharedPreferences(Borked3DSApplication.appContext)
+        val preferences =
+            PreferenceManager.getDefaultSharedPreferences(Borked3DSApplication.appContext)
         if (preferences.getBoolean(Settings.PREF_SHOW_HOME_APPS, false)) {
             (binding.gridGames.adapter as GameAdapter).submitList(games)
         } else {

@@ -8,17 +8,17 @@ package io.github.borked3ds.android.viewmodel
 import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import io.github.borked3ds.android.Borked3DSApplication
+import io.github.borked3ds.android.R
+import io.github.borked3ds.android.utils.FileUtil.asDocumentFile
+import io.github.borked3ds.android.utils.GpuDriverHelper
+import io.github.borked3ds.android.utils.GpuDriverMetadata
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import io.github.borked3ds.android.Borked3DSApplication
-import io.github.borked3ds.android.R
-import io.github.borked3ds.android.utils.FileUtil.asDocumentFile
-import io.github.borked3ds.android.utils.GpuDriverMetadata
-import io.github.borked3ds.android.utils.GpuDriverHelper
 
 class DriverViewModel : ViewModel() {
     val areDriversLoading get() = _areDriversLoading.asStateFlow()

@@ -202,7 +202,7 @@
     </style>
 
     <style name="Theme.Borked3DS.Lime" parent="Theme.Borked3DS">
-    <!-- Lime Theme Colors -->
+        <!-- Lime Theme Colors -->
         <item name="colorPrimary">@color/borked3ds_primary_lime</item>
         <item name="colorOnPrimary">@color/borked3ds_onPrimary_lime</item>
         <item name="colorPrimaryContainer">@color/borked3ds_primaryContainer_lime</item>
@@ -228,7 +228,7 @@
     </style>
 
     <style name="Theme.Borked3DS.Gray" parent="Theme.Borked3DS">
-    <!-- Gray Theme Colors -->
+        <!-- Gray Theme Colors -->
         <item name="colorPrimary">@color/borked3ds_primary_gray</item>
         <item name="colorOnPrimary">@color/borked3ds_onPrimary_gray</item>
         <item name="colorPrimaryContainer">@color/borked3ds_primaryContainer_gray</item>
@@ -254,7 +254,7 @@
     </style>
 
     <style name="Theme.Borked3DS.Pink" parent="Theme.Borked3DS">
-    <!-- Pink Theme Colors -->
+        <!-- Pink Theme Colors -->
         <item name="colorPrimary">@color/borked3ds_primary_pink</item>
         <item name="colorOnPrimary">@color/borked3ds_onPrimary_pink</item>
         <item name="colorPrimaryContainer">@color/borked3ds_primaryContainer_pink</item>

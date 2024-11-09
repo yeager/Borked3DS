@@ -13,10 +13,9 @@ import android.content.Context
 import android.os.Build
 import io.github.borked3ds.android.utils.DirectoryInitialization
 import io.github.borked3ds.android.utils.DocumentsTree
-import io.github.borked3ds.android.utils.GpuDriverHelper
-import io.github.borked3ds.android.utils.PermissionsHandler
 import io.github.borked3ds.android.utils.Log
 import io.github.borked3ds.android.utils.MemoryUtil
+import io.github.borked3ds.android.utils.PermissionsHandler
 
 class Borked3DSApplication : Application() {
     private fun createNotificationChannel() {

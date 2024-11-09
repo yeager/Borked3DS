@@ -37,22 +37,42 @@ Java_io_github_borked3ds_android_features_cheats_model_Cheat_finalize(JNIEnv* en
 
 JNIEXPORT jstring JNICALL
 Java_io_github_borked3ds_android_features_cheats_model_Cheat_getName(JNIEnv* env, jobject obj) {
-    return ToJString(env, (*CheatFromJava(env, obj))->GetName());
+    return ToJString(env, (*CheatFromJava(env, obj))
+                              ->
+
+                          GetName()
+
+    );
 }
 
 JNIEXPORT jstring JNICALL
 Java_io_github_borked3ds_android_features_cheats_model_Cheat_getNotes(JNIEnv* env, jobject obj) {
-    return ToJString(env, (*CheatFromJava(env, obj))->GetComments());
+    return ToJString(env, (*CheatFromJava(env, obj))
+                              ->
+
+                          GetComments()
+
+    );
 }
 
 JNIEXPORT jstring JNICALL
 Java_io_github_borked3ds_android_features_cheats_model_Cheat_getCode(JNIEnv* env, jobject obj) {
-    return ToJString(env, (*CheatFromJava(env, obj))->GetCode());
+    return ToJString(env, (*CheatFromJava(env, obj))
+                              ->
+
+                          GetCode()
+
+    );
 }
 
 JNIEXPORT jboolean JNICALL
 Java_io_github_borked3ds_android_features_cheats_model_Cheat_getEnabled(JNIEnv* env, jobject obj) {
-    return static_cast<jboolean>((*CheatFromJava(env, obj))->IsEnabled());
+    return static_cast<jboolean>((*CheatFromJava(env, obj))
+                                     ->
+
+                                 IsEnabled()
+
+    );
 }
 
 JNIEXPORT void JNICALL Java_io_github_borked3ds_android_features_cheats_model_Cheat_setEnabledImpl(
@@ -66,7 +86,11 @@ Java_io_github_borked3ds_android_features_cheats_model_Cheat_isValidGatewayCode(
     const std::string code = GetJString(env, j_code);
     const auto code_lines = Common::SplitString(code, '\n');
 
-    for (int i = 0; i < code_lines.size(); ++i) {
+    for (int i = 0; i < code_lines.
+
+                        size();
+
+         ++i) {
         Cheats::GatewayCheat::CheatLine cheat_line(code_lines[i]);
         if (!cheat_line.valid) {
             return i + 1;

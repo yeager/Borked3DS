@@ -3,18 +3,18 @@
 
     <item
         android:id="@+id/menu_show_overlay"
-        android:title="@string/emulation_show_overlay"
-        android:checkable="true" />
+        android:checkable="true"
+        android:title="@string/emulation_show_overlay" />
 
     <item
         android:id="@+id/menu_show_fps"
-        android:title="@string/emulation_show_fps"
-        android:checkable="true" />
+        android:checkable="true"
+        android:title="@string/emulation_show_fps" />
 
     <item
         android:id="@+id/menu_haptic_feedback"
-        android:title="@string/emulation_haptic_feedback"
-        android:checkable="true" />
+        android:checkable="true"
+        android:title="@string/emulation_haptic_feedback" />
 
     <item
         android:id="@+id/menu_emulation_edit_layout"
@@ -90,7 +90,7 @@
         <item
             android:id="@+id/menu_emulation_joystick_rel_center"
             android:checkable="true"
-            android:title="@string/emulation_control_joystick_rel_center"/>
+            android:title="@string/emulation_control_joystick_rel_center" />
         <item
             android:id="@+id/menu_emulation_dpad_slide_enable"
             android:checkable="true"

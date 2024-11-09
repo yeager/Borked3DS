@@ -7,8 +7,6 @@ package io.github.borked3ds.android.utils
 
 import android.content.Context
 import android.net.Uri
-import androidx.preference.PreferenceManager
-import io.github.borked3ds.android.BuildConfig
 import io.github.borked3ds.android.Borked3DSApplication
 import io.github.borked3ds.android.NativeLibrary
 import io.github.borked3ds.android.utils.PermissionsHandler.hasWriteAccess
@@ -95,7 +93,10 @@ object DirectoryInitialization {
         val dataPath = PermissionsHandler.borked3dsDirectory
         if (dataPath.toString().isNotEmpty()) {
             userPath = dataPath.toString()
-            android.util.Log.d("[Borked3DS Frontend]", "[DirectoryInitialization] User Dir: $userPath")
+            android.util.Log.d(
+                "[Borked3DS Frontend]",
+                "[DirectoryInitialization] User Dir: $userPath"
+            )
             return true
         }
         return false

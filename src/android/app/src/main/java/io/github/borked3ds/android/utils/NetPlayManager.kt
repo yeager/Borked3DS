@@ -12,16 +12,28 @@ import android.os.Looper
 import android.text.format.Formatter
 import android.widget.Toast
 import androidx.preference.PreferenceManager
-import io.github.borked3ds.android.NativeLibrary
 import io.github.borked3ds.android.Borked3DSApplication
 import io.github.borked3ds.android.R
 import io.github.borked3ds.android.dialogs.ChatMessage
 import io.github.borked3ds.android.dialogs.NetPlayDialog
-import io.github.borked3ds.android.ui.main.MainActivity
 
 object NetPlayManager {
-    external fun netPlayCreateRoom(ipAddress: String, port: Int, username: String, password: String, roomName: String, maxPlayers: Int): Int
-    external fun netPlayJoinRoom(ipAddress: String, port: Int, username: String, password: String): Int
+    external fun netPlayCreateRoom(
+        ipAddress: String,
+        port: Int,
+        username: String,
+        password: String,
+        roomName: String,
+        maxPlayers: Int
+    ): Int
+
+    external fun netPlayJoinRoom(
+        ipAddress: String,
+        port: Int,
+        username: String,
+        password: String
+    ): Int
+
     external fun netPlayRoomInfo(): Array<String>
     external fun netPlayIsJoined(): Boolean
     external fun netPlayIsHostedRoom(): Boolean
@@ -50,7 +62,9 @@ object NetPlayManager {
         val dialog = NetPlayDialog(activity)
         dialog.showNetPlayInputDialog(false)
     }
-    fun getUsername(activity: Activity): String {        val prefs = PreferenceManager.getDefaultSharedPreferences(activity)
+
+    fun getUsername(activity: Activity): String {
+        val prefs = PreferenceManager.getDefaultSharedPreferences(activity)
         val name = "Borked3DS${(Math.random() * 100).toInt()}"
         return prefs.getString("NetPlayUsername", name) ?: name
     }
@@ -110,22 +124,27 @@ object NetPlayManager {
                 if (parts.size == 2) {
                     val nickname = parts[0].trim()
                     val chatMessage = parts[1].trim()
-                    addChatMessage(ChatMessage(
-                        nickname = nickname,
-                        username = "",
-                        message = chatMessage
-                    ))
+                    addChatMessage(
+                        ChatMessage(
+                            nickname = nickname,
+                            username = "",
+                            message = chatMessage
+                        )
+                    )
                 }
             }
+
             NetPlayStatus.MEMBER_JOIN,
             NetPlayStatus.MEMBER_LEAVE,
             NetPlayStatus.MEMBER_KICKED,
             NetPlayStatus.MEMBER_BANNED -> {
-                addChatMessage(ChatMessage(
-                    nickname = "System",
-                    username = "",
-                    message = message
-                ))
+                addChatMessage(
+                    ChatMessage(
+                        nickname = "System",
+                        username = "",
+                        message = message
+                    )
+                )
             }
         }
 
@@ -170,8 +189,16 @@ object NetPlayManager {
             NetPlayStatus.ROOM_MODERATOR -> context.getString(R.string.multiplayer_room_moderator)
             NetPlayStatus.MEMBER_JOIN -> context.getString(R.string.multiplayer_member_join, msg)
             NetPlayStatus.MEMBER_LEAVE -> context.getString(R.string.multiplayer_member_leave, msg)
-            NetPlayStatus.MEMBER_KICKED -> context.getString(R.string.multiplayer_member_kicked, msg)
-            NetPlayStatus.MEMBER_BANNED -> context.getString(R.string.multiplayer_member_banned, msg)
+            NetPlayStatus.MEMBER_KICKED -> context.getString(
+                R.string.multiplayer_member_kicked,
+                msg
+            )
+
+            NetPlayStatus.MEMBER_BANNED -> context.getString(
+                R.string.multiplayer_member_banned,
+                msg
+            )
+
             NetPlayStatus.ADDRESS_UNBANNED -> context.getString(R.string.multiplayer_address_unbanned)
             NetPlayStatus.CHAT_MESSAGE -> msg
             else -> ""

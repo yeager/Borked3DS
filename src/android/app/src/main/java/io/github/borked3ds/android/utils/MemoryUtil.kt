@@ -33,6 +33,7 @@ object MemoryUtil {
                     context.getString(R.string.memory_byte_shorthand)
                 )
             }
+
             size < Mb -> {
                 context.getString(
                     R.string.memory_formatted,
@@ -40,6 +41,7 @@ object MemoryUtil {
                     context.getString(R.string.memory_kilobyte)
                 )
             }
+
             size < Gb -> {
                 context.getString(
                     R.string.memory_formatted,
@@ -47,6 +49,7 @@ object MemoryUtil {
                     context.getString(R.string.memory_megabyte)
                 )
             }
+
             size < Tb -> {
                 context.getString(
                     R.string.memory_formatted,
@@ -54,6 +57,7 @@ object MemoryUtil {
                     context.getString(R.string.memory_gigabyte)
                 )
             }
+
             size < Pb -> {
                 context.getString(
                     R.string.memory_formatted,
@@ -61,6 +65,7 @@ object MemoryUtil {
                     context.getString(R.string.memory_terabyte)
                 )
             }
+
             size < Eb -> {
                 context.getString(
                     R.string.memory_formatted,
@@ -68,6 +73,7 @@ object MemoryUtil {
                     context.getString(R.string.memory_petabyte)
                 )
             }
+
             else -> {
                 context.getString(
                     R.string.memory_formatted,

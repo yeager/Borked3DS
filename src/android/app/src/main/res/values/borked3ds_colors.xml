@@ -260,5 +260,6 @@
     <color name="borked3ds_onPrimary_gray">#FFFFFF</color>
     <color name="borked3ds_onSecondary_gray">#FFFFFF</color>
     <color name="borked3ds_onTertiary_gray">#FFFFFF</color>
-    <color name="borked3ds_inversePrimary">#FFFFFF</color>   <!-- Unused color but Search crashes without this -->
+    <color name="borked3ds_inversePrimary">#FFFFFF
+    </color>   <!-- Unused color but Search crashes without this -->
 </resources>

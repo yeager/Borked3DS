@@ -10,5 +10,7 @@
 #include <jni.h>
 
 std::string GetJString(JNIEnv* env, jstring jstr);
+
 jstring ToJString(JNIEnv* env, std::string_view str);
+
 jobjectArray ToJStringArray(JNIEnv* env, const std::vector<std::string>& strs);

@@ -44,7 +44,9 @@ enum ButtonType {
 };
 
 class ButtonList;
+
 class AnalogButtonList;
+
 class AnalogList;
 
 /**

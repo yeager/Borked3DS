@@ -9,12 +9,12 @@
         android:id="@+id/emulationFragment"
         android:name="io.github.borked3ds.android.fragments.EmulationFragment"
         android:label="fragment_emulation"
-        tools:layout="@layout/fragment_emulation" >
+        tools:layout="@layout/fragment_emulation">
         <argument
             android:name="game"
+            android:defaultValue="@null"
             app:argType="io.github.borked3ds.android.model.Game"
-            app:nullable="true"
-            android:defaultValue="@null" />
+            app:nullable="true" />
     </fragment>
 
     <activity
@@ -23,8 +23,8 @@
         android:label="CheatsActivity">
         <argument
             android:name="titleId"
-            app:argType="long"
-            android:defaultValue="-1L" />
+            android:defaultValue="-1L"
+            app:argType="long" />
     </activity>
 
     <action

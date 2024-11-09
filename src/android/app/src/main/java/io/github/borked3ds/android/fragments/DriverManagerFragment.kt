@@ -20,16 +20,15 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.transition.MaterialSharedAxis
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 import io.github.borked3ds.android.R
 import io.github.borked3ds.android.adapters.DriverAdapter
 import io.github.borked3ds.android.databinding.FragmentDriverManagerBinding
-import io.github.borked3ds.android.utils.FileUtil.asDocumentFile
 import io.github.borked3ds.android.utils.FileUtil.inputStream
 import io.github.borked3ds.android.utils.GpuDriverHelper
-import io.github.borked3ds.android.viewmodel.HomeViewModel
 import io.github.borked3ds.android.viewmodel.DriverViewModel
+import io.github.borked3ds.android.viewmodel.HomeViewModel
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import java.io.IOException
 
 class DriverManagerFragment : Fragment() {

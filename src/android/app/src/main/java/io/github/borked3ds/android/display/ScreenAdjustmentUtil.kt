@@ -7,18 +7,14 @@ package io.github.borked3ds.android.display
 
 import android.app.Activity
 import android.content.Context
-import android.content.pm.ActivityInfo
-import android.os.Build
-import android.view.Display
-import android.view.View
 import android.view.WindowManager
 import io.github.borked3ds.android.NativeLibrary
+import io.github.borked3ds.android.R
 import io.github.borked3ds.android.features.settings.model.BooleanSetting
 import io.github.borked3ds.android.features.settings.model.IntSetting
 import io.github.borked3ds.android.features.settings.model.Settings
 import io.github.borked3ds.android.features.settings.utils.SettingsFile
 import io.github.borked3ds.android.utils.EmulationMenuSettings
-import io.github.borked3ds.android.R
 
 class ScreenAdjustmentUtil(
     private val context: Context,
@@ -33,6 +29,7 @@ class ScreenAdjustmentUtil(
         BooleanSetting.SWAP_SCREEN.boolean = isEnabled
         settings.saveSetting(BooleanSetting.SWAP_SCREEN, SettingsFile.FILE_NAME_CONFIG)
     }
+
     fun cycleLayouts() {
         val landscapeValues = context.resources.getIntArray(R.array.landscapeValues)
         val portraitValues = context.resources.getIntArray(R.array.portraitValues)
@@ -69,5 +66,5 @@ class ScreenAdjustmentUtil(
         IntSetting.ORIENTATION_OPTION.int = orientationOption
         settings.saveSetting(IntSetting.ORIENTATION_OPTION, SettingsFile.FILE_NAME_CONFIG)
         activity.requestedOrientation = orientationOption
-        }
     }
+}

@@ -120,10 +120,12 @@ class ChatAdapter(private val messages: List<ChatMessage>) :
         fun bind(message: ChatMessage) {
             binding.usernameText.text = message.nickname
             binding.messageText.text = message.message
-            binding.userIcon.setImageResource(when (message.nickname) {
-                "System" -> R.drawable.ic_system
-                else -> R.drawable.ic_user
-            })
+            binding.userIcon.setImageResource(
+                when (message.nickname) {
+                    "System" -> R.drawable.ic_system
+                    else -> R.drawable.ic_user
+                }
+            )
         }
     }
 }

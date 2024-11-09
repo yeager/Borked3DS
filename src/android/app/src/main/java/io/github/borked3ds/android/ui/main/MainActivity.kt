@@ -17,7 +17,6 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
@@ -36,11 +35,7 @@ import androidx.work.OutOfQuotaPolicy
 import androidx.work.WorkManager
 import com.google.android.material.color.MaterialColors
 import com.google.android.material.navigation.NavigationBarView
-import java.lang.ref.WeakReference
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
 import io.github.borked3ds.android.R
-import io.github.borked3ds.android.activities.EmulationActivity
 import io.github.borked3ds.android.contracts.OpenFileResultContract
 import io.github.borked3ds.android.databinding.ActivityMainBinding
 import io.github.borked3ds.android.dialogs.NetPlayDialog
@@ -49,8 +44,8 @@ import io.github.borked3ds.android.features.settings.model.SettingsViewModel
 import io.github.borked3ds.android.features.settings.ui.SettingsActivity
 import io.github.borked3ds.android.features.settings.utils.SettingsFile
 import io.github.borked3ds.android.fragments.SelectUserDirectoryDialogFragment
-import io.github.borked3ds.android.utils.CiaInstallWorker
 import io.github.borked3ds.android.utils.Borked3DSDirectoryHelper
+import io.github.borked3ds.android.utils.CiaInstallWorker
 import io.github.borked3ds.android.utils.DirectoryInitialization
 import io.github.borked3ds.android.utils.FileBrowserHelper
 import io.github.borked3ds.android.utils.InsetsHelper
@@ -59,6 +54,8 @@ import io.github.borked3ds.android.utils.PermissionsHandler
 import io.github.borked3ds.android.utils.ThemeUtil
 import io.github.borked3ds.android.viewmodel.GamesViewModel
 import io.github.borked3ds.android.viewmodel.HomeViewModel
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity(), ThemeProvider {
     private lateinit var binding: ActivityMainBinding
@@ -77,7 +74,8 @@ class MainActivity : AppCompatActivity(), ThemeProvider {
         }
 
         if (PermissionsHandler.hasWriteAccess(applicationContext) &&
-            DirectoryInitialization.areBorked3DSDirectoriesReady()) {
+            DirectoryInitialization.areBorked3DSDirectoriesReady()
+        ) {
             settingsViewModel.settings.loadSettings()
         }
 

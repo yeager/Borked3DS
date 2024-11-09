@@ -8,7 +8,6 @@ package io.github.borked3ds.android.features.settings.ui
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.DialogInterface
-import android.graphics.Color
 import android.icu.util.Calendar
 import android.icu.util.TimeZone
 import android.text.Editable
@@ -18,7 +17,6 @@ import android.text.TextWatcher
 import android.text.format.DateFormat
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
@@ -41,10 +39,10 @@ import io.github.borked3ds.android.features.settings.model.AbstractBooleanSettin
 import io.github.borked3ds.android.features.settings.model.AbstractFloatSetting
 import io.github.borked3ds.android.features.settings.model.AbstractIntSetting
 import io.github.borked3ds.android.features.settings.model.AbstractSetting
+import io.github.borked3ds.android.features.settings.model.AbstractShortSetting
 import io.github.borked3ds.android.features.settings.model.AbstractStringSetting
 import io.github.borked3ds.android.features.settings.model.FloatSetting
 import io.github.borked3ds.android.features.settings.model.ScaledFloatSetting
-import io.github.borked3ds.android.features.settings.model.AbstractShortSetting
 import io.github.borked3ds.android.features.settings.model.Settings
 import io.github.borked3ds.android.features.settings.model.view.DateTimeSetting
 import io.github.borked3ds.android.features.settings.model.view.InputBindingSetting
@@ -287,9 +285,9 @@ class SettingsAdapter(
             textSliderValue?.addTextChangedListener(object : TextWatcher {
                 override fun afterTextChanged(s: Editable) {
 
-                    var textValue = s.toString().toFloatOrNull();
+                    var textValue = s.toString().toFloatOrNull()
                     if (item.setting !is FloatSetting) {
-                        textValue = textValue?.roundToInt()?.toFloat();
+                        textValue = textValue?.roundToInt()?.toFloat()
                     }
                     if (textValue == null || textValue < valueFrom || textValue > valueTo) {
                         textInputLayout?.error = "Inappropriate value"
@@ -311,14 +309,14 @@ class SettingsAdapter(
                     sliderString = sliderProgress.roundToInt().toString()
                     if (textSliderValue?.text.toString() != sliderString) {
                         textSliderValue?.setText(sliderString)
-                        textSliderValue?.setSelection(textSliderValue?.length() ?: 0 )
+                        textSliderValue?.setSelection(textSliderValue?.length() ?: 0)
                     }
                 } else {
                     val currentText = textSliderValue?.text.toString()
                     val currentTextValue = currentText.toFloat()
                     if (currentTextValue != sliderProgress) {
                         textSliderValue?.setText(sliderString)
-                        textSliderValue?.setSelection(textSliderValue?.length() ?: 0 )
+                        textSliderValue?.setSelection(textSliderValue?.length() ?: 0)
                     }
                 }
             }
@@ -456,7 +454,7 @@ class SettingsAdapter(
                             val setting = it.setSelectedValue(sliderProgress)
                             fragmentView?.putSetting(setting)
                         }
-                   }
+                    }
                     closeDialog()
                 }
             }
@@ -470,7 +468,7 @@ class SettingsAdapter(
                     val setting = it.setSelectedValue(textInputValue ?: "")
                     fragmentView?.putSetting(setting)
                     closeDialog()
-               }
+                }
             }
 
         }

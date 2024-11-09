@@ -7,12 +7,11 @@ package io.github.borked3ds.android.features.settings.ui.viewholder
 
 import android.view.View
 import androidx.core.content.res.ResourcesCompat
-import io.github.borked3ds.android.NativeLibrary
+import io.github.borked3ds.android.activities.EmulationActivity
 import io.github.borked3ds.android.databinding.ListItemSettingBinding
 import io.github.borked3ds.android.features.settings.model.view.RunnableSetting
 import io.github.borked3ds.android.features.settings.model.view.SettingsItem
 import io.github.borked3ds.android.features.settings.ui.SettingsAdapter
-import io.github.borked3ds.android.activities.EmulationActivity
 
 class RunnableViewHolder(val binding: ListItemSettingBinding, adapter: SettingsAdapter) :
     SettingViewHolder(binding.root, adapter) {
@@ -32,7 +31,7 @@ class RunnableViewHolder(val binding: ListItemSettingBinding, adapter: SettingsA
         } else {
             binding.icon.visibility = View.GONE
         }
-        
+
         binding.textSettingName.setText(item.nameId)
         if (item.descriptionId != 0) {
             binding.textSettingDescription.setText(item.descriptionId)

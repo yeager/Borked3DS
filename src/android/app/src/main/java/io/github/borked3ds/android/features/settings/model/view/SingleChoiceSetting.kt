@@ -23,18 +23,18 @@ class SingleChoiceSetting(
     val selectedValue: Int
         get() {
             if (setting == null) {
-                return defaultValue ?: 0 
+                return defaultValue ?: 0
             }
 
             return try {
                 val intSetting = setting as? AbstractIntSetting
-                intSetting?.int ?: defaultValue ?: 0 
+                intSetting?.int ?: defaultValue ?: 0
             } catch (_: ClassCastException) {
                 try {
                     val shortSetting = setting as? AbstractShortSetting
-                    shortSetting?.short?.toInt() ?: defaultValue ?: 0 
+                    shortSetting?.short?.toInt() ?: defaultValue ?: 0
                 } catch (_: ClassCastException) {
-                    defaultValue ?: 0 
+                    defaultValue ?: 0
                 }
             }
         }

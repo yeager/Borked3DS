@@ -87,7 +87,11 @@ jstring Java_io_github_borked3ds_android_model_GameInfo_getTitle(JNIEnv* env, jo
     std::u16string title{reinterpret_cast<char16_t*>(
         smdh->titles[static_cast<std::size_t>(language)].long_title.data())};
 
-    return ToJString(env, Common::UTF16ToUTF8(title).data());
+    return ToJString(env, Common::UTF16ToUTF8(title).
+
+                          data()
+
+    );
 }
 
 jstring Java_io_github_borked3ds_android_model_GameInfo_getCompany(JNIEnv* env, jobject obj) {
@@ -99,7 +103,11 @@ jstring Java_io_github_borked3ds_android_model_GameInfo_getCompany(JNIEnv* env, 
     publisher = reinterpret_cast<char16_t*>(
         smdh->titles[static_cast<std::size_t>(language)].publisher.data());
 
-    return ToJString(env, Common::UTF16ToUTF8(publisher).data());
+    return ToJString(env, Common::UTF16ToUTF8(publisher).
+
+                          data()
+
+    );
 }
 
 jstring Java_io_github_borked3ds_android_model_GameInfo_getRegions(JNIEnv* env, jobject obj) {
@@ -113,7 +121,11 @@ jstring Java_io_github_borked3ds_android_model_GameInfo_getRegions(JNIEnv* env, 
         {GameRegion::Taiwan, "Taiwan"}};
     std::vector<GameRegion> regions = smdh->GetRegions();
 
-    if (regions.empty()) {
+    if (regions.
+
+        empty()
+
+    ) {
         return ToJString(env, "Invalid region");
     }
 
@@ -128,7 +140,11 @@ jstring Java_io_github_borked3ds_android_model_GameInfo_getRegions(JNIEnv* env, 
 
     const std::string separator = ", ";
     std::string result = regions_map.at(regions.front());
-    for (auto region = ++regions.begin(); region != regions.end(); ++region) {
+    for (auto region = ++regions.begin(); region != regions.
+
+                                                    end();
+
+         ++region) {
         result += separator + regions_map.at(*region);
     }
 
@@ -140,13 +156,21 @@ jintArray Java_io_github_borked3ds_android_model_GameInfo_getIcon(JNIEnv* env, j
 
     // Always get a 48x48(large) icon
     std::vector<u16> icon_data = smdh->GetIcon(true);
-    if (icon_data.empty()) {
+    if (icon_data.
+
+        empty()
+
+    ) {
         return nullptr;
     }
 
     jintArray icon = env->NewIntArray(static_cast<jsize>(icon_data.size() / 2));
     env->SetIntArrayRegion(icon, 0, env->GetArrayLength(icon),
-                           reinterpret_cast<jint*>(icon_data.data()));
+                           reinterpret_cast<jint*>(icon_data.
+
+                                                   data()
+
+                                                       ));
 
     return icon;
 }
