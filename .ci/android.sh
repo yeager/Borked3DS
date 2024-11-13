@@ -33,7 +33,10 @@ cmake -S . -B build \
   -D UPDATE_DEPS=ON \
   -G Ninja
 
-cmake --build build
+cd build
+ninja
+cd ..
+
 cmake --install build --prefix build/libs/arm64-v8a
 mv build/libs/arm64-v8a/lib/libVkLayer_khronos_validation.so ../../assets/libs/lib/arm64-v8a
 
@@ -58,7 +61,10 @@ cmake -S . -B build \
   -D UPDATE_DEPS=ON \
   -G Ninja
 
-cmake --build build
+cd build
+ninja
+cd ..
+
 cmake --install build --prefix build/libs/x86_64
 mv build/libs/x86_64/lib/libVkLayer_khronos_validation.so ../../assets/libs/lib/x86_64
 
