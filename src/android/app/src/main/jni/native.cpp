@@ -276,13 +276,13 @@ void InitializeGpuDriver(const std::string& hook_lib_dir, const std::string& cus
     int featureFlags{};
 
     // Enable driver file redirection when renderer debugging is enabled.
-    if (Settings::values.renderer_debug && file_redirect_dir.size()) {
+    if (Settings::values.renderer_debug && !file_redirect_dir.empty()) {
         featureFlags |= ADRENOTOOLS_DRIVER_FILE_REDIRECT;
         file_redirect_dir_ = file_redirect_dir.c_str();
     }
 
     // Try to load a custom driver.
-    if (custom_driver_name.size()) {
+    if (!custom_driver_name.empty()) {
         handle = adrenotools_open_libvulkan(
             RTLD_NOW, featureFlags | ADRENOTOOLS_DRIVER_CUSTOM, nullptr, hook_lib_dir.c_str(),
             custom_driver_dir.c_str(), custom_driver_name.c_str(), file_redirect_dir_, nullptr);
