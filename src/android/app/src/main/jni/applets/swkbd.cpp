@@ -34,7 +34,7 @@ static jobject ToJavaKeyboardConfig(const Frontend::KeyboardConfig& config) {
                         env->GetFieldID(s_keyboard_config_class, "hintText", "Ljava/lang/String;"),
                         ToJString(env, config.hint_text));
 
-    const jclass string_class = reinterpret_cast<jclass>(env->FindClass("java/lang/String"));
+    const auto string_class = reinterpret_cast<jclass>(env->FindClass("java/lang/String"));
     const jobjectArray array =
         env->NewObjectArray(static_cast<jsize>(config.button_text.size()), string_class,
                             ToJString(env, config.button_text[0]));
@@ -51,7 +51,7 @@ static jobject ToJavaKeyboardConfig(const Frontend::KeyboardConfig& config) {
 
 static Frontend::KeyboardData ToFrontendKeyboardData(jobject object) {
     JNIEnv* env = IDCache::GetEnvForThread();
-    const jstring string = reinterpret_cast<jstring>(env->GetObjectField(
+    const auto string = reinterpret_cast<jstring>(env->GetObjectField(
         object, env->GetFieldID(s_keyboard_data_class, "text", "Ljava/lang/String;")));
     return Frontend::KeyboardData{
         GetJString(env, string),

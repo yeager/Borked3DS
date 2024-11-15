@@ -88,7 +88,7 @@ struct CaptureSession final {
 void OnDisconnected(void* context, ACameraDevice* device) {
     LOG_WARNING(Service_CAM, "Camera device disconnected");
 
-    CaptureSession* that = reinterpret_cast<CaptureSession*>(context);
+    auto* that = reinterpret_cast<CaptureSession*>(context);
     {
         std::lock_guard lock{that->status_mutex};
         that->disconnected = true;
@@ -134,7 +134,7 @@ void ImageCallback(void* context, AImageReader* reader) {
         MEDIA_CALL(AImage_getPlaneRowStride(image, plane, &row_stride[plane]));
     }
 
-    CaptureSession* that = reinterpret_cast<CaptureSession*>(context);
+    auto* that = reinterpret_cast<CaptureSession*>(context);
     {
         std::lock_guard lock{that->data_mutex};
         that->data = data;
