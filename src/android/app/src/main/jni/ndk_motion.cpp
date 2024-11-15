@@ -19,7 +19,7 @@ class NDKMotion final : public Input::MotionDevice {
 
     ASensorManager* sensor_manager = nullptr;
     ALooper* looper = nullptr;
-    ASensorEventQueue* event_queue;
+    ASensorEventQueue* event_queue = nullptr;
 
     mutable std::atomic<Vec3<float>> acceleration{};
     mutable std::atomic<Vec3<float>> rotation{};
