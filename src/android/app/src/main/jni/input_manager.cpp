@@ -253,6 +253,10 @@ bool ButtonFactory::ReleaseKey(int button_id) {
     return button_list->ChangeButtonStatus(button_id, false);
 }
 
+void ButtonFactory::ReleaseAllKeys() {
+    return button_list->ChangeAllButtonStatus(false);
+}
+
 bool ButtonFactory::AnalogButtonEvent(int axis_id, float axis_val) {
     return analog_button_list->ChangeAxisValue(axis_id, axis_val);
 }
