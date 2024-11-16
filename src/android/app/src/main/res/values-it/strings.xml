@@ -183,7 +183,11 @@
     <!-- Software Keyboard -->
     <string name="software_keyboard">Tastiera Software</string>
     <string name="i_forgot">L\'ho Dimenticato</string>
-    <string name="fixed_length_required">La lunghezza del testo non è corretta (deve essere di %d caratteri)</string>
+    <plurals name="fixed_length_required">
+        <item quantity="one">La lunghezza del testo non è corretta (deve essere di %d caratteri)</item>
+        <item quantity="many">La lunghezza del testo non è corretta (deve essere di %d caratteri)</item>
+        <item quantity="other">La lunghezza del testo non è corretta (deve essere di %d caratteri)</item>
+    </plurals>
     <string name="max_length_exceeded">Il testo è troppo lungo (non deve essere più lungo di %d caratteri)</string>
     <string name="blank_input_not_allowed">Non è consentito lasciarlo vuoto</string>
     <string name="empty_input_not_allowed">Non è consentito lasciarlo vuoto</string>

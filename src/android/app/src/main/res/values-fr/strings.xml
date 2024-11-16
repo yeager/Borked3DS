@@ -363,7 +363,11 @@
     <!-- Software Keyboard -->
     <string name="software_keyboard">Clavier logiciel</string>
     <string name="i_forgot">J\'ai oublié</string>
-    <string name="fixed_length_required">La longueur du texte est incorrecte (elle devrait être de %dcaractères)</string>
+    <plurals name="fixed_length_required">
+        <item quantity="one">La longueur du texte est incorrecte (elle devrait être de %dcaractère)</item>
+        <item quantity="many">La longueur du texte est incorrecte (elle devrait être de %dcaractères)</item>
+        <item quantity="other">La longueur du texte est incorrecte (elle devrait être de %dcaractères)</item>
+    </plurals>
     <string name="max_length_exceeded">Le texte est trop long (il ne devrait pas faire plus de %d caractères)</string>
     <string name="blank_input_not_allowed">Une entrée vide n\'est pas autorisée</string>
     <string name="empty_input_not_allowed">Une entrée vide n\'est pas autorisée</string>

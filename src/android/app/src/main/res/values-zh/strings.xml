@@ -362,7 +362,11 @@
     <!-- Software Keyboard -->
     <string name="software_keyboard">软件键盘</string>
     <string name="i_forgot">我忘记了</string>
-    <string name="fixed_length_required">文本长度不正确（应为 %d 个字符）</string>
+    <plurals name="fixed_length_required">
+        <item quantity="one">文本长度不正确（应为 %d 个字符）</item>
+        <item quantity="many">文本长度不正确（应为 %d 个字符）</item>
+        <item quantity="other">文本长度不正确（应为 %d 个字符）</item>
+    </plurals>
     <string name="max_length_exceeded">输入文本过长（不应超过 %d 个字符）</string>
     <string name="blank_input_not_allowed">不允许空白输入</string>
     <string name="empty_input_not_allowed">请输入字符</string>

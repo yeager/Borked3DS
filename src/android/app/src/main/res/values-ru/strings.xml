@@ -361,7 +361,11 @@
     <!-- Software Keyboard -->
     <string name="software_keyboard">Программная клавиатура</string>
     <string name="i_forgot">I Forgot</string>
-    <string name="fixed_length_required">Неправильная длина текста (должно быть %d символов)</string>
+    <plurals name="fixed_length_required">
+        <item quantity="one">Неправильная длина текста (должно быть %d символов)</item>
+        <item quantity="many">Неправильная длина текста (должно быть %d символов)</item>
+        <item quantity="other">Неправильная длина текста (должно быть %d символов)</item>
+    </plurals>
     <string name="max_length_exceeded">Текст слишком длинный (должно быть не более %d символов)</string>
     <string name="blank_input_not_allowed">Запрещено оставлять поле пустым</string>
     <string name="empty_input_not_allowed">Запрещен ввод пустых символов</string>

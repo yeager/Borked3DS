@@ -383,7 +383,11 @@ Se esperan fallos gráficos temporales cuando ésta esté activado.</string>
     <!-- Software Keyboard -->
     <string name="software_keyboard">Teclado de Software</string>
     <string name="i_forgot">Lo Olvidé</string>
-    <string name="fixed_length_required">La longitud del texto no es correcta (debe tener %d caracteres)</string>
+    <plurals name="fixed_length_required">
+        <item quantity="one">La longitud del texto no es correcta (debe tener %d caractere)</item>
+        <item quantity="many">La longitud del texto no es correcta (debe tener %d caracteres)</item>
+        <item quantity="other">La longitud del texto no es correcta (debe tener %d caracteres)</item>
+    </plurals>
     <string name="max_length_exceeded">El texto es muy largo (no debe tener más de%d caracteres)</string>
     <string name="blank_input_not_allowed">No puedes dejarlo en blanco</string>
     <string name="empty_input_not_allowed">No se puede dejar en blanco</string>
