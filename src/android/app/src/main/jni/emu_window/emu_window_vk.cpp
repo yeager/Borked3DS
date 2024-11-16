@@ -12,7 +12,7 @@
 class GraphicsContext_Android final : public Frontend::GraphicsContext {
 public:
     explicit GraphicsContext_Android(std::shared_ptr<Common::DynamicLibrary> driver_library_)
-        : driver_library{driver_library_} {}
+        : driver_library{std::move(driver_library_)} {}
 
     ~GraphicsContext_Android() = default;
 
@@ -26,7 +26,7 @@ private:
 
 EmuWindow_Android_Vulkan::EmuWindow_Android_Vulkan(
     ANativeWindow* surface, std::shared_ptr<Common::DynamicLibrary> driver_library_)
-    : EmuWindow_Android{surface}, driver_library{driver_library_} {
+    : EmuWindow_Android{surface}, driver_library{std::move(driver_library_)} {
     CreateWindowSurface();
 
     if (core_context = CreateSharedContext(); !core_context) {

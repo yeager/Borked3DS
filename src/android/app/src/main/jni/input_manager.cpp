@@ -27,7 +27,8 @@ static std::shared_ptr<NDKMotionFactory> motion;
 // Button Handler
 class KeyButton final : public Input::ButtonDevice {
 public:
-    explicit KeyButton(std::shared_ptr<ButtonList> button_list_) : button_list(button_list_) {}
+    explicit KeyButton(std::shared_ptr<ButtonList> button_list_)
+        : button_list(std::move(button_list_)) {}
 
     ~KeyButton();
 
@@ -94,7 +95,7 @@ class AnalogButton final : public Input::ButtonDevice {
 public:
     explicit AnalogButton(std::shared_ptr<AnalogButtonList> button_list_, float threshold_,
                           bool trigger_if_greater_)
-        : button_list(button_list_), threshold(threshold_),
+        : button_list(std::move(button_list_)), threshold(threshold_),
           trigger_if_greater(trigger_if_greater_) {}
 
     ~AnalogButton();
@@ -157,7 +158,8 @@ AnalogButton::~AnalogButton() {
 // Joystick Handler
 class Joystick final : public Input::AnalogDevice {
 public:
-    explicit Joystick(std::shared_ptr<AnalogList> analog_list_) : analog_list(analog_list_) {}
+    explicit Joystick(std::shared_ptr<AnalogList> analog_list_)
+        : analog_list(std::move(analog_list_)) {}
 
     ~Joystick();
 
