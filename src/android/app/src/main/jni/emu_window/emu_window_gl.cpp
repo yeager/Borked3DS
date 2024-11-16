@@ -75,6 +75,9 @@ private:
 
 EmuWindow_Android_OpenGL::EmuWindow_Android_OpenGL(Core::System& system_, ANativeWindow* surface)
     : EmuWindow_Android{surface}, system{system_} {
+    auto egl_conf = (EGLConfig) nullptr;
+    egl_config = egl_conf;
+
     if (egl_display = eglGetDisplay(EGL_DEFAULT_DISPLAY); egl_display == EGL_NO_DISPLAY) {
         LOG_CRITICAL(Frontend, "eglGetDisplay() failed 1");
         return;
