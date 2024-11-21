@@ -223,6 +223,11 @@ class GameAdapter(private val activity: AppCompatActivity, private val inflater:
     ) {
         val bottomSheetView = inflater.inflate(R.layout.dialog_about_game, null)
 
+        val game_id = String.format("%016X", game.titleId)
+        val game_filename = game.filename
+        val id_label = context.getString(R.string.id_label)
+        val file_label = context.getString(R.string.file_label)
+
         val bottomSheetDialog = BottomSheetDialog(context)
         bottomSheetDialog.setContentView(bottomSheetView)
 
@@ -230,9 +235,9 @@ class GameAdapter(private val activity: AppCompatActivity, private val inflater:
         bottomSheetView.findViewById<TextView>(R.id.about_game_company).text = game.company
         bottomSheetView.findViewById<TextView>(R.id.about_game_region).text = game.regions
         bottomSheetView.findViewById<TextView>(R.id.about_game_id).text =
-            "ID: " + String.format("%016X", game.titleId)
+            "$id_label: $game_id"
         bottomSheetView.findViewById<TextView>(R.id.about_game_filename).text =
-            "File: " + game.filename
+            "$file_label: $game_filename"
         GameIconUtils.loadGameIcon(activity, game, bottomSheetView.findViewById(R.id.game_icon))
 
         bottomSheetView.findViewById<MaterialButton>(R.id.about_game_play).setOnClickListener {

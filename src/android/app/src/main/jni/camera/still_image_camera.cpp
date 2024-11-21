@@ -130,7 +130,7 @@ std::unique_ptr<CameraInterface> Factory::Create(const std::string& config,
     }
 
     // Open file picker to get the string
-    jstring path = reinterpret_cast<jstring>(
+    auto path = reinterpret_cast<jstring>(
         env->CallStaticObjectMethod(s_still_image_camera_helper_class, s_open_file_picker));
     if (path == nullptr) {
         return std::make_unique<Camera::BlankCamera>();

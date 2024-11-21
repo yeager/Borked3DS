@@ -276,13 +276,13 @@ void InitializeGpuDriver(const std::string& hook_lib_dir, const std::string& cus
     int featureFlags{};
 
     // Enable driver file redirection when renderer debugging is enabled.
-    if (Settings::values.renderer_debug && file_redirect_dir.size()) {
+    if (Settings::values.renderer_debug && !file_redirect_dir.empty()) {
         featureFlags |= ADRENOTOOLS_DRIVER_FILE_REDIRECT;
         file_redirect_dir_ = file_redirect_dir.c_str();
     }
 
     // Try to load a custom driver.
-    if (custom_driver_name.size()) {
+    if (!custom_driver_name.empty()) {
         handle = adrenotools_open_libvulkan(
             RTLD_NOW, featureFlags | ADRENOTOOLS_DRIVER_CUSTOM, nullptr, hook_lib_dir.c_str(),
             custom_driver_dir.c_str(), custom_driver_name.c_str(), file_redirect_dir_, nullptr);
@@ -503,7 +503,7 @@ void Java_io_github_borked3ds_android_NativeLibrary_setUserDirectory(JNIEnv* env
 }
 
 jobjectArray Java_io_github_borked3ds_android_NativeLibrary_getInstalledGamePaths(
-    JNIEnv* env, [[maybe_unused]] jclass clazz) {
+    JNIEnv* env, [[maybe_unused]] jobject clazz) {
     std::vector<std::string> games;
     const FileUtil::DirectoryEntryCallable ScanDir =
         [&games, &ScanDir](u64*, const std::string& directory, const std::string& virtual_name) {
@@ -779,7 +779,7 @@ void Java_io_github_borked3ds_android_NativeLibrary_createLogFile([[maybe_unused
 void Java_io_github_borked3ds_android_NativeLibrary_logUserDirectory(JNIEnv* env,
                                                                      [[maybe_unused]] jobject obj,
                                                                      jstring j_path) {
-    std::string_view path = env->GetStringUTFChars(j_path, 0);
+    std::string_view path = env->GetStringUTFChars(j_path, nullptr);
     LOG_INFO(Frontend, "User directory path: {}", path);
     env->ReleaseStringUTFChars(j_path, path.
 

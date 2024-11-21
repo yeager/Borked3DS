@@ -89,8 +89,8 @@ private:
     std::unordered_map<std::string, std::weak_ptr<CaptureSession>> opened_camera_map;
 
     struct ACameraManagerDeleter {
-        void operator()(ACameraManager* manager) {
-            ACameraManager_delete(manager);
+        void operator()(ACameraManager* camera_manager) {
+            ACameraManager_delete(camera_manager);
         }
     };
 

@@ -35,7 +35,7 @@ void AndroidMiiSelector::Setup(const Frontend::MiiSelectorConfig& config) {
 
     // List mii names
     // The 'Standard Mii' is not included here as we need Java side to translate it
-    const jclass string_class = reinterpret_cast<jclass>(env->FindClass("java/lang/String"));
+    const auto string_class = reinterpret_cast<jclass>(env->FindClass("java/lang/String"));
     const jobjectArray array =
         env->NewObjectArray(static_cast<jsize>(miis.size()), string_class, nullptr);
     for (std::size_t i = 0; i < miis.size(); ++i) {

@@ -23,25 +23,22 @@ static Cheats::CheatEngine& GetEngine() {
 
 JNIEXPORT void JNICALL
 Java_io_github_borked3ds_android_features_cheats_model_CheatEngine_loadCheatFile(JNIEnv* env,
-                                                                                 jclass,
+                                                                                 jobject,
                                                                                  jlong title_id) {
     GetEngine().LoadCheatFile(title_id);
 }
 
 JNIEXPORT void JNICALL
 Java_io_github_borked3ds_android_features_cheats_model_CheatEngine_saveCheatFile(JNIEnv* env,
-                                                                                 jclass,
+                                                                                 jobject,
                                                                                  jlong title_id) {
     GetEngine()
 
         .SaveCheatFile(title_id);
 }
 
-JNIEXPORT jobjectArray
-
-    JNICALL
-    Java_io_github_borked3ds_android_features_cheats_model_CheatEngine_getCheats(JNIEnv* env,
-                                                                                 jclass) {
+JNIEXPORT jobjectArray JNICALL
+Java_io_github_borked3ds_android_features_cheats_model_CheatEngine_getCheats(JNIEnv* env, jobject) {
     auto cheats = GetEngine().GetCheats();
 
     const jobjectArray array =
@@ -55,7 +52,7 @@ JNIEXPORT jobjectArray
 }
 
 JNIEXPORT void JNICALL Java_io_github_borked3ds_android_features_cheats_model_CheatEngine_addCheat(
-    JNIEnv* env, jclass, jobject j_cheat) {
+    JNIEnv* env, jobject, jobject j_cheat) {
     auto cheat = *CheatFromJava(env, j_cheat);
 
     GetEngine()
@@ -64,7 +61,7 @@ JNIEXPORT void JNICALL Java_io_github_borked3ds_android_features_cheats_model_Ch
 }
 
 JNIEXPORT void JNICALL
-Java_io_github_borked3ds_android_features_cheats_model_CheatEngine_removeCheat(JNIEnv* env, jclass,
+Java_io_github_borked3ds_android_features_cheats_model_CheatEngine_removeCheat(JNIEnv* env, jobject,
                                                                                jint index) {
     GetEngine()
 
@@ -73,7 +70,7 @@ Java_io_github_borked3ds_android_features_cheats_model_CheatEngine_removeCheat(J
 
 JNIEXPORT void JNICALL
 Java_io_github_borked3ds_android_features_cheats_model_CheatEngine_updateCheat(
-    JNIEnv* env, jclass, jint index, jobject j_new_cheat) {
+    JNIEnv* env, jobject, jint index, jobject j_new_cheat) {
     auto cheat = *CheatFromJava(env, j_new_cheat);
 
     GetEngine()

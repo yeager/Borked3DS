@@ -19,7 +19,7 @@ class NDKMotion final : public Input::MotionDevice {
 
     ASensorManager* sensor_manager = nullptr;
     ALooper* looper = nullptr;
-    ASensorEventQueue* event_queue;
+    ASensorEventQueue* event_queue = nullptr;
 
     mutable std::atomic<Vec3<float>> acceleration{};
     mutable std::atomic<Vec3<float>> rotation{};
@@ -109,7 +109,7 @@ class NDKMotion final : public Input::MotionDevice {
     }
 
 public:
-    NDKMotion(std::chrono::microseconds update_period_, bool asynchronous = false)
+    explicit NDKMotion(std::chrono::microseconds update_period_, bool asynchronous = false)
         : update_period(update_period_) {
         if (asynchronous) {
             poll_thread = std::thread([this] {

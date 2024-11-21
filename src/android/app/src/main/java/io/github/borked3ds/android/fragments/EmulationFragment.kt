@@ -75,6 +75,7 @@ import io.github.borked3ds.android.viewmodel.EmulationViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import java.io.File
+import java.util.Locale
 
 class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.FrameCallback {
     private val preferences: SharedPreferences
@@ -401,6 +402,7 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
                             binding.loadingProgressIndicator.isIndeterminate = false
                             binding.loadingProgressText.visibility = View.VISIBLE
                             binding.loadingProgressText.text = String.format(
+                                Locale.ROOT,
                                 "%d/%d",
                                 emulationViewModel.shaderProgress.value,
                                 emulationViewModel.totalShaders.value
@@ -441,8 +443,8 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
                         if (started) {
                             ViewUtils.hideView(binding.loadingIndicator)
                             ViewUtils.showView(binding.surfaceInputOverlay)
-                            binding.inGameMenu.menu.findItem(R.id.menu_emulation_savestates)
-                                .setVisible(NativeLibrary.getSavestateInfo() != null)
+                            binding.inGameMenu.menu.findItem(R.id.menu_emulation_savestates).isVisible =
+                                NativeLibrary.getSavestateInfo() != null
                             binding.drawerLayout.setDrawerLockMode(EmulationMenuSettings.drawerLockMode)
                         }
                     }
@@ -594,13 +596,12 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
         }
 
         savestates?.forEach {
-            var enableClick = true
             val text = if (it.slot == NativeLibrary.QUICKSAVE_SLOT) {
                 getString(R.string.emulation_occupied_quicksave_slot, it.time)
             } else {
                 getString(R.string.emulation_occupied_state_slot, it.slot, it.time)
             }
-            popupMenu.menu.getItem(it.slot).setTitle(text).setEnabled(enableClick)
+            popupMenu.menu.getItem(it.slot).setTitle(text).isEnabled = true
         }
 
         popupMenu.show()
@@ -627,7 +628,7 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
 
         savestates?.forEach {
             val text = getString(R.string.emulation_occupied_state_slot, it.slot, it.time)
-            popupMenu.menu.getItem(it.slot - 1).setTitle(text).setEnabled(true)
+            popupMenu.menu.getItem(it.slot - 1).setTitle(text).isEnabled = true
         }
 
         popupMenu.show()
@@ -1001,7 +1002,7 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
             slider.valueTo = 150f
             slider.valueFrom = 0f
             slider.value = preferences.getInt(target, 50).toFloat()
-            textValue.setText((slider.value + 50).toInt().toString())
+            textValue.setText(String.format(Locale.ROOT, "%d", (slider.value + 50).toInt()))
             textValue.addTextChangedListener(object : TextWatcher {
                 override fun afterTextChanged(s: Editable) {
                     val value = s.toString().toIntOrNull()
@@ -1019,7 +1020,7 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
             slider.addOnChangeListener(
                 Slider.OnChangeListener { slider: Slider, progress: Float, _: Boolean ->
                     if (textValue.text.toString() != (slider.value + 50).toInt().toString()) {
-                        textValue.setText((slider.value + 50).toInt().toString())
+                        textValue.setText(String.format(Locale.ROOT, "%d", (slider.value + 50).toInt()))
                         textValue.setSelection(textValue.length())
                         setControlScale(slider.value.toInt(), target)
                     }
@@ -1051,7 +1052,7 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
             slider.valueFrom = 0f
             slider.valueTo = 100f
             slider.value = preferences.getInt("controlOpacity", 50).toFloat()
-            textValue.setText(slider.value.toInt().toString())
+            textValue.setText(String.format(Locale.ROOT, "%d", (slider.value + 50).toInt()))
 
             textValue.addTextChangedListener(object : TextWatcher {
                 override fun afterTextChanged(s: Editable) {
@@ -1072,7 +1073,7 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
             slider.addOnChangeListener { _: Slider, value: Float, _: Boolean ->
 
                 if (textValue.text.toString() != slider.value.toInt().toString()) {
-                    textValue.setText(slider.value.toInt().toString())
+                    textValue.setText(String.format(Locale.ROOT, "%d", slider.value.toInt()))
                     textValue.setSelection(textValue.length())
                     setControlOpacity(slider.value.toInt())
                 }
@@ -1169,18 +1170,19 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
 
     fun updateShowFpsOverlay() {
         if (EmulationMenuSettings.showFps) {
-            val FPS = 1
-            val SPEED = 3
+            val fps = 1
+            val speed = 3
             perfStatsUpdater = Runnable {
                 val perfStats = NativeLibrary.getPerfStats()
                 val ramUsage =
                     File("/proc/self/statm").readLines()[0].split(' ')[1].toLong() * 4096 / 1000000
-                val ramUsageText = "RAM USAGE: " + ramUsage + " MB"
-                if (perfStats[FPS] > 0) {
+                val ramUsageText = "RAM USAGE: $ramUsage MB"
+                if (perfStats[fps] > 0) {
                     binding.showFpsText.text = String.format(
+                        Locale.ROOT,
                         "FPS: %d Speed: %d%%\n%s",
-                        (perfStats[FPS] + 0.5).toInt(),
-                        (perfStats[SPEED] * 100.0 + 0.5).toInt(),
+                        (perfStats[fps] + 0.5).toInt(),
+                        (perfStats[speed] * 100.0 + 0.5).toInt(),
                         ramUsageText
                     )
                 }

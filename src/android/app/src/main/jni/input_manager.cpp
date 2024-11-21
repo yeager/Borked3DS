@@ -27,7 +27,8 @@ static std::shared_ptr<NDKMotionFactory> motion;
 // Button Handler
 class KeyButton final : public Input::ButtonDevice {
 public:
-    explicit KeyButton(std::shared_ptr<ButtonList> button_list_) : button_list(button_list_) {}
+    explicit KeyButton(std::shared_ptr<ButtonList> button_list_)
+        : button_list(std::move(button_list_)) {}
 
     ~KeyButton();
 
@@ -94,7 +95,7 @@ class AnalogButton final : public Input::ButtonDevice {
 public:
     explicit AnalogButton(std::shared_ptr<AnalogButtonList> button_list_, float threshold_,
                           bool trigger_if_greater_)
-        : button_list(button_list_), threshold(threshold_),
+        : button_list(std::move(button_list_)), threshold(threshold_),
           trigger_if_greater(trigger_if_greater_) {}
 
     ~AnalogButton();
@@ -157,7 +158,8 @@ AnalogButton::~AnalogButton() {
 // Joystick Handler
 class Joystick final : public Input::AnalogDevice {
 public:
-    explicit Joystick(std::shared_ptr<AnalogList> analog_list_) : analog_list(analog_list_) {}
+    explicit Joystick(std::shared_ptr<AnalogList> analog_list_)
+        : analog_list(std::move(analog_list_)) {}
 
     ~Joystick();
 
@@ -253,15 +255,19 @@ bool ButtonFactory::ReleaseKey(int button_id) {
     return button_list->ChangeButtonStatus(button_id, false);
 }
 
+void ButtonFactory::ReleaseAllKeys() {
+    return button_list->ChangeAllButtonStatus(false);
+}
+
 bool ButtonFactory::AnalogButtonEvent(int axis_id, float axis_val) {
     return analog_button_list->ChangeAxisValue(axis_id, axis_val);
 }
 
 std::unique_ptr<Input::AnalogDevice> AnalogFactory::Create(const Common::ParamPackage& params) {
     int analog_id = params.Get("code", 0);
-    std::unique_ptr<Joystick> analog = std::make_unique<Joystick>(analog_list);
-    analog_list->AddButton(analog_id, analog.get());
-    return std::move(analog);
+    std::unique_ptr<Joystick> analog_stick = std::make_unique<Joystick>(analog_list);
+    analog_list->AddButton(analog_id, analog_stick.get());
+    return std::move(analog_stick);
 }
 
 bool AnalogFactory::MoveJoystick(int analog_id, float x, float y) {
@@ -276,10 +282,10 @@ AnalogFactory* AnalogHandler() {
     return analog.get();
 }
 
-std::string GenerateButtonParamPackage(int button) {
+std::string GenerateButtonParamPackage(int button_code) {
     Common::ParamPackage param{
         {"engine", "gamepad"},
-        {"code", std::to_string(button)},
+        {"code", std::to_string(button_code)},
     };
     return param.Serialize();
 }

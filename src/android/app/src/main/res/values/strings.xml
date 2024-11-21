@@ -11,6 +11,8 @@
     <string name="app_notification_channel_description">Borked3DS emulator notifications</string>
     <string name="app_notification_running">Borked3DS is Running</string>
     <string name="app_game_install_description">Next, you will need to select a Game Folder. Borked3DS will display all of the 3DS ROMs inside of the selected folder in the app.\n\nCIA ROMs, updates and DLC will need to be installed separately by clicking on the folder icon and selecting Install CIA.</string>
+    <string name="id_label">ID</string>
+    <string name="file_label">File</string>
 
     <!-- Home Strings -->
     <string name="grid_menu_core_settings">Settings</string>
@@ -180,6 +182,14 @@
     <!-- Generic buttons (Shared with lots of stuff) -->
     <string name="generic_buttons">Buttons</string>
     <string name="button">Button</string>
+
+    <!-- Icon and logo descriptions (used for accessibility) -->
+    <string name="ic_borked3ds">Borked3DS Logo</string>
+    <string name="ic_clear">Clear Icon</string>
+    <string name="ic_search">Search Icon</string>
+    <string name="ic_network">Network Icon</string>
+    <string name="ic_notification">Notification Icon</string>
+    <string name="no_icon">No Icon</string>
 
     <!-- Core settings strings -->
     <string name="cpu_jit">CPU JIT Compiler</string>
@@ -580,8 +590,6 @@
     <!-- Software Keyboard -->
     <string name="software_keyboard">Software Keyboard</string>
     <string name="i_forgot">I Forgot</string>
-    <string name="fixed_length_required">Text length is not correct (should be %d characters).</string>
-    <string name="max_length_exceeded">Text is too long (should be no more than %d characters).</string>
     <string name="blank_input_not_allowed">Blank input is not allowed.</string>
     <string name="empty_input_not_allowed">Empty input is not allowed.</string>
     <string name="invalid_input">Invalid input</string>
@@ -632,10 +640,6 @@
     <string name="cheats_error_on_line">Error on line %1$d</string>
 
     <!-- CIA Install -->
-    <plurals name="cia_install_toast">
-        <item quantity="one">Installing %d file. See notification for more details.</item>
-        <item quantity="other">Installing %d files. See notification for more details.</item>
-    </plurals>
     <string name="cia_install_notification_channel_name" translatable="false">Borked3DS CIA Install</string>
     <string name="cia_install_notification_channel_id" translatable="false">borked3ds-cia</string>
     <string name="cia_install_notification_channel_description">Borked3DS notifications during CIA Install</string>
@@ -986,7 +990,7 @@
     <string name="multiplayer_chat_input_hint">Send messages……</string>
     <string name="multiplayer_password">Password</string>
     <string name="original_button_text">Join</string>
-    <string name="disabled_button_text">Joining...</string>
+    <string name="disabled_button_text">Joining… </string>
     <string name="multiplayer_room_name">Room Name</string>
     <string name="multiplayer_room_name_invalid">Room name must be between 3 and 20 characters</string>
     <string name="multiplayer_max_players">Max Players (16)</string>
