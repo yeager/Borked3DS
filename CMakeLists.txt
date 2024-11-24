@@ -27,6 +27,10 @@ endif()
 if(CMAKE_VERSION VERSION_GREATER "3.29")
     set(CMAKE_POLICY_DEFAULT_CMP0167 OLD)
 endif()
+if(CMAKE_VERSION VERSION_GREATER "3.30")
+    set(CMAKE_POLICY_DEFAULT_CMP0175 NEW)
+endif()
+
 
 # Enable link time optimization if supported by compiler
 include(CheckIPOSupported)
