@@ -34,7 +34,7 @@
     <string name="select_games_folder">Select Games Folder</string>
     <string name="select_games_folder_description">Allows Borked3DS to populate the games list</string>
     <string name="about">About</string>
-    <string name="borked3ds_description">An open-source 3DS emulator</string>
+    <string name="borked3ds_description">An experimental open-source 3DS emulator</string>
     <string name="about_description">Build version, credits, and more</string>
     <string name="games_dir_selected">Games directory selected</string>
     <string name="select_borked3ds_user_folder_home_description">Changes the files that Borked3DS uses to load games</string>
