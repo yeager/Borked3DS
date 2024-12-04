@@ -124,7 +124,8 @@ option(ENABLE_VULKAN "Enables the Vulkan renderer" ON)
 
 option(BORKED3DS_USE_EXTERNAL_VULKAN_SPIRV_TOOLS "Use SPIRV-Tools from externals" ON)
 
-option(ENABLE_PROFILING "Enables integration with the Tracy profiler" ON)
+CMAKE_DEPENDENT_OPTION(ENABLE_PROFILING "Enables integration with the Tracy profiler" ON "NOT ANDROID" OFF)
+
 option(USE_DISCORD_PRESENCE "Enables Discord Rich Presence" OFF)
 
 
