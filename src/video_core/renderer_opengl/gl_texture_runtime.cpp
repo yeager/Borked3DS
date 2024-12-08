@@ -190,7 +190,7 @@ bool TextureRuntime::Reinterpret(Surface& source, Surface& dest,
 
 bool TextureRuntime::ClearTextureWithoutFbo(Surface& surface,
                                             const VideoCore::TextureClear& clear) {
-    if (!(driver.HasArbClearTexture() && driver.HasArbClearTexture()) ||
+    if (!(driver.HasArbClearTexture() && driver.HasExtClearTexture()) ||
         driver.HasBug(DriverBug::BrokenClearTexture)) {
         return false;
     }
