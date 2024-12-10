@@ -1,36 +1,51 @@
 # CMake 3.12 required for 20 to be a valid value for CXX_STANDARD
 cmake_minimum_required(VERSION 3.15)
 
-# Honor visibility properties for all targets
-# Set the default so subdirectory cmake_minimum_required calls won't unset the policy.
-cmake_policy(SET CMP0063 NEW)
-set(CMAKE_POLICY_DEFAULT_CMP0063 NEW)
-# Enforce new LTO setting
-cmake_policy(SET CMP0069 NEW)
-# Include file check macros honor CMAKE_REQUIRED_LIBRARIES
-cmake_policy(SET CMP0075 NEW)
-# Needed to compile sdl2 2.30.5+ on MSVC
-set(CMAKE_POLICY_DEFAULT_CMP0077 NEW)
-# Needed for GPUCode's teakra
-# Allow use with targets in other directories
-cmake_policy(SET CMP0079 NEW)
-set(CMAKE_POLICY_DEFAULT_CMP0079 NEW)
-# Don't override the warning flags in MSVC:
-cmake_policy(SET CMP0092 NEW)
-# Allow conditions to be used in cmake_dependent_option
-cmake_policy(SET CMP0127 NEW)
-# Allow for uppercase <PACKAGENAME>_ROOT variables
-if(CMAKE_VERSION VERSION_GREATER "3.27")
-    set(CMAKE_POLICY_DEFAULT_CMP0144 NEW)
+if(COMMAND CMAKE_POLICY)
+    # Honor visibility properties for all targets
+    # Set the default so subdirectory cmake_minimum_required calls won't unset the policy.
+    if(POLICY CMP0063)
+        cmake_policy(SET CMP0063 NEW)
+        set(CMAKE_POLICY_DEFAULT_CMP0063 NEW)
+    endif(POLICY CMP0063)
+    # Enforce new LTO setting
+    if(POLICY CMP0069)
+        cmake_policy(SET CMP0069 NEW)
+    endif(POLICY CMP0069)
+    # Include file check macros honor CMAKE_REQUIRED_LIBRARIES
+    if(POLICY CMP0075)
+        cmake_policy(SET CMP0075 NEW)
+    endif(POLICY CMP0075)
+    # Needed to compile sdl2 2.30.5+ on MSVC
+    if(POLICY CMP0077)
+        set(CMAKE_POLICY_DEFAULT_CMP0077 NEW)
+    endif(POLICY CMP0077)
+    # Needed for GPUCode's teakra
+    # Allow use with targets in other directories
+    if(POLICY CMP0079)
+        cmake_policy(SET CMP0079 NEW)
+        set(CMAKE_POLICY_DEFAULT_CMP0079 NEW)
+    endif(POLICY CMP0079)
+    # Don't override the warning flags in MSVC:
+    if(POLICY CMP0092)
+        cmake_policy(SET CMP0092 NEW)
+    endif(POLICY CMP0092)
+    # Allow conditions to be used in cmake_dependent_option
+    if(POLICY CMP0127)
+        cmake_policy(SET CMP0127 NEW)
+    endif(POLICY CMP0127)
+    # Allow for uppercase <PACKAGENAME>_ROOT variables
+    if(POLICY CMP0144)
+        set(CMAKE_POLICY_DEFAULT_CMP0144 NEW)
+    endif()
+    # FindBoost module no longer provided in cmake 3.30 and above
+    if(POLICY CMP0167)
+        set(CMAKE_POLICY_DEFAULT_CMP0167 OLD)
+    endif()
+    if(POLICY CMP0175)
+        set(CMAKE_POLICY_DEFAULT_CMP0175 NEW)
+    endif()
 endif()
-# FindBoost module no longer provided in cmake 3.30 and above
-if(CMAKE_VERSION VERSION_GREATER "3.29")
-    set(CMAKE_POLICY_DEFAULT_CMP0167 OLD)
-endif()
-if(CMAKE_VERSION VERSION_GREATER "3.30")
-    set(CMAKE_POLICY_DEFAULT_CMP0175 NEW)
-endif()
-
 
 # Enable link time optimization if supported by compiler
 include(CheckIPOSupported)
