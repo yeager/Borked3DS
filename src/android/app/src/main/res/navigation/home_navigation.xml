@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_homeSettingsFragment_to_driverManagerFragment"
             app:destination="@id/driverManagerFragment" />
+        <action
+            android:id="@+id/action_homeSettingsFragment_to_searchLocationFragment"
+            app:destination="@id/searchLocationFragment" />
     </fragment>
 
     <fragment
@@ -94,4 +97,8 @@
         android:name="io.github.borked3ds.android.fragments.DriverManagerFragment"
         android:label="DriverManagerFragment" />
 
+    <fragment 
+        android:id="@+id/searchLocationFragment"
+        android:name="io.github.borked3ds.android.fragments.SearchLocationFragment"
+        android:label="SearchLocationFragment" />
 </navigation>
