@@ -1,4 +1,3 @@
-
 package io.github.borked3ds.android.fragments
 
 import android.content.Intent
@@ -6,19 +5,16 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewTreeObserver
 import android.view.ViewGroup
 import android.view.ViewGroup.MarginLayoutParams
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.coordinatorlayout.widget.CoordinatorLayout
-import androidx.core.view.WindowCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewbinding.ViewBinding
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.transition.MaterialSharedAxis
@@ -30,8 +26,8 @@ import io.github.borked3ds.android.adapters.SpacingItemDecoration
 import io.github.borked3ds.android.databinding.FragmentSearchLocationBinding
 import io.github.borked3ds.android.utils.SearchLocationHelper
 import io.github.borked3ds.android.utils.SearchLocationResult
-import io.github.borked3ds.android.viewmodel.HomeViewModel
 import io.github.borked3ds.android.viewmodel.GamesViewModel
+import io.github.borked3ds.android.viewmodel.HomeViewModel
 
 /**
  * This fragment is used to manage the selected search locations to use.
@@ -158,7 +154,8 @@ class SearchLocationFragment : Fragment() {
             )
 
             val mlpFab = binding.addLocationButton.layoutParams as MarginLayoutParams
-            val fabPadding = requireActivity().resources.getDimensionPixelSize(R.dimen.spacing_large)
+            val fabPadding =
+                requireActivity().resources.getDimensionPixelSize(R.dimen.spacing_large)
             mlpFab.leftMargin = leftInsets + fabPadding
             mlpFab.bottomMargin = barInsets.bottom + fabPadding
             mlpFab.rightMargin = rightInsets + fabPadding

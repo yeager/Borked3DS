@@ -5,13 +5,12 @@
 
 package io.github.borked3ds.android.fragments
 
-import android.app.Activity
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Context
 import android.content.DialogInterface
 import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
-import android.content.res.Configuration
 import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
@@ -59,7 +58,6 @@ import io.github.borked3ds.android.display.PortraitScreenLayout
 import io.github.borked3ds.android.display.ScreenAdjustmentUtil
 import io.github.borked3ds.android.display.ScreenLayout
 import io.github.borked3ds.android.features.settings.model.IntSetting
-import io.github.borked3ds.android.features.settings.model.Settings
 import io.github.borked3ds.android.features.settings.model.SettingsViewModel
 import io.github.borked3ds.android.features.settings.ui.SettingsActivity
 import io.github.borked3ds.android.features.settings.utils.SettingsFile
@@ -477,7 +475,10 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
         currentOrientationIndex = (currentOrientationIndex + 1) % orientations.size
         activity.requestedOrientation = orientations[currentOrientationIndex]
         IntSetting.ORIENTATION_OPTION.int = activity.requestedOrientation
-        settingsViewModel.settings.saveSetting(IntSetting.ORIENTATION_OPTION, SettingsFile.FILE_NAME_CONFIG)
+        settingsViewModel.settings.saveSetting(
+            IntSetting.ORIENTATION_OPTION,
+            SettingsFile.FILE_NAME_CONFIG
+        )
     }
 
     fun isDrawerOpen(): Boolean {
@@ -1035,7 +1036,13 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
             slider.addOnChangeListener(
                 Slider.OnChangeListener { slider: Slider, progress: Float, _: Boolean ->
                     if (textValue.text.toString() != (slider.value + 50).toInt().toString()) {
-                        textValue.setText(String.format(Locale.ROOT, "%d", (slider.value + 50).toInt()))
+                        textValue.setText(
+                            String.format(
+                                Locale.ROOT,
+                                "%d",
+                                (slider.value + 50).toInt()
+                            )
+                        )
                         textValue.setSelection(textValue.length())
                         setControlScale(slider.value.toInt(), target)
                     }

@@ -41,10 +41,10 @@ import io.github.borked3ds.android.model.HomeSetting
 import io.github.borked3ds.android.ui.main.MainActivity
 import io.github.borked3ds.android.utils.GameHelper
 import io.github.borked3ds.android.utils.GpuDriverHelper
-import io.github.borked3ds.android.utils.SearchLocationHelper
+import io.github.borked3ds.android.utils.HomeSettingStringUtils
 import io.github.borked3ds.android.utils.Log
 import io.github.borked3ds.android.utils.PermissionsHandler
-import io.github.borked3ds.android.utils.HomeSettingStringUtils
+import io.github.borked3ds.android.utils.SearchLocationHelper
 import io.github.borked3ds.android.viewmodel.DriverViewModel
 import io.github.borked3ds.android.viewmodel.HomeViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -185,11 +185,13 @@ class HomeSettingsFragment : Fragment() {
                 { true },
                 0,
                 0,
-                MutableStateFlow<String>(String.format(
-                    requireContext().getString(R.string.search_locations_count),
-                    if(locations.isEmpty()) "No" else locations.size.toString(),
-                    if(locations.size > 1) "s" else ""
-                ))
+                MutableStateFlow<String>(
+                    String.format(
+                        requireContext().getString(R.string.search_locations_count),
+                        if (locations.isEmpty()) "No" else locations.size.toString(),
+                        if (locations.size > 1) "s" else ""
+                    )
+                )
             ),
             HomeSetting(
                 HomeSettingStringUtils.ResId(R.string.preferences_theme),
