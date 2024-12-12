@@ -115,7 +115,11 @@ bool Driver::IsCustomFormatSupported(VideoCore::CustomPixelFormat format) const 
     case VideoCore::CustomPixelFormat::BC5:
         return ext_texture_compression_s3tc;
     case VideoCore::CustomPixelFormat::BC7:
+#ifdef __ANDROID__
+        return ext_texture_compression_bptc;
+#else
         return arb_texture_compression_bptc;
+#endif
     case VideoCore::CustomPixelFormat::ASTC4:
     case VideoCore::CustomPixelFormat::ASTC6:
     case VideoCore::CustomPixelFormat::ASTC8:
@@ -172,6 +176,7 @@ void Driver::CheckExtensionSupport() {
     arb_get_texture_sub_image = GLAD_GL_ARB_get_texture_sub_image;
     arb_shader_image_load_store = GLAD_GL_ARB_shader_image_load_store;
     arb_texture_compression_bptc = GLAD_GL_ARB_texture_compression_bptc;
+    ext_texture_compression_bptc = GLAD_GL_EXT_texture_compression_bptc;
     clip_cull_distance = !is_gles || GLAD_GL_EXT_clip_cull_distance;
     ext_texture_compression_s3tc = GLAD_GL_EXT_texture_compression_s3tc;
     ext_shader_framebuffer_fetch = GLAD_GL_EXT_shader_framebuffer_fetch;
