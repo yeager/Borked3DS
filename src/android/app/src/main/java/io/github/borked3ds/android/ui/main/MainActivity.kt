@@ -367,11 +367,12 @@ class MainActivity : AppCompatActivity(), ThemeProvider {
         }
 
         val workManager = WorkManager.getInstance(applicationContext)
+        val nullableFiles: Array<String?> = selectedFiles.map { it }.toTypedArray()
         workManager.enqueueUniqueWork(
             "installCiaWork", ExistingWorkPolicy.APPEND_OR_REPLACE,
             OneTimeWorkRequest.Builder(CiaInstallWorker::class.java)
                 .setInputData(
-                    Data.Builder().putStringArray("CIA_FILES", selectedFiles as Array<String?>)
+                    Data.Builder().putStringArray("CIA_FILES", nullableFiles)
                         .build()
                 )
                 .setExpedited(OutOfQuotaPolicy.RUN_AS_NON_EXPEDITED_WORK_REQUEST)
