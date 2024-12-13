@@ -25,7 +25,7 @@ OpenGLState::OpenGLState() {
     color_mask.blue_enabled = GL_TRUE;
     color_mask.alpha_enabled = GL_TRUE;
 
-    stencil.test_enabled = false;
+    stencil.test_enabled = GL_TRUE;
     stencil.test_func = GL_ALWAYS;
     stencil.test_ref = 0;
     stencil.test_mask = 0xFF;

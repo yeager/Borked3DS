@@ -167,6 +167,7 @@ private:
     bool clip_cull_distance{};
     bool ext_texture_compression_s3tc{};
     bool arb_texture_compression_bptc{};
+    bool ext_texture_compression_bptc{};
     bool arm_shader_framebuffer_fetch{};
     bool ext_shader_framebuffer_fetch{};
     bool arb_fragment_shader_interlock{};
