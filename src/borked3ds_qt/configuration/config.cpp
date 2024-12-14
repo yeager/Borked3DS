@@ -63,7 +63,7 @@ const std::array<std::array<int, 9>, Settings::NativeAnalog::NumAnalogs> Config:
 // This must be in alphabetical order according to action name as it must have the same order as
 // UISetting::values.shortcuts, which is alphabetically ordered.
 // clang-format off
-const std::array<UISettings::Shortcut, 37> Config::default_hotkeys {{
+const std::array<UISettings::Shortcut, 38> Config::default_hotkeys {{
      {QStringLiteral("Advance Frame"),            QStringLiteral("Main Window"), {QStringLiteral(""),       Qt::ApplicationShortcut}},
      {QStringLiteral("Audio Mute/Unmute"),        QStringLiteral("Main Window"), {QStringLiteral("Ctrl+M"), Qt::WindowShortcut}},
      {QStringLiteral("Audio Volume Down"),        QStringLiteral("Main Window"), {QStringLiteral(""),       Qt::WindowShortcut}},
