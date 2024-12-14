@@ -732,7 +732,7 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
                 )
             )
 
-            add(HeaderSetting(R.string.generic_buttons))
+            add(HeaderSetting(R.string.controller_buttons))
             Settings.buttonKeys.forEachIndexed { i: Int, key: String ->
                 val button = InputBindingSetting.getInputObject(key, preferences)
                 add(InputBindingSetting(button, Settings.buttonTitles[i]))
