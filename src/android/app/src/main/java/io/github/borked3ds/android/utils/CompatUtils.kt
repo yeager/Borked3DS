@@ -1,4 +1,5 @@
 // Copyright 2024 Mandarine Project
+// Copyright 2025 Borked3DS Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 

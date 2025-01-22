@@ -1,7 +1,11 @@
+// Copyright 2025 Borked3DS Project
+// Licensed under GPLv2 or any later version
+// Refer to the license.txt file included.
+
 package io.github.borked3ds.android.dialogs
 
-import android.app.Activity
 import android.content.Context
+import android.content.res.Configuration
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -9,6 +13,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import io.github.borked3ds.android.R
 import io.github.borked3ds.android.databinding.DialogChatBinding
 import io.github.borked3ds.android.databinding.ItemChatMessageBinding
@@ -21,21 +27,11 @@ class ChatMessage(
     val username: String, // Username is the community/forum username
     val message: String,
     val timestamp: String = SimpleDateFormat("HH:mm", Locale.getDefault()).format(Date())
-) {
-    fun getFormattedMessage(): String {
-        val displayName = if (username.isEmpty() || username == nickname) {
-            nickname
-        } else {
-            "$nickname ($username)"
-        }
-        return "[$timestamp] <$displayName> $message"
-    }
-}
+)
 
-class ChatDialog(context: Context) : BaseSheetDialog(context) {
+class ChatDialog(context: Context) : BottomSheetDialog(context) {
     private lateinit var binding: DialogChatBinding
     private lateinit var chatAdapter: ChatAdapter
-    private val blockedUsers = mutableSetOf<String>()
     private val handler = Handler(Looper.getMainLooper())
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,7 +41,19 @@ class ChatDialog(context: Context) : BaseSheetDialog(context) {
 
         NetPlayManager.setChatOpen(true)
         setupRecyclerView()
-        scrollToBottom()
+
+        behavior.state = BottomSheetBehavior.STATE_EXPANDED
+        behavior.state = BottomSheetBehavior.STATE_EXPANDED
+        behavior.skipCollapsed =
+            context.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
+
+
+        handler.post {
+            chatAdapter.notifyDataSetChanged()
+            binding.chatRecyclerView.post {
+                scrollToBottom()
+            }
+        }
 
         NetPlayManager.setOnMessageReceivedListener { type, message ->
             handler.post {
@@ -69,7 +77,7 @@ class ChatDialog(context: Context) : BaseSheetDialog(context) {
     }
 
     private fun sendMessage(message: String) {
-        val username = NetPlayManager.getUsername(context as Activity)
+        val username = NetPlayManager.getUsername(context)
         NetPlayManager.netPlaySendMessage(message)
 
         val chatMessage = ChatMessage(
@@ -87,7 +95,7 @@ class ChatDialog(context: Context) : BaseSheetDialog(context) {
     private fun setupRecyclerView() {
         chatAdapter = ChatAdapter(NetPlayManager.getChatMessages())
         binding.chatRecyclerView.layoutManager = LinearLayoutManager(context).apply {
-            stackFromEnd = true // This makes it start from the bottom
+            stackFromEnd = true
         }
         binding.chatRecyclerView.adapter = chatAdapter
     }
