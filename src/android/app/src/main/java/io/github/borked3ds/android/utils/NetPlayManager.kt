@@ -1,4 +1,5 @@
 // Copyright 2024 Mandarine Project
+// Copyright 2025 Borked3DS Project
 // Licensed under GPLv2 or any later version
 // Refer to the license.txt file included.
 
@@ -6,16 +7,17 @@ package io.github.borked3ds.android.utils
 
 import android.app.Activity
 import android.content.Context
-import android.net.wifi.WifiManager
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.os.Build
 import android.os.Handler
 import android.os.Looper
-import android.text.format.Formatter
 import android.widget.Toast
 import androidx.preference.PreferenceManager
 import io.github.borked3ds.android.Borked3DSApplication
 import io.github.borked3ds.android.R
 import io.github.borked3ds.android.dialogs.ChatMessage
-import io.github.borked3ds.android.dialogs.NetPlayDialog
+import java.net.Inet4Address
 
 object NetPlayManager {
     external fun netPlayCreateRoom(
@@ -42,28 +44,22 @@ object NetPlayManager {
     external fun netPlayLeaveRoom()
     external fun netPlayGetConsoleId(): String
     external fun netPlayIsModerator(): Boolean
+    external fun netPlayGetBanList(): Array<String>
+    external fun netPlayBanUser(username: String)
+    external fun netPlayUnbanUser(username: String)
 
     private var messageListener: ((Int, String) -> Unit)? = null
+    private var adapterRefreshListener: ((Int, String) -> Unit)? = null
 
     fun setOnMessageReceivedListener(listener: (Int, String) -> Unit) {
         messageListener = listener
     }
 
-    fun receiveMessage(type: Int, message: String) {
-        messageListener?.invoke(type, message)
+    fun setOnAdapterRefreshListener(listener: (Int, String) -> Unit) {
+        adapterRefreshListener = listener
     }
 
-    fun showCreateRoomDialog(activity: Activity) {
-        val dialog = NetPlayDialog(activity)
-        dialog.showNetPlayInputDialog(true)
-    }
-
-    fun showJoinRoomDialog(activity: Activity) {
-        val dialog = NetPlayDialog(activity)
-        dialog.showNetPlayInputDialog(false)
-    }
-
-    fun getUsername(activity: Activity): String {
+    fun getUsername(activity: Context): String {
         val prefs = PreferenceManager.getDefaultSharedPreferences(activity)
         val name = "Borked3DS${(Math.random() * 100).toInt()}"
         return prefs.getString("NetPlayUsername", name) ?: name
@@ -72,6 +68,13 @@ object NetPlayManager {
     fun setUsername(activity: Activity, name: String) {
         val prefs = PreferenceManager.getDefaultSharedPreferences(activity)
         prefs.edit().putString("NetPlayUsername", name).apply()
+    }
+
+    fun isConnectedToWifi(activity: Activity): Boolean {
+        val connectivityManager = activity.getSystemService(ConnectivityManager::class.java)
+        val network = connectivityManager.activeNetwork
+        val capabilities = connectivityManager.getNetworkCapabilities(network)
+        return capabilities?.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) == true
     }
 
     fun getRoomAddress(activity: Activity): String {
@@ -112,8 +115,6 @@ object NetPlayManager {
         isChatOpen = isOpen
     }
 
-    fun isChatOpen(): Boolean = isChatOpen
-
     fun addNetPlayMessage(type: Int, msg: String) {
         val context = Borked3DSApplication.appContext
         val message = formatNetPlayStatus(context, type, msg)
@@ -148,20 +149,15 @@ object NetPlayManager {
             }
         }
 
-        if (!isChatOpen) {
-            Handler(Looper.getMainLooper()).post {
+
+        Handler(Looper.getMainLooper()).post {
+            if (!isChatOpen) {
                 Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
             }
         }
 
         messageListener?.invoke(type, msg)
-    }
-
-    fun shutdownNetwork() {
-        if (netPlayIsJoined()) {
-            clearChat()
-            netPlayLeaveRoom()
-        }
+        adapterRefreshListener?.invoke(type, msg)
     }
 
     private fun formatNetPlayStatus(context: Context, type: Int, msg: String): String {
@@ -206,25 +202,40 @@ object NetPlayManager {
     }
 
     fun getIpAddressByWifi(activity: Activity): String {
-        var ipAddress = 0
-        val wifiManager = activity.getSystemService(WifiManager::class.java)
-        val wifiInfo = wifiManager.connectionInfo
-        if (wifiInfo != null) {
-            ipAddress = wifiInfo.ipAddress
-        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            // For Android 12 (API 31) and above
+            val connectivityManager = activity.getSystemService(ConnectivityManager::class.java)
+            val network = connectivityManager.activeNetwork
+            val capabilities = connectivityManager.getNetworkCapabilities(network)
 
-        if (ipAddress == 0) {
-            val dhcpInfo = wifiManager.dhcpInfo
-            if (dhcpInfo != null) {
-                ipAddress = dhcpInfo.ipAddress
+            if (capabilities?.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) == true) {
+                val linkProperties = connectivityManager.getLinkProperties(network)
+                linkProperties?.linkAddresses?.firstOrNull { it.address is Inet4Address }?.let {
+                    return it.address.hostAddress ?: "192.168.0.1"
+                }
+            }
+        } else {
+            // For Android 11 (API 30) and below
+            try {
+                val connectivityManager = activity.getSystemService(ConnectivityManager::class.java)
+                val network = connectivityManager.activeNetwork
+                if (network != null) {
+                    val linkProperties = connectivityManager.getLinkProperties(network)
+                    linkProperties?.linkAddresses?.firstOrNull { it.address is Inet4Address }?.let {
+                        return it.address.hostAddress ?: "192.168.0.1"
+                    }
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
             }
         }
 
-        return if (ipAddress == 0) {
-            "192.168.0.1"
-        } else {
-            Formatter.formatIpAddress(ipAddress)
-        }
+        return "192.168.0.1"
+    }
+
+    fun getBanList(): List<String> {
+        Log.info("Netplay Ban ${netPlayGetBanList()}.toList()")
+        return netPlayGetBanList().toList()
     }
 
     object NetPlayStatus {

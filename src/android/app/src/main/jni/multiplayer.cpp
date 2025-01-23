@@ -7,6 +7,7 @@
 
 #include "jni/android_common/android_common.h"
 
+#include "android/log.h"
 #include "core/core.h"
 #include "core/hle/service/cfg/cfg.h"
 #include "network/network.h"
@@ -22,6 +23,11 @@ void AddNetPlayMessage(jint type, jstring msg) {
 void AddNetPlayMessage(int type, const std::string& msg) {
     JNIEnv* env = IDCache::GetEnvForThread();
     AddNetPlayMessage(type, ToJString(env, msg));
+}
+
+void ClearChat() {
+    IDCache::GetEnvForThread()->CallStaticVoidMethod(IDCache::GetNativeLibraryClass(),
+                                                     IDCache::ClearChat());
 }
 
 void NetPlayGenerateConsoleId() {
@@ -142,6 +148,13 @@ bool NetworkInit() {
 NetPlayStatus NetPlayCreateRoom(const std::string& ipaddress, int port, const std::string& username,
                                 const std::string& password, const std::string& room_name,
                                 int max_players) {
+
+    LOG_INFO(Network_Play,
+             "NetPlayCreateRoom called with ipaddress: {}, port: {}, username: {}, password: {}, "
+             "room_name: {}, max_players: {}.",
+             ipaddress, std::to_string(port), username, password, room_name,
+             std::to_string(max_players));
+
     auto member = Network::GetRoomMember().lock();
     if (!member) {
         return NetPlayStatus::NETWORK_ERROR;
@@ -161,7 +174,7 @@ NetPlayStatus NetPlayCreateRoom(const std::string& ipaddress, int port, const st
     }
 
     if (!room->Create(room_name, "", ipaddress, port, password, std::min(max_players, 16), username,
-                      "", 0, nullptr, {}, true)) {
+                      "", 0, nullptr, {})) {
         return NetPlayStatus::CREATE_ROOM_ERROR;
     }
 
@@ -176,7 +189,6 @@ NetPlayStatus NetPlayCreateRoom(const std::string& ipaddress, int port, const st
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
         if (member->GetState() == Network::RoomMember::State::Joined ||
             member->GetState() == Network::RoomMember::State::Moderator) {
-            Network::SetInRoom(true);
             return NetPlayStatus::NO_ERROR;
         }
     }
@@ -205,7 +217,6 @@ NetPlayStatus NetPlayJoinRoom(const std::string& ipaddress, int port, const std:
 
     if (member->GetState() == Network::RoomMember::State::Joined ||
         member->GetState() == Network::RoomMember::State::Moderator) {
-        Network::SetInRoom(true);
         return NetPlayStatus::NO_ERROR;
     }
 
@@ -237,6 +248,25 @@ void NetPlayKickUser(const std::string& username) {
         if (it != members.end()) {
             room->SendModerationRequest(Network::RoomMessageTypes::IdModKick, username);
         }
+    }
+}
+
+void NetPlayBanUser(const std::string& username) {
+    if (auto room = Network::GetRoomMember().lock()) {
+        auto members = room->GetMemberInformation();
+        auto it = std::find_if(members.begin(), members.end(),
+                               [&username](const Network::RoomMember::MemberInformation& member) {
+                                   return member.nickname == username;
+                               });
+        if (it != members.end()) {
+            room->SendModerationRequest(Network::RoomMessageTypes::IdModBan, username);
+        }
+    }
+}
+
+void NetPlayUnbanUser(const std::string& username) {
+    if (auto room = Network::GetRoomMember().lock()) {
+        room->SendModerationRequest(Network::RoomMessageTypes::IdModUnban, username);
     }
 }
 
@@ -279,8 +309,9 @@ void NetPlayLeaveRoom() {
         // if you are in a room, leave it
         if (auto member = Network::GetRoomMember().lock()) {
             member->Leave();
-            Network::SetInRoom(false);
         }
+
+        ClearChat();
 
         // if you are hosting a room, also stop hosting
         if (room->GetState() == Network::Room::State::Open) {
@@ -305,4 +336,22 @@ bool NetPlayIsModerator() {
         return false;
     }
     return member->GetState() == Network::RoomMember::State::Moderator;
+}
+
+std::vector<std::string> NetPlayGetBanList() {
+    std::vector<std::string> ban_list;
+    if (auto room = Network::GetRoom().lock()) {
+        auto [username_bans, ip_bans] = room->GetBanList();
+
+        // Add username bans
+        for (const auto& username : username_bans) {
+            ban_list.push_back(username);
+        }
+
+        // Add IP bans
+        for (const auto& ip : ip_bans) {
+            ban_list.push_back(ip);
+        }
+    }
+    return ban_list;
 }

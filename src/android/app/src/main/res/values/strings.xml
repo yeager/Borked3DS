@@ -1029,8 +1029,8 @@
     <string name="multiplayer_description">Host your own game room or join an existing one to play with people</string>
     <string name="multiplayer_room_title">Room: %1$s</string>
     <string name="multiplayer_console_id">Console ID：%1$s</string>
-    <string name="multiplayer_create_room">Create Room</string>
-    <string name="multiplayer_join_room">Join Room</string>
+    <string name="multiplayer_create_room">Create</string>
+    <string name="multiplayer_join_room">Join</string>
     <string name="multiplayer_username">Username</string>
     <string name="multiplayer_ip_address">IP Address</string>
     <string name="multiplayer_ip_port">Port</string>
@@ -1085,5 +1085,11 @@
     <string name="type_message">Type message……</string>
     <string name="send">Send</string>
     <string name="send_message">Send Message</string>
-
+    <string name="multiplayer_moderation">Moderation</string>
+    <string name="multiplayer_moderation_title">Ban List</string>
+    <string name="multiplayer_no_bans">No banned users</string>
+    <string name="multiplayer_unban_title">Unban User</string>
+    <string name="multiplayer_unban">Unban</string>
+    <string name="multiplayer_unban_message">Are you sure you want to unban %1$s?</string>
+    <string name="multiplayer_ban">Ban User</string>
 </resources>

@@ -372,7 +372,8 @@ void Room::RoomImpl::HandleJoinRequest(const ENetEvent* event) {
         std::lock_guard lock(verify_UID_mutex);
         uid = verify_UID;
     }
-    member.user_data = verify_backend->LoadUserData(uid, token);
+    if (verify_backend != nullptr)
+        member.user_data = verify_backend->LoadUserData(uid, token);
 
     std::string ip;
     {
@@ -599,14 +600,13 @@ bool Room::RoomImpl::HasModPermission(const ENetPeer* client) const {
     if (sending_member == members.end()) {
         return false;
     }
-    if (room_information.enable_borked3ds_mods &&
-        sending_member->user_data.moderator) { // Community moderator
 
+    if (sending_member->user_data.moderator) { // Community moderator
         return true;
     }
+
     if (!room_information.host_username.empty() &&
         sending_member->user_data.username == room_information.host_username) { // Room host
-
         return true;
     }
     return false;
@@ -1014,7 +1014,7 @@ bool Room::Create(const std::string& name, const std::string& description,
                   const u32 max_connections, const std::string& host_username,
                   const std::string& preferred_game, u64 preferred_game_id,
                   std::unique_ptr<VerifyUser::Backend> verify_backend,
-                  const Room::BanList& ban_list, bool enable_borked3ds_mods) {
+                  const Room::BanList& ban_list) {
     ENetAddress address;
     address.host = ENET_HOST_ANY;
     if (!server_address.empty()) {
@@ -1037,7 +1037,6 @@ bool Room::Create(const std::string& name, const std::string& description,
     room_impl->room_information.preferred_game = preferred_game;
     room_impl->room_information.preferred_game_id = preferred_game_id;
     room_impl->room_information.host_username = host_username;
-    room_impl->room_information.enable_borked3ds_mods = enable_borked3ds_mods;
     room_impl->password = password;
     room_impl->verify_backend = std::move(verify_backend);
     room_impl->username_ban_list = ban_list.first;
