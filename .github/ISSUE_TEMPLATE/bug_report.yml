@@ -21,7 +21,7 @@ body:
   - type: input
     attributes:
       label: Sanity Check (Borked3DS)
-      description: Does the issue also occur on the last official Borked3DS Nightly release (https://archive.org/details/borked3ds-nightly-2104_20240304)?
+      description: Does the issue also occur on the last official Borked3DS release (https://github.com/Borked3DS/Borked3DS/releases)?
       placeholder: Yes or No; explain.
     validations:
       required: true
@@ -35,7 +35,14 @@ body:
   - type: input
     attributes:
       label: Sanity Check (Lime3DS)
-      description: Does the issue also occur on the latest Lime3DS release (http://github.com/Lime3DS/Lime3DS/releases)?
+      description: Does the issue also occur on the latest Lime3DS release (http://github.com/Lime3DS/Lime3DS-archive/releases)?
+      placeholder: Yes or No; explain.
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Validation Check
+      description: Is there a build where the issue does NOT occur? If so, specify which fork (ex. Borked3DS, Lime3DS, etc.) and which version things were still working properly.
       placeholder: Yes or No; explain.
     validations:
       required: true

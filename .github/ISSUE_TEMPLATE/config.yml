@@ -1,8 +1,5 @@
 blank_issues_enabled: false
 contact_links:
-  - name: Borked3DS Discord
-    url: https://borked3ds-emu.org/discord/
-    about: If you are experiencing an issue with Borked3DS, and you need tech support, or if you have a general question, try asking in the official Borked3DS Discord linked here. Piracy is not allowed.
-  - name: Community forums
-    url: https://community.borked3ds-emu.org
-    about: This is an alternative place for tech support, however helpers there are not as active.
+  - name: Borked3DS GitHub Discussions Forum
+    url: https://github.com/Borked3DS/Borked3DS/discussions
+    about: If you are experiencing an issue with Borked3DS, and you need tech support, or if you have a general question, try asking in the official Borked3DS GitHub Discussions forum linked here. Piracy is not allowed.

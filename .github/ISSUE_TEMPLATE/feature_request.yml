@@ -4,7 +4,7 @@ labels: "request"
 body:
   - type: markdown
     attributes:
-      value: Tech support does not belong here. You should only file an issue here if you are requesting a feature you believe would make Borked3DS better.
+      value: Tech support does not belong here. You should only file an issue here if you are requesting a feature you believe would make Borked3DS better. Note that developer time is extremely limited, so there are no promises that certain feature requests will be fulfilled. However, Pull Requests with feature enhancements are always welcome.
   - type: checkboxes
     attributes:
       label: Is there an existing issue for this?
