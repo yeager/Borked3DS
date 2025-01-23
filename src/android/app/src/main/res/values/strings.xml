@@ -48,6 +48,8 @@
     <string name="select_borked3ds_user_folder_home_description">Changes the files that Borked3DS uses to load games</string>
     <string name="theme_and_color_description">Modify the look of the app</string>
     <string name="install_cia_title">Install CIA</string>
+    <string name="favorite">Favorite</string>
+    <string name="favorite_description">Mark this game as a favorite</string>
 
     <!-- GPU driver installation -->
     <string name="select_gpu_driver">Select GPU driver</string>
@@ -690,6 +692,20 @@
     <!-- About Game Dialog -->
     <string name="play">Play</string>
     <string name="shortcut">Shortcut</string>
+    <string name="menu">More...</string>
+    <string name="uninstall_cia">Uninstall Game</string>
+    <string name="uninstalling">Uninstalling...</string>
+    <string name="game_context_open_save_dir">Open Save Data Folder</string>
+    <string name="game_context_open_app">Open Application Folder</string>
+    <string name="game_context_open_mods">Open Mods Folder</string>
+    <string name="game_context_open_textures">Open Textures Folder</string>
+    <string name="game_context_open_dlc">Open DLC Folder</string>
+    <string name="game_context_open_updates">Open Updates Folder</string>
+    <string name="game_context_open_extra">Open Extra Folder</string>
+    <string name="game_context_open_logs">Open Log Folder</string>
+    <string name="game_context_open_shaders">Open Shader Cache Folder</string>
+    <string name="game_context_uninstall_dlc">Uninstall DLC</string>
+    <string name="game_context_uninstall_updates">Uninstall Updates</string>
 
     <!-- Cheats -->
     <string name="cheats">Cheats</string>

@@ -6,6 +6,7 @@
 package io.github.borked3ds.android.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.content.pm.ShortcutInfo
 import android.content.pm.ShortcutManager
 import android.graphics.drawable.BitmapDrawable
@@ -17,6 +18,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.PopupMenu
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -39,30 +41,57 @@ import io.github.borked3ds.android.R
 import io.github.borked3ds.android.adapters.GameAdapter.GameViewHolder
 import io.github.borked3ds.android.databinding.CardGameBinding
 import io.github.borked3ds.android.features.cheats.ui.CheatsFragmentDirections
+import io.github.borked3ds.android.fragments.IndeterminateProgressDialogFragment
 import io.github.borked3ds.android.model.Game
+import io.github.borked3ds.android.utils.FileUtil
 import io.github.borked3ds.android.utils.GameIconUtils
 import io.github.borked3ds.android.viewmodel.GamesViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class GameAdapter(private val activity: AppCompatActivity, private val inflater: LayoutInflater) :
-    ListAdapter<Game, GameViewHolder>(AsyncDifferConfig.Builder(DiffCallback()).build()),
+sealed class GameListItem {
+    data class GameItem(val game: Game) : GameListItem()
+    data object Separator : GameListItem()
+}
+
+class GameAdapter(
+    private val activity: AppCompatActivity,
+    private val layoutInflater: LayoutInflater
+) : ListAdapter<GameListItem, RecyclerView.ViewHolder>(AsyncDifferConfig.Builder(DiffCallback()).build()),
     View.OnClickListener, View.OnLongClickListener {
+
+    private val gameView = 0
+    private val favoriteGameView = 1
     private var lastClickTime = 0L
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameViewHolder {
-        // Create a new view.
-        val binding = CardGameBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        binding.cardGame.setOnClickListener(this)
-        binding.cardGame.setOnLongClickListener(this)
-
-        // Use that view to create a ViewHolder.
-        return GameViewHolder(binding)
+    override fun getItemViewType(position: Int): Int {
+        return when (currentList[position]) {
+            is GameListItem.GameItem -> gameView
+            is GameListItem.Separator -> favoriteGameView
+        }
     }
 
-    override fun onBindViewHolder(holder: GameViewHolder, position: Int) {
-        holder.bind(currentList[position])
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return when (viewType) {
+            gameView -> {
+                val binding = CardGameBinding.inflate(layoutInflater, parent, false)
+                binding.cardGame.setOnClickListener(this)
+                binding.cardGame.setOnLongClickListener(this)
+                GameViewHolder(binding)
+            }
+            favoriteGameView -> {
+                val view = layoutInflater.inflate(R.layout.list_item_separator, parent, false)
+                SeparatorViewHolder(view)
+            }
+            else -> throw IllegalArgumentException("Invalid view type")
+        }
+    }
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        when (holder) {
+            is GameViewHolder -> holder.bind((currentList[position] as GameListItem.GameItem).game)
+        }
     }
 
     override fun getItemCount(): Int = currentList.size
@@ -171,7 +200,15 @@ class GameAdapter(private val activity: AppCompatActivity, private val inflater:
                 View.VISIBLE
             }
 
+            // Add favorite icon
+            val preferences = PreferenceManager.getDefaultSharedPreferences(binding.root.context)
+            val isFavorite = preferences.getBoolean("favorite_${game.titleId}", false)
+
+            binding.favoriteIcon.setImageResource(R.drawable.ic_star)
+
+
             binding.textGameTitle.text = game.title
+            binding.favoriteIcon.visibility = if (isFavorite) View.VISIBLE else View.GONE
             binding.textCompany.text = game.company
             binding.textGameRegion.text = game.regions
             binding.textGameId.text = String.format("ID: %016X", game.titleId)
@@ -213,6 +250,199 @@ class GameAdapter(private val activity: AppCompatActivity, private val inflater:
                 3000
             )
         }
+    }
+
+    private data class GameDirectories(
+        val gameDir: String,
+        val saveDir: String,
+        val modsDir: String,
+        val texturesDir: String,
+        val appDir: String,
+        val dlcDir: String,
+        val updatesDir: String,
+        val extraDir: String,
+        val shadersDir: String,
+        val logsDir: String
+    )
+
+    private fun getGameDirectories(game: Game): GameDirectories {
+        return GameDirectories(
+            gameDir = game.path.substringBeforeLast("/"),
+            saveDir = "sdmc/Nintendo 3DS/00000000000000000000000000000000/00000000000000000000000000000000/title/${
+                String.format(
+                    "%016x",
+                    game.titleId
+                ).lowercase().substring(0, 8)
+            }/${String.format("%016x", game.titleId).lowercase().substring(8)}/data/00000001",
+            modsDir = "load/mods/${String.format("%016X", game.titleId)}",
+            texturesDir = "load/textures/${String.format("%016X", game.titleId)}",
+            appDir = game.path.substringBeforeLast("/").split("/").filter { it.isNotEmpty() }
+                .joinToString("/"),
+            dlcDir = "sdmc/Nintendo 3DS/00000000000000000000000000000000/00000000000000000000000000000000/title/0004008c/${
+                String.format(
+                    "%016x",
+                    game.titleId
+                ).lowercase().substring(8)
+            }/content",
+            updatesDir = "sdmc/Nintendo 3DS/00000000000000000000000000000000/00000000000000000000000000000000/title/0004000e/${
+                String.format(
+                    "%016x",
+                    game.titleId
+                ).lowercase().substring(8)
+            }/content",
+            extraDir = "sdmc/Nintendo 3DS/00000000000000000000000000000000/00000000000000000000000000000000/extdata/00000000/${
+                String.format(
+                    "%016X",
+                    game.titleId
+                ).substring(8, 14).padStart(8, '0')
+            }",
+            shadersDir = "shaders",
+            logsDir = "log"
+        )
+    }
+
+    private fun showOpenContextMenu(view: View, game: Game) {
+        val dirs = getGameDirectories(game)
+
+        val popup = PopupMenu(view.context, view).apply {
+            menuInflater.inflate(R.menu.game_context_menu_open, menu)
+            listOf(
+                R.id.game_context_open_app to dirs.appDir,
+                R.id.game_context_open_save_dir to dirs.saveDir,
+                R.id.game_context_open_dlc to dirs.dlcDir,
+                R.id.game_context_open_updates to dirs.updatesDir,
+                R.id.game_context_open_updates to dirs.shadersDir,
+                R.id.game_context_open_updates to dirs.logsDir
+            ).forEach { (id, dir) ->
+                menu.findItem(id)?.isEnabled =
+                    Borked3DSApplication.documentsTree.folderUriHelper(dir)?.let {
+                        DocumentFile.fromTreeUri(view.context, it)?.exists()
+                    } ?: false
+            }
+            menu.findItem(R.id.game_context_open_extra)?.let { item ->
+                if (Borked3DSApplication.documentsTree.folderUriHelper(dirs.extraDir)?.let {
+                        DocumentFile.fromTreeUri(view.context, it)?.exists()
+                    } != true) {
+                    menu.removeItem(item.itemId)
+                }
+            }
+        }
+
+        popup.setOnMenuItemClickListener { menuItem ->
+            val intent = Intent(Intent.ACTION_VIEW)
+                .addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                .setType("*/*")
+
+            val uri = when (menuItem.itemId) {
+                R.id.game_context_open_app -> Borked3DSApplication.documentsTree.folderUriHelper(
+                    dirs.appDir
+                )
+
+                R.id.game_context_open_save_dir -> Borked3DSApplication.documentsTree.folderUriHelper(
+                    dirs.saveDir
+                )
+
+                R.id.game_context_open_dlc -> Borked3DSApplication.documentsTree.folderUriHelper(
+                    dirs.dlcDir
+                )
+
+                R.id.game_context_open_textures -> Borked3DSApplication.documentsTree.folderUriHelper(
+                    dirs.texturesDir,
+                    true
+                )
+
+                R.id.game_context_open_mods -> Borked3DSApplication.documentsTree.folderUriHelper(
+                    dirs.modsDir,
+                    true
+                )
+
+                R.id.game_context_open_extra -> Borked3DSApplication.documentsTree.folderUriHelper(
+                    dirs.extraDir
+                )
+
+                R.id.game_context_open_shaders -> Borked3DSApplication.documentsTree.folderUriHelper(
+                    dirs.shadersDir
+                )
+
+                R.id.game_context_open_logs -> Borked3DSApplication.documentsTree.folderUriHelper(
+                    dirs.logsDir
+                )
+
+                else -> null
+            }
+
+            uri?.let {
+                intent.data = it
+                view.context.startActivity(intent)
+                true
+            } ?: false
+        }
+
+        popup.show()
+    }
+
+    private fun showUninstallContextMenu(
+        view: View,
+        game: Game,
+        bottomSheetDialog: BottomSheetDialog
+    ) {
+        val dirs = getGameDirectories(game)
+        val popup = PopupMenu(view.context, view).apply {
+            menuInflater.inflate(R.menu.game_context_menu_uninstall, menu)
+            listOf(
+                R.id.game_context_uninstall to dirs.gameDir,
+                R.id.game_context_uninstall_dlc to dirs.dlcDir,
+                R.id.game_context_uninstall_updates to dirs.updatesDir
+            ).forEach { (id, dir) ->
+                menu.findItem(id)?.isEnabled =
+                    Borked3DSApplication.documentsTree.folderUriHelper(dir)?.let {
+                        DocumentFile.fromTreeUri(view.context, it)?.exists()
+                    } ?: false
+            }
+        }
+
+        popup.setOnMenuItemClickListener { menuItem ->
+            val uninstallAction: () -> Unit = {
+                when (menuItem.itemId) {
+                    R.id.game_context_uninstall -> Borked3DSApplication.documentsTree.deleteDocument(
+                        dirs.gameDir
+                    )
+
+                    R.id.game_context_uninstall_dlc -> FileUtil.deleteDocument(
+                        Borked3DSApplication.documentsTree.folderUriHelper(dirs.dlcDir)
+                            .toString()
+                    )
+
+                    R.id.game_context_uninstall_updates -> FileUtil.deleteDocument(
+                        Borked3DSApplication.documentsTree.folderUriHelper(dirs.updatesDir)
+                            .toString()
+                    )
+                }
+                ViewModelProvider(activity)[GamesViewModel::class.java].reloadGames(true)
+                bottomSheetDialog.dismiss()
+            }
+
+            if (menuItem.itemId in listOf(
+                    R.id.game_context_uninstall,
+                    R.id.game_context_uninstall_dlc,
+                    R.id.game_context_uninstall_updates
+                )
+            ) {
+                IndeterminateProgressDialogFragment.newInstance(
+                    activity,
+                    R.string.uninstalling,
+                    false,
+                    uninstallAction
+                )
+                    .show(activity.supportFragmentManager, IndeterminateProgressDialogFragment.TAG)
+                true
+            } else {
+                false
+            }
+        }
+
+        popup.show()
     }
 
     private fun showAboutGameDialog(
@@ -270,6 +500,39 @@ class GameAdapter(private val activity: AppCompatActivity, private val inflater:
             bottomSheetDialog.dismiss()
         }
 
+        bottomSheetView.findViewById<MaterialButton>(R.id.favorite_game).apply {
+            val preferences = PreferenceManager.getDefaultSharedPreferences(context)
+            val isFavorite = preferences.getBoolean("favorite_${game.titleId}", false)
+
+            setIconResource(if (isFavorite) R.drawable.ic_star else R.drawable.ic_star_frame)
+
+            setOnClickListener {
+                val newFavoriteState = !isFavorite
+                preferences.edit()
+                    .putBoolean("favorite_${game.titleId}", newFavoriteState)
+                    .apply()
+                setIconResource(if (newFavoriteState) R.drawable.ic_star else R.drawable.ic_star_frame)
+
+                val position = currentList.indexOf(GameListItem.GameItem(game))
+                if (position != -1) {
+                    notifyItemChanged(position)
+                }
+
+                val sortedGames = currentList.filterIsInstance<GameListItem.GameItem>().map { it.game }
+                submitGameList(sortedGames)
+                bottomSheetDialog.dismiss()
+            }
+        }
+
+        bottomSheetView.findViewById<MaterialButton>(R.id.menu_button_open).setOnClickListener {
+            showOpenContextMenu(it, game)
+        }
+
+        bottomSheetView.findViewById<MaterialButton>(R.id.menu_button_uninstall)
+            .setOnClickListener {
+                showUninstallContextMenu(it, game, bottomSheetDialog)
+            }
+
         val bottomSheetBehavior = bottomSheetDialog.getBehavior()
         bottomSheetBehavior.skipCollapsed = true
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
@@ -282,13 +545,54 @@ class GameAdapter(private val activity: AppCompatActivity, private val inflater:
             .noneMatch { extension == it.lowercase() }
     }
 
-    private class DiffCallback : DiffUtil.ItemCallback<Game>() {
-        override fun areItemsTheSame(oldItem: Game, newItem: Game): Boolean {
-            return oldItem.titleId == newItem.titleId
+    private class DiffCallback : DiffUtil.ItemCallback<GameListItem>() {
+        override fun areItemsTheSame(oldItem: GameListItem, newItem: GameListItem): Boolean {
+            if (oldItem::class != newItem::class) return false
+            return when (oldItem) {
+                is GameListItem.GameItem -> {
+                    val newGame = (newItem as GameListItem.GameItem)
+                    oldItem.game.titleId == newGame.game.titleId
+                }
+                GameListItem.Separator -> true
+            }
         }
 
-        override fun areContentsTheSame(oldItem: Game, newItem: Game): Boolean {
+        override fun areContentsTheSame(oldItem: GameListItem, newItem: GameListItem): Boolean {
             return oldItem == newItem
         }
     }
+
+    private val gameComparator = compareBy<Game> { game ->
+        val preferences = PreferenceManager.getDefaultSharedPreferences(Borked3DSApplication.appContext)
+        !preferences.getBoolean("favorite_${game.titleId}", false) // Favorites first
+    }.thenBy { it.title.lowercase() } // Then alphabetically
+
+    fun submitGameList(games: List<Game>) {
+        val preferences = PreferenceManager.getDefaultSharedPreferences(Borked3DSApplication.appContext)
+        val sortedGames = games.sortedWith(gameComparator)
+
+        val items = mutableListOf<GameListItem>()
+        var hasFavorites = false
+        var hasNonFavorites = false
+
+        sortedGames.forEach { game ->
+            val isFavorite = preferences.getBoolean("favorite_${game.titleId}", false)
+            if (isFavorite) hasFavorites = true
+            if (!isFavorite) hasNonFavorites = true
+            items.add(GameListItem.GameItem(game))
+        }
+
+        if (hasFavorites && hasNonFavorites) {
+            val separatorIndex = items.indexOfFirst {
+                it is GameListItem.GameItem &&
+                !preferences.getBoolean("favorite_${it.game.titleId}", false)
+            }
+            items.add(separatorIndex, GameListItem.Separator)
+        }
+
+        submitList(items)
+    }
+
+    inner class SeparatorViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+
 }
