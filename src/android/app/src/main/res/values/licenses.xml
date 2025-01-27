@@ -271,7 +271,7 @@ This project is currently licensed under the Boost Software License 1.0 (http://
     <string name="license_borked3ds" translatable="false">Borked3DS</string>
     <string name="license_borked3ds_description" translatable="false">An experimental Nintendo 3DS Emulator</string>
     <string name="license_borked3ds_link" translatable="false">https://github.com/Borked3DS/Borked3DS</string>
-    <string name="license_borked3ds_copyright" translatable="false">Copyright © Borked3DS Project Developers</string>
+    <string name="license_borked3ds_copyright" translatable="false">Copyright © Borked3DS Emulator Project Developers</string>
     <string name="license_httplib" translatable="false">cpp-httplib</string>
     <string name="license_httplib_description" translatable="false">A C++ header-only HTTP/HTTPS server and client library</string>
     <string name="license_httplib_link" translatable="false">https://github.com/yhirose/cpp-httplib</string>
