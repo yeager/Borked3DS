@@ -33,10 +33,23 @@ using OpCode = nihstro::OpCode;
 using SourceRegister = nihstro::SourceRegister;
 using Type = nihstro::InlineAsm::Type;
 
-static constexpr Common::Vec4f vec4_inf = Common::Vec4f::AssignToAll(INFINITY);
-static constexpr Common::Vec4f vec4_nan = Common::Vec4f::AssignToAll(NAN);
-static constexpr Common::Vec4f vec4_one = Common::Vec4f::AssignToAll(1.0f);
-static constexpr Common::Vec4f vec4_zero = Common::Vec4f::AssignToAll(0.0f);
+static const Common::Vec4f vec4_inf = Common::Vec4f::AssignToAll(INFINITY);
+static const Common::Vec4f vec4_nan = Common::Vec4f::AssignToAll(NAN);
+static const Common::Vec4f vec4_one = Common::Vec4f::AssignToAll(1.0f);
+static const Common::Vec4f vec4_zero = Common::Vec4f::AssignToAll(0.0f);
+
+static bool IsNanEqual(const Common::Vec4f& a, const Common::Vec4f& b) {
+    for (int i = 0; i < 4; i++) {
+        if (std::isnan(a[i])) {
+            if (!std::isnan(b[i])) {
+                return false;
+            }
+        } else if (a[i] != b[i]) {
+            return false;
+        }
+    }
+    return true;
+}
 
 namespace Catch {
 template <>
@@ -87,7 +100,7 @@ public:
                            std::span<const Common::Vec4f> inputs) = 0;
 
     Common::Vec4f Run(std::span<const Common::Vec4f> inputs) {
-        Pica::ShaderUnit shader_unit;
+        Pica::ShaderUnit shader_unit{};
         RunShader(shader_unit, inputs);
         return {shader_unit.output[0].x.ToFloat32(), shader_unit.output[0].y.ToFloat32(),
                 shader_unit.output[0].z.ToFloat32(), shader_unit.output[0].w.ToFloat32()};
@@ -138,7 +151,7 @@ public:
     }
 
 private:
-    ShaderInterpreter shader_interpreter;
+    ShaderInterpreter shader_interpreter{};
 };
 
 class ShaderJitTest : public ShaderTest {
@@ -165,7 +178,7 @@ public:
     }
 
 private:
-    JitShader shader_jit;
+    JitShader shader_jit{};
 };
 
 #define SHADER_TEST_CASE(NAME, TAG)                                                                \
@@ -634,7 +647,7 @@ SHADER_TEST_CASE("MAD", "[video_core][shader]") {
     REQUIRE(shader.Run({vec4_zero, vec4_zero, vec4_zero}) == vec4_zero);
     REQUIRE(shader.Run({vec4_one, vec4_one, vec4_one}) == (vec4_one * 2.0f));
     REQUIRE(shader.Run({vec4_inf, vec4_zero, vec4_zero}) == vec4_zero);
-    REQUIRE(shader.Run({vec4_nan, vec4_zero, vec4_zero}) == vec4_nan);
+    REQUIRE(IsNanEqual(shader.Run({vec4_nan, vec4_zero, vec4_zero}), vec4_nan));
 }
 
 // Nested Loops are bugged on on the Shader-Interpreter at the moment

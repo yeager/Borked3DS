@@ -105,7 +105,7 @@ function(download_qt_configuration prefix_out target host type arch arch_path ba
 
     if (NOT EXISTS "${prefix}")
         message(STATUS "Downloading Qt binaries for ${target}:${host}:${type}:${arch}:${arch_path}")
-        set(AQT_PREBUILD_BASE_URL "https://github.com/miurahr/aqtinstall/releases/download/v3.1.21")
+        set(AQT_PREBUILD_BASE_URL "https://github.com/miurahr/aqtinstall/releases/download/v3.2.0")
         if (WIN32)
             set(aqt_path "${base_path}/aqt.exe")
             if (NOT EXISTS "${aqt_path}")
@@ -173,25 +173,29 @@ function(download_moltenvk)
     if (IOS)
         set(MOLTENVK_PLATFORM "ios-arm64")
     else()
-        set(MOLTENVK_PLATFORM "macos-arm64_x86_64")
+        set(MOLTENVK_PLATFORM "macOS")
     endif()
 
     set(MOLTENVK_DIR "${CMAKE_BINARY_DIR}/externals/MoltenVK")
+    set(MOLTENVK_TAR "${CMAKE_BINARY_DIR}/externals/MoltenVK.tar")
     if (NOT BORKED3DS_USE_EXTERNAL_MOLTENVK)
-        set(MOLTENVK_TAR "${CMAKE_BINARY_DIR}/externals/MoltenVK.tar")
         if (NOT EXISTS ${MOLTENVK_DIR})
             if (NOT EXISTS ${MOLTENVK_TAR})
                 file(DOWNLOAD https://github.com/KhronosGroup/MoltenVK/releases/download/v1.2.11-artifacts/MoltenVK-all.tar 
                 ${MOLTENVK_TAR} SHOW_PROGRESS)
             endif()
-
-            execute_process(COMMAND ${CMAKE_COMMAND} -E tar xf "${MOLTENVK_TAR}"
-                WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/externals")
         endif()
     endif()
 
+    execute_process(COMMAND ${CMAKE_COMMAND} -E tar xf "${MOLTENVK_TAR}"
+        WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/externals")
+
     # Add the MoltenVK library path to the prefix so find_library can locate it.
-    list(APPEND CMAKE_PREFIX_PATH "${MOLTENVK_DIR}/MoltenVK/dynamic/MoltenVK.xcframework/${MOLTENVK_PLATFORM}")
+    if (IOS)
+        list(APPEND CMAKE_PREFIX_PATH "${MOLTENVK_DIR}/MoltenVK/dynamic/MoltenVK.xcframework/${MOLTENVK_PLATFORM}")
+    else()
+        list(APPEND CMAKE_PREFIX_PATH "${MOLTENVK_DIR}/MoltenVK/dylib/${MOLTENVK_PLATFORM}")
+    endif()
     set(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} PARENT_SCOPE)
 endfunction()
 
