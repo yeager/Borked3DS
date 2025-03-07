@@ -500,13 +500,13 @@
     <!-- Debug Menu -->
     <string name="logging">Logging</string>
     <string name="log_filter_name">Log Level</string>
-    <string name="log_filter_description">Select the level of verbosity to display in the log files. All messages from that level and below will be displayed. Ranges from <i>Critical</i> (i.e. minimal) to <i>Trace</i> (i.e. everything). Default is <i>Info</i>.</string>
+    <string name="log_filter_description">Select the level of verbosity to display in the log files. All messages from that level and below will be displayed. Ranges from <i>Critical</i> (i.e. minimal) to <i>Trace</i> (i.e. everything). Default is <i>Trace</i>.</string>
     <string name="log_critical">Critical</string>
     <string name="log_error">Error</string>
     <string name="log_warning">Warning</string>
-    <string name="log_info">Info (default)</string>
+    <string name="log_info">Info</string>
     <string name="log_debug">Debug</string>
-    <string name="log_trace">Trace</string>
+    <string name="log_trace">Trace (Default)</string>
     <string name="log_filter_critical">*:Critical</string>
     <string name="log_filter_error">*:Error</string>
     <string name="log_filter_warning">*:Warning</string>
@@ -549,19 +549,21 @@
     <string name="stats_overlay_items">Visibility</string>
     <string name="stats_overlay_options">Performance Stats Overlay</string>
     <string name="enable_stats_overlay_">Enable Performance Stats Overlay</string>
-    <string name="stats_overlay_options_description">Configure what information is shown in the performance stats overlay</string>
+    <string name="stats_overlay_options_description">Configure what information is shown in the performance stats overlay.</string>
     <string name="show_fps">Show FPS</string>
-    <string name="show_fps_description">Display current frames per second</string>
+    <string name="show_fps_description">Display current frames per second.</string>
+    <string name="show_frametime">Show Frametime</string>
+    <string name="show_frametime_description">Display the current time (in milliseconds) to render a single frame.</string>
     <string name="show_speed">Show Speed</string>
-    <string name="show_speed_description">Display current emulation speed percentage</string>
+    <string name="show_speed_description">Display current emulation speed percentage.</string>
     <string name="show_app_ram_usage">Show App Memory Usage</string>
-    <string name="show_app_ram_usage_description">Display the amount of RAM getting used by the emulator</string>
+    <string name="show_app_ram_usage_description">Display the amount of RAM getting used by the emulator.</string>
     <string name="show_system_ram_usage">Show System Memory Usage</string>
-    <string name="show_system_ram_usage_description">Display the amount of RAM getting used by the system</string>
+    <string name="show_system_ram_usage_description">Display the amount of RAM getting used by the system.</string>
     <string name="show_bat_temperature">Show Battery Temperature</string>
-    <string name="show_bat_temperature_description">Display current Battery temperature in Celsius and Fahrenheit</string>
+    <string name="show_bat_temperature_description">Display current Battery temperature in Celsius and Fahrenheit.</string>
     <string name="overlay_position">Overlay Position</string>
-    <string name="overlay_position_description">Choose where the performance stats overlay is displayed on the screen</string>
+    <string name="overlay_position_description">Choose where the performance stats overlay is displayed on the screen.</string>
     <string name="overlay_position_top_left">Top Left</string>
     <string name="overlay_position_top_right">Top Right</string>
     <string name="overlay_position_bottom_left">Bottom Left</string>
@@ -569,7 +571,7 @@
     <string name="overlay_position_center_top">Center Top</string>
     <string name="overlay_position_center_bottom">Center Bottom</string>
     <string name="overlay_background">Overlay Background</string>
-    <string name="overlay_background_description">Adds a background behind the overlay for easier reading</string>
+    <string name="overlay_background_description">Adds a background behind the overlay for easier reading.</string>
 
     <string name="emulation_haptic_feedback">Haptic Feedback</string>
     <string name="emulation_overlay_options">Overlay Options</string>
@@ -1025,6 +1027,8 @@
     <string name="use_artic_base_controller_desc">Use the controls provided by Artic Base Server when connected to it instead of the configured input device.</string>
     <string name="instant_debug_log">Flush Log Output on Every Message</string>
     <string name="instant_debug_log_desc">Immediately commits the debug log to file. Use this if Borked3DS crashes and the log output is being cut.</string>
+    <string name="disable_right_eye_render">Disable Right Eye Render</string>
+    <string name="disable_right_eye_render_desc">Greatly improves performance in some games, but can cause flickering in others.</string>
 
     <!-- Multiplayer -->
     <string name="multiplayer">Multiplayer</string>

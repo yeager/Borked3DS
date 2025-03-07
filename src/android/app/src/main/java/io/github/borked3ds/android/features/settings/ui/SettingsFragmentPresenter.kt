@@ -1077,6 +1077,16 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
                 )
             )
 
+            add(
+                SwitchSetting(
+                    BooleanSetting.DISABLE_RIGHT_EYE_RENDER,
+                    R.string.disable_right_eye_render,
+                    R.string.disable_right_eye_render_desc,
+                    BooleanSetting.DISABLE_RIGHT_EYE_RENDER.key,
+                    BooleanSetting.DISABLE_RIGHT_EYE_RENDER.defaultValue
+                )
+            )
+
             add(HeaderSetting(R.string.cardboard_vr))
             add(
                 SliderSetting(
@@ -1703,6 +1713,16 @@ class SettingsFragmentPresenter(private val fragmentView: SettingsFragmentView) 
                     R.string.show_fps_description,
                     "show_fps",
                     true
+                )
+            )
+
+            add(
+                SwitchSetting(
+                    BooleanSetting.SHOW_FRAMETIME,
+                    R.string.show_frametime,
+                    R.string.show_frametime_description,
+                    "show_frametime",
+                    false
                 )
             )
 

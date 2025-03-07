@@ -1,5 +1,5 @@
 # CMake 3.12 required for 20 to be a valid value for CXX_STANDARD
-cmake_minimum_required(VERSION 3.15)
+cmake_minimum_required(VERSION 3.26)
 
 if(COMMAND CMAKE_POLICY)
     # Honor visibility properties for all targets
@@ -61,13 +61,23 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
     # Base options
     set(SIMD_FLAGS "-O3")
 
-    # Architecture specific flags
-    if(CMAKE_SYSTEM_PROCESSOR MATCHES "^(aarch64|arm64)")
-        # ARM64 NEON support
-        set(SIMD_FLAGS "${SIMD_FLAGS} -march=armv8-a+simd")
-    elseif(CMAKE_SYSTEM_PROCESSOR MATCHES "^(x86_64|amd64)")
-        # x86_64 SSE/AVX support
-        set(SIMD_FLAGS "${SIMD_FLAGS} -msse4.1") # Ensures SSE4.1 support
+    if (ANDROID)
+        if(ANDROID_ABI STREQUAL "arm64-v8a")
+            # ARM64 NEON support
+            set(SIMD_FLAGS "${SIMD_FLAGS} -march=armv8-a+simd")
+        elseif(ANDROID_ABI STREQUAL "x86_64")
+            # x86_64 SSE/AVX support
+            set(SIMD_FLAGS "${SIMD_FLAGS} -march=atom -mtune=sandybridge -msse4.1")
+        endif()
+    else()
+        # Architecture specific flags
+        if(CMAKE_SYSTEM_PROCESSOR MATCHES "^(aarch64|arm64)")
+            # ARM64 NEON support
+            set(SIMD_FLAGS "${SIMD_FLAGS} -march=armv8-a+simd -mfloat-abi=hard -mfpu=neon")
+        elseif(CMAKE_SYSTEM_PROCESSOR MATCHES "^(x86_64|amd64)")
+            # x86_64 SSE/AVX support
+            set(SIMD_FLAGS "${SIMD_FLAGS} -march=x86-64-v2 -mtune=x86-64-v3 -msse4.1") # Ensures SSE4.1 support
+        endif()
     endif()
 
     # Enable vectorization
@@ -155,6 +165,7 @@ option(ENABLE_WEB_SERVICE "Enable web services (telemetry, etc.)" ON)
 option(ENABLE_SCRIPTING "Enable RPC server for scripting" ON)
 
 CMAKE_DEPENDENT_OPTION(ENABLE_CUBEB "Enables the cubeb audio backend" ON "NOT IOS" OFF)
+CMAKE_DEPENDENT_OPTION(ENABLE_OBOE "Enables the oboe audio backend" OFF "ANDROID" ON)
 option(ENABLE_OPENAL "Enables the OpenAL audio backend" ON)
 
 CMAKE_DEPENDENT_OPTION(ENABLE_LIBUSB "Enable libusb for GameCube Adapter support" ON "NOT IOS" OFF)
@@ -166,14 +177,43 @@ option(ENABLE_VULKAN "Enables the Vulkan renderer" ON)
 option(BORKED3DS_USE_EXTERNAL_VULKAN_SPIRV_TOOLS "Use SPIRV-Tools from externals" ON)
 
 option(ENABLE_PROFILING "Enables integration with the Tracy profiler" ON)
-option(USE_DISCORD_PRESENCE "Enables Discord Rich Presence" OFF)
 
+if(${CMAKE_SYSTEM_PROCESSOR} MATCHES "x86_64" AND NOT ANDROID)
+    set(USE_DISCORD_PRESENCE ON)
+else()
+    set(USE_DISCORD_PRESENCE OFF)
+endif()
 
 # Compile options
 CMAKE_DEPENDENT_OPTION(COMPILE_WITH_DWARF "Add DWARF debugging information" ${IS_DEBUG_BUILD} "MINGW" OFF)
 option(ENABLE_LTO "Enable link time optimization" ${DEFAULT_ENABLE_LTO})
 option(BORKED3DS_USE_PRECOMPILED_HEADERS "Use precompiled headers" ON)
 option(BORKED3DS_WARNINGS_AS_ERRORS "Enable warnings as errors" ON)
+
+# Dependency options - Prefer bundled versions over system packages
+option(USE_SYSTEM_BOOST "Use system installed Boost libraries" OFF)
+option(USE_SYSTEM_CATCH2 "Use system installed Catch2" OFF)
+option(USE_SYSTEM_CRYPTOPP "Use system installed Crypto++ libraries" OFF)
+option(USE_SYSTEM_FMT "Use system installed fmt libraries" OFF)
+option(USE_SYSTEM_XBYAK "Use system installed xbyak assembler" OFF)
+option(USE_SYSTEM_DYNARMIC "Use system installed dynarmic" OFF)
+option(USE_SYSTEM_INIH "Use system installed inih parser" OFF)
+option(USE_SYSTEM_FFMPEG_HEADERS "Use system installed ffmpeg headers" OFF)
+option(USE_SYSTEM_SOUNDTOUCH "Use system installed soundtouch" OFF)
+option(USE_SYSTEM_SDL2	 "Use system installed SDL2 library" OFF)
+option(USE_SYSTEM_LIBUSB "Use system installed libusb library" OFF)
+option(USE_SYSTEM_ZSTD "Use system installed zstd libraries" OFF)
+option(USE_SYSTEM_ENET "Use system installed ENet UDP library" OFF)
+option(USE_SYSTEM_CUBEB "Use system installed cubeb audio library" OFF)
+option(USE_SYSTEM_JSON "Use system installed nlohmann json library" OFF)
+option(USE_SYSTEM_OPENSSL "Use system installed LibreSSL library" OFF)
+option(USE_SYSTEM_CPP_HTTPLIB "Use system installed cpp-http library" OFF)
+option(USE_SYSTEM_CPP_JWT "Use system installed cpp-jwt library" OFF)
+option(USE_SYSTEM_LODEPNG "Use system installed lodepng" OFF)
+option(USE_SYSTEM_OPENAL "Use system installed openal-soft audio api" OFF)
+option(USE_SYSTEM_GLSLANG "Use system installed glslang" OFF)
+option(USE_SYSTEM_VULKAN_HEADERS "Use system installed vulkan-headers" OFF)
+option(USE_SYSTEM_VMA "Use system installed Vulkan Memory Allocation library" OFF)
 
 include(Borked3DSHandleSystemLibs)
 

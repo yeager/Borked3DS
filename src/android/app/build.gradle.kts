@@ -80,8 +80,8 @@ android {
                 arguments(
                     "-DENABLE_QT=0", // Don't use QT
                     "-DENABLE_SDL2=0", // Don't use SDL
-                    "-DCMAKE_CXX_FLAGS=-O2",
-                    "-DCMAKE_C_FLAGS=-O2",
+                    "-DCMAKE_CXX_FLAGS=-O3",
+                    "-DCMAKE_C_FLAGS=-O3",
                     "-DCMAKE_EXE_LINKER_FLAGS=-flto=thin",    // Enable Thin LTO
                     "-DCMAKE_SHARED_LINKER_FLAGS=-flto=thin", // Enable Thin LTO
                     "-DANDROID_ARM_NEON=true", // cryptopp requires Neon to work
@@ -198,10 +198,10 @@ dependencies {
     implementation("androidx.core:core-ktx:1.15.0")
     implementation("androidx.core:core-splashscreen:1.0.1")
     implementation("androidx.documentfile:documentfile:1.0.1")
-    implementation("androidx.fragment:fragment-ktx:1.8.5")
+    implementation("androidx.fragment:fragment-ktx:1.8.6")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7")
-    implementation("androidx.navigation:navigation-fragment-ktx:2.8.5")
-    implementation("androidx.navigation:navigation-ui-ktx:2.8.5")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.8.7")
+    implementation("androidx.navigation:navigation-ui-ktx:2.8.7")
     implementation("androidx.preference:preference-ktx:1.2.1")
     implementation("androidx.recyclerview:recyclerview:1.4.0")
     implementation("androidx.slidingpanelayout:slidingpanelayout:1.2.0")
@@ -216,7 +216,7 @@ dependencies {
 
 // Download Vulkan Validation Layers from the KhronosGroup GitHub.
 val downloadVulkanValidationLayers = tasks.register<Download>("downloadVulkanValidationLayers") {
-    src("https://github.com/KhronosGroup/Vulkan-ValidationLayers/releases/download/vulkan-sdk-1.4.304.0/android-binaries-1.4.304.0.zip")
+    src("https://github.com/KhronosGroup/Vulkan-ValidationLayers/releases/download/vulkan-sdk-1.4.304.1/android-binaries-1.4.304.1.zip")
     dest(file("${project.layout.buildDirectory.get().asFile}/tmp/Vulkan-ValidationLayers.zip"))
     onlyIfModified(true)
 }

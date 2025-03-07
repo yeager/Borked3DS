@@ -168,7 +168,8 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
         }
 
         emulationViewModel.initializeEmulationState(game.path)
-        emulationState = emulationViewModel.getEmulationState() ?: throw IllegalStateException("EmulationState not initialized")
+        emulationState = emulationViewModel.getEmulationState()
+            ?: throw IllegalStateException("EmulationState not initialized")
         emulationActivity = requireActivity() as EmulationActivity
         screenAdjustmentUtil = ScreenAdjustmentUtil(
             emulationActivity,
@@ -436,6 +437,7 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
             }
         )
 
+        GameIconUtils.loadGameIcon(requireActivity(), game, binding.loadingImage)
         binding.loadingTitle.text = game.title
 
         viewLifecycleOwner.lifecycleScope.apply {
@@ -1264,13 +1266,29 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback, Choreographer.Fram
     private fun updateShowPerfStatsOverlay() {
         if (EmulationMenuSettings.showPerfStatsOverlay) {
             val FPS = 1
+            val FRAMETIME = 2
             val SPEED = 3
             perfStatsUpdater = Runnable {
                 val sb = StringBuilder()
                 val perfStats = NativeLibrary.getPerfStats()
                 if (perfStats[FPS] > 0) {
                     if (BooleanSetting.SHOW_FPS.boolean) {
-                        sb.append(String.format("FPS: %d", (perfStats[FPS] + 0.5).toInt()))
+                        sb.append(
+                            String.format(
+                                "FPS: %d",
+                                (perfStats[FPS] + 0.5).toInt()
+                            )
+                        )
+                    }
+
+                    if (BooleanSetting.SHOW_FRAMETIME.boolean) {
+                        if (sb.isNotEmpty()) sb.append(" | ")
+                        sb.append(
+                            String.format(
+                                "FT: %.2fms",
+                                (perfStats[FRAMETIME] * 1000.0f).toFloat()
+                            )
+                        )
                     }
 
                     if (BooleanSetting.SHOW_SPEED.boolean) {

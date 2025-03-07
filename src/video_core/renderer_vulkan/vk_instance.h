@@ -271,7 +271,14 @@ public:
     /// Returns true if commands should be flushed at the end of each major renderpass
     bool ShouldFlush() const {
         return driver_id == vk::DriverIdKHR::eArmProprietary ||
-               driver_id == vk::DriverIdKHR::eQualcommProprietary;
+               driver_id == vk::DriverIdKHR::eQualcommProprietary ||
+               driver_id == vk::DriverIdKHR::eImaginationProprietary ||
+               driver_id == vk::DriverIdKHR::eBroadcomProprietary ||
+               driver_id == vk::DriverIdKHR::eVerisiliconProprietary ||
+               driver_id == vk::DriverIdKHR::eMesaTurnip ||
+               driver_id == vk::DriverIdKHR::eMesaV3Dv ||
+               driver_id == vk::DriverIdKHR::eMesaPanvk ||
+               driver_id == vk::DriverIdKHR::eSamsungProprietary;
     }
 
 private:
@@ -294,6 +301,9 @@ private:
 
     /// Creates the VMA allocator handle
     void CreateAllocator();
+
+    /// Log information about available memory heaps and types
+    void CheckDeviceMemory();
 
     // Collects logging gpu info
     void CollectToolingInfo();
@@ -331,6 +341,7 @@ private:
     bool image_format_list{};
     bool pipeline_creation_cache_control{};
     bool fragment_shader_barycentric{};
+    bool has_portability_subset{};
     bool shader_stencil_export{};
     bool external_memory_host{};
     u64 min_imported_host_pointer_alignment{};
